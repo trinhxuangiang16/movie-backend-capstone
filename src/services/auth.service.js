@@ -1,0 +1,101 @@
+import bcrypt from "bcrypt";
+import {
+  BadRequestException,
+  UnauthorizedException,
+} from "../common/helpers/exception.helper.js";
+import { prisma } from "../common/prisma/contect.prisma.js";
+import { tokenService } from "./token.service.js";
+
+export const authService = {
+  register: async (req) => {
+    const { email, mat_khau, ho_ten, so_dt } = req.body;
+
+    const userExist = await prisma.nguoiDung.findUnique({
+      where: { email },
+    });
+
+    if (userExist) {
+      throw new Error("Email đã tồn tại");
+    }
+
+    const hashPassword = bcrypt.hashSync(mat_khau, 10);
+
+    return prisma.nguoiDung.create({
+      data: {
+        email,
+        mat_khau: hashPassword,
+        ho_ten,
+        so_dt,
+        loai_nguoi_dung: "USER",
+      },
+    });
+  },
+
+  async login(req) {
+    const { email, mat_khau } = req.body;
+    console.log("🚀 ~ KIỂM TRA ~ req.body:", req.body);
+
+    const userExist = await prisma.nguoiDung.findUnique({
+      where: {
+        email: email,
+      },
+    });
+
+    console.log("🚀 ~ User found:", {
+      id: userExist?.tai_khoan,
+      email: userExist?.email,
+      hasPassword: !!userExist?.mat_khau,
+      passwordFromDB: userExist?.mat_khau, // Log này để debug
+    });
+
+    if (!userExist) {
+      throw new BadRequestException("Xin vui lòng đăng kí trước khi đăng nhập");
+    }
+
+    if (!userExist.mat_khau) {
+      throw new BadRequestException("Tài khoản chưa có mật khẩu");
+    }
+    const isPassword = bcrypt.compareSync(mat_khau, userExist.mat_khau);
+    console.log("🚀 ~ Password match:", isPassword);
+
+    if (!isPassword) {
+      throw new BadRequestException("Mật khẩu chưa chính xác");
+    }
+
+    const tokens = tokenService.createTokens(userExist.tai_khoan);
+
+    return { user: userExist, token: tokens };
+  },
+
+  async getInfo(req) {
+    delete req.user.mat_khau;
+    return req.user;
+  },
+
+  async refreshToken(req) {
+    const { accessToken, refreshToken } = req.body;
+
+    const decodeAccessToken = tokenService.verifyAccessToken(accessToken, {
+      ignoreExpiration: true,
+    });
+
+    const decodeRefreshToken = tokenService.verifyRefreshToken(refreshToken);
+
+    if (decodeAccessToken.userId !== decodeRefreshToken.userId) {
+      throw new UnauthorizedException("Làm mới token không thành công");
+    }
+
+    const userExist = await prisma.nguoiDung.findUnique({
+      where: { tai_khoan: decodeRefreshToken.userId },
+    });
+
+    if (!userExist) {
+      throw new UnauthorizedException("Không tìm thấy người dùng");
+    }
+
+    const tokens = tokenService.createTokens(userExist.tai_khoan);
+    console.log("🚀 ~ KIỂM TRA ~ tokens:", tokens);
+
+    return tokens;
+  },
+};

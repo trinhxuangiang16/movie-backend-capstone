@@ -1,0 +1,107 @@
+import { prisma } from "../common/prisma/contect.prisma.js";
+import { buildQueryPrisma } from "../utils/buildQueryPrisma.js";
+
+export const phimService = {
+  // GET LayDanhSachPhim
+  getLayDanhSachPhim: async () => {
+    return prisma.phim.findMany({
+      where: {
+        isDeleted: false,
+      },
+      orderBy: {
+        ma_phim: "asc",
+      },
+    });
+  },
+
+  // GET LayDanhSachPhimPhanTrang (DÙNG buildQueryPrisma)
+  getLayDanhSachPhimPhanTrang: async (query) => {
+    const { page, pageSize, skip, where } = buildQueryPrisma(query);
+
+    const finalWhere = {
+      ...where,
+      isDeleted: false,
+    };
+
+    const data = await prisma.phim.findMany({
+      skip,
+      take: pageSize,
+      where: finalWhere,
+      orderBy: {
+        ma_phim: "asc",
+      },
+    });
+
+    const total = await prisma.phim.count({ where: finalWhere });
+
+    return {
+      data,
+      total,
+      page,
+      pageSize,
+    };
+  },
+
+  // GET LayThongTinPhim/:ma_phim
+  getLayThongTinPhim: async (ma_phim) => {
+    return prisma.phim.findUnique({
+      where: { ma_phim: Number(ma_phim) },
+    });
+  },
+
+  // GET LayDanhSachPhimTheoNgay
+  getLayDanhSachPhimTheoNgay: async (ngay) => {
+    if (!ngay) {
+      throw new Error("Thiếu tham số ngày");
+    }
+
+    const regex = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (!regex.test(ngay)) {
+      throw new Error("Ngày phải có định dạng dd/mm/yyyy");
+    }
+
+    const [day, month, year] = ngay.split("/").map(Number);
+
+    const start = new Date(year, month - 1, day);
+    const end = new Date(year, month - 1, day + 1);
+
+    return prisma.phim.findMany({
+      where: {
+        ngay_khoi_chieu: {
+          gte: start,
+          lt: end,
+        },
+      },
+      orderBy: {
+        ngay_khoi_chieu: "asc",
+      },
+    });
+  },
+
+  // POST QuanLyPhim
+  themPhim: async (data) => {
+    return prisma.phim.create({
+      data: {
+        ten_phim: data.ten_phim,
+        trailer: data.trailer,
+        hinh_anh: data.hinh_anh,
+        mo_ta: data.mo_ta,
+        ngay_khoi_chieu: new Date(data.ngay_khoi_chieu),
+        danh_gia: Number(data.danh_gia),
+        hot: Boolean(data.hot),
+        dang_chieu: Boolean(data.dang_chieu),
+        sap_chieu: Boolean(data.sap_chieu),
+      },
+    });
+  },
+
+  // DELETE XoaPhim
+  delete: async (ma_phim) => {
+    return prisma.phim.update({
+      where: { ma_phim: Number(ma_phim) },
+      data: {
+        isDeleted: true,
+      },
+    });
+  },
+};
