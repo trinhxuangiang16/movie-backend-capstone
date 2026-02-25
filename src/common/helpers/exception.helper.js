@@ -30,3 +30,10 @@ export class ForbiddenException extends Error {
     this.code = statusCodes.FORBIDDEN;
   }
 }
+
+export class InternalServerErrorException extends Error {
+  constructor(message = "InternalServerErrorException") {
+    super(message);
+    this.code = statusCodes.INTERNAL_SERVER_ERROR;
+  }
+}

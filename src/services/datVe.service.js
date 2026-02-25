@@ -112,18 +112,30 @@ export const datVeService = {
         throw new Error("Một hoặc nhiều ghế đã được đặt");
       }
 
-      // 5️⃣ Insert tất cả vé
+      //  Insert tất cả vé
       await tx.datVe.createMany({
         data: danhSachMaGhe.map((ma_ghe) => ({
-          tai_khoan: userId,
+          tai_khoan: userId, //userId này là từ token giải mã ra, đảm bảo người dùng chỉ đặt vé cho chính mình
           ma_lich_chieu: Number(ma_lich_chieu),
           ma_ghe: ma_ghe,
         })),
       });
 
+      // 6️⃣ Trả về thông tin ghế (có tên ghế)
+      const gheDaDatThanhCong = await tx.ghe.findMany({
+        where: {
+          ma_ghe: { in: danhSachMaGhe },
+        },
+        select: {
+          ma_ghe: true,
+          ten_ghe: true,
+          loai_ghe: true,
+        },
+      });
+
       return {
-        message: "Đặt vé thành công",
         so_luong_ve: danhSachMaGhe.length,
+        danh_sach_ve: gheDaDatThanhCong,
       };
     });
   },
