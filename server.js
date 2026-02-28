@@ -3,6 +3,8 @@ import express from "express";
 import { NotFountException } from "./src/common/helpers/exception.helper.js";
 import { appError } from "./src/common/helpers/handle-error-helper.js";
 import rootRouter from "./src/routers/root.router.js";
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./src/config/swagger.js";
 
 const app = express();
 
@@ -12,6 +14,9 @@ app.use(express.json());
 
 // Mở CORS cho tất cả (cho dễ deploy)
 app.use(cors());
+
+// Swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // ===== TEST ROUTE =====
 app.get("/", (req, res) => {

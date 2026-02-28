@@ -104,4 +104,34 @@ export const phimService = {
       },
     });
   },
+
+  // PUT CapNhatPhim
+  capNhatPhim: async (ma_phim, data) => {
+    const phim = await prisma.phim.findUnique({
+      where: { ma_phim: Number(ma_phim) },
+    });
+
+    if (!phim || phim.isDeleted) {
+      throw new Error("Phim không tồn tại hoặc đã bị xóa");
+    }
+
+    return prisma.phim.update({
+      where: { ma_phim: Number(ma_phim) },
+      data: {
+        ten_phim: data.ten_phim,
+        trailer: data.trailer,
+        hinh_anh: data.hinh_anh,
+        mo_ta: data.mo_ta,
+        ngay_khoi_chieu: data.ngay_khoi_chieu
+          ? new Date(data.ngay_khoi_chieu)
+          : undefined,
+        danh_gia: data.danh_gia ? Number(data.danh_gia) : undefined,
+        hot: data.hot !== undefined ? Boolean(data.hot) : undefined,
+        dang_chieu:
+          data.dang_chieu !== undefined ? Boolean(data.dang_chieu) : undefined,
+        sap_chieu:
+          data.sap_chieu !== undefined ? Boolean(data.sap_chieu) : undefined,
+      },
+    });
+  },
 };

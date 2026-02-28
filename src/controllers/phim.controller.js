@@ -84,4 +84,20 @@ export const phimController = {
       next(err);
     }
   },
+
+  // PUT CapNhatPhim/:ma_phim (ADMIN)
+  capNhatPhim: async (req, res, next) => {
+    try {
+      const { ma_phim } = req.params;
+
+      const result = await phimService.capNhatPhim(ma_phim, req.body);
+
+      res.json({
+        message: "Cập nhật phim thành công",
+        data: result,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
 };

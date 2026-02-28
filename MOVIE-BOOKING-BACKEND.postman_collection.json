@@ -1,0 +1,2503 @@
+{
+  "info": {
+    "_postman_id": "04132303-b423-4c79-b7eb-96472746d76f",
+    "name": "MOVIE-BOOKING-BACKEND",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50283347",
+    "_collection_link": "https://go.postman.co/collection/50283347-04132303-b423-4c79-b7eb-96472746d76f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "QuanLyDatVe",
+      "item": [
+        {
+          "name": "TaoLichChieu",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ma_rap\": 2,\r\n  \"ma_phim\": 7,\r\n  \"ngay_gio_chieu\": \"2025-10-01 11:45:00\",\r\n  \"gia_ve\": 90000\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyDatVe/TaoLichChieu",
+              "host": [
+                "{{domain}}QuanLyDatVe"
+              ],
+              "path": [
+                "TaoLichChieu"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để tạo lịch chiếu phim theo mã phim, mã rạp, thời gian chiếu và giá vé\n\n\\-- Auth  \nBearer Token, tài khoản ADMIN\n\n\\-- Request  \nMethod: POST  \nURL: api[/](http://localhost:3069/apI/)QuanLyDatVe/TaoLichChieu\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "TaoLichChieu",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"ma_rap\": 2,\r\n  \"ma_phim\": 7,\r\n  \"ngay_gio_chieu\": \"2025-10-01 11:45:00\",\r\n  \"gia_ve\": 90000\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyDatVe/TaoLichChieu",
+                  "host": [
+                    "{{domain}}QuanLyDatVe"
+                  ],
+                  "path": [
+                    "TaoLichChieu"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "218"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"da-sfjYPDkrcZpcHTjELrZDAjnwB+4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:32:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Tạo lịch chiếu thành công\",\n    \"data\": {\n        \"ma_lich_chieu\": 29,\n        \"ma_rap\": 2,\n        \"ma_phim\": 7,\n        \"ngay_gio_chieu\": \"2025-10-01T04:45:00.000Z\",\n        \"gia_ve\": 90000\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayDanhSachPhongVe",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyDatVe/LayDanhSachPhongVe?ma_lich_chieu=28",
+              "host": [
+                "{{domain}}QuanLyDatVe"
+              ],
+              "path": [
+                "LayDanhSachPhongVe"
+              ],
+              "query": [
+                {
+                  "key": "ma_lich_chieu",
+                  "value": "28"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy danh sách phòng vé dựa vào mã lịch chiếu\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyDatVe/LayDanhSachPhongVe?ma_lich_chieu={ma_lich_chieu}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayDanhSachPhongVe",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyDatVe/LayDanhSachPhongVe?ma_lich_chieu=28",
+                  "host": [
+                    "{{domain}}QuanLyDatVe"
+                  ],
+                  "path": [
+                    "LayDanhSachPhongVe"
+                  ],
+                  "query": [
+                    {
+                      "key": "ma_lich_chieu",
+                      "value": "28"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "779"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"30b-TzG1BgdjeLb8APWWLXt0EIXMLyY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:33:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy danh sách phòng vé thành công\",\n    \"data\": {\n        \"ma_lich_chieu\": 28,\n        \"ma_rap\": 2,\n        \"ma_phim\": 8,\n        \"ngay_gio_chieu\": \"2025-10-01T04:00:00.000Z\",\n        \"gia_ve\": 90000,\n        \"RapPhim\": {\n            \"ma_rap\": 2,\n            \"ten_rap\": \"Rạp 2\",\n            \"ma_cum_rap\": 1,\n            \"Ghe\": [\n                {\n                    \"ma_ghe\": 6,\n                    \"ten_ghe\": \"B1\",\n                    \"loai_ghe\": \"Thuong\",\n                    \"ma_rap\": 2\n                },\n                {\n                    \"ma_ghe\": 7,\n                    \"ten_ghe\": \"B2\",\n                    \"loai_ghe\": \"VIP\",\n                    \"ma_rap\": 2\n                },\n                {\n                    \"ma_ghe\": 8,\n                    \"ten_ghe\": \"B3\",\n                    \"loai_ghe\": \"Thuong\",\n                    \"ma_rap\": 2\n                },\n                {\n                    \"ma_ghe\": 9,\n                    \"ten_ghe\": \"B4\",\n                    \"loai_ghe\": \"VIP\",\n                    \"ma_rap\": 2\n                },\n                {\n                    \"ma_ghe\": 10,\n                    \"ten_ghe\": \"B5\",\n                    \"loai_ghe\": \"Thuong\",\n                    \"ma_rap\": 2\n                }\n            ]\n        },\n        \"DatVe\": [\n            {\n                \"tai_khoan\": 12,\n                \"ma_lich_chieu\": 28,\n                \"ma_ghe\": 6\n            },\n            {\n                \"tai_khoan\": 12,\n                \"ma_lich_chieu\": 28,\n                \"ma_ghe\": 7\n            },\n            {\n                \"tai_khoan\": 12,\n                \"ma_lich_chieu\": 28,\n                \"ma_ghe\": 8\n            },\n            {\n                \"tai_khoan\": 12,\n                \"ma_lich_chieu\": 28,\n                \"ma_ghe\": 9\n            }\n        ]\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "DatVe",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ma_lich_chieu\": 2,\r\n  \"danh_sach_ve\": [\r\n    { \"ma_ghe\": 1 },\r\n    { \"ma_ghe\": 2 }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyDatVe/DatVe",
+              "host": [
+                "{{domain}}QuanLyDatVe"
+              ],
+              "path": [
+                "DatVe"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để đặt vé dựa vào mã lịch chiếu và mã ghế\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: POST  \nURL: api[/](http://localhost:3069/apI/)QuanLyDatVe/DatVe\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "DatVe",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"ma_lich_chieu\": 2,\r\n  \"danh_sach_ve\": [\r\n    { \"ma_ghe\": 1 },\r\n    { \"ma_ghe\": 2 }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyDatVe/DatVe",
+                  "host": [
+                    "{{domain}}QuanLyDatVe"
+                  ],
+                  "path": [
+                    "DatVe"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "236"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"ec-HLP4ityq+OEG0qye0T1pIIqXYGw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:35:09 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Đặt vé thành công\",\n    \"data\": {\n        \"so_luong_ve\": 2,\n        \"danh_sach_ve\": [\n            {\n                \"ma_ghe\": 1,\n                \"ten_ghe\": \"A1\",\n                \"loai_ghe\": \"Thuong\"\n            },\n            {\n                \"ma_ghe\": 2,\n                \"ten_ghe\": \"A2\",\n                \"loai_ghe\": \"Thuong\"\n            }\n        ]\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "QuanLyNguoiDung",
+      "item": [
+        {
+          "name": "DangNhap",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"accessToken\", res.data.token.accessToken);\r",
+                  "pm.environment.set(\"refreshToken\", res.data.token.refreshToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"email\": \"nguyenhunghaha@gmail.com\", \"mat_khau\": \"G123456789\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/DangNhap",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "DangNhap"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để đăng nhập vào tài khoản\n\n\\-- Auth  \nKhông có\n\n\\-- Request  \nMethod: POST  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/DangNhap\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "DangNhap",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \"email\": \"nguyenhunghaha@gmail.com\", \"mat_khau\": \"G123456789\" }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/DangNhap",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "DangNhap"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "649"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"289-CJYi1vGcy9IcXE21JBPItEF17dc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:36:38 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Đăng nhập thành công\",\n    \"data\": {\n        \"user\": {\n            \"tai_khoan\": 12,\n            \"ho_ten\": \"Nguyễn Hùng\",\n            \"email\": \"nguyenhunghaha@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"mat_khau\": \"$2b$10$puVgO6TC/hbgJoFJCluEneSnPkjDgHxVNzeqJlgaJCk/hQaA7.WV6\",\n            \"loai_nguoi_dung\": \"ADMIN\"\n        },\n        \"token\": {\n            \"accessToken\": \"{{vault:json-web-token}}\",\n            \"refreshToken\": \"{{vault:json-web-token}}\"\n        }\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "DangKy",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"email\": \"tata@gmail.com\", \"mat_khau\": \"G123456789\", \"ho_ten\": \"Ta Ta\", \"so_dt\": \"0832369372\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/DangKy",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "DangKy"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để tạo tài khoản\n\n\\-- Auth  \nKhông có\n\n\\-- Request  \nMethod: POST  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/DangKy\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "DangKy",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \"email\": \"tata@gmail.com\", \"mat_khau\": \"G123456789\", \"ho_ten\": \"Ta Ta\", \"so_dt\": \"0832369372\" }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/DangKy",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "DangKy"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "284"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"11c-+LVm8JApp4DJ4++KOepKddV5FC4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:36:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Đăng ký thành công\",\n    \"data\": {\n        \"tai_khoan\": 13,\n        \"ho_ten\": \"Ta Ta\",\n        \"email\": \"tata@gmail.com\",\n        \"so_dt\": \"0832369372\",\n        \"mat_khau\": \"$2b$10$P7FB.IjnEdpNuU7FgGHWDe9gIsq6jVgtl0vSWBOfwbeMXPGpYmF2y\",\n        \"loai_nguoi_dung\": \"USER\"\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "RefreshToken",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"accessToken\": \"{{accessToken}}\",\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/refresh-token",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "refresh-token"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để làm mới khi token hết hạn dựa vào accessToken và refreshToken\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: POST  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/refresh-token\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "RefreshToken",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"accessToken\": \"{{accessToken}}\",\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/refresh-token",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "refresh-token"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "433"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1b1-zrkcrPXgFCAsmRZktwL67RPtqD8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:37:22 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Refresh token thành công\",\n    \"data\": {\n        \"accessToken\": \"{{vault:json-web-token}}\",\n        \"refreshToken\": \"{{vault:json-web-token}}\"\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "ThongTinTaiKhoan",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/ThongTinTaiKhoan",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "ThongTinTaiKhoan"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để xem thông tin người dùng\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/ThongTinTaiKhoan\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "ThongTinTaiKhoan",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/ThongTinTaiKhoan",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "ThongTinTaiKhoan"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "251"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"fb-i/dKLUTxoailqwVzUL5XnDLzwnE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:37:56 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy thông tin người dùng thành công\",\n    \"data\": {\n        \"tai_khoan\": 12,\n        \"ho_ten\": \"Nguyễn Hùng\",\n        \"email\": \"nguyenhunghaha@gmail.com\",\n        \"so_dt\": \"0832369372\",\n        \"loai_nguoi_dung\": \"ADMIN\"\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayDanhSachNguoiDungPhanTrang",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?page=1&pageSize=5&filters={\"email\":\"k\"}",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "LayDanhSachNguoiDungPhanTrang"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "5"
+                },
+                {
+                  "key": "filters",
+                  "value": "{\"email\":\"k\"}"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để phân trang danh sách người dùng và có thể lọc nếu cần thiết\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?page={pageNumber}&pageSize={numberOfUserForOnePage}&filters={\"key\": \"value\"}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayDanhSachNguoiDungPhanTrang",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?page=1&pageSize=5&filters={\"email\":\"k\"}",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "LayDanhSachNguoiDungPhanTrang"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "{\"email\":\"k\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "385"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"181-51wbp5xhWIuurE3rX0CGJmC5UGc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:38:54 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy danh sách người dùng phân trang thành công\",\n    \"data\": {\n        \"data\": [\n            {\n                \"tai_khoan\": 7,\n                \"ho_ten\": \"Trịnh Xuân Giang\",\n                \"email\": \"tgxhjku02hbvjh1n@gmail.com\",\n                \"so_dt\": \"0832369372\",\n                \"mat_khau\": \"$2b$10$ORa8fVzYo12zT04f8a9U1.e5H2yxPEMWfdZ69ULw.ZSWLtn.s5AgC\",\n                \"loai_nguoi_dung\": \"USER\"\n            }\n        ],\n        \"total\": 1,\n        \"page\": 1,\n        \"pageSize\": 5\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayDanhSachNguoiDung",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/LayDanhSachNguoiDung",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "LayDanhSachNguoiDung"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy danh sách người dùng\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/LayDanhSachNguoiDung\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayDanhSachNguoiDung",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/LayDanhSachNguoiDung",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "LayDanhSachNguoiDung"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "997"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3e5-6XX22r9PTlFSdajYF0gQAMNQiaQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Feb 2026 17:39:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy danh sách người dùng thành công\",\n    \"data\": [\n        {\n            \"tai_khoan\": 1,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"nguyenhung@gmail.comggg\",\n            \"so_dt\": \"0832369372\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 2,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"tringiangxuan@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 3,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"tringi997gxuan@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 6,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"tgxu02hbvjh1n@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 7,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"tgxhjku02hbvjh1n@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 12,\n            \"ho_ten\": \"Nguyễn Hùng\",\n            \"email\": \"nguyenhunghaha@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"loai_nguoi_dung\": \"ADMIN\"\n        },\n        {\n            \"tai_khoan\": 13,\n            \"ho_ten\": \"Ta Ta\",\n            \"email\": \"tata@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"loai_nguoi_dung\": \"USER\"\n        }\n    ],\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "TimKiemNguoiDung",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/TimKiemNguoiDung?keyword=g",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "TimKiemNguoiDung"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "g"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để tìm kiếm người dùng dựa trên keyword là email hoặc ho_ten\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/LayDanhSachNguoiDung?keyword={yourKeyWord}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "TimKiemNguoiDung",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/TimKiemNguoiDung?keyword=g",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "TimKiemNguoiDung"
+                  ],
+                  "query": [
+                    {
+                      "key": "keyword",
+                      "value": "g"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1510"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5e6-fQFAe5O4ZuQ5OYz+4lSS/rVeuzM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:39:03 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Tìm kiếm người dùng thành công\",\n    \"data\": [\n        {\n            \"tai_khoan\": 1,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"nguyenhung@gmail.comggg\",\n            \"so_dt\": \"0832369372\",\n            \"mat_khau\": \"$2b$10$v5q36rA3oyKejXS7oLTEHObo73srlS.dBCDzYwx8K8pAlH1GmLf5u\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 2,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"tringiangxuan@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"mat_khau\": \"$2b$10$sPsSYxGNLXjHjnUzLwpgLeUaEaG.9VYqOBrfTTHEzCnWKX7Hb74I6\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 3,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"tringi997gxuan@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"mat_khau\": \"$2b$10$NHN4Jcp8ygDDQrX.twIqF.nmjLwQ0a9nHGkegv8ofu8q69/lapdWa\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 6,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"tgxu02hbvjh1n@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"mat_khau\": \"$2b$10$oXVWdiwP/aoSvvcwyKhNN.EaMe8XRXW3/j1r941helI32iQ99Blp6\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 7,\n            \"ho_ten\": \"Trịnh Xuân Giang\",\n            \"email\": \"tgxhjku02hbvjh1n@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"mat_khau\": \"$2b$10$ORa8fVzYo12zT04f8a9U1.e5H2yxPEMWfdZ69ULw.ZSWLtn.s5AgC\",\n            \"loai_nguoi_dung\": \"USER\"\n        },\n        {\n            \"tai_khoan\": 12,\n            \"ho_ten\": \"Nguyễn Hùng\",\n            \"email\": \"nguyenhunghaha@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"mat_khau\": \"$2b$10$puVgO6TC/hbgJoFJCluEneSnPkjDgHxVNzeqJlgaJCk/hQaA7.WV6\",\n            \"loai_nguoi_dung\": \"ADMIN\"\n        },\n        {\n            \"tai_khoan\": 13,\n            \"ho_ten\": \"Ta Ta\",\n            \"email\": \"tata@gmail.com\",\n            \"so_dt\": \"0832369372\",\n            \"mat_khau\": \"$2b$10$P7FB.IjnEdpNuU7FgGHWDe9gIsq6jVgtl0vSWBOfwbeMXPGpYmF2y\",\n            \"loai_nguoi_dung\": \"USER\"\n        }\n    ],\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "CapNhatThongTinNguoiDung",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"email\": \"nguyenhunghaha00000000000@gmail.com\",\"so_dt\": \"099999999999\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/CapNhatThongTinNguoiDung/12",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "CapNhatThongTinNguoiDung",
+                "12"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng cập nhật thông tin người dùng. Nếu thay đổi mật khẩu thì thêm trường mat_khau_cu đi kem mat_khau (mật khẩu mới)\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: PUT  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/CapNhatThongTinNguoiDung/{tai_khoan)\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "CapNhatThongTinNguoiDung",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \"email\": \"nguyenhunghaha00000000000@gmail.com\",\"so_dt\": \"099999999999\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/CapNhatThongTinNguoiDung/12",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "CapNhatThongTinNguoiDung",
+                    "12"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "334"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"14e-rpmf1rMwyWFCV+i7wZvL6KnKrZQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:39:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Cập nhật người dùng thành công\",\n    \"data\": {\n        \"tai_khoan\": 12,\n        \"ho_ten\": \"Nguyễn Hùng\",\n        \"email\": \"nguyenhunghaha00000000000@gmail.com\",\n        \"so_dt\": \"099999999999\",\n        \"mat_khau\": \"$2b$10$puVgO6TC/hbgJoFJCluEneSnPkjDgHxVNzeqJlgaJCk/hQaA7.WV6\",\n        \"loai_nguoi_dung\": \"ADMIN\"\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "XoaNguoiDung",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyNguoiDung/XoaNguoiDung/2",
+              "host": [
+                "{{domain}}QuanLyNguoiDung"
+              ],
+              "path": [
+                "XoaNguoiDung",
+                "2"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để xóa người dùng dựa vào tai_khoan\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: DELETE  \nURL: api[/](http://localhost:3069/apI/)QuanLyNguoiDung/XoaNguoiDung/{tai_khoan}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "XoaNguoiDung",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyNguoiDung/XoaNguoiDung/2",
+                  "host": [
+                    "{{domain}}QuanLyNguoiDung"
+                  ],
+                  "path": [
+                    "XoaNguoiDung",
+                    "2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "315"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"13b-lHnyU2k1NYWlQFmS7Up+MUeFM3o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:40:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Xóa người dùng thành công\",\n    \"data\": {\n        \"tai_khoan\": 2,\n        \"ho_ten\": \"Trịnh Xuân Giang\",\n        \"email\": \"tringiangxuan@gmail.com\",\n        \"so_dt\": \"0832369372\",\n        \"mat_khau\": \"$2b$10$sPsSYxGNLXjHjnUzLwpgLeUaEaG.9VYqOBrfTTHEzCnWKX7Hb74I6\",\n        \"loai_nguoi_dung\": \"USER\"\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "QuanLyPhim",
+      "item": [
+        {
+          "name": "LayDanhSachPhim",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyPhim/LayDanhSachPhim",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ],
+              "path": [
+                "LayDanhSachPhim"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy danh sách phim\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim/LayDanhSachPhim\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayDanhSachPhim",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim/LayDanhSachPhim",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ],
+                  "path": [
+                    "LayDanhSachPhim"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "9893"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"26a5-HJnZl8UNqykMRP1kwDCn98eVBYI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:41:10 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy danh sách phim thành công\",\n    \"data\": [\n        {\n            \"ma_phim\": 1,\n            \"ten_phim\": \"Avengers: Endgame\",\n            \"trailer\": \"https://youtube.com/watch?v=TcMBFSGVi1c\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?1\",\n            \"mo_ta\": \"Biệt đội siêu anh hùng tập hợp.\",\n            \"ngay_khoi_chieu\": \"2024-01-10T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 2,\n            \"ten_phim\": \"Spider-Man: No Way Home\",\n            \"trailer\": \"https://youtube.com/watch?v=JfVOs4VSpmA\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?2\",\n            \"mo_ta\": \"Người nhện đa vũ trụ.\",\n            \"ngay_khoi_chieu\": \"2024-02-15T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 3,\n            \"ten_phim\": \"The Batman\",\n            \"trailer\": \"https://youtube.com/watch?v=mqqft2x_Aa4\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?3\",\n            \"mo_ta\": \"Hiệp sĩ bóng đêm trở lại.\",\n            \"ngay_khoi_chieu\": \"2024-03-20T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 4,\n            \"ten_phim\": \"Fast & Furious 10\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?4\",\n            \"mo_ta\": \"Đua xe tốc độ cao.\",\n            \"ngay_khoi_chieu\": \"2024-04-05T00:00:00.000Z\",\n            \"danh_gia\": 7,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 5,\n            \"ten_phim\": \"Doctor Strange 2\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?5\",\n            \"mo_ta\": \"Phù thủy tối thượng.\",\n            \"ngay_khoi_chieu\": \"2024-05-01T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 6,\n            \"ten_phim\": \"Thor: Love and Thunder\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?6\",\n            \"mo_ta\": \"Thần sấm tái xuất.\",\n            \"ngay_khoi_chieu\": \"2024-06-12T00:00:00.000Z\",\n            \"danh_gia\": 7,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 7,\n            \"ten_phim\": \"Black Panther 2\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?7\",\n            \"mo_ta\": \"Wakanda bất diệt.\",\n            \"ngay_khoi_chieu\": \"2024-07-18T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 8,\n            \"ten_phim\": \"Aquaman 2\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?8\",\n            \"mo_ta\": \"Vua đại dương.\",\n            \"ngay_khoi_chieu\": \"2024-08-22T00:00:00.000Z\",\n            \"danh_gia\": 7,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 9,\n            \"ten_phim\": \"Transformers: Rise\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?9\",\n            \"mo_ta\": \"Robot đại chiến.\",\n            \"ngay_khoi_chieu\": \"2024-09-10T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 10,\n            \"ten_phim\": \"John Wick 4\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?10\",\n            \"mo_ta\": \"Sát thủ huyền thoại.\",\n            \"ngay_khoi_chieu\": \"2024-10-01T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 11,\n            \"ten_phim\": \"Avatar 2\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?11\",\n            \"mo_ta\": \"Thế giới Pandora.\",\n            \"ngay_khoi_chieu\": \"2024-11-05T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 12,\n            \"ten_phim\": \"The Flash\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?12\",\n            \"mo_ta\": \"Siêu tốc độ.\",\n            \"ngay_khoi_chieu\": \"2024-12-12T00:00:00.000Z\",\n            \"danh_gia\": 7,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 13,\n            \"ten_phim\": \"Mission Impossible 7\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?13\",\n            \"mo_ta\": \"Nhiệm vụ bất khả thi.\",\n            \"ngay_khoi_chieu\": \"2025-01-10T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 14,\n            \"ten_phim\": \"Oppenheimer\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?14\",\n            \"mo_ta\": \"Cha đẻ bom nguyên tử.\",\n            \"ngay_khoi_chieu\": \"2025-02-14T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 15,\n            \"ten_phim\": \"Barbie\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?15\",\n            \"mo_ta\": \"Thế giới búp bê.\",\n            \"ngay_khoi_chieu\": \"2025-03-20T00:00:00.000Z\",\n            \"danh_gia\": 7,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 16,\n            \"ten_phim\": \"Dune 2\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?16\",\n            \"mo_ta\": \"Hành tinh cát.\",\n            \"ngay_khoi_chieu\": \"2025-04-01T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 17,\n            \"ten_phim\": \"Matrix 5\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?17\",\n            \"mo_ta\": \"Thế giới ảo.\",\n            \"ngay_khoi_chieu\": \"2025-05-05T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 18,\n            \"ten_phim\": \"Inception 2\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?18\",\n            \"mo_ta\": \"Giấc mơ trong mơ.\",\n            \"ngay_khoi_chieu\": \"2025-06-10T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 19,\n            \"ten_phim\": \"Interstellar 2\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?19\",\n            \"mo_ta\": \"Du hành vũ trụ.\",\n            \"ngay_khoi_chieu\": \"2025-07-15T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 20,\n            \"ten_phim\": \"Frozen 3\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?20\",\n            \"mo_ta\": \"Nữ hoàng băng giá.\",\n            \"ngay_khoi_chieu\": \"2025-08-18T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 21,\n            \"ten_phim\": \"Minions 3\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?21\",\n            \"mo_ta\": \"Biệt đội chuối.\",\n            \"ngay_khoi_chieu\": \"2025-09-12T00:00:00.000Z\",\n            \"danh_gia\": 7,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 22,\n            \"ten_phim\": \"Toy Story 5\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?22\",\n            \"mo_ta\": \"Đồ chơi phiêu lưu.\",\n            \"ngay_khoi_chieu\": \"2025-10-01T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 23,\n            \"ten_phim\": \"The Conjuring 4\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?23\",\n            \"mo_ta\": \"Ám ảnh kinh hoàng.\",\n            \"ngay_khoi_chieu\": \"2025-11-05T00:00:00.000Z\",\n            \"danh_gia\": 7,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 24,\n            \"ten_phim\": \"Annabelle 4\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?24\",\n            \"mo_ta\": \"Búp bê ma ám.\",\n            \"ngay_khoi_chieu\": \"2025-12-12T00:00:00.000Z\",\n            \"danh_gia\": 6,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 25,\n            \"ten_phim\": \"Venom 3\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?25\",\n            \"mo_ta\": \"Ký sinh trùng.\",\n            \"ngay_khoi_chieu\": \"2026-01-10T00:00:00.000Z\",\n            \"danh_gia\": 7,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 26,\n            \"ten_phim\": \"Deadpool 3\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?26\",\n            \"mo_ta\": \"Siêu anh hùng lầy lội.\",\n            \"ngay_khoi_chieu\": \"2026-02-14T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 27,\n            \"ten_phim\": \"Captain Marvel 3\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?27\",\n            \"mo_ta\": \"Nữ anh hùng vũ trụ.\",\n            \"ngay_khoi_chieu\": \"2026-03-20T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 28,\n            \"ten_phim\": \"Iron Man 4\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?28\",\n            \"mo_ta\": \"Người sắt trở lại.\",\n            \"ngay_khoi_chieu\": \"2026-04-01T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 29,\n            \"ten_phim\": \"Joker 2\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?29\",\n            \"mo_ta\": \"Hoàng tử tội phạm.\",\n            \"ngay_khoi_chieu\": \"2026-05-05T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 30,\n            \"ten_phim\": \"The Nun 3\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?30\",\n            \"mo_ta\": \"Ác quỷ tu viện.\",\n            \"ngay_khoi_chieu\": \"2026-06-10T00:00:00.000Z\",\n            \"danh_gia\": 6,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 31,\n            \"ten_phim\": \"Bố Già\",\n            \"trailer\": \"https://www.youtube.com/watch?v=jluSu8Rw6YE\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?bogia\",\n            \"mo_ta\": \"Câu chuyện cảm động về tình cha con trong một xóm lao động nghèo Sài Gòn.\",\n            \"ngay_khoi_chieu\": \"2025-10-01T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 33,\n            \"ten_phim\": \"Hai Phượng\",\n            \"trailer\": \"https://www.youtube.com/watch?v=1R6jNmpO3mM\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?haiphuong\",\n            \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n            \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 36,\n            \"ten_phim\": \"15 Phượng\",\n            \"trailer\": \"https:abchg.com\",\n            \"hinh_anh\": \"hahaha.jpg\",\n            \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n            \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 37,\n            \"ten_phim\": \"4 5 Phượng\",\n            \"trailer\": \"https://www.youtube.com/watch?v=1R6jNmpO3mM\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?haiphuong\",\n            \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n            \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": false,\n            \"sap_chieu\": true,\n            \"isDeleted\": false\n        }\n    ],\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayDanhSachPhimPhanTrang",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyPhim/LayDanhSachPhimPhanTrang?page=2&pageSize=30",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ],
+              "path": [
+                "LayDanhSachPhimPhanTrang"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "2"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "30"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy danh sách phim phân trang dựa vào page và pageSize\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim/LayDanhSachPhimPhanTrang?page={number}&pageSize={number}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayDanhSachPhimPhanTrang",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim/LayDanhSachPhimPhanTrang?page=2&pageSize=30",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ],
+                  "path": [
+                    "LayDanhSachPhimPhanTrang"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "30"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1584"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"630-lQ1CM9iy7OGUtyzeP0q0JfZhsSE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:41:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy danh sách phim phân trang thành công\",\n    \"data\": {\n        \"data\": [\n            {\n                \"ma_phim\": 31,\n                \"ten_phim\": \"Bố Già\",\n                \"trailer\": \"https://www.youtube.com/watch?v=jluSu8Rw6YE\",\n                \"hinh_anh\": \"https://picsum.photos/300/400?bogia\",\n                \"mo_ta\": \"Câu chuyện cảm động về tình cha con trong một xóm lao động nghèo Sài Gòn.\",\n                \"ngay_khoi_chieu\": \"2025-10-01T00:00:00.000Z\",\n                \"danh_gia\": 9,\n                \"hot\": true,\n                \"dang_chieu\": true,\n                \"sap_chieu\": false,\n                \"isDeleted\": false\n            },\n            {\n                \"ma_phim\": 33,\n                \"ten_phim\": \"Hai Phượng\",\n                \"trailer\": \"https://www.youtube.com/watch?v=1R6jNmpO3mM\",\n                \"hinh_anh\": \"https://picsum.photos/300/400?haiphuong\",\n                \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n                \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n                \"danh_gia\": 8,\n                \"hot\": false,\n                \"dang_chieu\": false,\n                \"sap_chieu\": true,\n                \"isDeleted\": false\n            },\n            {\n                \"ma_phim\": 36,\n                \"ten_phim\": \"15 Phượng\",\n                \"trailer\": \"https:abchg.com\",\n                \"hinh_anh\": \"hahaha.jpg\",\n                \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n                \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n                \"danh_gia\": 8,\n                \"hot\": true,\n                \"dang_chieu\": true,\n                \"sap_chieu\": true,\n                \"isDeleted\": false\n            },\n            {\n                \"ma_phim\": 37,\n                \"ten_phim\": \"4 5 Phượng\",\n                \"trailer\": \"https://www.youtube.com/watch?v=1R6jNmpO3mM\",\n                \"hinh_anh\": \"https://picsum.photos/300/400?haiphuong\",\n                \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n                \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n                \"danh_gia\": 8,\n                \"hot\": false,\n                \"dang_chieu\": false,\n                \"sap_chieu\": true,\n                \"isDeleted\": false\n            }\n        ],\n        \"total\": 34,\n        \"page\": 2,\n        \"pageSize\": 30\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayThongTinPhim",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyPhim/LayThongTinPhim/9",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ],
+              "path": [
+                "LayThongTinPhim",
+                "9"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy thông tin phim dựa vào mã phim\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim/LayThongTinPhim/{ma_phim}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayThongTinPhim",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim/LayThongTinPhim/9",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ],
+                  "path": [
+                    "LayThongTinPhim",
+                    "9"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "395"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"18b-ew7Itw+6N155+ZQKH2WiVm04ztg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:41:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy thông tin phim thành công\",\n    \"data\": {\n        \"ma_phim\": 9,\n        \"ten_phim\": \"Transformers: Rise\",\n        \"trailer\": \"https://youtube.com\",\n        \"hinh_anh\": \"https://picsum.photos/300/400?9\",\n        \"mo_ta\": \"Robot đại chiến.\",\n        \"ngay_khoi_chieu\": \"2024-09-10T00:00:00.000Z\",\n        \"danh_gia\": 8,\n        \"hot\": false,\n        \"dang_chieu\": true,\n        \"sap_chieu\": false,\n        \"isDeleted\": false\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayDanhSachPhimTheoNgay",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyPhim/LayDanhSachPhimTheoNgay?ngay=01/10/2025",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ],
+              "path": [
+                "LayDanhSachPhimTheoNgay"
+              ],
+              "query": [
+                {
+                  "key": "ngay",
+                  "value": "01/10/2025"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy danh sách phim theo ngày dd/mm/yyyy\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim/LayDanhSachPhimTheoNgay?ngay={ngay}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayDanhSachPhimTheoNgay",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim/LayDanhSachPhimTheoNgay?ngay=01/10/2025",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ],
+                  "path": [
+                    "LayDanhSachPhimTheoNgay"
+                  ],
+                  "query": [
+                    {
+                      "key": "ngay",
+                      "value": "01/10/2025"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "776"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"308-nBwAVpozRMTEJHj6928Z5kTEMQc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:42:15 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy danh sách phim theo ngày thành công\",\n    \"data\": [\n        {\n            \"ma_phim\": 22,\n            \"ten_phim\": \"Toy Story 5\",\n            \"trailer\": \"https://youtube.com\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?22\",\n            \"mo_ta\": \"Đồ chơi phiêu lưu.\",\n            \"ngay_khoi_chieu\": \"2025-10-01T00:00:00.000Z\",\n            \"danh_gia\": 8,\n            \"hot\": false,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        },\n        {\n            \"ma_phim\": 31,\n            \"ten_phim\": \"Bố Già\",\n            \"trailer\": \"https://www.youtube.com/watch?v=jluSu8Rw6YE\",\n            \"hinh_anh\": \"https://picsum.photos/300/400?bogia\",\n            \"mo_ta\": \"Câu chuyện cảm động về tình cha con trong một xóm lao động nghèo Sài Gòn.\",\n            \"ngay_khoi_chieu\": \"2025-10-01T00:00:00.000Z\",\n            \"danh_gia\": 9,\n            \"hot\": true,\n            \"dang_chieu\": true,\n            \"sap_chieu\": false,\n            \"isDeleted\": false\n        }\n    ],\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "ThemPhim",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ten_phim\": \"6 Phượng\",\r\n  \"trailer\": \"https://www.youtube.com/watch?v=1R6jNmpO3mM\",\r\n  \"hinh_anh\": \"https://picsum.photos/300/400?haiphuong\",\r\n  \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\r\n  \"ngay_khoi_chieu\": \"2025-12-15\",\r\n  \"danh_gia\": 8,\r\n  \"hot\": false,\r\n  \"dang_chieu\": false,\r\n  \"sap_chieu\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyPhim",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để thêm phim mới\n\n\\-- Auth  \nBearer Token, tài khoản ADMIN\n\n\\-- Request  \nMethod: POST  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "ThemPhim",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"ten_phim\": \"6 Phượng\",\r\n  \"trailer\": \"https://www.youtube.com/watch?v=1R6jNmpO3mM\",\r\n  \"hinh_anh\": \"https://picsum.photos/300/400?haiphuong\",\r\n  \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\r\n  \"ngay_khoi_chieu\": \"2025-12-15\",\r\n  \"danh_gia\": 8,\r\n  \"hot\": false,\r\n  \"dang_chieu\": false,\r\n  \"sap_chieu\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "470"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1d6-/AHSy9pJxF1ePryrua994E1ahd0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:42:45 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Tạo phim thành công\",\n    \"data\": {\n        \"ma_phim\": 38,\n        \"ten_phim\": \"6 Phượng\",\n        \"trailer\": \"https://www.youtube.com/watch?v=1R6jNmpO3mM\",\n        \"hinh_anh\": \"https://picsum.photos/300/400?haiphuong\",\n        \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n        \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n        \"danh_gia\": 8,\n        \"hot\": false,\n        \"dang_chieu\": false,\n        \"sap_chieu\": true,\n        \"isDeleted\": false\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "CapNhatPhim",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ten_phim\": \"20 Phượng\",\r\n  \"trailer\": \"https:abchg.kakaka.com\",\r\n  \"hinh_anh\": \"NoNoNo.jpg\",\r\n  \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\r\n  \"ngay_khoi_chieu\": \"2025-12-15\",\r\n  \"danh_gia\": 8,\r\n  \"hot\": false,\r\n  \"dang_chieu\": false,\r\n  \"sap_chieu\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyPhim/CapNhatPhim/36",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ],
+              "path": [
+                "CapNhatPhim",
+                "36"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để cập nhật phim dựa vào mã phim\n\n\\-- Auth  \nBearer Token, tài khoản ADMIN\n\n\\-- Request  \nMethod: PUT  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim/CapNhatPhim/{ma_phim}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "CapNhatPhim",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"ten_phim\": \"20 Phượng\",\r\n  \"trailer\": \"https:abchg.kakaka.com\",\r\n  \"hinh_anh\": \"NoNoNo.jpg\",\r\n  \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\r\n  \"ngay_khoi_chieu\": \"2025-12-15\",\r\n  \"danh_gia\": 8,\r\n  \"hot\": false,\r\n  \"dang_chieu\": false,\r\n  \"sap_chieu\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim/CapNhatPhim/36",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ],
+                  "path": [
+                    "CapNhatPhim",
+                    "36"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "368"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"170-Vel0Qp8KiN8aRX6BK19ULsJyQ6Q\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:43:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Cập nhật phim thành công\",\n    \"data\": {\n        \"ma_phim\": 36,\n        \"ten_phim\": \"20 Phượng\",\n        \"trailer\": \"https:abchg.kakaka.com\",\n        \"hinh_anh\": \"NoNoNo.jpg\",\n        \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n        \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n        \"danh_gia\": 8,\n        \"hot\": false,\n        \"dang_chieu\": false,\n        \"sap_chieu\": false,\n        \"isDeleted\": false\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "XoaPhim",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyPhim/XoaPhim/36",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ],
+              "path": [
+                "XoaPhim",
+                "36"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để xóa phim dựa vào mã phim\n\n\\-- Auth  \nBearer Token, tài khoản ADMIN\n\n\\-- Request  \nMethod: DELETE  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim/XoaPhim/{ma_phim}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "XoaPhim",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim/XoaPhim/36",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ],
+                  "path": [
+                    "XoaPhim",
+                    "36"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "420"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1a4-JiVCavvay0n4Y1VP6+xp077fT9Q\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:45:12 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Xóa phim thành công\",\n    \"data\": {\n        \"ma_phim\": 36,\n        \"ten_phim\": \"20 Phượng\",\n        \"trailer\": \"https:abchg.kakaka.com\",\n        \"hinh_anh\": \"NoNoNo.jpg\",\n        \"mo_ta\": \"Người mẹ đơn thân truy tìm bọn bắt cóc để giải cứu con gái.\",\n        \"ngay_khoi_chieu\": \"2025-12-15T00:00:00.000Z\",\n        \"danh_gia\": 8,\n        \"hot\": false,\n        \"dang_chieu\": false,\n        \"sap_chieu\": false,\n        \"isDeleted\": true\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "TaiAnhLenCloudinary",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "uuid": "8081bd47-af9e-4ac3-865b-0c51e36ef5bb",
+                  "src": "/C:/Users/nghoa/OneDrive/Desktop/dev.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyPhim/upload?type=phim",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ],
+              "path": [
+                "upload"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "phim"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để upload ảnh vào folder phim hoặc banner\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: POST  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim/upload?type={phim/banner}\n\n\\-- Response  \nTrả về object gồm: status, message và data là object chứa url và public_id (dùng để xóa ảnh)"
+          },
+          "response": [
+            {
+              "name": "TaiAnhLenCloudinary",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "file",
+                      "type": "file",
+                      "uuid": "8081bd47-af9e-4ac3-865b-0c51e36ef5bb",
+                      "src": "/C:/Users/nghoa/OneDrive/Desktop/dev.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim/upload?type=phim",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ],
+                  "path": [
+                    "upload"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "phim"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "161"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"a1-0par6YBip7s9FUtHCDcC+EZRboo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:46:20 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"url\": \"https://res.cloudinary.com/don3mbq6m/image/upload/v1772279197/movie-app/phim/afjjftodirqj0kuuzq5t.jpg\",\n    \"public_id\": \"movie-app/phim/afjjftodirqj0kuuzq5t\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "XoaAnhChonTruocDo",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"public_id\": \"movie-app/phim/afjjftodirqj0kuuzq5t\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}QuanLyPhim/upload",
+              "host": [
+                "{{domain}}QuanLyPhim"
+              ],
+              "path": [
+                "upload"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để xóa ảnh\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: DELETE  \nURL: api[/](http://localhost:3069/apI/)QuanLyPhim/upload\n\n\\-- Response  \nTrả về object gồm: status, message và data là object chưa url và public_id (dùng để xóa ảnh)"
+          },
+          "response": [
+            {
+              "name": "XoaAnhChonTruocDo",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"public_id\": \"movie-app/phim/afjjftodirqj0kuuzq5t\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{domain}}QuanLyPhim/upload",
+                  "host": [
+                    "{{domain}}QuanLyPhim"
+                  ],
+                  "path": [
+                    "upload"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "66"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"42-1ZxcgXMsc7lhlg9mAlz4VHaVemA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:47:16 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Xóa ảnh cũ thành công\",\n    \"result\": {\n        \"result\": \"ok\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "QuanLyRap",
+      "item": [
+        {
+          "name": "LayThongTinHeThongRap",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyRap/LayThongTinHeThongRap",
+              "host": [
+                "{{domain}}QuanLyRap"
+              ],
+              "path": [
+                "LayThongTinHeThongRap"
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy thông tin hệ thống rạp\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyRap/LayThongTinHeThongRap\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayThongTinHeThongRap",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyRap/LayThongTinHeThongRap",
+                  "host": [
+                    "{{domain}}QuanLyRap"
+                  ],
+                  "path": [
+                    "LayThongTinHeThongRap"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "416"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1a0-O14TtE8xNlqI3SRIesQnrxfqqv0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:47:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy hệ thống rạp thành công\",\n    \"data\": [\n        {\n            \"ma_he_thong_rap\": 1,\n            \"ten_he_thong_rap\": \"CGV\",\n            \"logo\": \"https://logo.clearbit.com/cgv.vn\"\n        },\n        {\n            \"ma_he_thong_rap\": 2,\n            \"ten_he_thong_rap\": \"Lotte Cinema\",\n            \"logo\": \"https://logo.clearbit.com/lotte.vn\"\n        },\n        {\n            \"ma_he_thong_rap\": 3,\n            \"ten_he_thong_rap\": \"Galaxy Cinema\",\n            \"logo\": \"https://logo.clearbit.com/galaxycine.vn\"\n        }\n    ],\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayThongTinCumRapTheoHeThong",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1",
+              "host": [
+                "{{domain}}QuanLyRap"
+              ],
+              "path": [
+                "LayThongTinCumRapTheoHeThong"
+              ],
+              "query": [
+                {
+                  "key": "ma_he_thong_rap",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy thông tin cụm rạp theo hệ thống\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap={ma_he_thong_rap}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayThongTinCumRapTheoHeThong",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1",
+                  "host": [
+                    "{{domain}}QuanLyRap"
+                  ],
+                  "path": [
+                    "LayThongTinCumRapTheoHeThong"
+                  ],
+                  "query": [
+                    {
+                      "key": "ma_he_thong_rap",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "607"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"25f-aezGazEND5KxNXX/owVfaCEDjRk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:48:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy cụm rạp theo hệ thống thành công\",\n    \"data\": {\n        \"ma_he_thong_rap\": 1,\n        \"ten_he_thong_rap\": \"CGV\",\n        \"logo\": \"https://logo.clearbit.com/cgv.vn\",\n        \"CumRap\": [\n            {\n                \"ma_cum_rap\": 1,\n                \"ten_cum_rap\": \"CGV Vincom Q1\",\n                \"dia_chi\": \"Vincom Đồng Khởi, Q1\",\n                \"ma_he_thong_rap\": 1,\n                \"RapPhim\": [\n                    {\n                        \"ma_rap\": 1,\n                        \"ten_rap\": \"Rạp 1\",\n                        \"ma_cum_rap\": 1\n                    },\n                    {\n                        \"ma_rap\": 2,\n                        \"ten_rap\": \"Rạp 2\",\n                        \"ma_cum_rap\": 1\n                    }\n                ]\n            },\n            {\n                \"ma_cum_rap\": 2,\n                \"ten_cum_rap\": \"CGV Aeon Tân Phú\",\n                \"dia_chi\": \"Aeon Mall Tân Phú\",\n                \"ma_he_thong_rap\": 1,\n                \"RapPhim\": [\n                    {\n                        \"ma_rap\": 3,\n                        \"ten_rap\": \"Rạp 1\",\n                        \"ma_cum_rap\": 2\n                    }\n                ]\n            }\n        ]\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayThongTinLichChieuHeThongRap",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1",
+              "host": [
+                "{{domain}}QuanLyRap"
+              ],
+              "path": [
+                "LayThongTinLichChieuHeThongRap"
+              ],
+              "query": [
+                {
+                  "key": "ma_he_thong_rap",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy thông tin lịch chiếu theo hệ thống rạp\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap={ma_he_thong_rap}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayThongTinLichChieuHeThongRap",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{domain}}QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1",
+                  "host": [
+                    "{{domain}}QuanLyRap"
+                  ],
+                  "path": [
+                    "LayThongTinLichChieuHeThongRap"
+                  ],
+                  "query": [
+                    {
+                      "key": "ma_he_thong_rap",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "6901"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1af5-LDXFosvGv+Pvor0VmPTbACd1aLs\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:49:04 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy lịch chiếu theo hệ thống rạp thành công\",\n    \"data\": {\n        \"ma_he_thong_rap\": 1,\n        \"ten_he_thong_rap\": \"CGV\",\n        \"logo\": \"https://logo.clearbit.com/cgv.vn\",\n        \"CumRap\": [\n            {\n                \"ma_cum_rap\": 1,\n                \"ten_cum_rap\": \"CGV Vincom Q1\",\n                \"dia_chi\": \"Vincom Đồng Khởi, Q1\",\n                \"ma_he_thong_rap\": 1,\n                \"RapPhim\": [\n                    {\n                        \"ma_rap\": 1,\n                        \"ten_rap\": \"Rạp 1\",\n                        \"ma_cum_rap\": 1,\n                        \"LichChieu\": [\n                            {\n                                \"ma_lich_chieu\": 1,\n                                \"ma_rap\": 1,\n                                \"ma_phim\": 1,\n                                \"ngay_gio_chieu\": \"2025-10-10T12:30:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 1,\n                                    \"ten_phim\": \"Avengers: Endgame\",\n                                    \"trailer\": \"https://youtube.com/watch?v=TcMBFSGVi1c\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?1\",\n                                    \"mo_ta\": \"Biệt đội siêu anh hùng tập hợp.\",\n                                    \"ngay_khoi_chieu\": \"2024-01-10T00:00:00.000Z\",\n                                    \"danh_gia\": 9,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 2,\n                                \"ma_rap\": 1,\n                                \"ma_phim\": 1,\n                                \"ngay_gio_chieu\": \"2025-10-01T06:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 1,\n                                    \"ten_phim\": \"Avengers: Endgame\",\n                                    \"trailer\": \"https://youtube.com/watch?v=TcMBFSGVi1c\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?1\",\n                                    \"mo_ta\": \"Biệt đội siêu anh hùng tập hợp.\",\n                                    \"ngay_khoi_chieu\": \"2024-01-10T00:00:00.000Z\",\n                                    \"danh_gia\": 9,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 3,\n                                \"ma_rap\": 1,\n                                \"ma_phim\": 1,\n                                \"ngay_gio_chieu\": \"2025-10-01T10:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 1,\n                                    \"ten_phim\": \"Avengers: Endgame\",\n                                    \"trailer\": \"https://youtube.com/watch?v=TcMBFSGVi1c\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?1\",\n                                    \"mo_ta\": \"Biệt đội siêu anh hùng tập hợp.\",\n                                    \"ngay_khoi_chieu\": \"2024-01-10T00:00:00.000Z\",\n                                    \"danh_gia\": 9,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 4,\n                                \"ma_rap\": 1,\n                                \"ma_phim\": 1,\n                                \"ngay_gio_chieu\": \"2025-10-01T13:30:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 1,\n                                    \"ten_phim\": \"Avengers: Endgame\",\n                                    \"trailer\": \"https://youtube.com/watch?v=TcMBFSGVi1c\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?1\",\n                                    \"mo_ta\": \"Biệt đội siêu anh hùng tập hợp.\",\n                                    \"ngay_khoi_chieu\": \"2024-01-10T00:00:00.000Z\",\n                                    \"danh_gia\": 9,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 5,\n                                \"ma_rap\": 1,\n                                \"ma_phim\": 2,\n                                \"ngay_gio_chieu\": \"2025-10-01T02:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 2,\n                                    \"ten_phim\": \"Spider-Man: No Way Home\",\n                                    \"trailer\": \"https://youtube.com/watch?v=JfVOs4VSpmA\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?2\",\n                                    \"mo_ta\": \"Người nhện đa vũ trụ.\",\n                                    \"ngay_khoi_chieu\": \"2024-02-15T00:00:00.000Z\",\n                                    \"danh_gia\": 8,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 6,\n                                \"ma_rap\": 1,\n                                \"ma_phim\": 2,\n                                \"ngay_gio_chieu\": \"2025-10-01T15:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 2,\n                                    \"ten_phim\": \"Spider-Man: No Way Home\",\n                                    \"trailer\": \"https://youtube.com/watch?v=JfVOs4VSpmA\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?2\",\n                                    \"mo_ta\": \"Người nhện đa vũ trụ.\",\n                                    \"ngay_khoi_chieu\": \"2024-02-15T00:00:00.000Z\",\n                                    \"danh_gia\": 8,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 7,\n                                \"ma_rap\": 1,\n                                \"ma_phim\": 2,\n                                \"ngay_gio_chieu\": \"2025-10-01T08:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 2,\n                                    \"ten_phim\": \"Spider-Man: No Way Home\",\n                                    \"trailer\": \"https://youtube.com/watch?v=JfVOs4VSpmA\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?2\",\n                                    \"mo_ta\": \"Người nhện đa vũ trụ.\",\n                                    \"ngay_khoi_chieu\": \"2024-02-15T00:00:00.000Z\",\n                                    \"danh_gia\": 8,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 8,\n                                \"ma_rap\": 1,\n                                \"ma_phim\": 2,\n                                \"ngay_gio_chieu\": \"2025-10-01T04:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 2,\n                                    \"ten_phim\": \"Spider-Man: No Way Home\",\n                                    \"trailer\": \"https://youtube.com/watch?v=JfVOs4VSpmA\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?2\",\n                                    \"mo_ta\": \"Người nhện đa vũ trụ.\",\n                                    \"ngay_khoi_chieu\": \"2024-02-15T00:00:00.000Z\",\n                                    \"danh_gia\": 8,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            }\n                        ]\n                    },\n                    {\n                        \"ma_rap\": 2,\n                        \"ten_rap\": \"Rạp 2\",\n                        \"ma_cum_rap\": 1,\n                        \"LichChieu\": [\n                            {\n                                \"ma_lich_chieu\": 9,\n                                \"ma_rap\": 2,\n                                \"ma_phim\": 3,\n                                \"ngay_gio_chieu\": \"2025-10-01T02:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 3,\n                                    \"ten_phim\": \"The Batman\",\n                                    \"trailer\": \"https://youtube.com/watch?v=mqqft2x_Aa4\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?3\",\n                                    \"mo_ta\": \"Hiệp sĩ bóng đêm trở lại.\",\n                                    \"ngay_khoi_chieu\": \"2024-03-20T00:00:00.000Z\",\n                                    \"danh_gia\": 8,\n                                    \"hot\": false,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 10,\n                                \"ma_rap\": 2,\n                                \"ma_phim\": 3,\n                                \"ngay_gio_chieu\": \"2025-10-01T06:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 3,\n                                    \"ten_phim\": \"The Batman\",\n                                    \"trailer\": \"https://youtube.com/watch?v=mqqft2x_Aa4\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?3\",\n                                    \"mo_ta\": \"Hiệp sĩ bóng đêm trở lại.\",\n                                    \"ngay_khoi_chieu\": \"2024-03-20T00:00:00.000Z\",\n                                    \"danh_gia\": 8,\n                                    \"hot\": false,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 11,\n                                \"ma_rap\": 2,\n                                \"ma_phim\": 3,\n                                \"ngay_gio_chieu\": \"2025-10-01T10:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 3,\n                                    \"ten_phim\": \"The Batman\",\n                                    \"trailer\": \"https://youtube.com/watch?v=mqqft2x_Aa4\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?3\",\n                                    \"mo_ta\": \"Hiệp sĩ bóng đêm trở lại.\",\n                                    \"ngay_khoi_chieu\": \"2024-03-20T00:00:00.000Z\",\n                                    \"danh_gia\": 8,\n                                    \"hot\": false,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 12,\n                                \"ma_rap\": 2,\n                                \"ma_phim\": 3,\n                                \"ngay_gio_chieu\": \"2025-10-01T15:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 3,\n                                    \"ten_phim\": \"The Batman\",\n                                    \"trailer\": \"https://youtube.com/watch?v=mqqft2x_Aa4\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?3\",\n                                    \"mo_ta\": \"Hiệp sĩ bóng đêm trở lại.\",\n                                    \"ngay_khoi_chieu\": \"2024-03-20T00:00:00.000Z\",\n                                    \"danh_gia\": 8,\n                                    \"hot\": false,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 26,\n                                \"ma_rap\": 2,\n                                \"ma_phim\": 1,\n                                \"ngay_gio_chieu\": \"2025-10-01T09:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 1,\n                                    \"ten_phim\": \"Avengers: Endgame\",\n                                    \"trailer\": \"https://youtube.com/watch?v=TcMBFSGVi1c\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?1\",\n                                    \"mo_ta\": \"Biệt đội siêu anh hùng tập hợp.\",\n                                    \"ngay_khoi_chieu\": \"2024-01-10T00:00:00.000Z\",\n                                    \"danh_gia\": 9,\n                                    \"hot\": true,\n                                    \"dang_chieu\": true,\n                                    \"sap_chieu\": false,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 28,\n                                \"ma_rap\": 2,\n                                \"ma_phim\": 8,\n                                \"ngay_gio_chieu\": \"2025-10-01T04:00:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 8,\n                                    \"ten_phim\": \"Aquaman 2\",\n                                    \"trailer\": \"https://youtube.com\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?8\",\n                                    \"mo_ta\": \"Vua đại dương.\",\n                                    \"ngay_khoi_chieu\": \"2024-08-22T00:00:00.000Z\",\n                                    \"danh_gia\": 7,\n                                    \"hot\": false,\n                                    \"dang_chieu\": false,\n                                    \"sap_chieu\": true,\n                                    \"isDeleted\": false\n                                }\n                            },\n                            {\n                                \"ma_lich_chieu\": 29,\n                                \"ma_rap\": 2,\n                                \"ma_phim\": 7,\n                                \"ngay_gio_chieu\": \"2025-10-01T04:45:00.000Z\",\n                                \"gia_ve\": 90000,\n                                \"Phim\": {\n                                    \"ma_phim\": 7,\n                                    \"ten_phim\": \"Black Panther 2\",\n                                    \"trailer\": \"https://youtube.com\",\n                                    \"hinh_anh\": \"https://picsum.photos/300/400?7\",\n                                    \"mo_ta\": \"Wakanda bất diệt.\",\n                                    \"ngay_khoi_chieu\": \"2024-07-18T00:00:00.000Z\",\n                                    \"danh_gia\": 9,\n                                    \"hot\": true,\n                                    \"dang_chieu\": false,\n                                    \"sap_chieu\": true,\n                                    \"isDeleted\": false\n                                }\n                            }\n                        ]\n                    }\n                ]\n            },\n            {\n                \"ma_cum_rap\": 2,\n                \"ten_cum_rap\": \"CGV Aeon Tân Phú\",\n                \"dia_chi\": \"Aeon Mall Tân Phú\",\n                \"ma_he_thong_rap\": 1,\n                \"RapPhim\": [\n                    {\n                        \"ma_rap\": 3,\n                        \"ten_rap\": \"Rạp 1\",\n                        \"ma_cum_rap\": 2,\n                        \"LichChieu\": []\n                    }\n                ]\n            }\n        ]\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "LayThongTinLichChieuPhim",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{domain}}QuanLyRap/LayThongTinLichChieuPhim?ma_phim=1",
+              "host": [
+                "{{domain}}QuanLyRap"
+              ],
+              "path": [
+                "LayThongTinLichChieuPhim"
+              ],
+              "query": [
+                {
+                  "key": "ma_phim",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "\\-- Mô tả  \nAPI dùng để lấy thông tin lịch chiếu phim dựa vào mã phim\n\n\\-- Auth  \nBearer Token\n\n\\-- Request  \nMethod: GET  \nURL: api[/](http://localhost:3069/apI/)QuanLyRap/LayThongTinLichChieuPhim?ma_phim={ma_phim}\n\n\\-- Response  \nTrả về object gồm: status, message, data"
+          },
+          "response": [
+            {
+              "name": "LayThongTinLichChieuPhim",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "",
+                    "value": "",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{domain}}QuanLyRap/LayThongTinLichChieuPhim?ma_phim=1",
+                  "host": [
+                    "{{domain}}QuanLyRap"
+                  ],
+                  "path": [
+                    "LayThongTinLichChieuPhim"
+                  ],
+                  "query": [
+                    {
+                      "key": "ma_phim",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2333"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"91d-B/ZAW9CfFx33B7/+A1RS7hDzpfc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Feb 2026 11:49:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Thành công\",\n    \"statusCode\": 200,\n    \"message\": \"Lấy lịch chiếu phim thành công\",\n    \"data\": {\n        \"ma_phim\": 1,\n        \"ten_phim\": \"Avengers: Endgame\",\n        \"trailer\": \"https://youtube.com/watch?v=TcMBFSGVi1c\",\n        \"hinh_anh\": \"https://picsum.photos/300/400?1\",\n        \"mo_ta\": \"Biệt đội siêu anh hùng tập hợp.\",\n        \"ngay_khoi_chieu\": \"2024-01-10T00:00:00.000Z\",\n        \"danh_gia\": 9,\n        \"hot\": true,\n        \"dang_chieu\": true,\n        \"sap_chieu\": false,\n        \"isDeleted\": false,\n        \"LichChieu\": [\n            {\n                \"ma_lich_chieu\": 1,\n                \"ma_rap\": 1,\n                \"ma_phim\": 1,\n                \"ngay_gio_chieu\": \"2025-10-10T12:30:00.000Z\",\n                \"gia_ve\": 90000,\n                \"RapPhim\": {\n                    \"ma_rap\": 1,\n                    \"ten_rap\": \"Rạp 1\",\n                    \"ma_cum_rap\": 1,\n                    \"CumRap\": {\n                        \"ma_cum_rap\": 1,\n                        \"ten_cum_rap\": \"CGV Vincom Q1\",\n                        \"dia_chi\": \"Vincom Đồng Khởi, Q1\",\n                        \"ma_he_thong_rap\": 1,\n                        \"HeThongRap\": {\n                            \"ma_he_thong_rap\": 1,\n                            \"ten_he_thong_rap\": \"CGV\",\n                            \"logo\": \"https://logo.clearbit.com/cgv.vn\"\n                        }\n                    }\n                }\n            },\n            {\n                \"ma_lich_chieu\": 2,\n                \"ma_rap\": 1,\n                \"ma_phim\": 1,\n                \"ngay_gio_chieu\": \"2025-10-01T06:00:00.000Z\",\n                \"gia_ve\": 90000,\n                \"RapPhim\": {\n                    \"ma_rap\": 1,\n                    \"ten_rap\": \"Rạp 1\",\n                    \"ma_cum_rap\": 1,\n                    \"CumRap\": {\n                        \"ma_cum_rap\": 1,\n                        \"ten_cum_rap\": \"CGV Vincom Q1\",\n                        \"dia_chi\": \"Vincom Đồng Khởi, Q1\",\n                        \"ma_he_thong_rap\": 1,\n                        \"HeThongRap\": {\n                            \"ma_he_thong_rap\": 1,\n                            \"ten_he_thong_rap\": \"CGV\",\n                            \"logo\": \"https://logo.clearbit.com/cgv.vn\"\n                        }\n                    }\n                }\n            },\n            {\n                \"ma_lich_chieu\": 3,\n                \"ma_rap\": 1,\n                \"ma_phim\": 1,\n                \"ngay_gio_chieu\": \"2025-10-01T10:00:00.000Z\",\n                \"gia_ve\": 90000,\n                \"RapPhim\": {\n                    \"ma_rap\": 1,\n                    \"ten_rap\": \"Rạp 1\",\n                    \"ma_cum_rap\": 1,\n                    \"CumRap\": {\n                        \"ma_cum_rap\": 1,\n                        \"ten_cum_rap\": \"CGV Vincom Q1\",\n                        \"dia_chi\": \"Vincom Đồng Khởi, Q1\",\n                        \"ma_he_thong_rap\": 1,\n                        \"HeThongRap\": {\n                            \"ma_he_thong_rap\": 1,\n                            \"ten_he_thong_rap\": \"CGV\",\n                            \"logo\": \"https://logo.clearbit.com/cgv.vn\"\n                        }\n                    }\n                }\n            },\n            {\n                \"ma_lich_chieu\": 4,\n                \"ma_rap\": 1,\n                \"ma_phim\": 1,\n                \"ngay_gio_chieu\": \"2025-10-01T13:30:00.000Z\",\n                \"gia_ve\": 90000,\n                \"RapPhim\": {\n                    \"ma_rap\": 1,\n                    \"ten_rap\": \"Rạp 1\",\n                    \"ma_cum_rap\": 1,\n                    \"CumRap\": {\n                        \"ma_cum_rap\": 1,\n                        \"ten_cum_rap\": \"CGV Vincom Q1\",\n                        \"dia_chi\": \"Vincom Đồng Khởi, Q1\",\n                        \"ma_he_thong_rap\": 1,\n                        \"HeThongRap\": {\n                            \"ma_he_thong_rap\": 1,\n                            \"ten_he_thong_rap\": \"CGV\",\n                            \"logo\": \"https://logo.clearbit.com/cgv.vn\"\n                        }\n                    }\n                }\n            },\n            {\n                \"ma_lich_chieu\": 26,\n                \"ma_rap\": 2,\n                \"ma_phim\": 1,\n                \"ngay_gio_chieu\": \"2025-10-01T09:00:00.000Z\",\n                \"gia_ve\": 90000,\n                \"RapPhim\": {\n                    \"ma_rap\": 2,\n                    \"ten_rap\": \"Rạp 2\",\n                    \"ma_cum_rap\": 1,\n                    \"CumRap\": {\n                        \"ma_cum_rap\": 1,\n                        \"ten_cum_rap\": \"CGV Vincom Q1\",\n                        \"dia_chi\": \"Vincom Đồng Khởi, Q1\",\n                        \"ma_he_thong_rap\": 1,\n                        \"HeThongRap\": {\n                            \"ma_he_thong_rap\": 1,\n                            \"ten_he_thong_rap\": \"CGV\",\n                            \"logo\": \"https://logo.clearbit.com/cgv.vn\"\n                        }\n                    }\n                }\n            }\n        ]\n    },\n    \"doc\": \"example.com\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

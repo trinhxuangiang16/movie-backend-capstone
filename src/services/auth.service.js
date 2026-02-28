@@ -28,6 +28,13 @@ export const authService = {
         so_dt,
         loai_nguoi_dung: "USER",
       },
+      select: {
+        tai_khoan: true,
+        email: true,
+        ho_ten: true,
+        so_dt: true,
+        loai_nguoi_dung: true,
+      },
     });
   },
 
@@ -62,9 +69,11 @@ export const authService = {
       throw new BadRequestException("Mật khẩu chưa chính xác");
     }
 
+    const { mat_khau: _, ...userWithoutPassword } = userExist;
+
     const tokens = tokenService.createTokens(userExist.tai_khoan);
 
-    return { user: userExist, token: tokens };
+    return { user: userWithoutPassword, token: tokens };
   },
 
   async getInfo(req) {
