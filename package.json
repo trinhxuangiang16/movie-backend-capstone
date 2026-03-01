@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prisma": "npx prisma db pull && npx prisma generate",
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "seed": "node src/seed.js"
   },
   "keywords": [],
   "author": "",
