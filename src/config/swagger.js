@@ -1,4 +1,5 @@
 import swaggerJsdoc from "swagger-jsdoc";
+import { SERVER_SWAGGER } from "../common/constant/app.contant.js";
 
 const options = {
   definition: {
@@ -10,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3069/api",
+        url: SERVER_SWAGGER,
       },
     ],
     components: {

@@ -10,6 +10,8 @@ export const CLOUDINARY_NAME = process.env.CLOUDINARY_NAME;
 export const CLOUDINARY_KEY = process.env.CLOUDINARY_KEY;
 export const CLOUDINARY_SECRET = process.env.CLOUDINARY_SECRET;
 
+export const SERVER_SWAGGER = process.env.SERVER_SWAGGER;
+
 export const FOLDER_IMAGE = "public/images";
 export const FOLDER_AVATAR = "public/avatars";
 
@@ -24,6 +26,7 @@ console.log(
     CLOUDINARY_SECRET: CLOUDINARY_SECRET,
     FOLDER_IMAGE: FOLDER_IMAGE,
     FOLDER_AVATAR: FOLDER_AVATAR,
+    SERVER_SWAGGER: SERVER_SWAGGER,
   },
   "\n",
 );
