@@ -13,4 +13,5 @@ uploadRouter.post(
   uploadController.uploadImage,
 );
 
+//XÓA ẢNH TRƯỚC KHI CHỌN LẠI ẢNH KHÁC
 uploadRouter.delete("/upload", protect, uploadController.deleteImage);

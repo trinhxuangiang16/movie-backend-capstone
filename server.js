@@ -8,9 +8,9 @@ import swaggerSpec from "./src/config/swagger.js";
 
 const app = express();
 
-// ===== MIDDLEWARE =====
-app.use(express.static("./public"));
-app.use(express.json());
+//MIDDLEWARE
+app.use(express.static("./public")); //này để phục vụ file tĩnh (như ảnh, css, js) từ thư mục public
+app.use(express.json()); //này để parse JSON body của request
 
 // Mở CORS cho tất cả (cho dễ deploy)
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(cors());
 // Swagger UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// ===== TEST ROUTE =====
+//TEST ROUTE
 app.get("/", (req, res) => {
   res.json({
     status: "OK",
@@ -26,19 +26,19 @@ app.get("/", (req, res) => {
   });
 });
 
-// ===== API =====
+//API
 app.use("/api", rootRouter);
 
-// ===== LOG + NOT FOUND =====
+//LOG + NOT FOUND
 app.use((req, res, next) => {
   console.log(req.method, req.originalUrl, req.ip);
   throw new NotFountException();
-});
+}); //nếu không có route nào khớp, sẽ ném lỗi NotFoundException để được xử lý bởi appError
 
-// ===== ERROR HANDLER =====
-app.use(appError);
+//ERROR HANDLER
+app.use(appError); //này để xử lý tất cả lỗi được ném ra trong các route hoặc middleware trước đó, sẽ trả về response lỗi phù hợp cho client
 
-// ===== PORT FOR DEPLOY =====
+//PORT FOR DEPLOY
 const PORT = process.env.PORT || 3069;
 
 app.listen(PORT, "0.0.0.0", () => {

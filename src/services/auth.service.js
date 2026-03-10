@@ -48,11 +48,12 @@ export const authService = {
       },
     });
 
+    // Log chi tiết để debug
     console.log("🚀 ~ User found:", {
       id: userExist?.tai_khoan,
       email: userExist?.email,
       hasPassword: !!userExist?.mat_khau,
-      passwordFromDB: userExist?.mat_khau, // Log này để debug
+      passwordFromDB: userExist?.mat_khau,
     });
 
     if (!userExist) {
@@ -62,6 +63,7 @@ export const authService = {
     if (!userExist.mat_khau) {
       throw new BadRequestException("Tài khoản chưa có mật khẩu");
     }
+
     const isPassword = bcrypt.compareSync(mat_khau, userExist.mat_khau);
     console.log("🚀 ~ Password match:", isPassword);
 
@@ -69,6 +71,7 @@ export const authService = {
       throw new BadRequestException("Mật khẩu chưa chính xác");
     }
 
+    // Loại bỏ trường mật khẩu trước khi trả về thông tin người dùng
     const { mat_khau: _, ...userWithoutPassword } = userExist;
 
     const tokens = tokenService.createTokens(userExist.tai_khoan);

@@ -171,6 +171,7 @@ nguoiDungRouter.put(
   nguoiDungController.capNhatNguoiDung,
 );
 
+//Tự Xóa
 nguoiDungRouter.delete(
   "/XoaNguoiDung/:tai_khoan",
   protect,

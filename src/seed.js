@@ -4,7 +4,7 @@ import { prisma } from "./common/prisma/contect.prisma.js";
 import bcrypt from "bcrypt";
 
 async function main() {
-  // ====== TẠO ADMIN ======
+  //Tài khoản ADMIN duy nhất
   const hashedPassword = bcrypt.hashSync(process.env.ADMIN_PASSWORD, 10);
 
   await prisma.nguoiDung.upsert({
@@ -19,10 +19,9 @@ async function main() {
     },
   });
 
-  console.log("✅ Admin seeded");
+  console.log("seed admin thành công");
 
-  // ====== SEED PHIM ======
-
+  // Seed dữ liệu phim mẫu
   const movies = [
     {
       ten_phim: "Mai",
@@ -251,15 +250,16 @@ async function main() {
       sap_chieu: false,
     },
   ];
+
   await prisma.phim.createMany({
     data: movies.map((movie) => ({
       ...movie,
       isDeleted: false,
     })),
-    skipDuplicates: true,
+    skipDuplicates: true, // Tránh lỗi nếu đã tồn tại phim với tên trùng lặp
   });
 
-  console.log("✅ Movies seeded");
+  console.log("Seed data thành công");
 }
 
 main()

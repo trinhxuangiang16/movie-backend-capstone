@@ -22,7 +22,7 @@ export const datVeService = {
       throw new Error("Phim không tồn tại");
     }
 
-    const date = new Date(ngay_gio_chieu);
+    const date = new Date(ngay_gio_chieu); // Chuyển đổi sang kiểu Date tức là định dạng ISO 8601 (YYYY-MM-DDTHH:mm:ss.sssZ)
 
     // Check trùng lịch trong cùng rạp
     const lichTrung = await prisma.lichChieu.findFirst({
@@ -45,6 +45,7 @@ export const datVeService = {
       },
     });
   },
+
   layDanhSachPhongVe: async (ma_lich_chieu) => {
     const lichChieu = await prisma.lichChieu.findUnique({
       where: { ma_lich_chieu: Number(ma_lich_chieu) },
@@ -64,8 +65,9 @@ export const datVeService = {
 
     return lichChieu;
   },
-  datVe: async (userId, data) => {
-    const { ma_lich_chieu, danh_sach_ve } = data;
+  datVe: async (req, res, next) => {
+    const { ma_lich_chieu, danh_sach_ve } = req.body;
+    const userId = req.user.tai_khoan; // Lấy userId từ token đã giải mã
 
     if (
       !ma_lich_chieu ||
