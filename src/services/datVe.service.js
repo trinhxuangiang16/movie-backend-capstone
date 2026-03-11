@@ -65,8 +65,10 @@ export const datVeService = {
 
     return lichChieu;
   },
-  datVe: async (req, res, next) => {
+  
+  datVe: async (req) => {
     const { ma_lich_chieu, danh_sach_ve } = req.body;
+
     const userId = req.user.tai_khoan; // Lấy userId từ token đã giải mã
 
     if (
@@ -123,7 +125,7 @@ export const datVeService = {
         })),
       });
 
-      // 6️⃣ Trả về thông tin ghế (có tên ghế)
+      //Trả về thông tin ghế (có tên ghế)
       const gheDaDatThanhCong = await tx.ghe.findMany({
         where: {
           ma_ghe: { in: danhSachMaGhe },

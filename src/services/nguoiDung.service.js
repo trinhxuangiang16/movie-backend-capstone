@@ -57,9 +57,9 @@ export const nguoiDungService = {
 
     // Không cho phép update những field này
     const forbiddenFields = ["tai_khoan", "loai_nguoi_dung"];
-    forbiddenFields.forEach((field) => delete data[field]);
+    forbiddenFields.forEach((field) => delete data[field]); //
 
-    const payload = { ...data };
+    const payload = { ...data }; //ko có tai_khoan và loai_nguoi_dung vì đã bị xóa ở trên
 
     // Nếu có password mới
     if (data.mat_khau) {

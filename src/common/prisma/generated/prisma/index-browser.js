@@ -130,7 +130,8 @@ exports.Prisma.CumRapScalarFieldEnum = {
   ma_cum_rap: 'ma_cum_rap',
   ten_cum_rap: 'ten_cum_rap',
   dia_chi: 'dia_chi',
-  ma_he_thong_rap: 'ma_he_thong_rap'
+  ma_he_thong_rap: 'ma_he_thong_rap',
+  khu_vuc: 'khu_vuc'
 };
 
 exports.Prisma.DatVeScalarFieldEnum = {
@@ -205,7 +206,8 @@ exports.Prisma.BannerOrderByRelevanceFieldEnum = {
 
 exports.Prisma.CumRapOrderByRelevanceFieldEnum = {
   ten_cum_rap: 'ten_cum_rap',
-  dia_chi: 'dia_chi'
+  dia_chi: 'dia_chi',
+  khu_vuc: 'khu_vuc'
 };
 
 exports.Prisma.GheOrderByRelevanceFieldEnum = {

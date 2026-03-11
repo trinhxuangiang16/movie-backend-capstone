@@ -2743,6 +2743,7 @@ export namespace Prisma {
     ten_cum_rap: string | null
     dia_chi: string | null
     ma_he_thong_rap: number | null
+    khu_vuc: string | null
   }
 
   export type CumRapMaxAggregateOutputType = {
@@ -2750,6 +2751,7 @@ export namespace Prisma {
     ten_cum_rap: string | null
     dia_chi: string | null
     ma_he_thong_rap: number | null
+    khu_vuc: string | null
   }
 
   export type CumRapCountAggregateOutputType = {
@@ -2757,6 +2759,7 @@ export namespace Prisma {
     ten_cum_rap: number
     dia_chi: number
     ma_he_thong_rap: number
+    khu_vuc: number
     _all: number
   }
 
@@ -2776,6 +2779,7 @@ export namespace Prisma {
     ten_cum_rap?: true
     dia_chi?: true
     ma_he_thong_rap?: true
+    khu_vuc?: true
   }
 
   export type CumRapMaxAggregateInputType = {
@@ -2783,6 +2787,7 @@ export namespace Prisma {
     ten_cum_rap?: true
     dia_chi?: true
     ma_he_thong_rap?: true
+    khu_vuc?: true
   }
 
   export type CumRapCountAggregateInputType = {
@@ -2790,6 +2795,7 @@ export namespace Prisma {
     ten_cum_rap?: true
     dia_chi?: true
     ma_he_thong_rap?: true
+    khu_vuc?: true
     _all?: true
   }
 
@@ -2884,6 +2890,7 @@ export namespace Prisma {
     ten_cum_rap: string | null
     dia_chi: string | null
     ma_he_thong_rap: number | null
+    khu_vuc: string | null
     _count: CumRapCountAggregateOutputType | null
     _avg: CumRapAvgAggregateOutputType | null
     _sum: CumRapSumAggregateOutputType | null
@@ -2910,6 +2917,7 @@ export namespace Prisma {
     ten_cum_rap?: boolean
     dia_chi?: boolean
     ma_he_thong_rap?: boolean
+    khu_vuc?: boolean
     HeThongRap?: boolean | CumRap$HeThongRapArgs<ExtArgs>
     RapPhim?: boolean | CumRap$RapPhimArgs<ExtArgs>
     _count?: boolean | CumRapCountOutputTypeDefaultArgs<ExtArgs>
@@ -2922,9 +2930,10 @@ export namespace Prisma {
     ten_cum_rap?: boolean
     dia_chi?: boolean
     ma_he_thong_rap?: boolean
+    khu_vuc?: boolean
   }
 
-  export type CumRapOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_cum_rap" | "ten_cum_rap" | "dia_chi" | "ma_he_thong_rap", ExtArgs["result"]["cumRap"]>
+  export type CumRapOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_cum_rap" | "ten_cum_rap" | "dia_chi" | "ma_he_thong_rap" | "khu_vuc", ExtArgs["result"]["cumRap"]>
   export type CumRapInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     HeThongRap?: boolean | CumRap$HeThongRapArgs<ExtArgs>
     RapPhim?: boolean | CumRap$RapPhimArgs<ExtArgs>
@@ -2942,6 +2951,7 @@ export namespace Prisma {
       ten_cum_rap: string | null
       dia_chi: string | null
       ma_he_thong_rap: number | null
+      khu_vuc: string | null
     }, ExtArgs["result"]["cumRap"]>
     composites: {}
   }
@@ -3317,6 +3327,7 @@ export namespace Prisma {
     readonly ten_cum_rap: FieldRef<"CumRap", 'String'>
     readonly dia_chi: FieldRef<"CumRap", 'String'>
     readonly ma_he_thong_rap: FieldRef<"CumRap", 'Int'>
+    readonly khu_vuc: FieldRef<"CumRap", 'String'>
   }
     
 
@@ -10833,7 +10844,8 @@ export namespace Prisma {
     ma_cum_rap: 'ma_cum_rap',
     ten_cum_rap: 'ten_cum_rap',
     dia_chi: 'dia_chi',
-    ma_he_thong_rap: 'ma_he_thong_rap'
+    ma_he_thong_rap: 'ma_he_thong_rap',
+    khu_vuc: 'khu_vuc'
   };
 
   export type CumRapScalarFieldEnum = (typeof CumRapScalarFieldEnum)[keyof typeof CumRapScalarFieldEnum]
@@ -10941,7 +10953,8 @@ export namespace Prisma {
 
   export const CumRapOrderByRelevanceFieldEnum: {
     ten_cum_rap: 'ten_cum_rap',
-    dia_chi: 'dia_chi'
+    dia_chi: 'dia_chi',
+    khu_vuc: 'khu_vuc'
   };
 
   export type CumRapOrderByRelevanceFieldEnum = (typeof CumRapOrderByRelevanceFieldEnum)[keyof typeof CumRapOrderByRelevanceFieldEnum]
@@ -11090,6 +11103,7 @@ export namespace Prisma {
     ten_cum_rap?: StringNullableFilter<"CumRap"> | string | null
     dia_chi?: StringNullableFilter<"CumRap"> | string | null
     ma_he_thong_rap?: IntNullableFilter<"CumRap"> | number | null
+    khu_vuc?: StringNullableFilter<"CumRap"> | string | null
     HeThongRap?: XOR<HeThongRapNullableScalarRelationFilter, HeThongRapWhereInput> | null
     RapPhim?: RapPhimListRelationFilter
   }
@@ -11099,6 +11113,7 @@ export namespace Prisma {
     ten_cum_rap?: SortOrderInput | SortOrder
     dia_chi?: SortOrderInput | SortOrder
     ma_he_thong_rap?: SortOrderInput | SortOrder
+    khu_vuc?: SortOrderInput | SortOrder
     HeThongRap?: HeThongRapOrderByWithRelationInput
     RapPhim?: RapPhimOrderByRelationAggregateInput
     _relevance?: CumRapOrderByRelevanceInput
@@ -11112,6 +11127,7 @@ export namespace Prisma {
     ten_cum_rap?: StringNullableFilter<"CumRap"> | string | null
     dia_chi?: StringNullableFilter<"CumRap"> | string | null
     ma_he_thong_rap?: IntNullableFilter<"CumRap"> | number | null
+    khu_vuc?: StringNullableFilter<"CumRap"> | string | null
     HeThongRap?: XOR<HeThongRapNullableScalarRelationFilter, HeThongRapWhereInput> | null
     RapPhim?: RapPhimListRelationFilter
   }, "ma_cum_rap">
@@ -11121,6 +11137,7 @@ export namespace Prisma {
     ten_cum_rap?: SortOrderInput | SortOrder
     dia_chi?: SortOrderInput | SortOrder
     ma_he_thong_rap?: SortOrderInput | SortOrder
+    khu_vuc?: SortOrderInput | SortOrder
     _count?: CumRapCountOrderByAggregateInput
     _avg?: CumRapAvgOrderByAggregateInput
     _max?: CumRapMaxOrderByAggregateInput
@@ -11136,6 +11153,7 @@ export namespace Prisma {
     ten_cum_rap?: StringNullableWithAggregatesFilter<"CumRap"> | string | null
     dia_chi?: StringNullableWithAggregatesFilter<"CumRap"> | string | null
     ma_he_thong_rap?: IntNullableWithAggregatesFilter<"CumRap"> | number | null
+    khu_vuc?: StringNullableWithAggregatesFilter<"CumRap"> | string | null
   }
 
   export type DatVeWhereInput = {
@@ -11608,6 +11626,7 @@ export namespace Prisma {
   export type CumRapCreateInput = {
     ten_cum_rap?: string | null
     dia_chi?: string | null
+    khu_vuc?: string | null
     HeThongRap?: HeThongRapCreateNestedOneWithoutCumRapInput
     RapPhim?: RapPhimCreateNestedManyWithoutCumRapInput
   }
@@ -11617,12 +11636,14 @@ export namespace Prisma {
     ten_cum_rap?: string | null
     dia_chi?: string | null
     ma_he_thong_rap?: number | null
+    khu_vuc?: string | null
     RapPhim?: RapPhimUncheckedCreateNestedManyWithoutCumRapInput
   }
 
   export type CumRapUpdateInput = {
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
     HeThongRap?: HeThongRapUpdateOneWithoutCumRapNestedInput
     RapPhim?: RapPhimUpdateManyWithoutCumRapNestedInput
   }
@@ -11632,6 +11653,7 @@ export namespace Prisma {
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
     ma_he_thong_rap?: NullableIntFieldUpdateOperationsInput | number | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
     RapPhim?: RapPhimUncheckedUpdateManyWithoutCumRapNestedInput
   }
 
@@ -11640,11 +11662,13 @@ export namespace Prisma {
     ten_cum_rap?: string | null
     dia_chi?: string | null
     ma_he_thong_rap?: number | null
+    khu_vuc?: string | null
   }
 
   export type CumRapUpdateManyMutationInput = {
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CumRapUncheckedUpdateManyInput = {
@@ -11652,6 +11676,7 @@ export namespace Prisma {
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
     ma_he_thong_rap?: NullableIntFieldUpdateOperationsInput | number | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type DatVeCreateInput = {
@@ -12211,6 +12236,7 @@ export namespace Prisma {
     ten_cum_rap?: SortOrder
     dia_chi?: SortOrder
     ma_he_thong_rap?: SortOrder
+    khu_vuc?: SortOrder
   }
 
   export type CumRapAvgOrderByAggregateInput = {
@@ -12223,6 +12249,7 @@ export namespace Prisma {
     ten_cum_rap?: SortOrder
     dia_chi?: SortOrder
     ma_he_thong_rap?: SortOrder
+    khu_vuc?: SortOrder
   }
 
   export type CumRapMinOrderByAggregateInput = {
@@ -12230,6 +12257,7 @@ export namespace Prisma {
     ten_cum_rap?: SortOrder
     dia_chi?: SortOrder
     ma_he_thong_rap?: SortOrder
+    khu_vuc?: SortOrder
   }
 
   export type CumRapSumOrderByAggregateInput = {
@@ -13705,6 +13733,7 @@ export namespace Prisma {
   export type CumRapCreateWithoutHeThongRapInput = {
     ten_cum_rap?: string | null
     dia_chi?: string | null
+    khu_vuc?: string | null
     RapPhim?: RapPhimCreateNestedManyWithoutCumRapInput
   }
 
@@ -13712,6 +13741,7 @@ export namespace Prisma {
     ma_cum_rap?: number
     ten_cum_rap?: string | null
     dia_chi?: string | null
+    khu_vuc?: string | null
     RapPhim?: RapPhimUncheckedCreateNestedManyWithoutCumRapInput
   }
 
@@ -13749,6 +13779,7 @@ export namespace Prisma {
     ten_cum_rap?: StringNullableFilter<"CumRap"> | string | null
     dia_chi?: StringNullableFilter<"CumRap"> | string | null
     ma_he_thong_rap?: IntNullableFilter<"CumRap"> | number | null
+    khu_vuc?: StringNullableFilter<"CumRap"> | string | null
   }
 
   export type DatVeCreateWithoutLichChieuInput = {
@@ -14086,6 +14117,7 @@ export namespace Prisma {
   export type CumRapCreateWithoutRapPhimInput = {
     ten_cum_rap?: string | null
     dia_chi?: string | null
+    khu_vuc?: string | null
     HeThongRap?: HeThongRapCreateNestedOneWithoutCumRapInput
   }
 
@@ -14094,6 +14126,7 @@ export namespace Prisma {
     ten_cum_rap?: string | null
     dia_chi?: string | null
     ma_he_thong_rap?: number | null
+    khu_vuc?: string | null
   }
 
   export type CumRapCreateOrConnectWithoutRapPhimInput = {
@@ -14157,6 +14190,7 @@ export namespace Prisma {
   export type CumRapUpdateWithoutRapPhimInput = {
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
     HeThongRap?: HeThongRapUpdateOneWithoutCumRapNestedInput
   }
 
@@ -14165,6 +14199,7 @@ export namespace Prisma {
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
     ma_he_thong_rap?: NullableIntFieldUpdateOperationsInput | number | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type RapPhimCreateManyCumRapInput = {
@@ -14214,11 +14249,13 @@ export namespace Prisma {
     ma_cum_rap?: number
     ten_cum_rap?: string | null
     dia_chi?: string | null
+    khu_vuc?: string | null
   }
 
   export type CumRapUpdateWithoutHeThongRapInput = {
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
     RapPhim?: RapPhimUpdateManyWithoutCumRapNestedInput
   }
 
@@ -14226,6 +14263,7 @@ export namespace Prisma {
     ma_cum_rap?: IntFieldUpdateOperationsInput | number
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
     RapPhim?: RapPhimUncheckedUpdateManyWithoutCumRapNestedInput
   }
 
@@ -14233,6 +14271,7 @@ export namespace Prisma {
     ma_cum_rap?: IntFieldUpdateOperationsInput | number
     ten_cum_rap?: NullableStringFieldUpdateOperationsInput | string | null
     dia_chi?: NullableStringFieldUpdateOperationsInput | string | null
+    khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type DatVeCreateManyLichChieuInput = {

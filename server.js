@@ -11,6 +11,7 @@ const app = express();
 //MIDDLEWARE
 app.use(express.static("./public")); //này để phục vụ file tĩnh (như ảnh, css, js) từ thư mục public
 app.use(express.json()); //này để parse JSON body của request
+app.use(express.urlencoded({ extended: true }));
 
 // Mở CORS cho tất cả (cho dễ deploy)
 app.use(cors());

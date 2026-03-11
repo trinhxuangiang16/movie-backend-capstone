@@ -11,6 +11,7 @@ export const datVeController = {
       next(err);
     }
   },
+
   layDanhSachPhongVe: async (req, res, next) => {
     try {
       const { ma_lich_chieu } = req.query;
@@ -28,7 +29,7 @@ export const datVeController = {
   },
   datVe: async (req, res, next) => {
     try {
-      const result = await datVeService.datVe(req.user.tai_khoan, req.body);
+      const result = await datVeService.datVe(req);
 
       const response = responseSuccess(result, `Đặt vé thành công`);
       res.status(response.statusCode).json(response);

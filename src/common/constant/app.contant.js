@@ -5,6 +5,7 @@ export const DATABASE_URL = process.env.DATABASE_URL;
 
 export const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 export const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
+export const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 export const CLOUDINARY_NAME = process.env.CLOUDINARY_NAME;
 export const CLOUDINARY_KEY = process.env.CLOUDINARY_KEY;
@@ -27,6 +28,7 @@ console.log(
     FOLDER_IMAGE: FOLDER_IMAGE,
     FOLDER_AVATAR: FOLDER_AVATAR,
     SERVER_SWAGGER: SERVER_SWAGGER,
+    ADMIN_PASSWORD: ADMIN_PASSWORD,
   },
   "\n",
 );

@@ -22,6 +22,7 @@ model CumRap {
   ten_cum_rap     String?     @db.VarChar(255)
   dia_chi         String?     @db.VarChar(255)
   ma_he_thong_rap Int?
+  khu_vuc         String?     @db.VarChar(255)
   HeThongRap      HeThongRap? @relation(fields: [ma_he_thong_rap], references: [ma_he_thong_rap], onDelete: NoAction, onUpdate: NoAction, map: "CumRap_ibfk_1")
   RapPhim         RapPhim[]
 
