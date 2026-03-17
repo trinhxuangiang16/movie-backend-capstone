@@ -92,6 +92,12 @@ export const datVeRouter = express.Router();
  *         description: Ghế đã được đặt
  */
 
+datVeRouter.get(
+  "/LayTrangThaiGheTrongRap",
+  protect,
+  datVeController.layTrangThaiGheTrongRap,
+);
+
 datVeRouter.post(
   "/TaoLichChieu",
   protect,
@@ -106,3 +112,5 @@ datVeRouter.get(
 );
 
 datVeRouter.post("/DatVe", protect, datVeController.datVe);
+
+datVeRouter.get("/LichSuDatVe", protect, datVeController.getLichSuDatVe);

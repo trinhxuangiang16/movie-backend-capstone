@@ -55,14 +55,15 @@ export const phimService = {
       throw new Error("Thiếu tham số ngày");
     }
 
-    const regex = /^\d{2}\/\d{2}\/\d{4}$/;
+    const regex = /^\d{2}\/\d{2}\/\d{4}$/; // Kiểm tra định dạng dd/mm/yyyy
+
     if (!regex.test(ngay)) {
       throw new Error("Ngày phải có định dạng dd/mm/yyyy");
     }
 
     const [day, month, year] = ngay.split("/").map(Number);
 
-    const start = new Date(year, month - 1, day);
+    const start = new Date(year, month - 1, day); // Tạo đối tượng Date cho ngày bắt đầu (00:00:00)
     const end = new Date(year, month - 1, day + 1);
 
     return prisma.phim.findMany({
@@ -131,6 +132,42 @@ export const phimService = {
           data.dang_chieu !== undefined ? Boolean(data.dang_chieu) : undefined,
         sap_chieu:
           data.sap_chieu !== undefined ? Boolean(data.sap_chieu) : undefined,
+      },
+    });
+  },
+
+  getPhimDangChieu: async () => {
+    return prisma.phim.findMany({
+      where: {
+        dang_chieu: true,
+        isDeleted: false,
+      },
+      orderBy: {
+        ma_phim: "asc",
+      },
+    });
+  },
+
+  getPhimSapChieu: async () => {
+    return prisma.phim.findMany({
+      where: {
+        sap_chieu: true,
+        isDeleted: false,
+      },
+      orderBy: {
+        ma_phim: "asc",
+      },
+    });
+  },
+
+  getPhimHot: async () => {
+    return prisma.phim.findMany({
+      where: {
+        hot: true,
+        isDeleted: false,
+      },
+      orderBy: {
+        ma_phim: "asc",
       },
     });
   },

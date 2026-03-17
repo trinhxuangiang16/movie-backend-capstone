@@ -204,6 +204,12 @@ export const phimRouter = express.Router();
 // Public APIs
 phimRouter.get("/LayDanhSachPhim", protect, phimController.getLayDanhSachPhim);
 
+phimRouter.get("/PhimDangChieu", protect, phimController.getPhimDangChieu);
+
+phimRouter.get("/PhimSapChieu", protect, phimController.getPhimSapChieu);
+
+phimRouter.get("/PhimHot", protect, phimController.getPhimHot);
+
 phimRouter.get(
   "/LayDanhSachPhimPhanTrang",
   protect,

@@ -5,12 +5,15 @@ export function builQueryPrisma(query) {
   const pageSizeDefault = 5;
   pageSize = Number(pageSize);
   page = Number(page);
+
   //Nếu gửi chữ lên
   page = Number(page) || pageDefault;
   pageSize = Number(pageSize) || pageSizeDefault;
+
   //Nếu mà gửi số âm
   page = Math.max(page, pageDefault);
   pageSize = Math.max(pageSize, pageSizeDefault);
+
   try {
     //filter lấy từ người dùng,parse nó ra
     filters = JSON.parse(filters);
@@ -19,13 +22,13 @@ export function builQueryPrisma(query) {
     filters = {};
   }
   console.log(Object.entries(filters));
+
   ///XỬ LÝ FILLTER
   //lặp, gõ forof
   for (const [key, value] of Object.entries(filters)) {
-    // console.log("🚀 ~ KIỂM TRA ~ element:", { key, value });
     //STRING
     if (typeof value === "string") {
-      console.log(`Phát hiện key ${key} cp1 giá trị là string: `, value);
+      console.log(`Phát hiện key ${key} có giá trị là string: `, value);
       filters[key] = {
         contains: value,
       };

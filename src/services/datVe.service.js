@@ -1,6 +1,50 @@
 import { prisma } from "../common/prisma/contect.prisma.js";
+import { BadRequestException } from "../common/helpers/exception.helper.js";
+import { Prisma } from "@prisma/client";
 
 export const datVeService = {
+  layTrangThaiGheTrongRap: async (ma_lich_chieu) => {
+    // Lấy tất cả ghế của rạp trong suất chiếu này
+    const seats = await prisma.ghe.findMany({
+      where: {
+        RapPhim: {
+          LichChieu: {
+            some: {
+              ma_lich_chieu: Number(ma_lich_chieu),
+            },
+          },
+        },
+      },
+    });
+
+    // Lấy những ghế đã được đặt trong suất chiếu này
+    const nhungGheDaDat = await prisma.datVe.findMany({
+      where: {
+        ma_lich_chieu: Number(ma_lich_chieu),
+      },
+    });
+
+    // Lấy những ghế đang được giữ chỗ trong suất chiếu này (expire_at > now)
+    const nhungGheDaGiuCho = await prisma.giuCho.findMany({
+      where: {
+        ma_lich_chieu: Number(ma_lich_chieu),
+        expire_at: {
+          gt: new Date(),
+        },
+      },
+    });
+
+    const bookedSet = new Set(nhungGheDaDat.map((s) => s.ma_ghe));
+    const holdSet = new Set(nhungGheDaGiuCho.map((s) => s.ma_ghe));
+
+    return seats.map((seat) => ({
+      ma_ghe: seat.ma_ghe,
+      ten_ghe: seat.ten_ghe,
+      loai_ghe: seat.loai_ghe,
+      da_dat: bookedSet.has(seat.ma_ghe),
+      dang_giu_cho: holdSet.has(seat.ma_ghe),
+    }));
+  },
   taoLichChieu: async (data) => {
     const { ma_rap, ma_phim, ngay_gio_chieu, gia_ve } = data;
 
@@ -10,7 +54,7 @@ export const datVeService = {
     });
 
     if (!rap) {
-      throw new Error("Rạp không tồn tại");
+      throw new BadRequestException("Rạp không tồn tại");
     }
 
     // Validate tồn tại phim
@@ -19,7 +63,7 @@ export const datVeService = {
     });
 
     if (!phim) {
-      throw new Error("Phim không tồn tại");
+      throw new BadRequestException("Phim không tồn tại");
     }
 
     const date = new Date(ngay_gio_chieu); // Chuyển đổi sang kiểu Date tức là định dạng ISO 8601 (YYYY-MM-DDTHH:mm:ss.sssZ)
@@ -33,7 +77,7 @@ export const datVeService = {
     });
 
     if (lichTrung) {
-      throw new Error("Lịch chiếu đã tồn tại trong rạp này");
+      throw new BadRequestException("Lịch chiếu đã tồn tại trong rạp này");
     }
 
     return prisma.lichChieu.create({
@@ -60,23 +104,24 @@ export const datVeService = {
     });
 
     if (!lichChieu) {
-      throw new Error("Không tìm thấy lịch chiếu");
+      throw new BadRequestException("Không tìm thấy lịch chiếu");
     }
 
     return lichChieu;
   },
-  
+
   datVe: async (req) => {
     const { ma_lich_chieu, danh_sach_ve } = req.body;
 
-    const userId = req.user.tai_khoan; // Lấy userId từ token đã giải mã
+    const tai_khoan = req?.user?.tai_khoan; // Lấy userId từ token đã giải mã
+    if (!tai_khoan) throw new BadRequestException("Người dùng chưa đăng nhập");
 
     if (
       !ma_lich_chieu ||
       !Array.isArray(danh_sach_ve) ||
       danh_sach_ve.length === 0
     ) {
-      throw new Error("Thiếu thông tin đặt vé");
+      throw new BadRequestException("Thiếu thông tin đặt vé");
     }
 
     return await prisma.$transaction(async (tx) => {
@@ -86,7 +131,7 @@ export const datVeService = {
       });
 
       if (!lichChieu) {
-        throw new Error("Lịch chiếu không tồn tại");
+        throw new BadRequestException("Lịch chiếu không tồn tại");
       }
 
       //Lấy tất cả ghế cần đặt
@@ -95,13 +140,13 @@ export const datVeService = {
       //Kiểm tra ghế thuộc đúng rạp
       const gheHopLe = await tx.ghe.findMany({
         where: {
-          ma_ghe: { in: danhSachMaGhe },
+          ma_ghe: { in: danhSachMaGhe }, //in là toán tử để tìm kiếm nhiều giá trị trong một trường, ở đây là ma_ghe
           ma_rap: lichChieu.ma_rap,
         },
       });
 
       if (gheHopLe.length !== danhSachMaGhe.length) {
-        throw new Error("Có ghế không thuộc rạp của lịch chiếu");
+        throw new BadRequestException("Có ghế không thuộc rạp của lịch chiếu");
       }
 
       //Kiểm tra ghế đã bị đặt chưa
@@ -113,34 +158,133 @@ export const datVeService = {
       });
 
       if (gheDaDat.length > 0) {
-        throw new Error("Một hoặc nhiều ghế đã được đặt");
+        throw new BadRequestException("Một hoặc nhiều ghế đã được đặt");
       }
 
-      //  Insert tất cả vé
-      await tx.datVe.createMany({
-        data: danhSachMaGhe.map((ma_ghe) => ({
-          tai_khoan: userId, //userId này là từ token giải mã ra, đảm bảo người dùng chỉ đặt vé cho chính mình
+      // Kiểm tra ghế đang được giữ bởi người khác
+      const dangGiuCho = await tx.giuCho.findMany({
+        where: {
           ma_lich_chieu: Number(ma_lich_chieu),
-          ma_ghe: ma_ghe,
-        })),
+          ma_ghe: { in: danhSachMaGhe },
+          expire_at: {
+            gt: new Date(),
+          },
+        },
       });
 
+      // Lọc ra những ghế đang bị giữ bởi người khác
+      const gheDangBiGiuBoiNguoiKhac = dangGiuCho.filter(
+        (g) => g.tai_khoan !== tai_khoan,
+      );
+
+      // Nếu có ghế nào đang bị giữ bởi người khác trong danh sach ve gửi lên
+      if (gheDangBiGiuBoiNguoiKhac.length > 0) {
+        throw new BadRequestException("Một hoặc nhiều ghế đang được giữ");
+      }
+
+      // Lấy giá vé cơ bản từ lịch chiếu
+      const giaCoBan = lichChieu.gia_ve;
+
+      // Tính giá vé cho từng ghế và chuẩn bị dữ liệu để insert
+      const danhSachVeInsert = gheHopLe.map((ghe) => {
+        let heSo = ghe.loai_ghe === "VIP" ? 1.2 : 1;
+
+        return {
+          tai_khoan: tai_khoan,
+          ma_lich_chieu: Number(lichChieu.ma_lich_chieu),
+          ma_ghe: ghe.ma_ghe,
+          gia_ve: giaCoBan * heSo,
+        };
+      });
+
+      try {
+        // Insert vé vào bảng datVe
+        await tx.datVe.createMany({
+          data: danhSachVeInsert,
+        });
+
+        // Sau khi tạo vé thành công, xóa các bản ghi giữ chỗ (nếu có) cho những ghế này để tránh tình trạng giữ chỗ nhưng đã được đặt
+        await tx.giuCho.deleteMany({
+          where: {
+            ma_lich_chieu: Number(ma_lich_chieu),
+            ma_ghe: { in: danhSachMaGhe },
+          },
+        });
+      } catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+          throw new BadRequestException(
+            "Ghế vừa được người khác đặt, vui lòng chọn lại",
+          );
+        }
+        throw error;
+      }
+
       //Trả về thông tin ghế (có tên ghế)
-      const gheDaDatThanhCong = await tx.ghe.findMany({
-        where: {
-          ma_ghe: { in: danhSachMaGhe },
-        },
-        select: {
-          ma_ghe: true,
-          ten_ghe: true,
-          loai_ghe: true,
-        },
+      const gheDaDatThanhCong = gheHopLe.map((ghe) => {
+        const ve = danhSachVeInsert.find((ve) => ve.ma_ghe === ghe.ma_ghe);
+
+        return {
+          ma_ghe: ghe.ma_ghe,
+          ten_ghe: ghe.ten_ghe,
+          loai_ghe: ghe.loai_ghe,
+          gia_ve: ve?.gia_ve,
+        };
       });
 
       return {
         so_luong_ve: danhSachMaGhe.length,
+        tong_tien: gheDaDatThanhCong.reduce((sum, v) => sum + v.gia_ve, 0),
         danh_sach_ve: gheDaDatThanhCong,
       };
     });
+  },
+
+  getLichSuDatVe: async (tai_khoan) => {
+    const tickets = await prisma.datVe.findMany({
+      where: {
+        tai_khoan: tai_khoan,
+      },
+      include: {
+        Ghe: true,
+        LichChieu: {
+          include: {
+            Phim: true,
+            RapPhim: true,
+          },
+        },
+      },
+      orderBy: {
+        ma_lich_chieu: "desc",
+      },
+    });
+
+    const grouped = tickets.reduce((acc, ticket) => {
+      const key = ticket.ma_lich_chieu;
+
+      if (!acc[key]) {
+        acc[key] = {
+          ma_lich_chieu: ticket.ma_lich_chieu,
+          ten_phim: ticket.LichChieu.Phim.ten_phim,
+          ten_rap: ticket.LichChieu.RapPhim.ten_rap,
+          ngay_gio_chieu: ticket.LichChieu.ngay_gio_chieu,
+          ghe: [],
+        };
+      }
+
+      acc[key].ghe.push({
+        ten_ghe: ticket.Ghe.ten_ghe,
+        ma_ghe: ticket.Ghe.ma_ghe,
+        loai_ghe: ticket.Ghe.loai_ghe,
+        gia_ve: ticket.gia_ve, //giá này đã được tính toán khi đặt vé, có thể khác với giá cơ bản của lịch chiếu nếu ghế là VIP
+      });
+
+      return acc;
+    }, {});
+
+    const result = Object.values(grouped).sort(
+      (a, b) => b.ma_lich_chieu - a.ma_lich_chieu,
+    );
+
+    return result;
   },
 };

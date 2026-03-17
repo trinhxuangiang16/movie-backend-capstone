@@ -1,7 +1,6 @@
 export function responseSuccess(data, message = "ok", statusCode = 200) {
-  //CHổ dấu bằng là set default
   return {
-    status: "Thành công",
+    status: "Success",
     statusCode: statusCode,
     message: message,
     data: data,
@@ -9,15 +8,13 @@ export function responseSuccess(data, message = "ok", statusCode = 200) {
   };
 }
 export function responseError(
-  message = "Lỗi hệ thống máy chủ",
+  message = "Internal Server Error",
   statusCode = 500,
-  stack = null,
 ) {
   return {
     status: "error",
     statusCode: statusCode,
     message: message,
-    stack: stack,
     doc: "example.com",
   };
 }

@@ -53,4 +53,14 @@ export const rapController = {
       next(err);
     }
   },
+
+  giuChoTamThoi: async (req, res, next) => {
+    try {
+      const result = await rapService.giuChoTamThoi(req);
+      const response = responseSuccess(result, `Giữ chỗ tạm thời thành công`);
+      res.status(response.statusCode).json(response);
+    } catch (err) {
+      next(err);
+    }
+  },
 };

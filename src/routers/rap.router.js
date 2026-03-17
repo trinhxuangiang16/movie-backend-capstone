@@ -110,3 +110,5 @@ rapRouter.get(
   protect,
   rapController.getLichChieuPhim,
 );
+
+rapRouter.post("/GiuChoTamThoi", protect, rapController.giuChoTamThoi);

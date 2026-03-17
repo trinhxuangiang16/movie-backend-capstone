@@ -137,7 +137,9 @@ exports.Prisma.CumRapScalarFieldEnum = {
 exports.Prisma.DatVeScalarFieldEnum = {
   tai_khoan: 'tai_khoan',
   ma_lich_chieu: 'ma_lich_chieu',
-  ma_ghe: 'ma_ghe'
+  ma_ghe: 'ma_ghe',
+  gia_ve: 'gia_ve',
+  created_at: 'created_at'
 };
 
 exports.Prisma.GheScalarFieldEnum = {
@@ -188,6 +190,15 @@ exports.Prisma.RapPhimScalarFieldEnum = {
   ma_rap: 'ma_rap',
   ten_rap: 'ten_rap',
   ma_cum_rap: 'ma_cum_rap'
+};
+
+exports.Prisma.GiuChoScalarFieldEnum = {
+  ma_giu_cho: 'ma_giu_cho',
+  tai_khoan: 'tai_khoan',
+  ma_lich_chieu: 'ma_lich_chieu',
+  ma_ghe: 'ma_ghe',
+  expire_at: 'expire_at',
+  created_at: 'created_at'
 };
 
 exports.Prisma.SortOrder = {
@@ -249,7 +260,8 @@ exports.Prisma.ModelName = {
   LichChieu: 'LichChieu',
   NguoiDung: 'NguoiDung',
   Phim: 'Phim',
-  RapPhim: 'RapPhim'
+  RapPhim: 'RapPhim',
+  GiuCho: 'GiuCho'
 };
 
 /**

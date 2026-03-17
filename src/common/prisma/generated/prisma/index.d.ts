@@ -58,6 +58,11 @@ export type Phim = $Result.DefaultSelection<Prisma.$PhimPayload>
  * 
  */
 export type RapPhim = $Result.DefaultSelection<Prisma.$RapPhimPayload>
+/**
+ * Model GiuCho
+ * 
+ */
+export type GiuCho = $Result.DefaultSelection<Prisma.$GiuChoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -265,6 +270,16 @@ export class PrismaClient<
     * ```
     */
   get rapPhim(): Prisma.RapPhimDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.giuCho`: Exposes CRUD operations for the **GiuCho** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GiuChos
+    * const giuChos = await prisma.giuCho.findMany()
+    * ```
+    */
+  get giuCho(): Prisma.GiuChoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -707,7 +722,8 @@ export namespace Prisma {
     LichChieu: 'LichChieu',
     NguoiDung: 'NguoiDung',
     Phim: 'Phim',
-    RapPhim: 'RapPhim'
+    RapPhim: 'RapPhim',
+    GiuCho: 'GiuCho'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -723,7 +739,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "banner" | "cumRap" | "datVe" | "ghe" | "heThongRap" | "lichChieu" | "nguoiDung" | "phim" | "rapPhim"
+      modelProps: "banner" | "cumRap" | "datVe" | "ghe" | "heThongRap" | "lichChieu" | "nguoiDung" | "phim" | "rapPhim" | "giuCho"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1321,6 +1337,72 @@ export namespace Prisma {
           }
         }
       }
+      GiuCho: {
+        payload: Prisma.$GiuChoPayload<ExtArgs>
+        fields: Prisma.GiuChoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GiuChoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GiuChoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload>
+          }
+          findFirst: {
+            args: Prisma.GiuChoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GiuChoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload>
+          }
+          findMany: {
+            args: Prisma.GiuChoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload>[]
+          }
+          create: {
+            args: Prisma.GiuChoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload>
+          }
+          createMany: {
+            args: Prisma.GiuChoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.GiuChoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload>
+          }
+          update: {
+            args: Prisma.GiuChoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload>
+          }
+          deleteMany: {
+            args: Prisma.GiuChoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GiuChoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.GiuChoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiuChoPayload>
+          }
+          aggregate: {
+            args: Prisma.GiuChoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGiuCho>
+          }
+          groupBy: {
+            args: Prisma.GiuChoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GiuChoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GiuChoCountArgs<ExtArgs>
+            result: $Utils.Optional<GiuChoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1438,6 +1520,7 @@ export namespace Prisma {
     nguoiDung?: NguoiDungOmit
     phim?: PhimOmit
     rapPhim?: RapPhimOmit
+    giuCho?: GiuChoOmit
   }
 
   /* Types for Logging */
@@ -1550,10 +1633,12 @@ export namespace Prisma {
 
   export type GheCountOutputType = {
     DatVe: number
+    GiuCho: number
   }
 
   export type GheCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | GheCountOutputTypeCountDatVeArgs
+    GiuCho?: boolean | GheCountOutputTypeCountGiuChoArgs
   }
 
   // Custom InputTypes
@@ -1572,6 +1657,13 @@ export namespace Prisma {
    */
   export type GheCountOutputTypeCountDatVeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DatVeWhereInput
+  }
+
+  /**
+   * GheCountOutputType without action
+   */
+  export type GheCountOutputTypeCountGiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiuChoWhereInput
   }
 
 
@@ -1612,10 +1704,12 @@ export namespace Prisma {
 
   export type LichChieuCountOutputType = {
     DatVe: number
+    GiuCho: number
   }
 
   export type LichChieuCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | LichChieuCountOutputTypeCountDatVeArgs
+    GiuCho?: boolean | LichChieuCountOutputTypeCountGiuChoArgs
   }
 
   // Custom InputTypes
@@ -1636,6 +1730,13 @@ export namespace Prisma {
     where?: DatVeWhereInput
   }
 
+  /**
+   * LichChieuCountOutputType without action
+   */
+  export type LichChieuCountOutputTypeCountGiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiuChoWhereInput
+  }
+
 
   /**
    * Count Type NguoiDungCountOutputType
@@ -1643,10 +1744,12 @@ export namespace Prisma {
 
   export type NguoiDungCountOutputType = {
     DatVe: number
+    GiuCho: number
   }
 
   export type NguoiDungCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | NguoiDungCountOutputTypeCountDatVeArgs
+    GiuCho?: boolean | NguoiDungCountOutputTypeCountGiuChoArgs
   }
 
   // Custom InputTypes
@@ -1665,6 +1768,13 @@ export namespace Prisma {
    */
   export type NguoiDungCountOutputTypeCountDatVeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DatVeWhereInput
+  }
+
+  /**
+   * NguoiDungCountOutputType without action
+   */
+  export type NguoiDungCountOutputTypeCountGiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiuChoWhereInput
   }
 
 
@@ -3748,30 +3858,38 @@ export namespace Prisma {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    gia_ve: number | null
   }
 
   export type DatVeSumAggregateOutputType = {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    gia_ve: number | null
   }
 
   export type DatVeMinAggregateOutputType = {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    gia_ve: number | null
+    created_at: Date | null
   }
 
   export type DatVeMaxAggregateOutputType = {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    gia_ve: number | null
+    created_at: Date | null
   }
 
   export type DatVeCountAggregateOutputType = {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    gia_ve: number
+    created_at: number
     _all: number
   }
 
@@ -3780,30 +3898,38 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    gia_ve?: true
   }
 
   export type DatVeSumAggregateInputType = {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    gia_ve?: true
   }
 
   export type DatVeMinAggregateInputType = {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    gia_ve?: true
+    created_at?: true
   }
 
   export type DatVeMaxAggregateInputType = {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    gia_ve?: true
+    created_at?: true
   }
 
   export type DatVeCountAggregateInputType = {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    gia_ve?: true
+    created_at?: true
     _all?: true
   }
 
@@ -3897,6 +4023,8 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    gia_ve: number
+    created_at: Date | null
     _count: DatVeCountAggregateOutputType | null
     _avg: DatVeAvgAggregateOutputType | null
     _sum: DatVeSumAggregateOutputType | null
@@ -3922,6 +4050,8 @@ export namespace Prisma {
     tai_khoan?: boolean
     ma_lich_chieu?: boolean
     ma_ghe?: boolean
+    gia_ve?: boolean
+    created_at?: boolean
     NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
     LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
     Ghe?: boolean | GheDefaultArgs<ExtArgs>
@@ -3933,9 +4063,11 @@ export namespace Prisma {
     tai_khoan?: boolean
     ma_lich_chieu?: boolean
     ma_ghe?: boolean
+    gia_ve?: boolean
+    created_at?: boolean
   }
 
-  export type DatVeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tai_khoan" | "ma_lich_chieu" | "ma_ghe", ExtArgs["result"]["datVe"]>
+  export type DatVeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tai_khoan" | "ma_lich_chieu" | "ma_ghe" | "gia_ve" | "created_at", ExtArgs["result"]["datVe"]>
   export type DatVeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
     LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
@@ -3953,6 +4085,8 @@ export namespace Prisma {
       tai_khoan: number
       ma_lich_chieu: number
       ma_ghe: number
+      gia_ve: number
+      created_at: Date | null
     }, ExtArgs["result"]["datVe"]>
     composites: {}
   }
@@ -4328,6 +4462,8 @@ export namespace Prisma {
     readonly tai_khoan: FieldRef<"DatVe", 'Int'>
     readonly ma_lich_chieu: FieldRef<"DatVe", 'Int'>
     readonly ma_ghe: FieldRef<"DatVe", 'Int'>
+    readonly gia_ve: FieldRef<"DatVe", 'Int'>
+    readonly created_at: FieldRef<"DatVe", 'DateTime'>
   }
     
 
@@ -4885,6 +5021,7 @@ export namespace Prisma {
     ma_rap?: boolean
     DatVe?: boolean | Ghe$DatVeArgs<ExtArgs>
     RapPhim?: boolean | Ghe$RapPhimArgs<ExtArgs>
+    GiuCho?: boolean | Ghe$GiuChoArgs<ExtArgs>
     _count?: boolean | GheCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ghe"]>
 
@@ -4901,6 +5038,7 @@ export namespace Prisma {
   export type GheInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | Ghe$DatVeArgs<ExtArgs>
     RapPhim?: boolean | Ghe$RapPhimArgs<ExtArgs>
+    GiuCho?: boolean | Ghe$GiuChoArgs<ExtArgs>
     _count?: boolean | GheCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4909,6 +5047,7 @@ export namespace Prisma {
     objects: {
       DatVe: Prisma.$DatVePayload<ExtArgs>[]
       RapPhim: Prisma.$RapPhimPayload<ExtArgs> | null
+      GiuCho: Prisma.$GiuChoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       ma_ghe: number
@@ -5257,6 +5396,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     DatVe<T extends Ghe$DatVeArgs<ExtArgs> = {}>(args?: Subset<T, Ghe$DatVeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DatVePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RapPhim<T extends Ghe$RapPhimArgs<ExtArgs> = {}>(args?: Subset<T, Ghe$RapPhimArgs<ExtArgs>>): Prisma__RapPhimClient<$Result.GetResult<Prisma.$RapPhimPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    GiuCho<T extends Ghe$GiuChoArgs<ExtArgs> = {}>(args?: Subset<T, Ghe$GiuChoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5673,6 +5813,30 @@ export namespace Prisma {
      */
     include?: RapPhimInclude<ExtArgs> | null
     where?: RapPhimWhereInput
+  }
+
+  /**
+   * Ghe.GiuCho
+   */
+  export type Ghe$GiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    where?: GiuChoWhereInput
+    orderBy?: GiuChoOrderByWithRelationInput | GiuChoOrderByWithRelationInput[]
+    cursor?: GiuChoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
   }
 
   /**
@@ -6872,6 +7036,7 @@ export namespace Prisma {
     ngay_gio_chieu?: boolean
     gia_ve?: boolean
     DatVe?: boolean | LichChieu$DatVeArgs<ExtArgs>
+    GiuCho?: boolean | LichChieu$GiuChoArgs<ExtArgs>
     RapPhim?: boolean | LichChieu$RapPhimArgs<ExtArgs>
     Phim?: boolean | LichChieu$PhimArgs<ExtArgs>
     _count?: boolean | LichChieuCountOutputTypeDefaultArgs<ExtArgs>
@@ -6890,6 +7055,7 @@ export namespace Prisma {
   export type LichChieuOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_lich_chieu" | "ma_rap" | "ma_phim" | "ngay_gio_chieu" | "gia_ve", ExtArgs["result"]["lichChieu"]>
   export type LichChieuInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | LichChieu$DatVeArgs<ExtArgs>
+    GiuCho?: boolean | LichChieu$GiuChoArgs<ExtArgs>
     RapPhim?: boolean | LichChieu$RapPhimArgs<ExtArgs>
     Phim?: boolean | LichChieu$PhimArgs<ExtArgs>
     _count?: boolean | LichChieuCountOutputTypeDefaultArgs<ExtArgs>
@@ -6899,6 +7065,7 @@ export namespace Prisma {
     name: "LichChieu"
     objects: {
       DatVe: Prisma.$DatVePayload<ExtArgs>[]
+      GiuCho: Prisma.$GiuChoPayload<ExtArgs>[]
       RapPhim: Prisma.$RapPhimPayload<ExtArgs> | null
       Phim: Prisma.$PhimPayload<ExtArgs> | null
     }
@@ -7249,6 +7416,7 @@ export namespace Prisma {
   export interface Prisma__LichChieuClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     DatVe<T extends LichChieu$DatVeArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$DatVeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DatVePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    GiuCho<T extends LichChieu$GiuChoArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$GiuChoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RapPhim<T extends LichChieu$RapPhimArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$RapPhimArgs<ExtArgs>>): Prisma__RapPhimClient<$Result.GetResult<Prisma.$RapPhimPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Phim<T extends LichChieu$PhimArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$PhimArgs<ExtArgs>>): Prisma__PhimClient<$Result.GetResult<Prisma.$PhimPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
@@ -7652,6 +7820,30 @@ export namespace Prisma {
   }
 
   /**
+   * LichChieu.GiuCho
+   */
+  export type LichChieu$GiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    where?: GiuChoWhereInput
+    orderBy?: GiuChoOrderByWithRelationInput | GiuChoOrderByWithRelationInput[]
+    cursor?: GiuChoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
+  }
+
+  /**
    * LichChieu.RapPhim
    */
   export type LichChieu$RapPhimArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7915,6 +8107,7 @@ export namespace Prisma {
     mat_khau?: boolean
     loai_nguoi_dung?: boolean
     DatVe?: boolean | NguoiDung$DatVeArgs<ExtArgs>
+    GiuCho?: boolean | NguoiDung$GiuChoArgs<ExtArgs>
     _count?: boolean | NguoiDungCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["nguoiDung"]>
 
@@ -7932,6 +8125,7 @@ export namespace Prisma {
   export type NguoiDungOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tai_khoan" | "ho_ten" | "email" | "so_dt" | "mat_khau" | "loai_nguoi_dung", ExtArgs["result"]["nguoiDung"]>
   export type NguoiDungInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | NguoiDung$DatVeArgs<ExtArgs>
+    GiuCho?: boolean | NguoiDung$GiuChoArgs<ExtArgs>
     _count?: boolean | NguoiDungCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -7939,6 +8133,7 @@ export namespace Prisma {
     name: "NguoiDung"
     objects: {
       DatVe: Prisma.$DatVePayload<ExtArgs>[]
+      GiuCho: Prisma.$GiuChoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       tai_khoan: number
@@ -8288,6 +8483,7 @@ export namespace Prisma {
   export interface Prisma__NguoiDungClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     DatVe<T extends NguoiDung$DatVeArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$DatVeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DatVePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    GiuCho<T extends NguoiDung$GiuChoArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$GiuChoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8687,6 +8883,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DatVeScalarFieldEnum | DatVeScalarFieldEnum[]
+  }
+
+  /**
+   * NguoiDung.GiuCho
+   */
+  export type NguoiDung$GiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    where?: GiuChoWhereInput
+    orderBy?: GiuChoOrderByWithRelationInput | GiuChoOrderByWithRelationInput[]
+    cursor?: GiuChoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
   }
 
   /**
@@ -10818,6 +11038,1000 @@ export namespace Prisma {
 
 
   /**
+   * Model GiuCho
+   */
+
+  export type AggregateGiuCho = {
+    _count: GiuChoCountAggregateOutputType | null
+    _avg: GiuChoAvgAggregateOutputType | null
+    _sum: GiuChoSumAggregateOutputType | null
+    _min: GiuChoMinAggregateOutputType | null
+    _max: GiuChoMaxAggregateOutputType | null
+  }
+
+  export type GiuChoAvgAggregateOutputType = {
+    ma_giu_cho: number | null
+    tai_khoan: number | null
+    ma_lich_chieu: number | null
+    ma_ghe: number | null
+  }
+
+  export type GiuChoSumAggregateOutputType = {
+    ma_giu_cho: number | null
+    tai_khoan: number | null
+    ma_lich_chieu: number | null
+    ma_ghe: number | null
+  }
+
+  export type GiuChoMinAggregateOutputType = {
+    ma_giu_cho: number | null
+    tai_khoan: number | null
+    ma_lich_chieu: number | null
+    ma_ghe: number | null
+    expire_at: Date | null
+    created_at: Date | null
+  }
+
+  export type GiuChoMaxAggregateOutputType = {
+    ma_giu_cho: number | null
+    tai_khoan: number | null
+    ma_lich_chieu: number | null
+    ma_ghe: number | null
+    expire_at: Date | null
+    created_at: Date | null
+  }
+
+  export type GiuChoCountAggregateOutputType = {
+    ma_giu_cho: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    expire_at: number
+    created_at: number
+    _all: number
+  }
+
+
+  export type GiuChoAvgAggregateInputType = {
+    ma_giu_cho?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    ma_ghe?: true
+  }
+
+  export type GiuChoSumAggregateInputType = {
+    ma_giu_cho?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    ma_ghe?: true
+  }
+
+  export type GiuChoMinAggregateInputType = {
+    ma_giu_cho?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    ma_ghe?: true
+    expire_at?: true
+    created_at?: true
+  }
+
+  export type GiuChoMaxAggregateInputType = {
+    ma_giu_cho?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    ma_ghe?: true
+    expire_at?: true
+    created_at?: true
+  }
+
+  export type GiuChoCountAggregateInputType = {
+    ma_giu_cho?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    ma_ghe?: true
+    expire_at?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type GiuChoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiuCho to aggregate.
+     */
+    where?: GiuChoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiuChos to fetch.
+     */
+    orderBy?: GiuChoOrderByWithRelationInput | GiuChoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GiuChoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiuChos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiuChos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GiuChos
+    **/
+    _count?: true | GiuChoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GiuChoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GiuChoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GiuChoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GiuChoMaxAggregateInputType
+  }
+
+  export type GetGiuChoAggregateType<T extends GiuChoAggregateArgs> = {
+        [P in keyof T & keyof AggregateGiuCho]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGiuCho[P]>
+      : GetScalarType<T[P], AggregateGiuCho[P]>
+  }
+
+
+
+
+  export type GiuChoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiuChoWhereInput
+    orderBy?: GiuChoOrderByWithAggregationInput | GiuChoOrderByWithAggregationInput[]
+    by: GiuChoScalarFieldEnum[] | GiuChoScalarFieldEnum
+    having?: GiuChoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GiuChoCountAggregateInputType | true
+    _avg?: GiuChoAvgAggregateInputType
+    _sum?: GiuChoSumAggregateInputType
+    _min?: GiuChoMinAggregateInputType
+    _max?: GiuChoMaxAggregateInputType
+  }
+
+  export type GiuChoGroupByOutputType = {
+    ma_giu_cho: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    expire_at: Date
+    created_at: Date | null
+    _count: GiuChoCountAggregateOutputType | null
+    _avg: GiuChoAvgAggregateOutputType | null
+    _sum: GiuChoSumAggregateOutputType | null
+    _min: GiuChoMinAggregateOutputType | null
+    _max: GiuChoMaxAggregateOutputType | null
+  }
+
+  type GetGiuChoGroupByPayload<T extends GiuChoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GiuChoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GiuChoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GiuChoGroupByOutputType[P]>
+            : GetScalarType<T[P], GiuChoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GiuChoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ma_giu_cho?: boolean
+    tai_khoan?: boolean
+    ma_lich_chieu?: boolean
+    ma_ghe?: boolean
+    expire_at?: boolean
+    created_at?: boolean
+    Ghe?: boolean | GheDefaultArgs<ExtArgs>
+    LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
+    NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["giuCho"]>
+
+
+
+  export type GiuChoSelectScalar = {
+    ma_giu_cho?: boolean
+    tai_khoan?: boolean
+    ma_lich_chieu?: boolean
+    ma_ghe?: boolean
+    expire_at?: boolean
+    created_at?: boolean
+  }
+
+  export type GiuChoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_giu_cho" | "tai_khoan" | "ma_lich_chieu" | "ma_ghe" | "expire_at" | "created_at", ExtArgs["result"]["giuCho"]>
+  export type GiuChoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Ghe?: boolean | GheDefaultArgs<ExtArgs>
+    LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
+    NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
+  }
+
+  export type $GiuChoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GiuCho"
+    objects: {
+      Ghe: Prisma.$GhePayload<ExtArgs>
+      LichChieu: Prisma.$LichChieuPayload<ExtArgs>
+      NguoiDung: Prisma.$NguoiDungPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      ma_giu_cho: number
+      tai_khoan: number
+      ma_lich_chieu: number
+      ma_ghe: number
+      expire_at: Date
+      created_at: Date | null
+    }, ExtArgs["result"]["giuCho"]>
+    composites: {}
+  }
+
+  type GiuChoGetPayload<S extends boolean | null | undefined | GiuChoDefaultArgs> = $Result.GetResult<Prisma.$GiuChoPayload, S>
+
+  type GiuChoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GiuChoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GiuChoCountAggregateInputType | true
+    }
+
+  export interface GiuChoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GiuCho'], meta: { name: 'GiuCho' } }
+    /**
+     * Find zero or one GiuCho that matches the filter.
+     * @param {GiuChoFindUniqueArgs} args - Arguments to find a GiuCho
+     * @example
+     * // Get one GiuCho
+     * const giuCho = await prisma.giuCho.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GiuChoFindUniqueArgs>(args: SelectSubset<T, GiuChoFindUniqueArgs<ExtArgs>>): Prisma__GiuChoClient<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GiuCho that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GiuChoFindUniqueOrThrowArgs} args - Arguments to find a GiuCho
+     * @example
+     * // Get one GiuCho
+     * const giuCho = await prisma.giuCho.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GiuChoFindUniqueOrThrowArgs>(args: SelectSubset<T, GiuChoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GiuChoClient<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GiuCho that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiuChoFindFirstArgs} args - Arguments to find a GiuCho
+     * @example
+     * // Get one GiuCho
+     * const giuCho = await prisma.giuCho.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GiuChoFindFirstArgs>(args?: SelectSubset<T, GiuChoFindFirstArgs<ExtArgs>>): Prisma__GiuChoClient<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GiuCho that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiuChoFindFirstOrThrowArgs} args - Arguments to find a GiuCho
+     * @example
+     * // Get one GiuCho
+     * const giuCho = await prisma.giuCho.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GiuChoFindFirstOrThrowArgs>(args?: SelectSubset<T, GiuChoFindFirstOrThrowArgs<ExtArgs>>): Prisma__GiuChoClient<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GiuChos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiuChoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GiuChos
+     * const giuChos = await prisma.giuCho.findMany()
+     * 
+     * // Get first 10 GiuChos
+     * const giuChos = await prisma.giuCho.findMany({ take: 10 })
+     * 
+     * // Only select the `ma_giu_cho`
+     * const giuChoWithMa_giu_choOnly = await prisma.giuCho.findMany({ select: { ma_giu_cho: true } })
+     * 
+     */
+    findMany<T extends GiuChoFindManyArgs>(args?: SelectSubset<T, GiuChoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GiuCho.
+     * @param {GiuChoCreateArgs} args - Arguments to create a GiuCho.
+     * @example
+     * // Create one GiuCho
+     * const GiuCho = await prisma.giuCho.create({
+     *   data: {
+     *     // ... data to create a GiuCho
+     *   }
+     * })
+     * 
+     */
+    create<T extends GiuChoCreateArgs>(args: SelectSubset<T, GiuChoCreateArgs<ExtArgs>>): Prisma__GiuChoClient<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GiuChos.
+     * @param {GiuChoCreateManyArgs} args - Arguments to create many GiuChos.
+     * @example
+     * // Create many GiuChos
+     * const giuCho = await prisma.giuCho.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GiuChoCreateManyArgs>(args?: SelectSubset<T, GiuChoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a GiuCho.
+     * @param {GiuChoDeleteArgs} args - Arguments to delete one GiuCho.
+     * @example
+     * // Delete one GiuCho
+     * const GiuCho = await prisma.giuCho.delete({
+     *   where: {
+     *     // ... filter to delete one GiuCho
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GiuChoDeleteArgs>(args: SelectSubset<T, GiuChoDeleteArgs<ExtArgs>>): Prisma__GiuChoClient<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GiuCho.
+     * @param {GiuChoUpdateArgs} args - Arguments to update one GiuCho.
+     * @example
+     * // Update one GiuCho
+     * const giuCho = await prisma.giuCho.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GiuChoUpdateArgs>(args: SelectSubset<T, GiuChoUpdateArgs<ExtArgs>>): Prisma__GiuChoClient<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GiuChos.
+     * @param {GiuChoDeleteManyArgs} args - Arguments to filter GiuChos to delete.
+     * @example
+     * // Delete a few GiuChos
+     * const { count } = await prisma.giuCho.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GiuChoDeleteManyArgs>(args?: SelectSubset<T, GiuChoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GiuChos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiuChoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GiuChos
+     * const giuCho = await prisma.giuCho.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GiuChoUpdateManyArgs>(args: SelectSubset<T, GiuChoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one GiuCho.
+     * @param {GiuChoUpsertArgs} args - Arguments to update or create a GiuCho.
+     * @example
+     * // Update or create a GiuCho
+     * const giuCho = await prisma.giuCho.upsert({
+     *   create: {
+     *     // ... data to create a GiuCho
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GiuCho we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GiuChoUpsertArgs>(args: SelectSubset<T, GiuChoUpsertArgs<ExtArgs>>): Prisma__GiuChoClient<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GiuChos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiuChoCountArgs} args - Arguments to filter GiuChos to count.
+     * @example
+     * // Count the number of GiuChos
+     * const count = await prisma.giuCho.count({
+     *   where: {
+     *     // ... the filter for the GiuChos we want to count
+     *   }
+     * })
+    **/
+    count<T extends GiuChoCountArgs>(
+      args?: Subset<T, GiuChoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GiuChoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GiuCho.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiuChoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GiuChoAggregateArgs>(args: Subset<T, GiuChoAggregateArgs>): Prisma.PrismaPromise<GetGiuChoAggregateType<T>>
+
+    /**
+     * Group by GiuCho.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiuChoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GiuChoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GiuChoGroupByArgs['orderBy'] }
+        : { orderBy?: GiuChoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GiuChoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGiuChoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GiuCho model
+   */
+  readonly fields: GiuChoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GiuCho.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GiuChoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Ghe<T extends GheDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GheDefaultArgs<ExtArgs>>): Prisma__GheClient<$Result.GetResult<Prisma.$GhePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    LichChieu<T extends LichChieuDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LichChieuDefaultArgs<ExtArgs>>): Prisma__LichChieuClient<$Result.GetResult<Prisma.$LichChieuPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    NguoiDung<T extends NguoiDungDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDungDefaultArgs<ExtArgs>>): Prisma__NguoiDungClient<$Result.GetResult<Prisma.$NguoiDungPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GiuCho model
+   */
+  interface GiuChoFieldRefs {
+    readonly ma_giu_cho: FieldRef<"GiuCho", 'Int'>
+    readonly tai_khoan: FieldRef<"GiuCho", 'Int'>
+    readonly ma_lich_chieu: FieldRef<"GiuCho", 'Int'>
+    readonly ma_ghe: FieldRef<"GiuCho", 'Int'>
+    readonly expire_at: FieldRef<"GiuCho", 'DateTime'>
+    readonly created_at: FieldRef<"GiuCho", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GiuCho findUnique
+   */
+  export type GiuChoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * Filter, which GiuCho to fetch.
+     */
+    where: GiuChoWhereUniqueInput
+  }
+
+  /**
+   * GiuCho findUniqueOrThrow
+   */
+  export type GiuChoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * Filter, which GiuCho to fetch.
+     */
+    where: GiuChoWhereUniqueInput
+  }
+
+  /**
+   * GiuCho findFirst
+   */
+  export type GiuChoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * Filter, which GiuCho to fetch.
+     */
+    where?: GiuChoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiuChos to fetch.
+     */
+    orderBy?: GiuChoOrderByWithRelationInput | GiuChoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiuChos.
+     */
+    cursor?: GiuChoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiuChos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiuChos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiuChos.
+     */
+    distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
+  }
+
+  /**
+   * GiuCho findFirstOrThrow
+   */
+  export type GiuChoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * Filter, which GiuCho to fetch.
+     */
+    where?: GiuChoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiuChos to fetch.
+     */
+    orderBy?: GiuChoOrderByWithRelationInput | GiuChoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiuChos.
+     */
+    cursor?: GiuChoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiuChos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiuChos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiuChos.
+     */
+    distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
+  }
+
+  /**
+   * GiuCho findMany
+   */
+  export type GiuChoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * Filter, which GiuChos to fetch.
+     */
+    where?: GiuChoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiuChos to fetch.
+     */
+    orderBy?: GiuChoOrderByWithRelationInput | GiuChoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GiuChos.
+     */
+    cursor?: GiuChoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiuChos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiuChos.
+     */
+    skip?: number
+    distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
+  }
+
+  /**
+   * GiuCho create
+   */
+  export type GiuChoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GiuCho.
+     */
+    data: XOR<GiuChoCreateInput, GiuChoUncheckedCreateInput>
+  }
+
+  /**
+   * GiuCho createMany
+   */
+  export type GiuChoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GiuChos.
+     */
+    data: GiuChoCreateManyInput | GiuChoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GiuCho update
+   */
+  export type GiuChoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GiuCho.
+     */
+    data: XOR<GiuChoUpdateInput, GiuChoUncheckedUpdateInput>
+    /**
+     * Choose, which GiuCho to update.
+     */
+    where: GiuChoWhereUniqueInput
+  }
+
+  /**
+   * GiuCho updateMany
+   */
+  export type GiuChoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GiuChos.
+     */
+    data: XOR<GiuChoUpdateManyMutationInput, GiuChoUncheckedUpdateManyInput>
+    /**
+     * Filter which GiuChos to update
+     */
+    where?: GiuChoWhereInput
+    /**
+     * Limit how many GiuChos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GiuCho upsert
+   */
+  export type GiuChoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GiuCho to update in case it exists.
+     */
+    where: GiuChoWhereUniqueInput
+    /**
+     * In case the GiuCho found by the `where` argument doesn't exist, create a new GiuCho with this data.
+     */
+    create: XOR<GiuChoCreateInput, GiuChoUncheckedCreateInput>
+    /**
+     * In case the GiuCho was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GiuChoUpdateInput, GiuChoUncheckedUpdateInput>
+  }
+
+  /**
+   * GiuCho delete
+   */
+  export type GiuChoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    /**
+     * Filter which GiuCho to delete.
+     */
+    where: GiuChoWhereUniqueInput
+  }
+
+  /**
+   * GiuCho deleteMany
+   */
+  export type GiuChoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiuChos to delete
+     */
+    where?: GiuChoWhereInput
+    /**
+     * Limit how many GiuChos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GiuCho without action
+   */
+  export type GiuChoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10854,7 +12068,9 @@ export namespace Prisma {
   export const DatVeScalarFieldEnum: {
     tai_khoan: 'tai_khoan',
     ma_lich_chieu: 'ma_lich_chieu',
-    ma_ghe: 'ma_ghe'
+    ma_ghe: 'ma_ghe',
+    gia_ve: 'gia_ve',
+    created_at: 'created_at'
   };
 
   export type DatVeScalarFieldEnum = (typeof DatVeScalarFieldEnum)[keyof typeof DatVeScalarFieldEnum]
@@ -10926,6 +12142,18 @@ export namespace Prisma {
   };
 
   export type RapPhimScalarFieldEnum = (typeof RapPhimScalarFieldEnum)[keyof typeof RapPhimScalarFieldEnum]
+
+
+  export const GiuChoScalarFieldEnum: {
+    ma_giu_cho: 'ma_giu_cho',
+    tai_khoan: 'tai_khoan',
+    ma_lich_chieu: 'ma_lich_chieu',
+    ma_ghe: 'ma_ghe',
+    expire_at: 'expire_at',
+    created_at: 'created_at'
+  };
+
+  export type GiuChoScalarFieldEnum = (typeof GiuChoScalarFieldEnum)[keyof typeof GiuChoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11163,6 +12391,8 @@ export namespace Prisma {
     tai_khoan?: IntFilter<"DatVe"> | number
     ma_lich_chieu?: IntFilter<"DatVe"> | number
     ma_ghe?: IntFilter<"DatVe"> | number
+    gia_ve?: IntFilter<"DatVe"> | number
+    created_at?: DateTimeNullableFilter<"DatVe"> | Date | string | null
     NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
     LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
     Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
@@ -11172,12 +12402,15 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    gia_ve?: SortOrder
+    created_at?: SortOrderInput | SortOrder
     NguoiDung?: NguoiDungOrderByWithRelationInput
     LichChieu?: LichChieuOrderByWithRelationInput
     Ghe?: GheOrderByWithRelationInput
   }
 
   export type DatVeWhereUniqueInput = Prisma.AtLeast<{
+    ma_lich_chieu_ma_ghe?: DatVeMa_lich_chieuMa_gheCompoundUniqueInput
     tai_khoan_ma_lich_chieu_ma_ghe?: DatVeTai_khoanMa_lich_chieuMa_gheCompoundUniqueInput
     AND?: DatVeWhereInput | DatVeWhereInput[]
     OR?: DatVeWhereInput[]
@@ -11185,15 +12418,19 @@ export namespace Prisma {
     tai_khoan?: IntFilter<"DatVe"> | number
     ma_lich_chieu?: IntFilter<"DatVe"> | number
     ma_ghe?: IntFilter<"DatVe"> | number
+    gia_ve?: IntFilter<"DatVe"> | number
+    created_at?: DateTimeNullableFilter<"DatVe"> | Date | string | null
     NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
     LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
     Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
-  }, "tai_khoan_ma_lich_chieu_ma_ghe">
+  }, "tai_khoan_ma_lich_chieu_ma_ghe" | "ma_lich_chieu_ma_ghe">
 
   export type DatVeOrderByWithAggregationInput = {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    gia_ve?: SortOrder
+    created_at?: SortOrderInput | SortOrder
     _count?: DatVeCountOrderByAggregateInput
     _avg?: DatVeAvgOrderByAggregateInput
     _max?: DatVeMaxOrderByAggregateInput
@@ -11208,6 +12445,8 @@ export namespace Prisma {
     tai_khoan?: IntWithAggregatesFilter<"DatVe"> | number
     ma_lich_chieu?: IntWithAggregatesFilter<"DatVe"> | number
     ma_ghe?: IntWithAggregatesFilter<"DatVe"> | number
+    gia_ve?: IntWithAggregatesFilter<"DatVe"> | number
+    created_at?: DateTimeNullableWithAggregatesFilter<"DatVe"> | Date | string | null
   }
 
   export type GheWhereInput = {
@@ -11220,6 +12459,7 @@ export namespace Prisma {
     ma_rap?: IntNullableFilter<"Ghe"> | number | null
     DatVe?: DatVeListRelationFilter
     RapPhim?: XOR<RapPhimNullableScalarRelationFilter, RapPhimWhereInput> | null
+    GiuCho?: GiuChoListRelationFilter
   }
 
   export type GheOrderByWithRelationInput = {
@@ -11229,6 +12469,7 @@ export namespace Prisma {
     ma_rap?: SortOrderInput | SortOrder
     DatVe?: DatVeOrderByRelationAggregateInput
     RapPhim?: RapPhimOrderByWithRelationInput
+    GiuCho?: GiuChoOrderByRelationAggregateInput
     _relevance?: GheOrderByRelevanceInput
   }
 
@@ -11242,6 +12483,7 @@ export namespace Prisma {
     ma_rap?: IntNullableFilter<"Ghe"> | number | null
     DatVe?: DatVeListRelationFilter
     RapPhim?: XOR<RapPhimNullableScalarRelationFilter, RapPhimWhereInput> | null
+    GiuCho?: GiuChoListRelationFilter
   }, "ma_ghe">
 
   export type GheOrderByWithAggregationInput = {
@@ -11324,6 +12566,7 @@ export namespace Prisma {
     ngay_gio_chieu?: DateTimeNullableFilter<"LichChieu"> | Date | string | null
     gia_ve?: IntNullableFilter<"LichChieu"> | number | null
     DatVe?: DatVeListRelationFilter
+    GiuCho?: GiuChoListRelationFilter
     RapPhim?: XOR<RapPhimNullableScalarRelationFilter, RapPhimWhereInput> | null
     Phim?: XOR<PhimNullableScalarRelationFilter, PhimWhereInput> | null
   }
@@ -11335,6 +12578,7 @@ export namespace Prisma {
     ngay_gio_chieu?: SortOrderInput | SortOrder
     gia_ve?: SortOrderInput | SortOrder
     DatVe?: DatVeOrderByRelationAggregateInput
+    GiuCho?: GiuChoOrderByRelationAggregateInput
     RapPhim?: RapPhimOrderByWithRelationInput
     Phim?: PhimOrderByWithRelationInput
   }
@@ -11349,6 +12593,7 @@ export namespace Prisma {
     ngay_gio_chieu?: DateTimeNullableFilter<"LichChieu"> | Date | string | null
     gia_ve?: IntNullableFilter<"LichChieu"> | number | null
     DatVe?: DatVeListRelationFilter
+    GiuCho?: GiuChoListRelationFilter
     RapPhim?: XOR<RapPhimNullableScalarRelationFilter, RapPhimWhereInput> | null
     Phim?: XOR<PhimNullableScalarRelationFilter, PhimWhereInput> | null
   }, "ma_lich_chieu">
@@ -11388,6 +12633,7 @@ export namespace Prisma {
     mat_khau?: StringNullableFilter<"NguoiDung"> | string | null
     loai_nguoi_dung?: StringNullableFilter<"NguoiDung"> | string | null
     DatVe?: DatVeListRelationFilter
+    GiuCho?: GiuChoListRelationFilter
   }
 
   export type NguoiDungOrderByWithRelationInput = {
@@ -11398,6 +12644,7 @@ export namespace Prisma {
     mat_khau?: SortOrderInput | SortOrder
     loai_nguoi_dung?: SortOrderInput | SortOrder
     DatVe?: DatVeOrderByRelationAggregateInput
+    GiuCho?: GiuChoOrderByRelationAggregateInput
     _relevance?: NguoiDungOrderByRelevanceInput
   }
 
@@ -11412,6 +12659,7 @@ export namespace Prisma {
     mat_khau?: StringNullableFilter<"NguoiDung"> | string | null
     loai_nguoi_dung?: StringNullableFilter<"NguoiDung"> | string | null
     DatVe?: DatVeListRelationFilter
+    GiuCho?: GiuChoListRelationFilter
   }, "tai_khoan" | "email">
 
   export type NguoiDungOrderByWithAggregationInput = {
@@ -11585,6 +12833,74 @@ export namespace Prisma {
     ma_cum_rap?: IntNullableWithAggregatesFilter<"RapPhim"> | number | null
   }
 
+  export type GiuChoWhereInput = {
+    AND?: GiuChoWhereInput | GiuChoWhereInput[]
+    OR?: GiuChoWhereInput[]
+    NOT?: GiuChoWhereInput | GiuChoWhereInput[]
+    ma_giu_cho?: IntFilter<"GiuCho"> | number
+    tai_khoan?: IntFilter<"GiuCho"> | number
+    ma_lich_chieu?: IntFilter<"GiuCho"> | number
+    ma_ghe?: IntFilter<"GiuCho"> | number
+    expire_at?: DateTimeFilter<"GiuCho"> | Date | string
+    created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
+    Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
+    LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
+    NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
+  }
+
+  export type GiuChoOrderByWithRelationInput = {
+    ma_giu_cho?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    ma_ghe?: SortOrder
+    expire_at?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    Ghe?: GheOrderByWithRelationInput
+    LichChieu?: LichChieuOrderByWithRelationInput
+    NguoiDung?: NguoiDungOrderByWithRelationInput
+  }
+
+  export type GiuChoWhereUniqueInput = Prisma.AtLeast<{
+    ma_giu_cho?: number
+    AND?: GiuChoWhereInput | GiuChoWhereInput[]
+    OR?: GiuChoWhereInput[]
+    NOT?: GiuChoWhereInput | GiuChoWhereInput[]
+    tai_khoan?: IntFilter<"GiuCho"> | number
+    ma_lich_chieu?: IntFilter<"GiuCho"> | number
+    ma_ghe?: IntFilter<"GiuCho"> | number
+    expire_at?: DateTimeFilter<"GiuCho"> | Date | string
+    created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
+    Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
+    LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
+    NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
+  }, "ma_giu_cho">
+
+  export type GiuChoOrderByWithAggregationInput = {
+    ma_giu_cho?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    ma_ghe?: SortOrder
+    expire_at?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    _count?: GiuChoCountOrderByAggregateInput
+    _avg?: GiuChoAvgOrderByAggregateInput
+    _max?: GiuChoMaxOrderByAggregateInput
+    _min?: GiuChoMinOrderByAggregateInput
+    _sum?: GiuChoSumOrderByAggregateInput
+  }
+
+  export type GiuChoScalarWhereWithAggregatesInput = {
+    AND?: GiuChoScalarWhereWithAggregatesInput | GiuChoScalarWhereWithAggregatesInput[]
+    OR?: GiuChoScalarWhereWithAggregatesInput[]
+    NOT?: GiuChoScalarWhereWithAggregatesInput | GiuChoScalarWhereWithAggregatesInput[]
+    ma_giu_cho?: IntWithAggregatesFilter<"GiuCho"> | number
+    tai_khoan?: IntWithAggregatesFilter<"GiuCho"> | number
+    ma_lich_chieu?: IntWithAggregatesFilter<"GiuCho"> | number
+    ma_ghe?: IntWithAggregatesFilter<"GiuCho"> | number
+    expire_at?: DateTimeWithAggregatesFilter<"GiuCho"> | Date | string
+    created_at?: DateTimeNullableWithAggregatesFilter<"GiuCho"> | Date | string | null
+  }
+
   export type BannerCreateInput = {
     hinh_anh?: string | null
     Phim?: PhimCreateNestedOneWithoutBannerInput
@@ -11680,6 +12996,8 @@ export namespace Prisma {
   }
 
   export type DatVeCreateInput = {
+    gia_ve: number
+    created_at?: Date | string | null
     NguoiDung: NguoiDungCreateNestedOneWithoutDatVeInput
     LichChieu: LichChieuCreateNestedOneWithoutDatVeInput
     Ghe: GheCreateNestedOneWithoutDatVeInput
@@ -11689,9 +13007,13 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    gia_ve: number
+    created_at?: Date | string | null
   }
 
   export type DatVeUpdateInput = {
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutDatVeNestedInput
     LichChieu?: LichChieuUpdateOneRequiredWithoutDatVeNestedInput
     Ghe?: GheUpdateOneRequiredWithoutDatVeNestedInput
@@ -11701,22 +13023,29 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DatVeCreateManyInput = {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    gia_ve: number
+    created_at?: Date | string | null
   }
 
   export type DatVeUpdateManyMutationInput = {
-
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DatVeUncheckedUpdateManyInput = {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type GheCreateInput = {
@@ -11724,6 +13053,7 @@ export namespace Prisma {
     loai_ghe?: string | null
     DatVe?: DatVeCreateNestedManyWithoutGheInput
     RapPhim?: RapPhimCreateNestedOneWithoutGheInput
+    GiuCho?: GiuChoCreateNestedManyWithoutGheInput
   }
 
   export type GheUncheckedCreateInput = {
@@ -11732,6 +13062,7 @@ export namespace Prisma {
     loai_ghe?: string | null
     ma_rap?: number | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutGheInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutGheInput
   }
 
   export type GheUpdateInput = {
@@ -11739,6 +13070,7 @@ export namespace Prisma {
     loai_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     DatVe?: DatVeUpdateManyWithoutGheNestedInput
     RapPhim?: RapPhimUpdateOneWithoutGheNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutGheNestedInput
   }
 
   export type GheUncheckedUpdateInput = {
@@ -11747,6 +13079,7 @@ export namespace Prisma {
     loai_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     ma_rap?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUncheckedUpdateManyWithoutGheNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutGheNestedInput
   }
 
   export type GheCreateManyInput = {
@@ -11815,6 +13148,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
+    GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
     RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
     Phim?: PhimCreateNestedOneWithoutLichChieuInput
   }
@@ -11826,12 +13160,14 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuUpdateInput = {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
     RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
     Phim?: PhimUpdateOneWithoutLichChieuNestedInput
   }
@@ -11843,6 +13179,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type LichChieuCreateManyInput = {
@@ -11873,6 +13210,7 @@ export namespace Prisma {
     mat_khau?: string | null
     loai_nguoi_dung?: string | null
     DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
+    GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateInput = {
@@ -11883,6 +13221,7 @@ export namespace Prisma {
     mat_khau?: string | null
     loai_nguoi_dung?: string | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUpdateInput = {
@@ -11892,6 +13231,7 @@ export namespace Prisma {
     mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
     DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateInput = {
@@ -11902,6 +13242,7 @@ export namespace Prisma {
     mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
     DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungCreateManyInput = {
@@ -12077,6 +13418,63 @@ export namespace Prisma {
     ma_rap?: IntFieldUpdateOperationsInput | number
     ten_rap?: NullableStringFieldUpdateOperationsInput | string | null
     ma_cum_rap?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type GiuChoCreateInput = {
+    expire_at: Date | string
+    created_at?: Date | string | null
+    Ghe: GheCreateNestedOneWithoutGiuChoInput
+    LichChieu: LichChieuCreateNestedOneWithoutGiuChoInput
+    NguoiDung: NguoiDungCreateNestedOneWithoutGiuChoInput
+  }
+
+  export type GiuChoUncheckedCreateInput = {
+    ma_giu_cho?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    expire_at: Date | string
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoUpdateInput = {
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
+    LichChieu?: LichChieuUpdateOneRequiredWithoutGiuChoNestedInput
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutGiuChoNestedInput
+  }
+
+  export type GiuChoUncheckedUpdateInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoCreateManyInput = {
+    ma_giu_cho?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    expire_at: Date | string
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoUpdateManyMutationInput = {
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoUncheckedUpdateManyInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -12265,6 +13663,17 @@ export namespace Prisma {
     ma_he_thong_rap?: SortOrder
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NguoiDungScalarRelationFilter = {
     is?: NguoiDungWhereInput
     isNot?: NguoiDungWhereInput
@@ -12280,6 +13689,11 @@ export namespace Prisma {
     isNot?: GheWhereInput
   }
 
+  export type DatVeMa_lich_chieuMa_gheCompoundUniqueInput = {
+    ma_lich_chieu: number
+    ma_ghe: number
+  }
+
   export type DatVeTai_khoanMa_lich_chieuMa_gheCompoundUniqueInput = {
     tai_khoan: number
     ma_lich_chieu: number
@@ -12290,30 +13704,52 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    gia_ve?: SortOrder
+    created_at?: SortOrder
   }
 
   export type DatVeAvgOrderByAggregateInput = {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    gia_ve?: SortOrder
   }
 
   export type DatVeMaxOrderByAggregateInput = {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    gia_ve?: SortOrder
+    created_at?: SortOrder
   }
 
   export type DatVeMinOrderByAggregateInput = {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    gia_ve?: SortOrder
+    created_at?: SortOrder
   }
 
   export type DatVeSumOrderByAggregateInput = {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    gia_ve?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type DatVeListRelationFilter = {
@@ -12327,7 +13763,17 @@ export namespace Prisma {
     isNot?: RapPhimWhereInput | null
   }
 
+  export type GiuChoListRelationFilter = {
+    every?: GiuChoWhereInput
+    some?: GiuChoWhereInput
+    none?: GiuChoWhereInput
+  }
+
   export type DatVeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GiuChoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12410,17 +13856,6 @@ export namespace Prisma {
     ma_he_thong_rap?: SortOrder
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type LichChieuCountOrderByAggregateInput = {
     ma_lich_chieu?: SortOrder
     ma_rap?: SortOrder
@@ -12457,20 +13892,6 @@ export namespace Prisma {
     ma_rap?: SortOrder
     ma_phim?: SortOrder
     gia_ve?: SortOrder
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NguoiDungOrderByRelevanceInput = {
@@ -12654,6 +14075,72 @@ export namespace Prisma {
     ma_cum_rap?: SortOrder
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type GiuChoCountOrderByAggregateInput = {
+    ma_giu_cho?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    ma_ghe?: SortOrder
+    expire_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type GiuChoAvgOrderByAggregateInput = {
+    ma_giu_cho?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    ma_ghe?: SortOrder
+  }
+
+  export type GiuChoMaxOrderByAggregateInput = {
+    ma_giu_cho?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    ma_ghe?: SortOrder
+    expire_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type GiuChoMinOrderByAggregateInput = {
+    ma_giu_cho?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    ma_ghe?: SortOrder
+    expire_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type GiuChoSumOrderByAggregateInput = {
+    ma_giu_cho?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    ma_ghe?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type PhimCreateNestedOneWithoutBannerInput = {
     create?: XOR<PhimCreateWithoutBannerInput, PhimUncheckedCreateWithoutBannerInput>
     connectOrCreate?: PhimCreateOrConnectWithoutBannerInput
@@ -12766,6 +14253,10 @@ export namespace Prisma {
     connect?: GheWhereUniqueInput
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type NguoiDungUpdateOneRequiredWithoutDatVeNestedInput = {
     create?: XOR<NguoiDungCreateWithoutDatVeInput, NguoiDungUncheckedCreateWithoutDatVeInput>
     connectOrCreate?: NguoiDungCreateOrConnectWithoutDatVeInput
@@ -12803,11 +14294,25 @@ export namespace Prisma {
     connect?: RapPhimWhereUniqueInput
   }
 
+  export type GiuChoCreateNestedManyWithoutGheInput = {
+    create?: XOR<GiuChoCreateWithoutGheInput, GiuChoUncheckedCreateWithoutGheInput> | GiuChoCreateWithoutGheInput[] | GiuChoUncheckedCreateWithoutGheInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutGheInput | GiuChoCreateOrConnectWithoutGheInput[]
+    createMany?: GiuChoCreateManyGheInputEnvelope
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+  }
+
   export type DatVeUncheckedCreateNestedManyWithoutGheInput = {
     create?: XOR<DatVeCreateWithoutGheInput, DatVeUncheckedCreateWithoutGheInput> | DatVeCreateWithoutGheInput[] | DatVeUncheckedCreateWithoutGheInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutGheInput | DatVeCreateOrConnectWithoutGheInput[]
     createMany?: DatVeCreateManyGheInputEnvelope
     connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+  }
+
+  export type GiuChoUncheckedCreateNestedManyWithoutGheInput = {
+    create?: XOR<GiuChoCreateWithoutGheInput, GiuChoUncheckedCreateWithoutGheInput> | GiuChoCreateWithoutGheInput[] | GiuChoUncheckedCreateWithoutGheInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutGheInput | GiuChoCreateOrConnectWithoutGheInput[]
+    createMany?: GiuChoCreateManyGheInputEnvelope
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
   }
 
   export type DatVeUpdateManyWithoutGheNestedInput = {
@@ -12834,6 +14339,20 @@ export namespace Prisma {
     update?: XOR<XOR<RapPhimUpdateToOneWithWhereWithoutGheInput, RapPhimUpdateWithoutGheInput>, RapPhimUncheckedUpdateWithoutGheInput>
   }
 
+  export type GiuChoUpdateManyWithoutGheNestedInput = {
+    create?: XOR<GiuChoCreateWithoutGheInput, GiuChoUncheckedCreateWithoutGheInput> | GiuChoCreateWithoutGheInput[] | GiuChoUncheckedCreateWithoutGheInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutGheInput | GiuChoCreateOrConnectWithoutGheInput[]
+    upsert?: GiuChoUpsertWithWhereUniqueWithoutGheInput | GiuChoUpsertWithWhereUniqueWithoutGheInput[]
+    createMany?: GiuChoCreateManyGheInputEnvelope
+    set?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    disconnect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    delete?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    update?: GiuChoUpdateWithWhereUniqueWithoutGheInput | GiuChoUpdateWithWhereUniqueWithoutGheInput[]
+    updateMany?: GiuChoUpdateManyWithWhereWithoutGheInput | GiuChoUpdateManyWithWhereWithoutGheInput[]
+    deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+  }
+
   export type DatVeUncheckedUpdateManyWithoutGheNestedInput = {
     create?: XOR<DatVeCreateWithoutGheInput, DatVeUncheckedCreateWithoutGheInput> | DatVeCreateWithoutGheInput[] | DatVeUncheckedCreateWithoutGheInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutGheInput | DatVeCreateOrConnectWithoutGheInput[]
@@ -12846,6 +14365,20 @@ export namespace Prisma {
     update?: DatVeUpdateWithWhereUniqueWithoutGheInput | DatVeUpdateWithWhereUniqueWithoutGheInput[]
     updateMany?: DatVeUpdateManyWithWhereWithoutGheInput | DatVeUpdateManyWithWhereWithoutGheInput[]
     deleteMany?: DatVeScalarWhereInput | DatVeScalarWhereInput[]
+  }
+
+  export type GiuChoUncheckedUpdateManyWithoutGheNestedInput = {
+    create?: XOR<GiuChoCreateWithoutGheInput, GiuChoUncheckedCreateWithoutGheInput> | GiuChoCreateWithoutGheInput[] | GiuChoUncheckedCreateWithoutGheInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutGheInput | GiuChoCreateOrConnectWithoutGheInput[]
+    upsert?: GiuChoUpsertWithWhereUniqueWithoutGheInput | GiuChoUpsertWithWhereUniqueWithoutGheInput[]
+    createMany?: GiuChoCreateManyGheInputEnvelope
+    set?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    disconnect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    delete?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    update?: GiuChoUpdateWithWhereUniqueWithoutGheInput | GiuChoUpdateWithWhereUniqueWithoutGheInput[]
+    updateMany?: GiuChoUpdateManyWithWhereWithoutGheInput | GiuChoUpdateManyWithWhereWithoutGheInput[]
+    deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
   }
 
   export type CumRapCreateNestedManyWithoutHeThongRapInput = {
@@ -12897,6 +14430,13 @@ export namespace Prisma {
     connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
   }
 
+  export type GiuChoCreateNestedManyWithoutLichChieuInput = {
+    create?: XOR<GiuChoCreateWithoutLichChieuInput, GiuChoUncheckedCreateWithoutLichChieuInput> | GiuChoCreateWithoutLichChieuInput[] | GiuChoUncheckedCreateWithoutLichChieuInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutLichChieuInput | GiuChoCreateOrConnectWithoutLichChieuInput[]
+    createMany?: GiuChoCreateManyLichChieuInputEnvelope
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+  }
+
   export type RapPhimCreateNestedOneWithoutLichChieuInput = {
     create?: XOR<RapPhimCreateWithoutLichChieuInput, RapPhimUncheckedCreateWithoutLichChieuInput>
     connectOrCreate?: RapPhimCreateOrConnectWithoutLichChieuInput
@@ -12916,8 +14456,11 @@ export namespace Prisma {
     connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type GiuChoUncheckedCreateNestedManyWithoutLichChieuInput = {
+    create?: XOR<GiuChoCreateWithoutLichChieuInput, GiuChoUncheckedCreateWithoutLichChieuInput> | GiuChoCreateWithoutLichChieuInput[] | GiuChoUncheckedCreateWithoutLichChieuInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutLichChieuInput | GiuChoCreateOrConnectWithoutLichChieuInput[]
+    createMany?: GiuChoCreateManyLichChieuInputEnvelope
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
   }
 
   export type DatVeUpdateManyWithoutLichChieuNestedInput = {
@@ -12932,6 +14475,20 @@ export namespace Prisma {
     update?: DatVeUpdateWithWhereUniqueWithoutLichChieuInput | DatVeUpdateWithWhereUniqueWithoutLichChieuInput[]
     updateMany?: DatVeUpdateManyWithWhereWithoutLichChieuInput | DatVeUpdateManyWithWhereWithoutLichChieuInput[]
     deleteMany?: DatVeScalarWhereInput | DatVeScalarWhereInput[]
+  }
+
+  export type GiuChoUpdateManyWithoutLichChieuNestedInput = {
+    create?: XOR<GiuChoCreateWithoutLichChieuInput, GiuChoUncheckedCreateWithoutLichChieuInput> | GiuChoCreateWithoutLichChieuInput[] | GiuChoUncheckedCreateWithoutLichChieuInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutLichChieuInput | GiuChoCreateOrConnectWithoutLichChieuInput[]
+    upsert?: GiuChoUpsertWithWhereUniqueWithoutLichChieuInput | GiuChoUpsertWithWhereUniqueWithoutLichChieuInput[]
+    createMany?: GiuChoCreateManyLichChieuInputEnvelope
+    set?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    disconnect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    delete?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    update?: GiuChoUpdateWithWhereUniqueWithoutLichChieuInput | GiuChoUpdateWithWhereUniqueWithoutLichChieuInput[]
+    updateMany?: GiuChoUpdateManyWithWhereWithoutLichChieuInput | GiuChoUpdateManyWithWhereWithoutLichChieuInput[]
+    deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
   }
 
   export type RapPhimUpdateOneWithoutLichChieuNestedInput = {
@@ -12968,6 +14525,20 @@ export namespace Prisma {
     deleteMany?: DatVeScalarWhereInput | DatVeScalarWhereInput[]
   }
 
+  export type GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput = {
+    create?: XOR<GiuChoCreateWithoutLichChieuInput, GiuChoUncheckedCreateWithoutLichChieuInput> | GiuChoCreateWithoutLichChieuInput[] | GiuChoUncheckedCreateWithoutLichChieuInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutLichChieuInput | GiuChoCreateOrConnectWithoutLichChieuInput[]
+    upsert?: GiuChoUpsertWithWhereUniqueWithoutLichChieuInput | GiuChoUpsertWithWhereUniqueWithoutLichChieuInput[]
+    createMany?: GiuChoCreateManyLichChieuInputEnvelope
+    set?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    disconnect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    delete?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    update?: GiuChoUpdateWithWhereUniqueWithoutLichChieuInput | GiuChoUpdateWithWhereUniqueWithoutLichChieuInput[]
+    updateMany?: GiuChoUpdateManyWithWhereWithoutLichChieuInput | GiuChoUpdateManyWithWhereWithoutLichChieuInput[]
+    deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+  }
+
   export type DatVeCreateNestedManyWithoutNguoiDungInput = {
     create?: XOR<DatVeCreateWithoutNguoiDungInput, DatVeUncheckedCreateWithoutNguoiDungInput> | DatVeCreateWithoutNguoiDungInput[] | DatVeUncheckedCreateWithoutNguoiDungInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutNguoiDungInput | DatVeCreateOrConnectWithoutNguoiDungInput[]
@@ -12975,11 +14546,25 @@ export namespace Prisma {
     connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
   }
 
+  export type GiuChoCreateNestedManyWithoutNguoiDungInput = {
+    create?: XOR<GiuChoCreateWithoutNguoiDungInput, GiuChoUncheckedCreateWithoutNguoiDungInput> | GiuChoCreateWithoutNguoiDungInput[] | GiuChoUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutNguoiDungInput | GiuChoCreateOrConnectWithoutNguoiDungInput[]
+    createMany?: GiuChoCreateManyNguoiDungInputEnvelope
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+  }
+
   export type DatVeUncheckedCreateNestedManyWithoutNguoiDungInput = {
     create?: XOR<DatVeCreateWithoutNguoiDungInput, DatVeUncheckedCreateWithoutNguoiDungInput> | DatVeCreateWithoutNguoiDungInput[] | DatVeUncheckedCreateWithoutNguoiDungInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutNguoiDungInput | DatVeCreateOrConnectWithoutNguoiDungInput[]
     createMany?: DatVeCreateManyNguoiDungInputEnvelope
     connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+  }
+
+  export type GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput = {
+    create?: XOR<GiuChoCreateWithoutNguoiDungInput, GiuChoUncheckedCreateWithoutNguoiDungInput> | GiuChoCreateWithoutNguoiDungInput[] | GiuChoUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutNguoiDungInput | GiuChoCreateOrConnectWithoutNguoiDungInput[]
+    createMany?: GiuChoCreateManyNguoiDungInputEnvelope
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
   }
 
   export type DatVeUpdateManyWithoutNguoiDungNestedInput = {
@@ -12996,6 +14581,20 @@ export namespace Prisma {
     deleteMany?: DatVeScalarWhereInput | DatVeScalarWhereInput[]
   }
 
+  export type GiuChoUpdateManyWithoutNguoiDungNestedInput = {
+    create?: XOR<GiuChoCreateWithoutNguoiDungInput, GiuChoUncheckedCreateWithoutNguoiDungInput> | GiuChoCreateWithoutNguoiDungInput[] | GiuChoUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutNguoiDungInput | GiuChoCreateOrConnectWithoutNguoiDungInput[]
+    upsert?: GiuChoUpsertWithWhereUniqueWithoutNguoiDungInput | GiuChoUpsertWithWhereUniqueWithoutNguoiDungInput[]
+    createMany?: GiuChoCreateManyNguoiDungInputEnvelope
+    set?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    disconnect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    delete?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    update?: GiuChoUpdateWithWhereUniqueWithoutNguoiDungInput | GiuChoUpdateWithWhereUniqueWithoutNguoiDungInput[]
+    updateMany?: GiuChoUpdateManyWithWhereWithoutNguoiDungInput | GiuChoUpdateManyWithWhereWithoutNguoiDungInput[]
+    deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+  }
+
   export type DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput = {
     create?: XOR<DatVeCreateWithoutNguoiDungInput, DatVeUncheckedCreateWithoutNguoiDungInput> | DatVeCreateWithoutNguoiDungInput[] | DatVeUncheckedCreateWithoutNguoiDungInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutNguoiDungInput | DatVeCreateOrConnectWithoutNguoiDungInput[]
@@ -13008,6 +14607,20 @@ export namespace Prisma {
     update?: DatVeUpdateWithWhereUniqueWithoutNguoiDungInput | DatVeUpdateWithWhereUniqueWithoutNguoiDungInput[]
     updateMany?: DatVeUpdateManyWithWhereWithoutNguoiDungInput | DatVeUpdateManyWithWhereWithoutNguoiDungInput[]
     deleteMany?: DatVeScalarWhereInput | DatVeScalarWhereInput[]
+  }
+
+  export type GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput = {
+    create?: XOR<GiuChoCreateWithoutNguoiDungInput, GiuChoUncheckedCreateWithoutNguoiDungInput> | GiuChoCreateWithoutNguoiDungInput[] | GiuChoUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutNguoiDungInput | GiuChoCreateOrConnectWithoutNguoiDungInput[]
+    upsert?: GiuChoUpsertWithWhereUniqueWithoutNguoiDungInput | GiuChoUpsertWithWhereUniqueWithoutNguoiDungInput[]
+    createMany?: GiuChoCreateManyNguoiDungInputEnvelope
+    set?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    disconnect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    delete?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    update?: GiuChoUpdateWithWhereUniqueWithoutNguoiDungInput | GiuChoUpdateWithWhereUniqueWithoutNguoiDungInput[]
+    updateMany?: GiuChoUpdateManyWithWhereWithoutNguoiDungInput | GiuChoUpdateManyWithWhereWithoutNguoiDungInput[]
+    deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
   }
 
   export type BannerCreateNestedManyWithoutPhimInput = {
@@ -13198,6 +14811,52 @@ export namespace Prisma {
     deleteMany?: LichChieuScalarWhereInput | LichChieuScalarWhereInput[]
   }
 
+  export type GheCreateNestedOneWithoutGiuChoInput = {
+    create?: XOR<GheCreateWithoutGiuChoInput, GheUncheckedCreateWithoutGiuChoInput>
+    connectOrCreate?: GheCreateOrConnectWithoutGiuChoInput
+    connect?: GheWhereUniqueInput
+  }
+
+  export type LichChieuCreateNestedOneWithoutGiuChoInput = {
+    create?: XOR<LichChieuCreateWithoutGiuChoInput, LichChieuUncheckedCreateWithoutGiuChoInput>
+    connectOrCreate?: LichChieuCreateOrConnectWithoutGiuChoInput
+    connect?: LichChieuWhereUniqueInput
+  }
+
+  export type NguoiDungCreateNestedOneWithoutGiuChoInput = {
+    create?: XOR<NguoiDungCreateWithoutGiuChoInput, NguoiDungUncheckedCreateWithoutGiuChoInput>
+    connectOrCreate?: NguoiDungCreateOrConnectWithoutGiuChoInput
+    connect?: NguoiDungWhereUniqueInput
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type GheUpdateOneRequiredWithoutGiuChoNestedInput = {
+    create?: XOR<GheCreateWithoutGiuChoInput, GheUncheckedCreateWithoutGiuChoInput>
+    connectOrCreate?: GheCreateOrConnectWithoutGiuChoInput
+    upsert?: GheUpsertWithoutGiuChoInput
+    connect?: GheWhereUniqueInput
+    update?: XOR<XOR<GheUpdateToOneWithWhereWithoutGiuChoInput, GheUpdateWithoutGiuChoInput>, GheUncheckedUpdateWithoutGiuChoInput>
+  }
+
+  export type LichChieuUpdateOneRequiredWithoutGiuChoNestedInput = {
+    create?: XOR<LichChieuCreateWithoutGiuChoInput, LichChieuUncheckedCreateWithoutGiuChoInput>
+    connectOrCreate?: LichChieuCreateOrConnectWithoutGiuChoInput
+    upsert?: LichChieuUpsertWithoutGiuChoInput
+    connect?: LichChieuWhereUniqueInput
+    update?: XOR<XOR<LichChieuUpdateToOneWithWhereWithoutGiuChoInput, LichChieuUpdateWithoutGiuChoInput>, LichChieuUncheckedUpdateWithoutGiuChoInput>
+  }
+
+  export type NguoiDungUpdateOneRequiredWithoutGiuChoNestedInput = {
+    create?: XOR<NguoiDungCreateWithoutGiuChoInput, NguoiDungUncheckedCreateWithoutGiuChoInput>
+    connectOrCreate?: NguoiDungCreateOrConnectWithoutGiuChoInput
+    upsert?: NguoiDungUpsertWithoutGiuChoInput
+    connect?: NguoiDungWhereUniqueInput
+    update?: XOR<XOR<NguoiDungUpdateToOneWithWhereWithoutGiuChoInput, NguoiDungUpdateWithoutGiuChoInput>, NguoiDungUncheckedUpdateWithoutGiuChoInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -13343,6 +15002,31 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type PhimCreateWithoutBannerInput = {
@@ -13511,6 +15195,7 @@ export namespace Prisma {
     so_dt?: string | null
     mat_khau?: string | null
     loai_nguoi_dung?: string | null
+    GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateWithoutDatVeInput = {
@@ -13520,6 +15205,7 @@ export namespace Prisma {
     so_dt?: string | null
     mat_khau?: string | null
     loai_nguoi_dung?: string | null
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungCreateOrConnectWithoutDatVeInput = {
@@ -13530,6 +15216,7 @@ export namespace Prisma {
   export type LichChieuCreateWithoutDatVeInput = {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
+    GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
     RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
     Phim?: PhimCreateNestedOneWithoutLichChieuInput
   }
@@ -13540,6 +15227,7 @@ export namespace Prisma {
     ma_phim?: number | null
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuCreateOrConnectWithoutDatVeInput = {
@@ -13551,6 +15239,7 @@ export namespace Prisma {
     ten_ghe?: string | null
     loai_ghe?: string | null
     RapPhim?: RapPhimCreateNestedOneWithoutGheInput
+    GiuCho?: GiuChoCreateNestedManyWithoutGheInput
   }
 
   export type GheUncheckedCreateWithoutDatVeInput = {
@@ -13558,6 +15247,7 @@ export namespace Prisma {
     ten_ghe?: string | null
     loai_ghe?: string | null
     ma_rap?: number | null
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutGheInput
   }
 
   export type GheCreateOrConnectWithoutDatVeInput = {
@@ -13582,6 +15272,7 @@ export namespace Prisma {
     so_dt?: NullableStringFieldUpdateOperationsInput | string | null
     mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateWithoutDatVeInput = {
@@ -13591,6 +15282,7 @@ export namespace Prisma {
     so_dt?: NullableStringFieldUpdateOperationsInput | string | null
     mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type LichChieuUpsertWithoutDatVeInput = {
@@ -13607,6 +15299,7 @@ export namespace Prisma {
   export type LichChieuUpdateWithoutDatVeInput = {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
+    GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
     RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
     Phim?: PhimUpdateOneWithoutLichChieuNestedInput
   }
@@ -13617,6 +15310,7 @@ export namespace Prisma {
     ma_phim?: NullableIntFieldUpdateOperationsInput | number | null
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type GheUpsertWithoutDatVeInput = {
@@ -13634,6 +15328,7 @@ export namespace Prisma {
     ten_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     loai_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     RapPhim?: RapPhimUpdateOneWithoutGheNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutGheNestedInput
   }
 
   export type GheUncheckedUpdateWithoutDatVeInput = {
@@ -13641,9 +15336,12 @@ export namespace Prisma {
     ten_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     loai_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     ma_rap?: NullableIntFieldUpdateOperationsInput | number | null
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutGheNestedInput
   }
 
   export type DatVeCreateWithoutGheInput = {
+    gia_ve: number
+    created_at?: Date | string | null
     NguoiDung: NguoiDungCreateNestedOneWithoutDatVeInput
     LichChieu: LichChieuCreateNestedOneWithoutDatVeInput
   }
@@ -13651,6 +15349,8 @@ export namespace Prisma {
   export type DatVeUncheckedCreateWithoutGheInput = {
     tai_khoan: number
     ma_lich_chieu: number
+    gia_ve: number
+    created_at?: Date | string | null
   }
 
   export type DatVeCreateOrConnectWithoutGheInput = {
@@ -13681,6 +15381,31 @@ export namespace Prisma {
     create: XOR<RapPhimCreateWithoutGheInput, RapPhimUncheckedCreateWithoutGheInput>
   }
 
+  export type GiuChoCreateWithoutGheInput = {
+    expire_at: Date | string
+    created_at?: Date | string | null
+    LichChieu: LichChieuCreateNestedOneWithoutGiuChoInput
+    NguoiDung: NguoiDungCreateNestedOneWithoutGiuChoInput
+  }
+
+  export type GiuChoUncheckedCreateWithoutGheInput = {
+    ma_giu_cho?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    expire_at: Date | string
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoCreateOrConnectWithoutGheInput = {
+    where: GiuChoWhereUniqueInput
+    create: XOR<GiuChoCreateWithoutGheInput, GiuChoUncheckedCreateWithoutGheInput>
+  }
+
+  export type GiuChoCreateManyGheInputEnvelope = {
+    data: GiuChoCreateManyGheInput | GiuChoCreateManyGheInput[]
+    skipDuplicates?: boolean
+  }
+
   export type DatVeUpsertWithWhereUniqueWithoutGheInput = {
     where: DatVeWhereUniqueInput
     update: XOR<DatVeUpdateWithoutGheInput, DatVeUncheckedUpdateWithoutGheInput>
@@ -13704,6 +15429,8 @@ export namespace Prisma {
     tai_khoan?: IntFilter<"DatVe"> | number
     ma_lich_chieu?: IntFilter<"DatVe"> | number
     ma_ghe?: IntFilter<"DatVe"> | number
+    gia_ve?: IntFilter<"DatVe"> | number
+    created_at?: DateTimeNullableFilter<"DatVe"> | Date | string | null
   }
 
   export type RapPhimUpsertWithoutGheInput = {
@@ -13728,6 +15455,34 @@ export namespace Prisma {
     ten_rap?: NullableStringFieldUpdateOperationsInput | string | null
     ma_cum_rap?: NullableIntFieldUpdateOperationsInput | number | null
     LichChieu?: LichChieuUncheckedUpdateManyWithoutRapPhimNestedInput
+  }
+
+  export type GiuChoUpsertWithWhereUniqueWithoutGheInput = {
+    where: GiuChoWhereUniqueInput
+    update: XOR<GiuChoUpdateWithoutGheInput, GiuChoUncheckedUpdateWithoutGheInput>
+    create: XOR<GiuChoCreateWithoutGheInput, GiuChoUncheckedCreateWithoutGheInput>
+  }
+
+  export type GiuChoUpdateWithWhereUniqueWithoutGheInput = {
+    where: GiuChoWhereUniqueInput
+    data: XOR<GiuChoUpdateWithoutGheInput, GiuChoUncheckedUpdateWithoutGheInput>
+  }
+
+  export type GiuChoUpdateManyWithWhereWithoutGheInput = {
+    where: GiuChoScalarWhereInput
+    data: XOR<GiuChoUpdateManyMutationInput, GiuChoUncheckedUpdateManyWithoutGheInput>
+  }
+
+  export type GiuChoScalarWhereInput = {
+    AND?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+    OR?: GiuChoScalarWhereInput[]
+    NOT?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+    ma_giu_cho?: IntFilter<"GiuCho"> | number
+    tai_khoan?: IntFilter<"GiuCho"> | number
+    ma_lich_chieu?: IntFilter<"GiuCho"> | number
+    ma_ghe?: IntFilter<"GiuCho"> | number
+    expire_at?: DateTimeFilter<"GiuCho"> | Date | string
+    created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
   }
 
   export type CumRapCreateWithoutHeThongRapInput = {
@@ -13783,6 +15538,8 @@ export namespace Prisma {
   }
 
   export type DatVeCreateWithoutLichChieuInput = {
+    gia_ve: number
+    created_at?: Date | string | null
     NguoiDung: NguoiDungCreateNestedOneWithoutDatVeInput
     Ghe: GheCreateNestedOneWithoutDatVeInput
   }
@@ -13790,6 +15547,8 @@ export namespace Prisma {
   export type DatVeUncheckedCreateWithoutLichChieuInput = {
     tai_khoan: number
     ma_ghe: number
+    gia_ve: number
+    created_at?: Date | string | null
   }
 
   export type DatVeCreateOrConnectWithoutLichChieuInput = {
@@ -13799,6 +15558,31 @@ export namespace Prisma {
 
   export type DatVeCreateManyLichChieuInputEnvelope = {
     data: DatVeCreateManyLichChieuInput | DatVeCreateManyLichChieuInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GiuChoCreateWithoutLichChieuInput = {
+    expire_at: Date | string
+    created_at?: Date | string | null
+    Ghe: GheCreateNestedOneWithoutGiuChoInput
+    NguoiDung: NguoiDungCreateNestedOneWithoutGiuChoInput
+  }
+
+  export type GiuChoUncheckedCreateWithoutLichChieuInput = {
+    ma_giu_cho?: number
+    tai_khoan: number
+    ma_ghe: number
+    expire_at: Date | string
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoCreateOrConnectWithoutLichChieuInput = {
+    where: GiuChoWhereUniqueInput
+    create: XOR<GiuChoCreateWithoutLichChieuInput, GiuChoUncheckedCreateWithoutLichChieuInput>
+  }
+
+  export type GiuChoCreateManyLichChieuInputEnvelope = {
+    data: GiuChoCreateManyLichChieuInput | GiuChoCreateManyLichChieuInput[]
     skipDuplicates?: boolean
   }
 
@@ -13870,6 +15654,22 @@ export namespace Prisma {
     data: XOR<DatVeUpdateManyMutationInput, DatVeUncheckedUpdateManyWithoutLichChieuInput>
   }
 
+  export type GiuChoUpsertWithWhereUniqueWithoutLichChieuInput = {
+    where: GiuChoWhereUniqueInput
+    update: XOR<GiuChoUpdateWithoutLichChieuInput, GiuChoUncheckedUpdateWithoutLichChieuInput>
+    create: XOR<GiuChoCreateWithoutLichChieuInput, GiuChoUncheckedCreateWithoutLichChieuInput>
+  }
+
+  export type GiuChoUpdateWithWhereUniqueWithoutLichChieuInput = {
+    where: GiuChoWhereUniqueInput
+    data: XOR<GiuChoUpdateWithoutLichChieuInput, GiuChoUncheckedUpdateWithoutLichChieuInput>
+  }
+
+  export type GiuChoUpdateManyWithWhereWithoutLichChieuInput = {
+    where: GiuChoScalarWhereInput
+    data: XOR<GiuChoUpdateManyMutationInput, GiuChoUncheckedUpdateManyWithoutLichChieuInput>
+  }
+
   export type RapPhimUpsertWithoutLichChieuInput = {
     update: XOR<RapPhimUpdateWithoutLichChieuInput, RapPhimUncheckedUpdateWithoutLichChieuInput>
     create: XOR<RapPhimCreateWithoutLichChieuInput, RapPhimUncheckedCreateWithoutLichChieuInput>
@@ -13935,6 +15735,8 @@ export namespace Prisma {
   }
 
   export type DatVeCreateWithoutNguoiDungInput = {
+    gia_ve: number
+    created_at?: Date | string | null
     LichChieu: LichChieuCreateNestedOneWithoutDatVeInput
     Ghe: GheCreateNestedOneWithoutDatVeInput
   }
@@ -13942,6 +15744,8 @@ export namespace Prisma {
   export type DatVeUncheckedCreateWithoutNguoiDungInput = {
     ma_lich_chieu: number
     ma_ghe: number
+    gia_ve: number
+    created_at?: Date | string | null
   }
 
   export type DatVeCreateOrConnectWithoutNguoiDungInput = {
@@ -13951,6 +15755,31 @@ export namespace Prisma {
 
   export type DatVeCreateManyNguoiDungInputEnvelope = {
     data: DatVeCreateManyNguoiDungInput | DatVeCreateManyNguoiDungInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GiuChoCreateWithoutNguoiDungInput = {
+    expire_at: Date | string
+    created_at?: Date | string | null
+    Ghe: GheCreateNestedOneWithoutGiuChoInput
+    LichChieu: LichChieuCreateNestedOneWithoutGiuChoInput
+  }
+
+  export type GiuChoUncheckedCreateWithoutNguoiDungInput = {
+    ma_giu_cho?: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    expire_at: Date | string
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoCreateOrConnectWithoutNguoiDungInput = {
+    where: GiuChoWhereUniqueInput
+    create: XOR<GiuChoCreateWithoutNguoiDungInput, GiuChoUncheckedCreateWithoutNguoiDungInput>
+  }
+
+  export type GiuChoCreateManyNguoiDungInputEnvelope = {
+    data: GiuChoCreateManyNguoiDungInput | GiuChoCreateManyNguoiDungInput[]
     skipDuplicates?: boolean
   }
 
@@ -13968,6 +15797,22 @@ export namespace Prisma {
   export type DatVeUpdateManyWithWhereWithoutNguoiDungInput = {
     where: DatVeScalarWhereInput
     data: XOR<DatVeUpdateManyMutationInput, DatVeUncheckedUpdateManyWithoutNguoiDungInput>
+  }
+
+  export type GiuChoUpsertWithWhereUniqueWithoutNguoiDungInput = {
+    where: GiuChoWhereUniqueInput
+    update: XOR<GiuChoUpdateWithoutNguoiDungInput, GiuChoUncheckedUpdateWithoutNguoiDungInput>
+    create: XOR<GiuChoCreateWithoutNguoiDungInput, GiuChoUncheckedCreateWithoutNguoiDungInput>
+  }
+
+  export type GiuChoUpdateWithWhereUniqueWithoutNguoiDungInput = {
+    where: GiuChoWhereUniqueInput
+    data: XOR<GiuChoUpdateWithoutNguoiDungInput, GiuChoUncheckedUpdateWithoutNguoiDungInput>
+  }
+
+  export type GiuChoUpdateManyWithWhereWithoutNguoiDungInput = {
+    where: GiuChoScalarWhereInput
+    data: XOR<GiuChoUpdateManyMutationInput, GiuChoUncheckedUpdateManyWithoutNguoiDungInput>
   }
 
   export type BannerCreateWithoutPhimInput = {
@@ -13993,6 +15838,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
+    GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
     RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
   }
 
@@ -14002,6 +15848,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuCreateOrConnectWithoutPhimInput = {
@@ -14070,6 +15917,7 @@ export namespace Prisma {
     ten_ghe?: string | null
     loai_ghe?: string | null
     DatVe?: DatVeCreateNestedManyWithoutGheInput
+    GiuCho?: GiuChoCreateNestedManyWithoutGheInput
   }
 
   export type GheUncheckedCreateWithoutRapPhimInput = {
@@ -14077,6 +15925,7 @@ export namespace Prisma {
     ten_ghe?: string | null
     loai_ghe?: string | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutGheInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutGheInput
   }
 
   export type GheCreateOrConnectWithoutRapPhimInput = {
@@ -14093,6 +15942,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
+    GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
     Phim?: PhimCreateNestedOneWithoutLichChieuInput
   }
 
@@ -14102,6 +15952,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuCreateOrConnectWithoutRapPhimInput = {
@@ -14202,6 +16053,156 @@ export namespace Prisma {
     khu_vuc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type GheCreateWithoutGiuChoInput = {
+    ten_ghe?: string | null
+    loai_ghe?: string | null
+    DatVe?: DatVeCreateNestedManyWithoutGheInput
+    RapPhim?: RapPhimCreateNestedOneWithoutGheInput
+  }
+
+  export type GheUncheckedCreateWithoutGiuChoInput = {
+    ma_ghe?: number
+    ten_ghe?: string | null
+    loai_ghe?: string | null
+    ma_rap?: number | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutGheInput
+  }
+
+  export type GheCreateOrConnectWithoutGiuChoInput = {
+    where: GheWhereUniqueInput
+    create: XOR<GheCreateWithoutGiuChoInput, GheUncheckedCreateWithoutGiuChoInput>
+  }
+
+  export type LichChieuCreateWithoutGiuChoInput = {
+    ngay_gio_chieu?: Date | string | null
+    gia_ve?: number | null
+    DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
+    RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
+    Phim?: PhimCreateNestedOneWithoutLichChieuInput
+  }
+
+  export type LichChieuUncheckedCreateWithoutGiuChoInput = {
+    ma_lich_chieu?: number
+    ma_rap?: number | null
+    ma_phim?: number | null
+    ngay_gio_chieu?: Date | string | null
+    gia_ve?: number | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
+  }
+
+  export type LichChieuCreateOrConnectWithoutGiuChoInput = {
+    where: LichChieuWhereUniqueInput
+    create: XOR<LichChieuCreateWithoutGiuChoInput, LichChieuUncheckedCreateWithoutGiuChoInput>
+  }
+
+  export type NguoiDungCreateWithoutGiuChoInput = {
+    ho_ten?: string | null
+    email?: string | null
+    so_dt?: string | null
+    mat_khau?: string | null
+    loai_nguoi_dung?: string | null
+    DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
+  }
+
+  export type NguoiDungUncheckedCreateWithoutGiuChoInput = {
+    tai_khoan?: number
+    ho_ten?: string | null
+    email?: string | null
+    so_dt?: string | null
+    mat_khau?: string | null
+    loai_nguoi_dung?: string | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
+  }
+
+  export type NguoiDungCreateOrConnectWithoutGiuChoInput = {
+    where: NguoiDungWhereUniqueInput
+    create: XOR<NguoiDungCreateWithoutGiuChoInput, NguoiDungUncheckedCreateWithoutGiuChoInput>
+  }
+
+  export type GheUpsertWithoutGiuChoInput = {
+    update: XOR<GheUpdateWithoutGiuChoInput, GheUncheckedUpdateWithoutGiuChoInput>
+    create: XOR<GheCreateWithoutGiuChoInput, GheUncheckedCreateWithoutGiuChoInput>
+    where?: GheWhereInput
+  }
+
+  export type GheUpdateToOneWithWhereWithoutGiuChoInput = {
+    where?: GheWhereInput
+    data: XOR<GheUpdateWithoutGiuChoInput, GheUncheckedUpdateWithoutGiuChoInput>
+  }
+
+  export type GheUpdateWithoutGiuChoInput = {
+    ten_ghe?: NullableStringFieldUpdateOperationsInput | string | null
+    loai_ghe?: NullableStringFieldUpdateOperationsInput | string | null
+    DatVe?: DatVeUpdateManyWithoutGheNestedInput
+    RapPhim?: RapPhimUpdateOneWithoutGheNestedInput
+  }
+
+  export type GheUncheckedUpdateWithoutGiuChoInput = {
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    ten_ghe?: NullableStringFieldUpdateOperationsInput | string | null
+    loai_ghe?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_rap?: NullableIntFieldUpdateOperationsInput | number | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutGheNestedInput
+  }
+
+  export type LichChieuUpsertWithoutGiuChoInput = {
+    update: XOR<LichChieuUpdateWithoutGiuChoInput, LichChieuUncheckedUpdateWithoutGiuChoInput>
+    create: XOR<LichChieuCreateWithoutGiuChoInput, LichChieuUncheckedCreateWithoutGiuChoInput>
+    where?: LichChieuWhereInput
+  }
+
+  export type LichChieuUpdateToOneWithWhereWithoutGiuChoInput = {
+    where?: LichChieuWhereInput
+    data: XOR<LichChieuUpdateWithoutGiuChoInput, LichChieuUncheckedUpdateWithoutGiuChoInput>
+  }
+
+  export type LichChieuUpdateWithoutGiuChoInput = {
+    ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
+    DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
+    RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
+    Phim?: PhimUpdateOneWithoutLichChieuNestedInput
+  }
+
+  export type LichChieuUncheckedUpdateWithoutGiuChoInput = {
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_rap?: NullableIntFieldUpdateOperationsInput | number | null
+    ma_phim?: NullableIntFieldUpdateOperationsInput | number | null
+    ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
+  }
+
+  export type NguoiDungUpsertWithoutGiuChoInput = {
+    update: XOR<NguoiDungUpdateWithoutGiuChoInput, NguoiDungUncheckedUpdateWithoutGiuChoInput>
+    create: XOR<NguoiDungCreateWithoutGiuChoInput, NguoiDungUncheckedCreateWithoutGiuChoInput>
+    where?: NguoiDungWhereInput
+  }
+
+  export type NguoiDungUpdateToOneWithWhereWithoutGiuChoInput = {
+    where?: NguoiDungWhereInput
+    data: XOR<NguoiDungUpdateWithoutGiuChoInput, NguoiDungUncheckedUpdateWithoutGiuChoInput>
+  }
+
+  export type NguoiDungUpdateWithoutGiuChoInput = {
+    ho_ten?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    so_dt?: NullableStringFieldUpdateOperationsInput | string | null
+    mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
+    loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
+  }
+
+  export type NguoiDungUncheckedUpdateWithoutGiuChoInput = {
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ho_ten?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    so_dt?: NullableStringFieldUpdateOperationsInput | string | null
+    mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
+    loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
+  }
+
   export type RapPhimCreateManyCumRapInput = {
     ma_rap?: number
     ten_rap?: string | null
@@ -14228,9 +16229,21 @@ export namespace Prisma {
   export type DatVeCreateManyGheInput = {
     tai_khoan: number
     ma_lich_chieu: number
+    gia_ve: number
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoCreateManyGheInput = {
+    ma_giu_cho?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    expire_at: Date | string
+    created_at?: Date | string | null
   }
 
   export type DatVeUpdateWithoutGheInput = {
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutDatVeNestedInput
     LichChieu?: LichChieuUpdateOneRequiredWithoutDatVeNestedInput
   }
@@ -14238,11 +16251,38 @@ export namespace Prisma {
   export type DatVeUncheckedUpdateWithoutGheInput = {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DatVeUncheckedUpdateManyWithoutGheInput = {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoUpdateWithoutGheInput = {
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    LichChieu?: LichChieuUpdateOneRequiredWithoutGiuChoNestedInput
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutGiuChoNestedInput
+  }
+
+  export type GiuChoUncheckedUpdateWithoutGheInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoUncheckedUpdateManyWithoutGheInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CumRapCreateManyHeThongRapInput = {
@@ -14277,9 +16317,21 @@ export namespace Prisma {
   export type DatVeCreateManyLichChieuInput = {
     tai_khoan: number
     ma_ghe: number
+    gia_ve: number
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoCreateManyLichChieuInput = {
+    ma_giu_cho?: number
+    tai_khoan: number
+    ma_ghe: number
+    expire_at: Date | string
+    created_at?: Date | string | null
   }
 
   export type DatVeUpdateWithoutLichChieuInput = {
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutDatVeNestedInput
     Ghe?: GheUpdateOneRequiredWithoutDatVeNestedInput
   }
@@ -14287,19 +16339,58 @@ export namespace Prisma {
   export type DatVeUncheckedUpdateWithoutLichChieuInput = {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DatVeUncheckedUpdateManyWithoutLichChieuInput = {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoUpdateWithoutLichChieuInput = {
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutGiuChoNestedInput
+  }
+
+  export type GiuChoUncheckedUpdateWithoutLichChieuInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoUncheckedUpdateManyWithoutLichChieuInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DatVeCreateManyNguoiDungInput = {
     ma_lich_chieu: number
     ma_ghe: number
+    gia_ve: number
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoCreateManyNguoiDungInput = {
+    ma_giu_cho?: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    expire_at: Date | string
+    created_at?: Date | string | null
   }
 
   export type DatVeUpdateWithoutNguoiDungInput = {
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     LichChieu?: LichChieuUpdateOneRequiredWithoutDatVeNestedInput
     Ghe?: GheUpdateOneRequiredWithoutDatVeNestedInput
   }
@@ -14307,11 +16398,38 @@ export namespace Prisma {
   export type DatVeUncheckedUpdateWithoutNguoiDungInput = {
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DatVeUncheckedUpdateManyWithoutNguoiDungInput = {
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoUpdateWithoutNguoiDungInput = {
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
+    LichChieu?: LichChieuUpdateOneRequiredWithoutGiuChoNestedInput
+  }
+
+  export type GiuChoUncheckedUpdateWithoutNguoiDungInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoUncheckedUpdateManyWithoutNguoiDungInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type BannerCreateManyPhimInput = {
@@ -14344,6 +16462,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
     RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
   }
 
@@ -14353,6 +16472,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type LichChieuUncheckedUpdateManyWithoutPhimInput = {
@@ -14379,6 +16499,7 @@ export namespace Prisma {
     ten_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     loai_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     DatVe?: DatVeUpdateManyWithoutGheNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutGheNestedInput
   }
 
   export type GheUncheckedUpdateWithoutRapPhimInput = {
@@ -14386,6 +16507,7 @@ export namespace Prisma {
     ten_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     loai_ghe?: NullableStringFieldUpdateOperationsInput | string | null
     DatVe?: DatVeUncheckedUpdateManyWithoutGheNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutGheNestedInput
   }
 
   export type GheUncheckedUpdateManyWithoutRapPhimInput = {
@@ -14398,6 +16520,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
     Phim?: PhimUpdateOneWithoutLichChieuNestedInput
   }
 
@@ -14407,6 +16530,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type LichChieuUncheckedUpdateManyWithoutRapPhimInput = {

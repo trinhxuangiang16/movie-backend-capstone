@@ -100,4 +100,46 @@ export const phimController = {
       next(err);
     }
   },
+
+  // GET PhimDangChieu
+  getPhimDangChieu: async (req, res, next) => {
+    try {
+      const result = await phimService.getPhimDangChieu();
+
+      res.json({
+        message: "Lấy danh sách phim đang chiếu thành công",
+        data: result,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  // GET PhimSapChieu
+  getPhimSapChieu: async (req, res, next) => {
+    try {
+      const result = await phimService.getPhimSapChieu();
+
+      res.json({
+        message: "Lấy danh sách phim sắp chiếu thành công",
+        data: result,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  // GET PhimHot
+  getPhimHot: async (req, res, next) => {
+    try {
+      const result = await phimService.getPhimHot();
+
+      res.json({
+        message: "Lấy danh sách phim hot thành công",
+        data: result,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
 };

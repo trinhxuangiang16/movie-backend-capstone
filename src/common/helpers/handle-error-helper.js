@@ -27,7 +27,7 @@ export const appError = (err, req, res, next) => {
 
   //Kiểm tra xem code có undefine không. Nếu ko có thì giá trị statusCode sẽ về mặc định là 500
   console.log("code", err.code);
-  const response = responseError(err?.message, err?.code, err?.stack);
+  const response = responseError(err?.message, err?.code);
 
   //Đây là redponse lỗi trả về FE
   res.status(response.statusCode).json(response);
