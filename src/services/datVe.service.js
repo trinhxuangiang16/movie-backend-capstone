@@ -1,6 +1,6 @@
 import { prisma } from "../common/prisma/contect.prisma.js";
 import { BadRequestException } from "../common/helpers/exception.helper.js";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../common/prisma/generated/prisma/index.js";
 
 export const datVeService = {
   layTrangThaiGheTrongRap: async (ma_lich_chieu) => {
@@ -211,7 +211,10 @@ export const datVeService = {
           },
         });
       } catch (error) {
-        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (
+          error instanceof Prisma.PrismaClientKnownRequestError &&
+          error.code === "P2002"
+        ) {
           throw new BadRequestException(
             "Ghế vừa được người khác đặt, vui lòng chọn lại",
           );
