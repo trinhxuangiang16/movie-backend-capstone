@@ -2,6 +2,8 @@ import express from "express";
 
 import { protect } from "../common/middleware/protect.middleware.js";
 import { authController } from "../controllers/auth.controller.js";
+import { validateAll } from "../common/middleware/validate.middleware.js";
+import { loginSchema, registerSchema } from "../validations/auth.schema.js";
 
 const authRouter = express.Router();
 
@@ -118,8 +120,16 @@ const authRouter = express.Router();
  *         description: Tạo access token mới thành công
  */
 
-authRouter.post("/DangKy", authController.register);
-authRouter.post("/DangNhap", authController.login);
+authRouter.post(
+  "/DangKy",
+  validateAll({ body: registerSchema }),
+  authController.register,
+);
+authRouter.post(
+  "/DangNhap",
+  validateAll({ body: loginSchema }),
+  authController.login,
+);
 
 authRouter.get("/ThongTinTaiKhoan", protect, authController.getInfo);
 

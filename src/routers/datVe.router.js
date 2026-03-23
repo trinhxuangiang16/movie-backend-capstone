@@ -5,6 +5,15 @@ import {
 } from "../common/middleware/protect.middleware.js";
 import { datVeController } from "../controllers/datVe.controller.js";
 
+import {
+  datVeSchema,
+  layDanhSachPhongVeSchema,
+  layTrangThaiGheSchema,
+  lichChieuSchema,
+} from "../validations/datVe.schema.js";
+import { parseNumber } from "../common/middleware/parseNumber.middleware.js";
+import { validateAll } from "../common/middleware/validate.middleware.js";
+
 export const datVeRouter = express.Router();
 
 /**
@@ -95,12 +104,14 @@ export const datVeRouter = express.Router();
 datVeRouter.get(
   "/LayTrangThaiGheTrongRap",
   protect,
+  validateAll({ body: layTrangThaiGheSchema }),
   datVeController.layTrangThaiGheTrongRap,
 );
 
 datVeRouter.post(
   "/TaoLichChieu",
   protect,
+  validateAll({ body: lichChieuSchema }),
   mustBeAdmin("ADMIN"),
   datVeController.taoLichChieu,
 );
@@ -108,9 +119,17 @@ datVeRouter.post(
 datVeRouter.get(
   "/LayDanhSachPhongVe",
   protect,
+  parseNumber,
+  validateAll({ query: layDanhSachPhongVeSchema }),
   datVeController.layDanhSachPhongVe,
 );
 
-datVeRouter.post("/DatVe", protect, datVeController.datVe);
+datVeRouter.post(
+  "/DatVe",
+  protect,
+  parseNumber,
+  validateAll({ body: datVeSchema }),
+  datVeController.datVe,
+);
 
 datVeRouter.get("/LichSuDatVe", protect, datVeController.getLichSuDatVe);

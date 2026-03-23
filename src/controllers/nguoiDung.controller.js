@@ -1,15 +1,15 @@
-import { responseSuccess } from "../common/helpers/function.helper.js";
+import { successResponse } from "../common/helpers/function.helper.js";
 import { nguoiDungService } from "../services/nguoiDung.service.js";
 
 export const nguoiDungController = {
   getLayDanhSachNguoiDung: async (req, res, next) => {
     try {
       const result = await nguoiDungService.getLayDanhSachNguoiDung();
-      const response = responseSuccess(
+      return successResponse(
+        res,
         result,
-        `Lấy danh sách người dùng thành công`,
+        "Lấy danh sách người dùng thành công",
       );
-      res.status(response.statusCode).json(response);
     } catch (err) {
       next(err);
     }
@@ -18,13 +18,13 @@ export const nguoiDungController = {
   getLayDanhSachNguoiDungPhanTrang: async (req, res, next) => {
     try {
       const result = await nguoiDungService.getLayDanhSachNguoiDungPhanTrang(
-        req.query,
+        req.validated.query,
       );
-      const response = responseSuccess(
+      return successResponse(
+        res,
         result,
-        `Lấy danh sách người dùng phân trang thành công`,
+        "Lấy danh sách người dùng phân trang thành công",
       );
-      res.status(response.statusCode).json(response);
     } catch (err) {
       next(err);
     }
@@ -33,12 +33,10 @@ export const nguoiDungController = {
   timKiemNguoiDung: async (req, res, next) => {
     try {
       const { keyword } = req.query;
+
       const result = await nguoiDungService.timKiemNguoiDung(keyword);
-      const response = responseSuccess(
-        result,
-        `Tìm kiếm người dùng thành công`,
-      );
-      res.status(response.statusCode).json(response);
+
+      return successResponse(res, result, "Tìm kiếm người dùng thành công");
     } catch (err) {
       next(err);
     }
@@ -46,16 +44,12 @@ export const nguoiDungController = {
 
   capNhatNguoiDung: async (req, res, next) => {
     try {
-      const { tai_khoan } = req.params;
       const result = await nguoiDungService.capNhatNguoiDung(
-        tai_khoan,
-        req.body,
+        req.user.tai_khoan,
+        req.validated.body,
       );
-      const response = responseSuccess(
-        result,
-        `Cập nhật người dùng thành công`,
-      );
-      res.status(response.statusCode).json(response);
+
+      return successResponse(res, result, "Cập nhật người dùng thành công");
     } catch (err) {
       next(err);
     }
@@ -64,9 +58,10 @@ export const nguoiDungController = {
   xoaNguoiDung: async (req, res, next) => {
     try {
       const { tai_khoan } = req.params;
+
       const result = await nguoiDungService.xoaNguoiDung(tai_khoan);
-      const response = responseSuccess(result, `Xóa người dùng thành công`);
-      res.status(response.statusCode).json(response);
+
+      return successResponse(res, result, "Xóa người dùng thành công");
     } catch (err) {
       next(err);
     }

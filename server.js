@@ -1,10 +1,12 @@
 import cors from "cors";
 import express from "express";
-import { NotFountException } from "./src/common/helpers/exception.helper.js";
+import { NotFoundException } from "./src/common/helpers/exception.helper.js";
 import { appError } from "./src/common/helpers/handle-error-helper.js";
 import rootRouter from "./src/routers/root.router.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./src/config/swagger.js";
+import { requestLogger } from "./src/common/middleware/logger.middleware.js";
+import { requestIdMiddleware } from "./src/common/middleware/requestId.middleware.js";
 
 const app = express();
 
@@ -27,13 +29,19 @@ app.get("/", (req, res) => {
   });
 });
 
+// Request ID middleware
+app.use(requestIdMiddleware);
+
+// Logger middleware
+app.use(requestLogger);
+
 //API
 app.use("/api", rootRouter);
 
 //LOG + NOT FOUND
 app.use((req, res, next) => {
   console.log(req.method, req.originalUrl, req.ip);
-  throw new NotFountException();
+  throw new NotFoundException();
 }); //nếu không có route nào khớp, sẽ ném lỗi NotFoundException để được xử lý bởi appError
 
 //ERROR HANDLER

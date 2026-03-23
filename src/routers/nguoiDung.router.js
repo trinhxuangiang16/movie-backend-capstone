@@ -1,6 +1,10 @@
 import express from "express";
 import { nguoiDungController } from "../controllers/nguoiDung.controller.js";
 import { protect } from "../common/middleware/protect.middleware.js";
+import { validateAll } from "../common/middleware/validate.middleware.js";
+import { updateUserSchema } from "../validations/auth.schema.js";
+import { parseNumber } from "../common/middleware/parseNumber.middleware.js";
+import { queryPaginationSchema } from "../validations/pagination.schema.js";
 
 export const nguoiDungRouter = express.Router();
 
@@ -156,19 +160,17 @@ nguoiDungRouter.get(
 nguoiDungRouter.get(
   "/LayDanhSachNguoiDungPhanTrang",
   protect,
+  parseNumber,
+  validateAll({ query: queryPaginationSchema }),
   nguoiDungController.getLayDanhSachNguoiDungPhanTrang,
 );
 
 nguoiDungRouter.get(
   "/TimKiemNguoiDung",
   protect,
+  parseNumber,
+  validateAll({ query: queryPaginationSchema }),
   nguoiDungController.timKiemNguoiDung,
-);
-
-nguoiDungRouter.put(
-  "/CapNhatThongTinNguoiDung/:tai_khoan",
-  protect,
-  nguoiDungController.capNhatNguoiDung,
 );
 
 //Tự Xóa
@@ -176,4 +178,11 @@ nguoiDungRouter.delete(
   "/XoaNguoiDung/:tai_khoan",
   protect,
   nguoiDungController.xoaNguoiDung,
+);
+
+nguoiDungRouter.put(
+  "/CapNhatThongTinNguoiDung",
+  protect,
+  validateAll({ body: updateUserSchema }),
+  nguoiDungController.capNhatNguoiDung,
 );

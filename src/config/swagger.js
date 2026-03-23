@@ -6,7 +6,7 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "Movie Booking Backedend API",
-      version: "1.0.0",
+      version: "2.1.0",
       description: "Tài liệu API cho dự án đặt vé xem phim",
     },
     servers: [

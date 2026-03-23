@@ -1,6 +1,10 @@
 import { prisma } from "../common/prisma/contect.prisma.js";
 import bcrypt from "bcrypt";
 import { buildQueryPrisma } from "../utils/buildQueryPrisma.js";
+import {
+  BadRequestException,
+  NotFoundException,
+} from "../common/helpers/exception.helper.js";
 
 export const nguoiDungService = {
   getLayDanhSachNguoiDung: async () => {
@@ -17,6 +21,11 @@ export const nguoiDungService = {
 
   getLayDanhSachNguoiDungPhanTrang: async (query) => {
     const { page, pageSize, skip, where } = buildQueryPrisma(query);
+
+    // const finalWhere = {
+    //   ...where,
+    //   isDeleted: false,
+    // };
 
     const data = await prisma.nguoiDung.findMany({
       skip,
@@ -35,7 +44,7 @@ export const nguoiDungService = {
   },
 
   timKiemNguoiDung: async (keyword) => {
-    return prisma.nguoiDung.findMany({
+    const user = await prisma.nguoiDung.findMany({
       where: {
         //đây là điều kiện tìm kiếm "OR" với hai trường email và ho_ten, sử dụng "contains" để tìm kiếm chuỗi con và "mode: insensitive" để không phân biệt chữ hoa thường. or tức là 1
         OR: [
@@ -44,44 +53,60 @@ export const nguoiDungService = {
         ],
       },
     });
+
+    if (!user || user.length === 0) {
+      throw new NotFoundException(
+        "Không tìm thấy người dùng nào với từ khóa đã cho",
+      );
+    }
+
+    const userWithoutPassword = user.map((u) => {
+      const { mat_khau, ...rest } = u; //loại bỏ trường mat_khau khỏi đối tượng người dùng
+      return rest; //trả về đối tượng người dùng mới không có trường mat_khau
+    });
+
+    return userWithoutPassword;
   },
 
   capNhatNguoiDung: async (tai_khoan, data) => {
+    console.log("🚀 ~ KIỂM TRA ~ tai_khoan:", tai_khoan);
+
     const user = await prisma.nguoiDung.findUnique({
       where: { tai_khoan: Number(tai_khoan) },
     });
 
     if (!user) {
-      throw new Error("Tài khoản không tồn tại");
+      throw new NotFoundException("Tài khoản không tồn tại");
+    }
+
+    // nếu update email, check trùng
+    if (data.email) {
+      const emailExist = await prisma.nguoiDung.findFirst({
+        where: {
+          email: data.email,
+          tai_khoan: { not: Number(tai_khoan) },
+        },
+      });
+
+      if (emailExist) {
+        throw new ConflictException("Email đã tồn tại");
+      }
     }
 
     // Không cho phép update những field này
-    const forbiddenFields = ["tai_khoan", "loai_nguoi_dung"];
-    forbiddenFields.forEach((field) => delete data[field]); //
 
-    const payload = { ...data }; //ko có tai_khoan và loai_nguoi_dung vì đã bị xóa ở trên
-
-    // Nếu có password mới
-    if (data.mat_khau) {
-      if (!data.mat_khau_cu) {
-        throw new Error("Vui lòng cung cấp mật khẩu cũ để đổi mật khẩu mới");
-      }
-
-      const isMatch = bcrypt.compareSync(data.mat_khau_cu, user.mat_khau);
-      if (!isMatch) {
-        throw new Error("Mật khẩu cũ không đúng");
-      }
-
-      payload.mat_khau = bcrypt.hashSync(data.mat_khau, 10);
-      delete payload.mat_khau_cu;
-    }
+    const { tai_khoan: _, loai_nguoi_dung: __, ...payload } = data;
 
     return prisma.nguoiDung.update({
       where: { tai_khoan: Number(tai_khoan) },
       data: payload,
+      select: {
+        email: true,
+        ho_ten: true,
+        so_dt: true,
+      },
     });
   },
-
   xoaNguoiDung: async (tai_khoan) => {
     return prisma.nguoiDung.delete({
       where: { tai_khoan: Number(tai_khoan) },

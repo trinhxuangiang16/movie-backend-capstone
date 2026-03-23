@@ -1,4 +1,4 @@
-import { responseSuccess } from "../common/helpers/function.helper.js";
+import { successResponse } from "../common/helpers/function.helper.js";
 import { phimService } from "../services/phim.service.js";
 
 export const phimController = {
@@ -6,8 +6,7 @@ export const phimController = {
   getLayDanhSachPhim: async (req, res, next) => {
     try {
       const result = await phimService.getLayDanhSachPhim();
-      const response = responseSuccess(result, `Lấy danh sách phim thành công`);
-      res.status(response.statusCode).json(response);
+      return successResponse(res, result, "Lấy danh sách phim thành công");
     } catch (err) {
       next(err);
     }
@@ -16,12 +15,14 @@ export const phimController = {
   // GET LayDanhSachPhimPhanTrang
   getLayDanhSachPhimPhanTrang: async (req, res, next) => {
     try {
-      const result = await phimService.getLayDanhSachPhimPhanTrang(req.query);
-      const response = responseSuccess(
-        result,
-        `Lấy danh sách phim phân trang thành công`,
+      const result = await phimService.getLayDanhSachPhimPhanTrang(
+        req.validated.query,
       );
-      res.status(response.statusCode).json(response);
+      return successResponse(
+        res,
+        result,
+        "Lấy danh sách phim phân trang thành công",
+      );
     } catch (err) {
       next(err);
     }
@@ -33,12 +34,7 @@ export const phimController = {
       const { ma_phim } = req.params;
       const result = await phimService.getLayThongTinPhim(ma_phim);
 
-      if (!result) {
-        return res.status(404).json({ message: "Không tìm thấy phim" });
-      }
-
-      const response = responseSuccess(result, `Lấy thông tin phim thành công`);
-      res.status(response.statusCode).json(response);
+      return successResponse(res, result, "Lấy thông tin phim thành công");
     } catch (err) {
       next(err);
     }
@@ -51,11 +47,11 @@ export const phimController = {
 
       const result = await phimService.getLayDanhSachPhimTheoNgay(ngay);
 
-      const response = responseSuccess(
+      return successResponse(
+        res,
         result,
-        `Lấy danh sách phim theo ngày thành công`,
+        "Lấy danh sách phim theo ngày thành công",
       );
-      res.status(response.statusCode).json(response);
     } catch (err) {
       next(err);
     }
@@ -64,9 +60,8 @@ export const phimController = {
   // POST QuanLyPhim (ADMIN)
   themPhim: async (req, res, next) => {
     try {
-      const result = await phimService.themPhim(req.body);
-      const response = responseSuccess(result, `Tạo phim thành công`);
-      res.status(response.statusCode).json(response);
+      const result = await phimService.themPhim(req.validated.body);
+      return successResponse(res, result, "Tạo phim thành công");
     } catch (err) {
       next(err);
     }
@@ -75,11 +70,10 @@ export const phimController = {
   // DELETE XoaPhim/:ma_phim (ADMIN)
   delete: async (req, res, next) => {
     try {
-      const { ma_phim } = req.params;
+      const { ma_phim } = req.validated.params;
 
       const result = await phimService.delete(ma_phim);
-      const response = responseSuccess(result, `Xóa phim thành công`);
-      res.status(response.statusCode).json(response);
+      return successResponse(res, result, "Xóa phim thành công");
     } catch (err) {
       next(err);
     }
@@ -88,14 +82,12 @@ export const phimController = {
   // PUT CapNhatPhim/:ma_phim (ADMIN)
   capNhatPhim: async (req, res, next) => {
     try {
-      const { ma_phim } = req.params;
+      const { ma_phim } = req.validated.params;
+      console.log("🚀 ~ KIỂM TRA ~ ma_phim:", ma_phim);
 
-      const result = await phimService.capNhatPhim(ma_phim, req.body);
+      const result = await phimService.capNhatPhim(ma_phim, req.validated.body);
 
-      res.json({
-        message: "Cập nhật phim thành công",
-        data: result,
-      });
+      return successResponse(res, result, "Cập nhật phim thành công");
     } catch (err) {
       next(err);
     }
@@ -106,10 +98,11 @@ export const phimController = {
     try {
       const result = await phimService.getPhimDangChieu();
 
-      res.json({
-        message: "Lấy danh sách phim đang chiếu thành công",
-        data: result,
-      });
+      return successResponse(
+        res,
+        result,
+        "Lấy danh sách phim đang chiếu thành công",
+      );
     } catch (err) {
       next(err);
     }
@@ -120,10 +113,11 @@ export const phimController = {
     try {
       const result = await phimService.getPhimSapChieu();
 
-      res.json({
-        message: "Lấy danh sách phim sắp chiếu thành công",
-        data: result,
-      });
+      return successResponse(
+        res,
+        result,
+        "Lấy danh sách phim sắp chiếu thành công",
+      );
     } catch (err) {
       next(err);
     }
@@ -134,10 +128,7 @@ export const phimController = {
     try {
       const result = await phimService.getPhimHot();
 
-      res.json({
-        message: "Lấy danh sách phim hot thành công",
-        data: result,
-      });
+      return successResponse(res, result, "Lấy danh sách phim hot thành công");
     } catch (err) {
       next(err);
     }

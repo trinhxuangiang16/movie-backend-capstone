@@ -1,20 +1,27 @@
-export function responseSuccess(data, message = "ok", statusCode = 200) {
-  return {
-    status: "Success",
-    statusCode: statusCode,
-    message: message,
-    data: data,
-    doc: "example.com",
-  };
-}
-export function responseError(
+export const successResponse = (
+  res,
+  data,
+  message = "Success",
+  statusCode = 200,
+) => {
+  return res.status(statusCode).json({
+    status: "success",
+    message,
+    data,
+  });
+};
+
+export const errorResponse = (
+  res,
   message = "Internal Server Error",
   statusCode = 500,
-) {
-  return {
+  code = "INTERNAL_ERROR",
+  errors = null,
+) => {
+  return res.status(statusCode).json({
     status: "error",
-    statusCode: statusCode,
-    message: message,
-    doc: "example.com",
-  };
-}
+    message,
+    code,
+    ...(errors && { errors }),
+  });
+};

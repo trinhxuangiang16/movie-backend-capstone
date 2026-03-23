@@ -1,3 +1,7 @@
+import {
+  BadRequestException,
+  NotFoundException,
+} from "../common/helpers/exception.helper.js";
 import { prisma } from "../common/prisma/contect.prisma.js";
 import { buildQueryPrisma } from "../utils/buildQueryPrisma.js";
 
@@ -44,21 +48,27 @@ export const phimService = {
 
   // GET LayThongTinPhim/:ma_phim
   getLayThongTinPhim: async (ma_phim) => {
-    return prisma.phim.findUnique({
+    const phim = await prisma.phim.findUnique({
       where: { ma_phim: Number(ma_phim) },
     });
+
+    if (!phim || phim.isDeleted) {
+      throw new NotFoundException("Phim không tồn tại hoặc đã bị xóa");
+    }
+
+    return phim;
   },
 
   // GET LayDanhSachPhimTheoNgay
   getLayDanhSachPhimTheoNgay: async (ngay) => {
     if (!ngay) {
-      throw new Error("Thiếu tham số ngày");
+      throw new BadRequestException("Thiếu tham số ngày");
     }
 
     const regex = /^\d{2}\/\d{2}\/\d{4}$/; // Kiểm tra định dạng dd/mm/yyyy
 
     if (!regex.test(ngay)) {
-      throw new Error("Ngày phải có định dạng dd/mm/yyyy");
+      throw new BadRequestException("Ngày phải có định dạng dd/mm/yyyy");
     }
 
     const [day, month, year] = ngay.split("/").map(Number);
@@ -113,7 +123,7 @@ export const phimService = {
     });
 
     if (!phim || phim.isDeleted) {
-      throw new Error("Phim không tồn tại hoặc đã bị xóa");
+      throw new NotFoundException("Phim không tồn tại hoặc đã bị xóa");
     }
 
     return prisma.phim.update({

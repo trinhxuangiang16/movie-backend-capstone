@@ -1,17 +1,14 @@
-import { responseSuccess } from "../common/helpers/function.helper.js";
+import { successResponse } from "../common/helpers/function.helper.js";
 import { datVeService } from "../services/datVe.service.js";
 
 export const datVeController = {
   layTrangThaiGheTrongRap: async (req, res, next) => {
     try {
-      const { ma_lich_chieu } = req.body;
+      const { ma_lich_chieu } = req.validated.body;
+
       const result = await datVeService.layTrangThaiGheTrongRap(ma_lich_chieu);
 
-      const response = responseSuccess(
-        result,
-        `Lấy trạng thái ghế trong rạp thành công`,
-      );
-      res.status(response.statusCode).json(response);
+      return successResponse(res, result, "Lấy trạng thái ghế thành công");
     } catch (err) {
       next(err);
     }
@@ -19,9 +16,9 @@ export const datVeController = {
 
   taoLichChieu: async (req, res, next) => {
     try {
-      const result = await datVeService.taoLichChieu(req.body);
-      const response = responseSuccess(result, `Tạo lịch chiếu thành công`);
-      res.status(response.statusCode).json(response);
+      const result = await datVeService.taoLichChieu(req.validated.body);
+
+      return successResponse(res, result, "Tạo lịch chiếu thành công");
     } catch (err) {
       next(err);
     }
@@ -29,15 +26,11 @@ export const datVeController = {
 
   layDanhSachPhongVe: async (req, res, next) => {
     try {
-      const { ma_lich_chieu } = req.query;
+      const { ma_lich_chieu } = req.validated.query;
 
       const result = await datVeService.layDanhSachPhongVe(ma_lich_chieu);
 
-      const response = responseSuccess(
-        result,
-        `Lấy danh sách phòng vé thành công`,
-      );
-      res.status(response.statusCode).json(response);
+      return successResponse(res, result, "Lấy danh sách phòng vé thành công");
     } catch (err) {
       next(err);
     }
@@ -46,8 +39,7 @@ export const datVeController = {
     try {
       const result = await datVeService.datVe(req);
 
-      const response = responseSuccess(result, `Đặt vé thành công`);
-      res.status(response.statusCode).json(response);
+      return successResponse(res, result, "Đặt vé thành công");
     } catch (err) {
       next(err);
     }
@@ -59,8 +51,7 @@ export const datVeController = {
 
       const result = await datVeService.getLichSuDatVe(tai_khoan);
 
-      const response = responseSuccess(result, `Lấy lịch sử đặt vé thành công`);
-      res.status(response.statusCode).json(response);
+      return successResponse(res, result, "Lấy lịch sử đặt vé thành công");
     } catch (err) {
       next(err);
     }

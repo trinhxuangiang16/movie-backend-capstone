@@ -5,6 +5,14 @@ import {
   mustBeAdmin,
   protect,
 } from "../common/middleware/protect.middleware.js";
+import { validateAll } from "../common/middleware/validate.middleware.js";
+import {
+  createMovieSchema,
+  movieIdParamSchema,
+  updateMovieSchema,
+} from "../validations/phim.schema.js";
+import { parseNumber } from "../common/middleware/parseNumber.middleware.js";
+import { queryPaginationSchema } from "../validations/pagination.schema.js";
 
 export const phimRouter = express.Router();
 
@@ -213,6 +221,7 @@ phimRouter.get("/PhimHot", protect, phimController.getPhimHot);
 phimRouter.get(
   "/LayDanhSachPhimPhanTrang",
   protect,
+  validateAll({ query: queryPaginationSchema }),
   phimController.getLayDanhSachPhimPhanTrang,
 );
 
@@ -229,18 +238,28 @@ phimRouter.get(
 );
 
 // ADMIN APIs
-phimRouter.post("/", protect, mustBeAdmin("ADMIN"), phimController.themPhim);
+phimRouter.post(
+  "/",
+  protect,
+  parseNumber,
+  mustBeAdmin("ADMIN"),
+  validateAll({ body: createMovieSchema }),
+  phimController.themPhim,
+);
 
 phimRouter.delete(
   "/XoaPhim/:ma_phim",
   protect,
   mustBeAdmin("ADMIN"),
+  validateAll({ params: movieIdParamSchema }),
   phimController.delete,
 );
 
 phimRouter.put(
   "/CapNhatPhim/:ma_phim",
   protect,
+  parseNumber,
   mustBeAdmin("ADMIN"),
+  validateAll({ body: updateMovieSchema, params: movieIdParamSchema }),
   phimController.capNhatPhim,
 );

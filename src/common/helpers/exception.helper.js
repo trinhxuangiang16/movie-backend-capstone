@@ -1,39 +1,52 @@
 import { statusCodes } from "./status-code.helper.js";
 
 export class BadRequestException extends Error {
-  constructor(message = "badRequestException") {
+  constructor(message = "Bad Request") {
     super(message);
-    this.code = statusCodes.BAD_REQUEST;
+    this.statusCode = statusCodes.BAD_REQUEST;
+    this.code = "BAD_REQUEST";
   }
 }
 
-//401: yều cầu FE logout
+//401: yều cầu FE logout
 export class UnauthorizedException extends Error {
-  constructor(message = "UnauthorizedException") {
+  constructor(message = "Unauthorized") {
     super(message);
-    this.code = statusCodes.UNAUTHORIZED;
+    this.statusCode = statusCodes.UNAUTHORIZED;
+    this.code = "UNAUTHORIZED";
   }
 }
 
-//404: không tìm thấy
-export class NotFountException extends Error {
-  constructor(message = "NotFountException") {
+//404: không tìm thấy
+export class NotFoundException extends Error {
+  constructor(message = "Not Found") {
     super(message);
-    this.code = statusCodes.NOT_FOUND;
+    this.statusCode = statusCodes.NOT_FOUND;
+    this.code = "NOT_FOUND";
   }
 }
 
 //403: FE yêu cầu làm mới accessToken
 export class ForbiddenException extends Error {
-  constructor(message = "ForbiddenException") {
+  constructor(message = "Forbidden") {
     super(message);
-    this.code = statusCodes.FORBIDDEN;
+    this.statusCode = statusCodes.FORBIDDEN;
+    this.code = "FORBIDDEN";
   }
 }
 
 export class InternalServerErrorException extends Error {
-  constructor(message = "InternalServerErrorException") {
+  constructor(message = "Internal Server Error") {
     super(message);
-    this.code = statusCodes.INTERNAL_SERVER_ERROR;
+    this.statusCode = statusCodes.INTERNAL_SERVER_ERROR;
+    this.code = "INTERNAL_SERVER_ERROR";
+  }
+}
+
+export class ConflictException extends Error {
+  constructor(message = "Conflict") {
+    super(message);
+    this.statusCode = statusCodes.CONFLICT;
+    this.code = "CONFLICT";
   }
 }

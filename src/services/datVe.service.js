@@ -1,9 +1,18 @@
 import { prisma } from "../common/prisma/contect.prisma.js";
-import { BadRequestException } from "../common/helpers/exception.helper.js";
+import {
+  BadRequestException,
+  ConflictException,
+  NotFoundException,
+  UnauthorizedException,
+} from "../common/helpers/exception.helper.js";
 import { Prisma } from "../common/prisma/generated/prisma/index.js";
 
 export const datVeService = {
   layTrangThaiGheTrongRap: async (ma_lich_chieu) => {
+    if (!ma_lich_chieu) {
+      throw new BadRequestException("Thiếu ma_lich_chieu");
+    }
+
     // Lấy tất cả ghế của rạp trong suất chiếu này
     const seats = await prisma.ghe.findMany({
       where: {
@@ -37,14 +46,17 @@ export const datVeService = {
     const bookedSet = new Set(nhungGheDaDat.map((s) => s.ma_ghe));
     const holdSet = new Set(nhungGheDaGiuCho.map((s) => s.ma_ghe));
 
-    return seats.map((seat) => ({
+    const result = seats.map((seat) => ({
       ma_ghe: seat.ma_ghe,
       ten_ghe: seat.ten_ghe,
       loai_ghe: seat.loai_ghe,
       da_dat: bookedSet.has(seat.ma_ghe),
       dang_giu_cho: holdSet.has(seat.ma_ghe),
     }));
+
+    return result;
   },
+
   taoLichChieu: async (data) => {
     const { ma_rap, ma_phim, ngay_gio_chieu, gia_ve } = data;
 
@@ -54,7 +66,7 @@ export const datVeService = {
     });
 
     if (!rap) {
-      throw new BadRequestException("Rạp không tồn tại");
+      throw new NotFoundException("Rạp không tồn tại");
     }
 
     // Validate tồn tại phim
@@ -63,7 +75,7 @@ export const datVeService = {
     });
 
     if (!phim) {
-      throw new BadRequestException("Phim không tồn tại");
+      throw new NotFoundException("Phim không tồn tại");
     }
 
     const date = new Date(ngay_gio_chieu); // Chuyển đổi sang kiểu Date tức là định dạng ISO 8601 (YYYY-MM-DDTHH:mm:ss.sssZ)
@@ -77,7 +89,7 @@ export const datVeService = {
     });
 
     if (lichTrung) {
-      throw new BadRequestException("Lịch chiếu đã tồn tại trong rạp này");
+      throw new ConflictException("Lịch chiếu đã tồn tại trong rạp này");
     }
 
     return prisma.lichChieu.create({
@@ -91,6 +103,10 @@ export const datVeService = {
   },
 
   layDanhSachPhongVe: async (ma_lich_chieu) => {
+    if (!ma_lich_chieu) {
+      throw new BadRequestException("Thiếu mã lịch chiếu");
+    }
+
     const lichChieu = await prisma.lichChieu.findUnique({
       where: { ma_lich_chieu: Number(ma_lich_chieu) },
       include: {
@@ -104,17 +120,18 @@ export const datVeService = {
     });
 
     if (!lichChieu) {
-      throw new BadRequestException("Không tìm thấy lịch chiếu");
+      throw new NotFoundException("Không tìm thấy lịch chiếu");
     }
 
     return lichChieu;
   },
 
   datVe: async (req) => {
-    const { ma_lich_chieu, danh_sach_ve } = req.body;
+    const { ma_lich_chieu, danh_sach_ve } = req.validated.body;
 
     const tai_khoan = req?.user?.tai_khoan; // Lấy userId từ token đã giải mã
-    if (!tai_khoan) throw new BadRequestException("Người dùng chưa đăng nhập");
+    if (!tai_khoan)
+      throw new UnauthorizedException("Người dùng chưa đăng nhập");
 
     if (
       !ma_lich_chieu ||
@@ -131,7 +148,7 @@ export const datVeService = {
       });
 
       if (!lichChieu) {
-        throw new BadRequestException("Lịch chiếu không tồn tại");
+        throw new NotFoundException("Lịch chiếu không tồn tại");
       }
 
       //Lấy tất cả ghế cần đặt
@@ -146,7 +163,7 @@ export const datVeService = {
       });
 
       if (gheHopLe.length !== danhSachMaGhe.length) {
-        throw new BadRequestException("Có ghế không thuộc rạp của lịch chiếu");
+        throw new NotFoundException("Có ghế không thuộc rạp của lịch chiếu");
       }
 
       //Kiểm tra ghế đã bị đặt chưa
@@ -158,7 +175,7 @@ export const datVeService = {
       });
 
       if (gheDaDat.length > 0) {
-        throw new BadRequestException("Một hoặc nhiều ghế đã được đặt");
+        throw new ConflictException("Một hoặc nhiều ghế đã được đặt");
       }
 
       // Kiểm tra ghế đang được giữ bởi người khác
@@ -179,7 +196,7 @@ export const datVeService = {
 
       // Nếu có ghế nào đang bị giữ bởi người khác trong danh sach ve gửi lên
       if (gheDangBiGiuBoiNguoiKhac.length > 0) {
-        throw new BadRequestException("Một hoặc nhiều ghế đang được giữ");
+        throw new ConflictException("Một hoặc nhiều ghế đang được giữ");
       }
 
       // Lấy giá vé cơ bản từ lịch chiếu
@@ -215,7 +232,7 @@ export const datVeService = {
           error instanceof Prisma.PrismaClientKnownRequestError &&
           error.code === "P2002"
         ) {
-          throw new BadRequestException(
+          throw new ConflictException(
             "Ghế vừa được người khác đặt, vui lòng chọn lại",
           );
         }

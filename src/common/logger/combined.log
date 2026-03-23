@@ -1,0 +1,18 @@
+{"level":"info","message":"Hello Winston!","service":"movie-backend"}
+{"level":"warn","message":"This is a warning!","service":"movie-backend"}
+{"level":"error","message":"This is an error!","service":"movie-backend"}
+{"level":"info","message":"GET /api/QuanLyPhim/LayDanhSachPhim 200 410.752 ms","service":"movie-backend"}
+{"level":"info","message":"GET /api/QuanLyPhim/LayDanhSachPhim 200 255.840 ms 127.0.0.1","service":"movie-backend"}
+{"level":"info","message":"GET /api/QuanLyPhim/LayDanhSachPhim 200 223.012 ms 127.0.0.1 user:17","service":"movie-backend"}
+{"level":"info","message":"POST /api/QuanLyNguoiDung/DangNhap 200 434.170 ms 127.0.0.1 user:guest","service":"movie-backend"}
+{"level":"info","message":"GET /api/QuanLyPhim/LayDanhSachPhim 200 49.021 ms 127.0.0.1 user:17","service":"movie-backend"}
+{"level":"info","message":"[reqId:724c2cb8-7101-4887-9863-43db69b192ef] POST /api/QuanLyNguoiDung/DangNhap 200 10836.738 ms 127.0.0.1 user:guest","service":"movie-backend"}
+{"level":"info","message":"[reqId:4205eab5-e7d5-4e19-8ead-df2c5857cc39] POST /api/QuanLyNguoiDung/DangNhap 200 130.485 ms 127.0.0.1 user:guest","service":"movie-backend"}
+{"level":"info","message":"[reqId:5f8fd858-b12f-481f-9230-77bcc54b905e] POST /api/QuanLyNguoiDung/DangNhap 200 598.286 ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:fc73df00] POST /api/QuanLyNguoiDung/DangNhap 200 590.949 ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:fe439d41] POST /api/QuanLyNguoiDung/DangNhap 200 287.341 ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:d7ca8c23] POST /api/QuanLyNguoiDung/DangNhap 200 176.264 ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:256136d0] POST /api/QuanLyNguoiDung/DangNhap 200 273.120 ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:f183b6e9] POST /api/QuanLyNguoiDung/DangNhap 200 300.159ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:d67fd548] POST /api/QuanLyNguoiDung/DangNhap 200 79.538ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:29a1b529] POST /api/QuanLyNguoiDung/DangNhap 200 399.269ms 127.0.0.1 user:guest"}
