@@ -17,7 +17,8 @@ export const rapController = {
 
   getCumRapTheoHeThong: async (req, res, next) => {
     try {
-      const { ma_he_thong_rap } = req.query;
+      const { ma_he_thong_rap } = req.validated.query;
+
       const result = await rapService.getCumRapTheoHeThong(ma_he_thong_rap);
       return successResponse(
         res,
@@ -45,7 +46,7 @@ export const rapController = {
 
   getLichChieuPhim: async (req, res, next) => {
     try {
-      const { ma_phim } = req.query;
+      const { ma_phim } = req.validated.query;
       const result = await rapService.getLichChieuPhim(ma_phim);
       return successResponse(res, result, "Lấy lịch chiếu phim thành công");
     } catch (err) {

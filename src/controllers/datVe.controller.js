@@ -4,7 +4,7 @@ import { datVeService } from "../services/datVe.service.js";
 export const datVeController = {
   layTrangThaiGheTrongRap: async (req, res, next) => {
     try {
-      const { ma_lich_chieu } = req.validated.body;
+      const { ma_lich_chieu } = req.validated.query;
 
       const result = await datVeService.layTrangThaiGheTrongRap(ma_lich_chieu);
 

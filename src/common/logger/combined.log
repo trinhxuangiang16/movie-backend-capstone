@@ -16,3 +16,119 @@
 {"level":"info","message":"[reqId:f183b6e9] POST /api/QuanLyNguoiDung/DangNhap 200 300.159ms 127.0.0.1 user:guest"}
 {"level":"info","message":"[reqId:d67fd548] POST /api/QuanLyNguoiDung/DangNhap 200 79.538ms 127.0.0.1 user:guest"}
 {"level":"info","message":"[reqId:29a1b529] POST /api/QuanLyNguoiDung/DangNhap 200 399.269ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:927a8b4d] GET /api/QuanLyNguoiDung/TimKiemNguoiDung?keyword=g 200 468.166ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:a6cc3e58] GET /api/QuanLyNguoiDung/TimKiemNguoiDung?keyword=k 200 18.446ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:bc504bdb] GET /api/QuanLyNguoiDung/TimKiemNguoiDung?keyword=x 200 12.679ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:0381940e] GET /api/QuanLyNguoiDung/TimKiemNguoiDung?keyword=x 400 207.721ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:cf8aa934] GET /api/QuanLyNguoiDung/TimKiemNguoiDung?keyword=x 200 197.034ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:6ffbcc7a] GET /api/QuanLyNguoiDung/TimKiemNguoiDung?keyword=7 200 12.111ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:1d8a5809] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/13 - \nInvalid `prisma.nguoiDung.update()` invocation:\n\n{\n  where: {\n    tai_khoan: 13\n  },\n  data: {\n    isDeleted: true,\n    ~~~~~~~~~\n?   ho_ten?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   email?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   so_dt?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   mat_khau?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   loai_nguoi_dung?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput,\n?   GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput\n  }\n}\n\nUnknown argument `isDeleted`. Available options are marked with ?."}
+{"level":"info","message":"[reqId:1d8a5809] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/13 500 242.725ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:e9b3383c] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/13 - \nInvalid `prisma.nguoiDung.update()` invocation:\n\n{\n  where: {\n    tai_khoan: 13\n  },\n  data: {\n    isDeleted: true,\n    ~~~~~~~~~\n?   ho_ten?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   email?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   so_dt?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   mat_khau?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   loai_nguoi_dung?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput,\n?   GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput\n  }\n}\n\nUnknown argument `isDeleted`. Available options are marked with ?."}
+{"level":"info","message":"[reqId:e9b3383c] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/13 500 8.720ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:d14c908c] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 - \nInvalid `prisma.nguoiDung.update()` invocation:\n\n{\n  where: {\n    tai_khoan: 15\n  },\n  data: {\n    isDeleted: true,\n    ~~~~~~~~~\n?   ho_ten?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   email?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   so_dt?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   mat_khau?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   loai_nguoi_dung?: String | NullableStringFieldUpdateOperationsInput | Null,\n?   DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput,\n?   GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput\n  }\n}\n\nUnknown argument `isDeleted`. Available options are marked with ?."}
+{"level":"info","message":"[reqId:d14c908c] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 500 7.468ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:65b55a36] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 - \nInvalid `prisma.nguoiDung.update()` invocation:\n\n{\n  where: {\n    tai_khoan: 15\n  },\n+ data: NguoiDungUpdateInput | NguoiDungUncheckedUpdateInput\n}\n\nArgument `data` is missing."}
+{"level":"info","message":"[reqId:65b55a36] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 500 241.507ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:d4321475] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 - \nInvalid `prisma.nguoiDung.update()` invocation:\n\n{\n  where: {\n    tai_khoan: 15\n  },\n+ data: NguoiDungUpdateInput | NguoiDungUncheckedUpdateInput\n}\n\nArgument `data` is missing."}
+{"level":"info","message":"[reqId:d4321475] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 500 201.373ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:b95796bd] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 - \nInvalid `prisma.nguoiDung.findFirst()` invocation:\n\n{\n  where: {\n    tai_khoan: 15,\n    isDeleted: false,\n    ~~~~~~~~~\n?   AND?: NguoiDungWhereInput | NguoiDungWhereInput[],\n?   OR?: NguoiDungWhereInput[],\n?   NOT?: NguoiDungWhereInput | NguoiDungWhereInput[],\n?   ho_ten?: StringNullableFilter | String | Null,\n?   email?: StringNullableFilter | String | Null,\n?   so_dt?: StringNullableFilter | String | Null,\n?   mat_khau?: StringNullableFilter | String | Null,\n?   loai_nguoi_dung?: StringNullableFilter | String | Null,\n?   DatVe?: DatVeListRelationFilter,\n?   GiuCho?: GiuChoListRelationFilter\n  }\n}\n\nUnknown argument `isDeleted`. Available options are marked with ?."}
+{"level":"info","message":"[reqId:b95796bd] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 500 184.756ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:c1cb4684] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 200 302.359ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:0564fea8] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/16 200 349.236ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:195d1100] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/16 - Tài khoản không tồn tại hoặc đã bị xóa"}
+{"level":"info","message":"[reqId:195d1100] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/16 404 15.479ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:6273ded1] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 - Tài khoản không tồn tại hoặc đã bị xóa"}
+{"level":"info","message":"[reqId:6273ded1] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/15 404 12.485ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:7bb69c45] GET /api/QuanLyPhim/LayThongTinPhim/9 200 230.224ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:823bedb2] GET /api/QuanLyPhim/LayThongTinPhim/19 200 12.704ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:6f12baca] GET /api/QuanLyPhim/LayDanhSachPhimTheoNgay?ngay=01/10/2025 200 850.088ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:cc42ca64] GET /api/QuanLyPhim/LayDanhSachPhimTheoNgay?ngay=2025/01/10 400 147.680ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:b5ca64cb] GET /api/QuanLyPhim/LayDanhSachPhimTheoNgay?ngay=01/10/2025 200 1033.147ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:907e6ac0] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/17 400 340.096ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:73aeda35] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/17 200 256.147ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:405bb4f9] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/18 200 32.846ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:386cef0a] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 400 176.610ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:8b87e1bc] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 400 133.922ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:e5350b62] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 400 175.703ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:fec4d563] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 400 7.290ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:72df9996] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 400 320.454ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:ec1e43d5] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 400 231.585ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:aa2bafe1] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 - Cannot read properties of undefined (reading 'body')"}
+{"level":"info","message":"[reqId:aa2bafe1] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 500 180.439ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:6f60dd47] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 - Cannot read properties of undefined (reading 'body')"}
+{"level":"info","message":"[reqId:6f60dd47] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 500 10.573ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:45548cbe] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 400 221.565ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:5a7e55ab] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 200 467.167ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:1e68890c] GET /api/QuanLyRap/LayThongTinCumRapTheoHeThong?ma_he_thong_rap=1 200 218.396ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:692c0b45] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 200 61.527ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:f8d2e018] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 200 205.027ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:122c2d5f] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 200 32.100ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:bc578281] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 200 233.562ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:ba4fc481] POST /api/QuanLyRap/GiuChoTamThoi 200 342.036ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:1ad6903b] POST /api/QuanLyRap/GiuChoTamThoi 200 48.910ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:35582fca] POST /api/QuanLyRap/GiuChoTamThoi 200 46.323ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:fc17e5b4] POST /api/QuanLyRap/GiuChoTamThoi 200 39.327ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:2ad37ab6] GET /api/QuanLyPhim/PhimDangChieu 200 314.472ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:27e23c63] POST /api/QuanLyRap/GiuChoTamThoi 200 885.567ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:cde625cb] GET /api/QuanLyRap/LayThongTinLichChieuPhim?ma_phim=1 400 537.139ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:0344098b] GET /api/QuanLyRap/LayThongTinLichChieuPhim?ma_phim=1 200 285.059ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:d4b3599d] GET /api/QuanLyRap/LayThongTinLichChieuPhim?ma_phim=1 200 259.967ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:c2b1ebc9] GET /api/QuanLyDatVe/LayDanhSachPhongVe?ma_lich_chieu=28 200 552.749ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:10a6b8ac] GET /api/QuanLyDatVe/LayDanhSachPhongVe?ma_lich_chieu=29 200 29.254ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:1bf45619] GET /api/QuanLyDatVe/LayDanhSachPhongVe?ma_lich_chieu=12 200 15.866ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:4ea06b52] GET /api/QuanLyDatVe/LayDanhSachPhongVe?ma_lich_chieu=32 200 19.826ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:243a3f0b] GET /api/QuanLyNguoiDung/LayDanhSachNguoiDung 200 453.943ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:5413456a] GET /api/QuanLyPhim/LayDanhSachPhim 200 370.635ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:5cf1d2db] GET /api/QuanLyPhim/LayDanhSachPhimPhanTrang?page=1&pageSize=2&filters={%22ten_phim%22:%22ho%22} 200 83.392ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:53e79899] DELETE /api/QuanLyPhim/XoaPhim/41 200 1786.228ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:ba041a95] DELETE /api/QuanLyPhim/XoaPhim/41 - Phim không tồn tại hoặc đã bị xóa"}
+{"level":"info","message":"[reqId:ba041a95] DELETE /api/QuanLyPhim/XoaPhim/41 404 428.528ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:48f2ea08] DELETE /api/QuanLyPhim/XoaPhim/41 - Phim không tồn tại hoặc đã bị xóa"}
+{"level":"info","message":"[reqId:48f2ea08] DELETE /api/QuanLyPhim/XoaPhim/41 404 28.631ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:dee38682] PUT /api/QuanLyPhim/CapNhatPhim/38 200 244.603ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:88bf2e77] GET /api/QuanLyPhim/PhimDangChieu 200 31.602ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:736a639c] GET /api/QuanLyPhim/PhimDangChieu 200 22.913ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:fc35eb87] GET /api/QuanLyPhim/PhimDangChieu 200 180.302ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:9150e06b] GET /api/QuanLyPhim/PhimSapChieu 200 12.832ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:0b941096] GET /api/QuanLyPhim/PhimHot 200 18.636ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:506ad35e] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 200 64.272ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:5e83a880] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 - \nInvalid `prisma.heThongRap.findUnique()` invocation:\n\n{\n  where: {\n    ma_he_thong_rap: 2\n  },\n  select: {\n    ma_he_thong_rap: true,\n    ten_he_thong_rap: true,\n    CumRap: {\n      ma_cum_rap: true,\n      ~~~~~~~~~~\n      ten_cum_rap: true,\n      select: {\n        RapPhim: {\n          ma_rap: true,\n          ten_rap: true,\n          select: {\n            LichChieu: {\n              ma_lich_chieu: true,\n              ngay_gio_chieu: true,\n              gia_ve: true,\n              select: {\n                Phim: {\n                  select: {\n                    ma_phim: true,\n                    ten_phim: true,\n                    hinh_anh: true\n                  }\n                }\n              }\n            }\n          }\n        }\n      },\n?     where?: CumRapWhereInput,\n?     orderBy?: CumRapOrderByWithRelationInput[] | CumRapOrderByWithRelationInput,\n?     cursor?: CumRapWhereUniqueInput,\n?     take?: Int,\n?     skip?: Int,\n?     distinct?: CumRapScalarFieldEnum | CumRapScalarFieldEnum[]\n    }\n  }\n}\n\nUnknown argument `ma_cum_rap`. Available options are marked with ?."}
+{"level":"info","message":"[reqId:5e83a880] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 500 227.150ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:8298a1a4] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 - \nInvalid `prisma.heThongRap.findUnique()` invocation:\n\n{\n  where: {\n    ma_he_thong_rap: 2\n  },\n  select: {\n    ma_he_thong_rap: true,\n    ten_he_thong_rap: true,\n    CumRap: {\n      ma_cum_rap: true,\n      ~~~~~~~~~~\n      ten_cum_rap: true,\n      RapPhim: {\n        ma_rap: true,\n        ten_rap: true,\n        LichChieu: {\n          ma_lich_chieu: true,\n          ngay_gio_chieu: true,\n          gia_ve: true,\n          Phim: {\n            select: {\n              ma_phim: true,\n              ten_phim: true,\n              hinh_anh: true\n            }\n          }\n        }\n      },\n?     where?: CumRapWhereInput,\n?     orderBy?: CumRapOrderByWithRelationInput[] | CumRapOrderByWithRelationInput,\n?     cursor?: CumRapWhereUniqueInput,\n?     take?: Int,\n?     skip?: Int,\n?     distinct?: CumRapScalarFieldEnum | CumRapScalarFieldEnum[]\n    }\n  }\n}\n\nUnknown argument `ma_cum_rap`. Available options are marked with ?."}
+{"level":"info","message":"[reqId:8298a1a4] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 500 256.611ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:e75ffea0] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 200 256.959ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:d0476155] GET /api/QuanLyRap/LayThongTinLichChieuPhim?ma_phim=1 200 351.665ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:5f3cf6e9] POST /api/QuanLyRap/GiuChoTamThoi 200 147.639ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:6131c773] POST /api/QuanLyNguoiDung/DangNhap 200 465.704ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:undefined] POST /api/QuanLyNguoiDung/DangNhap - Bad control character in string literal in JSON at position 53 (line 3 column 24)"}
+{"level":"error","message":"[reqId:bd17edc7] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
+{"level":"info","message":"[reqId:bd17edc7] POST /api/QuanLyNguoiDung/DangNhap 401 296.155ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:0be40358] POST /api/QuanLyNguoiDung/DangKy 400 4.224ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:55d3ad84] POST /api/QuanLyNguoiDung/DangKy 200 141.057ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:44f8aa3d] POST /api/QuanLyNguoiDung/DangNhap 200 103.567ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:94610b00] POST /api/QuanLyNguoiDung/refresh-token - Cannot read properties of undefined (reading 'body')"}
+{"level":"info","message":"[reqId:94610b00] POST /api/QuanLyNguoiDung/refresh-token 500 4.568ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:cbea0379] POST /api/QuanLyNguoiDung/refresh-token - Cannot read properties of undefined (reading 'body')"}
+{"level":"info","message":"[reqId:cbea0379] POST /api/QuanLyNguoiDung/refresh-token 500 10.977ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:148d55b0] POST /api/QuanLyNguoiDung/DangKy - Email đã tồn tại"}
+{"level":"info","message":"[reqId:148d55b0] POST /api/QuanLyNguoiDung/DangKy 409 355.763ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:359ce6c4] POST /api/QuanLyNguoiDung/DangNhap 200 125.129ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:5296d214] POST /api/QuanLyNguoiDung/refresh-token - Cannot read properties of undefined (reading 'body')"}
+{"level":"info","message":"[reqId:5296d214] POST /api/QuanLyNguoiDung/refresh-token 500 3.719ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:c0283c4d] POST /api/QuanLyNguoiDung/DangNhap 200 397.850ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:1db12d11] POST /api/QuanLyNguoiDung/refresh-token 200 27.560ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:4ce73f37] GET /api/QuanLyDatVe/LayTrangThaiGheTrongRap?ma_lich_chieu=34 200 448.784ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:f166c2d9] GET /api/QuanLyDatVe/LayTrangThaiGheTrongRap?ma_lich_chieu=34 200 269.505ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:a9856603] GET /api/QuanLyDatVe/LayTrangThaiGheTrongRap?ma_lich_chieu=34 200 237.061ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:d9e422a2] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/19 - meta is not defined"}
+{"level":"info","message":"[reqId:d9e422a2] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/19 500 774.619ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:fae26342] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/19 - Tài khoản không tồn tại hoặc đã bị xóa"}
+{"level":"info","message":"[reqId:fae26342] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/19 404 235.989ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:0bd09429] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/20 - meta is not defined"}
+{"level":"info","message":"[reqId:0bd09429] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/20 500 58.996ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:3e921a22] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/21 - Tài khoản không tồn tại hoặc đã bị xóa"}
+{"level":"info","message":"[reqId:3e921a22] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/21 404 1331.659ms 127.0.0.1 user:17"}
+{"level":"error","message":"[reqId:f157fb6f] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/22 - Tài khoản không tồn tại hoặc đã bị xóa"}
+{"level":"info","message":"[reqId:f157fb6f] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/22 404 36.747ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:9035edf1] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/3 200 82.186ms 127.0.0.1 user:17"}

@@ -5,7 +5,7 @@ import {
 import { uploadService } from "../services/upload.service.js";
 
 export const uploadController = {
-  uploadImage: async (req, res) => {
+  taiAnhLenCloudinary: async (req, res) => {
     try {
       if (!req.file) {
         throw new BadRequestException("Không có file nào được upload");
@@ -13,7 +13,10 @@ export const uploadController = {
 
       const folder = req.query.type || "common";
 
-      const result = await uploadService.uploadImage(req.file.buffer, folder);
+      const result = await uploadService.taiAnhLenCloudinary(
+        req.file.buffer,
+        folder,
+      );
 
       res.json({
         url: result.secure_url,
@@ -30,7 +33,7 @@ export const uploadController = {
     }
   },
 
-  deleteImage: async (req, res) => {
+  xoaAnhCloudinary: async (req, res) => {
     try {
       const { public_id } = req.body;
 
@@ -38,7 +41,7 @@ export const uploadController = {
         throw new BadRequestException("public_id là bắt buộc để xóa ảnh");
       }
 
-      const result = await uploadService.deleteImage(public_id);
+      const result = await uploadService.xoaAnhCloudinary(public_id);
 
       res.json({
         message: "Xóa ảnh cũ thành công",

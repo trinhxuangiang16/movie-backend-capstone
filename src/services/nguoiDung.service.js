@@ -31,6 +31,16 @@ export const nguoiDungService = {
       skip,
       take: pageSize,
       where,
+      select: {
+        tai_khoan: true,
+        ho_ten: true,
+        email: true,
+        so_dt: true,
+        loai_nguoi_dung: true,
+      },
+      orderBy: {
+        tai_khoan: "asc",
+      },
     });
 
     const total = await prisma.nguoiDung.count({ where });
@@ -61,8 +71,8 @@ export const nguoiDungService = {
     }
 
     const userWithoutPassword = user.map((u) => {
-      const { mat_khau, ...rest } = u; //loại bỏ trường mat_khau khỏi đối tượng người dùng
-      return rest; //trả về đối tượng người dùng mới không có trường mat_khau
+      const { mat_khau, ...rest } = u;
+      return rest;
     });
 
     return userWithoutPassword;
@@ -108,8 +118,20 @@ export const nguoiDungService = {
     });
   },
   xoaNguoiDung: async (tai_khoan) => {
-    return prisma.nguoiDung.delete({
+    const user = await prisma.nguoiDung.findFirst({
+      where: {
+        tai_khoan: Number(tai_khoan),
+        isDeleted: false,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundException("Tài khoản không tồn tại hoặc đã bị xóa");
+    }
+
+    await prisma.nguoiDung.update({
       where: { tai_khoan: Number(tai_khoan) },
+      data: { isDeleted: true },
     });
   },
 };

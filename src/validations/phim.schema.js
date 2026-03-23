@@ -7,12 +7,11 @@ export const createMovieSchema = z.object({
 
   mo_ta: z.string().trim().optional(),
 
-  ngay_khoi_chieu: z.coerce
-    .date({
-      message: "Ngày giờ không hợp lệ",
-    })
-    .refine((date) => !isNaN(date.getTime()), {
-      message: "Ngày giờ không hợp lệ",
+  ngay_khoi_chieu: z
+    .string()
+    .trim()
+    .regex(/^\d{2}\/\d{2}\/\d{4}$/, {
+      message: "Ngày phải theo định dạng dd/mm/yyyy",
     })
     .refine((date) => date > new Date(), {
       message: "Ngày chiếu phải ở tương lai",
@@ -41,9 +40,18 @@ export const updateMovieSchema = createMovieSchema
       }),
   });
 
-export const movieIdParamSchema = z.object({
+export const movieIdSchema = z.object({
   ma_phim: z.coerce
     .number({ message: "Mã phim phải là số" })
     .int({ message: "Mã phim phải là số nguyên" })
     .positive({ message: "Mã phim phải là số dương" }),
+});
+
+export const ngayChieuQuerySchema = z.object({
+  ngay: z
+    .string()
+    .trim()
+    .regex(/^\d{2}\/\d{2}\/\d{4}$/, {
+      message: "Ngày phải theo định dạng dd/mm/yyyy",
+    }),
 });

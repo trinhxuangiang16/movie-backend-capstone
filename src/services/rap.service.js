@@ -10,10 +10,19 @@ export const rapService = {
   getCumRapTheoHeThong: async (ma_he_thong_rap) => {
     return prisma.heThongRap.findUnique({
       where: { ma_he_thong_rap: Number(ma_he_thong_rap) },
-      include: {
+      select: {
+        ma_he_thong_rap: true,
+        ten_he_thong_rap: true,
         CumRap: {
-          include: {
-            RapPhim: true,
+          select: {
+            ma_cum_rap: true,
+            ten_cum_rap: true,
+            RapPhim: {
+              select: {
+                ma_rap: true,
+                ten_rap: true,
+              },
+            },
           },
         },
       },
@@ -24,14 +33,29 @@ export const rapService = {
   getLichChieuHeThongRap: async (ma_he_thong_rap) => {
     return prisma.heThongRap.findUnique({
       where: { ma_he_thong_rap: Number(ma_he_thong_rap) },
-      include: {
+      select: {
+        ma_he_thong_rap: true,
+        ten_he_thong_rap: true,
         CumRap: {
-          include: {
+          select: {
+            ma_cum_rap: true,
+            ten_cum_rap: true,
             RapPhim: {
-              include: {
+              select: {
+                ma_rap: true,
+                ten_rap: true,
                 LichChieu: {
-                  include: {
-                    Phim: true,
+                  select: {
+                    ma_lich_chieu: true,
+                    ngay_gio_chieu: true,
+                    gia_ve: true,
+                    Phim: {
+                      select: {
+                        ma_phim: true,
+                        ten_phim: true,
+                        hinh_anh: true,
+                      },
+                    },
                   },
                 },
               },
@@ -46,14 +70,32 @@ export const rapService = {
   getLichChieuPhim: async (ma_phim) => {
     return prisma.phim.findUnique({
       where: { ma_phim: Number(ma_phim) },
-      include: {
+      select: {
+        ma_phim: true,
+        ten_phim: true,
+
         LichChieu: {
-          include: {
+          select: {
+            ma_lich_chieu: true,
+            ngay_gio_chieu: true,
+            gia_ve: true,
+
             RapPhim: {
-              include: {
+              select: {
+                ma_rap: true,
+                ten_rap: true,
+
                 CumRap: {
-                  include: {
-                    HeThongRap: true,
+                  select: {
+                    ma_cum_rap: true,
+                    ten_cum_rap: true,
+
+                    HeThongRap: {
+                      select: {
+                        ma_he_thong_rap: true,
+                        ten_he_thong_rap: true,
+                      },
+                    },
                   },
                 },
               },
@@ -66,7 +108,7 @@ export const rapService = {
 
   // 5. Giữ chỗ tạm thời
   giuChoTamThoi: async (req) => {
-    const { ma_lich_chieu, ma_ghe } = req.body || {};
+    const { ma_lich_chieu, ma_ghe } = req.validated.body || {};
     const userId = req?.user?.tai_khoan;
 
     if (!userId) throw new Error("Người dùng chưa đăng nhập");

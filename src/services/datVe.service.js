@@ -46,13 +46,16 @@ export const datVeService = {
     const bookedSet = new Set(nhungGheDaDat.map((s) => s.ma_ghe));
     const holdSet = new Set(nhungGheDaGiuCho.map((s) => s.ma_ghe));
 
-    const result = seats.map((seat) => ({
-      ma_ghe: seat.ma_ghe,
-      ten_ghe: seat.ten_ghe,
-      loai_ghe: seat.loai_ghe,
-      da_dat: bookedSet.has(seat.ma_ghe),
-      dang_giu_cho: holdSet.has(seat.ma_ghe),
-    }));
+    const result = {
+      ma_lich_chieu: Number(ma_lich_chieu),
+      danh_sach_ghe: seats.map((seat) => ({
+        ma_ghe: seat.ma_ghe,
+        ten_ghe: seat.ten_ghe,
+        loai_ghe: seat.loai_ghe,
+        da_dat: bookedSet.has(seat.ma_ghe),
+        dang_giu_cho: holdSet.has(seat.ma_ghe),
+      })),
+    };
 
     return result;
   },
@@ -109,13 +112,27 @@ export const datVeService = {
 
     const lichChieu = await prisma.lichChieu.findUnique({
       where: { ma_lich_chieu: Number(ma_lich_chieu) },
-      include: {
+      select: {
+        ma_lich_chieu: true,
+        ngay_gio_chieu: true,
+        gia_ve: true,
         RapPhim: {
-          include: {
-            Ghe: true,
+          select: {
+            ma_rap: true,
+            ten_rap: true,
+            Ghe: {
+              select: {
+                ma_ghe: true,
+                ten_ghe: true,
+              },
+            },
           },
         },
-        DatVe: true,
+        DatVe: {
+          select: {
+            ma_ghe: true,
+          },
+        },
       },
     });
 

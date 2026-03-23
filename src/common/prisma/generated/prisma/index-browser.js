@@ -169,7 +169,8 @@ exports.Prisma.NguoiDungScalarFieldEnum = {
   email: 'email',
   so_dt: 'so_dt',
   mat_khau: 'mat_khau',
-  loai_nguoi_dung: 'loai_nguoi_dung'
+  loai_nguoi_dung: 'loai_nguoi_dung',
+  isDeleted: 'isDeleted'
 };
 
 exports.Prisma.PhimScalarFieldEnum = {

@@ -90,6 +90,7 @@ model NguoiDung {
   so_dt           String?  @db.VarChar(50)
   mat_khau        String?  @db.VarChar(255)
   loai_nguoi_dung String?  @db.VarChar(50)
+  isDeleted       Boolean? @default(false)
   DatVe           DatVe[]
   GiuCho          GiuCho[]
 }

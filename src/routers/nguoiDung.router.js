@@ -2,9 +2,12 @@ import express from "express";
 import { nguoiDungController } from "../controllers/nguoiDung.controller.js";
 import { protect } from "../common/middleware/protect.middleware.js";
 import { validateAll } from "../common/middleware/validate.middleware.js";
-import { updateUserSchema } from "../validations/auth.schema.js";
-import { parseNumber } from "../common/middleware/parseNumber.middleware.js";
+import { updateUserSchema } from "../validations/nguoiDung.schema.js";
 import { queryPaginationSchema } from "../validations/pagination.schema.js";
+import {
+  timKiemNguoiDungSchema,
+  xoaNguoiDungSchema,
+} from "../validations/nguoiDung.schema.js";
 
 export const nguoiDungRouter = express.Router();
 
@@ -43,11 +46,26 @@ export const nguoiDungRouter = express.Router();
  *     responses:
  *       200:
  *         description: Lấy danh sách phân trang thành công
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                 total:
+ *                   type: integer
+ *                 page:
+ *                   type: integer
+ *                 pageSize:
+ *                   type: integer
  */
 
 /**
  * @swagger
- * /QuanLyNguoiDung/CapNhatThongTinNguoiDung/{tai_khoan}:
+ * /QuanLyNguoiDung/CapNhatThongTinNguoiDung:
  *   put:
  *     summary: Cập nhật thông tin người dùng
  *     description: API dùng để cập nhật thông tin người dùng theo tai_khoan
@@ -56,7 +74,7 @@ export const nguoiDungRouter = express.Router();
  *     security:
  *       - bearerAuth: []
  *     parameters:
- *       - in: path
+ *       - in: body
  *         name: tai_khoan
  *         required: true
  *         schema:
@@ -75,12 +93,6 @@ export const nguoiDungRouter = express.Router();
  *                 type: string
  *               so_dt:
  *                 type: string
- *               mat_khau:
- *                 type: string
- *               loai_nguoi_dung:
- *                 type: string
- *               mat_khau_cu:
- *                 type: string
  *     responses:
  *       200:
  *         description: Cập nhật thành công
@@ -94,7 +106,7 @@ export const nguoiDungRouter = express.Router();
  * @swagger
  * /QuanLyNguoiDung/XoaNguoiDung/{tai_khoan}:
  *   delete:
- *     summary: Xóa người dùng
+ *     summary: Xóa người dùng (soft delete)
  *     tags:
  *       - QuanLyNguoiDung
  *     security:
@@ -108,6 +120,8 @@ export const nguoiDungRouter = express.Router();
  *     responses:
  *       200:
  *         description: Xóa người dùng thành công
+ *       404:
+ *         description: Tài khoản không tồn tại hoặc đã bị xóa
  */
 
 /**
@@ -149,6 +163,8 @@ export const nguoiDungRouter = express.Router();
  *                     type: string
  *       400:
  *         description: Thiếu từ khóa tìm kiếm
+ *       404:
+ *         description: Không tìm thấy người dùng
  */
 
 nguoiDungRouter.get(
@@ -160,7 +176,6 @@ nguoiDungRouter.get(
 nguoiDungRouter.get(
   "/LayDanhSachNguoiDungPhanTrang",
   protect,
-  parseNumber,
   validateAll({ query: queryPaginationSchema }),
   nguoiDungController.getLayDanhSachNguoiDungPhanTrang,
 );
@@ -168,8 +183,7 @@ nguoiDungRouter.get(
 nguoiDungRouter.get(
   "/TimKiemNguoiDung",
   protect,
-  parseNumber,
-  validateAll({ query: queryPaginationSchema }),
+  validateAll({ query: timKiemNguoiDungSchema }),
   nguoiDungController.timKiemNguoiDung,
 );
 
@@ -177,6 +191,7 @@ nguoiDungRouter.get(
 nguoiDungRouter.delete(
   "/XoaNguoiDung/:tai_khoan",
   protect,
+  validateAll({ params: xoaNguoiDungSchema }),
   nguoiDungController.xoaNguoiDung,
 );
 

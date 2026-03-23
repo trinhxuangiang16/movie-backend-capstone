@@ -11,10 +11,29 @@ import {
   layTrangThaiGheSchema,
   lichChieuSchema,
 } from "../validations/datVe.schema.js";
-import { parseNumber } from "../common/middleware/parseNumber.middleware.js";
 import { validateAll } from "../common/middleware/validate.middleware.js";
 
 export const datVeRouter = express.Router();
+
+/**
+ * @swagger
+ * /QuanLyDatVe/LayTrangThaiGheTrongRap:
+ *   get:
+ *     summary: Lấy trạng thái ghế trong rạp
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: ma_lich_chieu
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Lấy trạng thái ghế thành công
+ */
 
 /**
  * @swagger
@@ -101,10 +120,24 @@ export const datVeRouter = express.Router();
  *         description: Ghế đã được đặt
  */
 
+/**
+ * @swagger
+ * /QuanLyDatVe/LichSuDatVe:
+ *   get:
+ *     summary: Lấy lịch sử đặt vé của người dùng
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lấy lịch sử đặt vé thành công
+ */
+
 datVeRouter.get(
   "/LayTrangThaiGheTrongRap",
   protect,
-  validateAll({ body: layTrangThaiGheSchema }),
+  validateAll({ query: layTrangThaiGheSchema }),
   datVeController.layTrangThaiGheTrongRap,
 );
 
@@ -119,7 +152,7 @@ datVeRouter.post(
 datVeRouter.get(
   "/LayDanhSachPhongVe",
   protect,
-  parseNumber,
+
   validateAll({ query: layDanhSachPhongVeSchema }),
   datVeController.layDanhSachPhongVe,
 );
@@ -127,7 +160,7 @@ datVeRouter.get(
 datVeRouter.post(
   "/DatVe",
   protect,
-  parseNumber,
+
   validateAll({ body: datVeSchema }),
   datVeController.datVe,
 );

@@ -3,7 +3,11 @@ import express from "express";
 import { protect } from "../common/middleware/protect.middleware.js";
 import { authController } from "../controllers/auth.controller.js";
 import { validateAll } from "../common/middleware/validate.middleware.js";
-import { loginSchema, registerSchema } from "../validations/auth.schema.js";
+import {
+  loginSchema,
+  refreshTokenSchema,
+  registerSchema,
+} from "../validations/auth.schema.js";
 
 const authRouter = express.Router();
 
@@ -101,18 +105,25 @@ const authRouter = express.Router();
 
 /**
  * @swagger
- * /QuanLyNguoiDung/RefreshToken:
+ * /QuanLyNguoiDung/refresh-token:
  *   post:
  *     summary: Làm mới access token
  *     tags:
  *       - QuanLyNguoiDung
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - accessToken
+ *               - refreshToken
  *             properties:
+ *               accessToken:
+ *                 type: string
  *               refreshToken:
  *                 type: string
  *     responses:
@@ -133,6 +144,10 @@ authRouter.post(
 
 authRouter.get("/ThongTinTaiKhoan", protect, authController.getInfo);
 
-authRouter.post("/refresh-token", authController.refreshToken);
+authRouter.post(
+  "/refresh-token",
+  validateAll({ body: refreshTokenSchema }),
+  authController.refreshToken,
+);
 
 export default authRouter;

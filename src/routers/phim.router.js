@@ -8,10 +8,10 @@ import {
 import { validateAll } from "../common/middleware/validate.middleware.js";
 import {
   createMovieSchema,
-  movieIdParamSchema,
+  movieIdSchema,
+  ngayChieuQuerySchema,
   updateMovieSchema,
 } from "../validations/phim.schema.js";
-import { parseNumber } from "../common/middleware/parseNumber.middleware.js";
 import { queryPaginationSchema } from "../validations/pagination.schema.js";
 
 export const phimRouter = express.Router();
@@ -37,6 +37,8 @@ export const phimRouter = express.Router();
  *     description: Hỗ trợ phân trang và filter
  *     tags:
  *       - QuanLyPhim
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: page
@@ -51,6 +53,43 @@ export const phimRouter = express.Router();
  *     responses:
  *       200:
  *         description: Lấy danh sách phim phân trang thành công
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       ma_phim:
+ *                         type: integer
+ *                       ten_phim:
+ *                         type: string
+ *                       trailer:
+ *                         type: string
+ *                       hinh_anh:
+ *                         type: string
+ *                       mo_ta:
+ *                         type: string
+ *                       ngay_khoi_chieu:
+ *                         type: string
+ *                         format: date-time
+ *                       danh_gia:
+ *                         type: integer
+ *                       hot:
+ *                         type: boolean
+ *                       dang_chieu:
+ *                         type: boolean
+ *                       sap_chieu:
+ *                         type: boolean
+ *                 total:
+ *                   type: integer
+ *                 page:
+ *                   type: integer
+ *                 pageSize:
+ *                   type: integer
  */
 
 /**
@@ -113,6 +152,7 @@ export const phimRouter = express.Router();
  *             type: object
  *             required:
  *               - ten_phim
+ *               - ngay_khoi_chieu
  *             properties:
  *               ten_phim:
  *                 type: string
@@ -209,6 +249,48 @@ export const phimRouter = express.Router();
  *         description: Không tìm thấy phim
  */
 
+/**
+ * @swagger
+ * /QuanLyPhim/PhimDangChieu:
+ *   get:
+ *     summary: Lấy danh sách phim đang chiếu
+ *     tags:
+ *       - QuanLyPhim
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lấy danh sách phim đang chiếu thành công
+ */
+
+/**
+ * @swagger
+ * /QuanLyPhim/PhimSapChieu:
+ *   get:
+ *     summary: Lấy danh sách phim sắp chiếu
+ *     tags:
+ *       - QuanLyPhim
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lấy danh sách phim sắp chiếu thành công
+ */
+
+/**
+ * @swagger
+ * /QuanLyPhim/PhimHot:
+ *   get:
+ *     summary: Lấy danh sách phim hot
+ *     tags:
+ *       - QuanLyPhim
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lấy danh sách phim hot thành công
+ */
+
 // Public APIs
 phimRouter.get("/LayDanhSachPhim", protect, phimController.getLayDanhSachPhim);
 
@@ -228,12 +310,14 @@ phimRouter.get(
 phimRouter.get(
   "/LayThongTinPhim/:ma_phim",
   protect,
+  validateAll({ params: movieIdSchema }),
   phimController.getLayThongTinPhim,
 );
 
 phimRouter.get(
   "/LayDanhSachPhimTheoNgay",
   protect,
+  validateAll({ query: ngayChieuQuerySchema }),
   phimController.getLayDanhSachPhimTheoNgay,
 );
 
@@ -241,7 +325,6 @@ phimRouter.get(
 phimRouter.post(
   "/",
   protect,
-  parseNumber,
   mustBeAdmin("ADMIN"),
   validateAll({ body: createMovieSchema }),
   phimController.themPhim,
@@ -251,15 +334,14 @@ phimRouter.delete(
   "/XoaPhim/:ma_phim",
   protect,
   mustBeAdmin("ADMIN"),
-  validateAll({ params: movieIdParamSchema }),
+  validateAll({ params: movieIdSchema }),
   phimController.delete,
 );
 
 phimRouter.put(
   "/CapNhatPhim/:ma_phim",
   protect,
-  parseNumber,
   mustBeAdmin("ADMIN"),
-  validateAll({ body: updateMovieSchema, params: movieIdParamSchema }),
+  validateAll({ body: updateMovieSchema, params: movieIdSchema }),
   phimController.capNhatPhim,
 );

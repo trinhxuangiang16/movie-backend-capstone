@@ -61,16 +61,6 @@ export const phimService = {
 
   // GET LayDanhSachPhimTheoNgay
   getLayDanhSachPhimTheoNgay: async (ngay) => {
-    if (!ngay) {
-      throw new BadRequestException("Thiếu tham số ngày");
-    }
-
-    const regex = /^\d{2}\/\d{2}\/\d{4}$/; // Kiểm tra định dạng dd/mm/yyyy
-
-    if (!regex.test(ngay)) {
-      throw new BadRequestException("Ngày phải có định dạng dd/mm/yyyy");
-    }
-
     const [day, month, year] = ngay.split("/").map(Number);
 
     const start = new Date(year, month - 1, day); // Tạo đối tượng Date cho ngày bắt đầu (00:00:00)
@@ -108,11 +98,17 @@ export const phimService = {
 
   // DELETE XoaPhim
   delete: async (ma_phim) => {
-    return prisma.phim.update({
+    const phim = await prisma.phim.findUnique({
+      where: { ma_phim: Number(ma_phim), isDeleted: false },
+    });
+
+    if (!phim) {
+      throw new NotFoundException("Phim không tồn tại hoặc đã bị xóa");
+    }
+
+    await prisma.phim.update({
       where: { ma_phim: Number(ma_phim) },
-      data: {
-        isDeleted: true,
-      },
+      data: { isDeleted: true },
     });
   },
 
@@ -126,7 +122,7 @@ export const phimService = {
       throw new NotFoundException("Phim không tồn tại hoặc đã bị xóa");
     }
 
-    return prisma.phim.update({
+    await prisma.phim.update({
       where: { ma_phim: Number(ma_phim) },
       data: {
         ten_phim: data.ten_phim,
@@ -152,6 +148,11 @@ export const phimService = {
         dang_chieu: true,
         isDeleted: false,
       },
+      select: {
+        ma_phim: true,
+        ten_phim: true,
+        hinh_anh: true,
+      },
       orderBy: {
         ma_phim: "asc",
       },
@@ -164,6 +165,11 @@ export const phimService = {
         sap_chieu: true,
         isDeleted: false,
       },
+      select: {
+        ma_phim: true,
+        ten_phim: true,
+        hinh_anh: true,
+      },
       orderBy: {
         ma_phim: "asc",
       },
@@ -175,6 +181,11 @@ export const phimService = {
       where: {
         hot: true,
         isDeleted: false,
+      },
+      select: {
+        ma_phim: true,
+        ten_phim: true,
+        hinh_anh: true,
       },
       orderBy: {
         ma_phim: "asc",

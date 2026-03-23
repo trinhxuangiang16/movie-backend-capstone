@@ -31,7 +31,7 @@ export const phimController = {
   // GET LayThongTinPhim/:ma_phim
   getLayThongTinPhim: async (req, res, next) => {
     try {
-      const { ma_phim } = req.params;
+      const { ma_phim } = req.validated.params;
       const result = await phimService.getLayThongTinPhim(ma_phim);
 
       return successResponse(res, result, "Lấy thông tin phim thành công");
@@ -43,7 +43,7 @@ export const phimController = {
   // GET LayDanhSachPhimTheoNgay
   getLayDanhSachPhimTheoNgay: async (req, res, next) => {
     try {
-      const { ngay } = req.query;
+      const { ngay } = req.validated.query;
 
       const result = await phimService.getLayDanhSachPhimTheoNgay(ngay);
 

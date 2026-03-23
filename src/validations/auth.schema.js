@@ -18,16 +18,8 @@ export const loginSchema = z.object({
   mat_khau: z.string().trim().min(1, "Mật khẩu không được trống"),
 });
 
-export const updateUserSchema = registerSchema
-  .omit({ mat_khau: true })
-  .partial()
-  .refine((data) => Object.keys(data).length > 0, {
-    message: "Phải có ít nhất 1 trường để cập nhật",
-  });
+export const refreshTokenSchema = z.object({
+  accessToken: z.string().trim().min(1, "Access token không được để trống"),
 
-// export const userParamSchema = z.object({
-//   tai_khoan: z.coerce
-//     .number({ message: "Tài khoản phải là số" })
-//     .int({ message: "Tài khoản phải là số nguyên" })
-//     .positive({ message: "Tài khoản phải là số dương" }),
-// });
+  refreshToken: z.string().trim().min(1, "Refresh token không được để trống"),
+});

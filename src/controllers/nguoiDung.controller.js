@@ -32,7 +32,7 @@ export const nguoiDungController = {
 
   timKiemNguoiDung: async (req, res, next) => {
     try {
-      const { keyword } = req.query;
+      const { keyword } = req.validated.query;
 
       const result = await nguoiDungService.timKiemNguoiDung(keyword);
 
@@ -57,11 +57,11 @@ export const nguoiDungController = {
 
   xoaNguoiDung: async (req, res, next) => {
     try {
-      const { tai_khoan } = req.params;
+      const { tai_khoan } = req.validated.params;
 
       const result = await nguoiDungService.xoaNguoiDung(tai_khoan);
 
-      return successResponse(res, result, "Xóa người dùng thành công");
+      return successResponse(res, null, "Xóa người dùng thành công");
     } catch (err) {
       next(err);
     }

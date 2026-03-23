@@ -3,11 +3,13 @@ export const successResponse = (
   data,
   message = "Success",
   statusCode = 200,
+  meta = null,
 ) => {
   return res.status(statusCode).json({
     status: "success",
     message,
     data,
+    ...(meta && { meta }),
   });
 };
 

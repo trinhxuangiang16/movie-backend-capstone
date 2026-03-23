@@ -26,14 +26,14 @@ export const lichChieuSchema = z.object({
 });
 
 export const datVeSchema = z.object({
-  ma_lich_chieu: z
+  ma_lich_chieu: z.coerce
     .number({ message: "Mã lịch chiếu phải là số" })
     .int({ message: "Mã lịch chiếu phải là số nguyên" })
     .positive({ message: "Mã lịch chiếu phải là số dương" }),
   danh_sach_ve: z
     .array(
       z.object({
-        ma_ghe: z
+        ma_ghe: z.coerce
           .number({ message: "Mã ghế phải là số" })
           .int({ message: "Mã ghế phải là số nguyên" })
 
