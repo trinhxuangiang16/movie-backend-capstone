@@ -70,7 +70,9 @@ export type GiuCho = $Result.DefaultSelection<Prisma.$GiuChoPayload>
  * Type-safe database client for TypeScript & Node.js
  * @example
  * ```
- * const prisma = new PrismaClient()
+ * const prisma = new PrismaClient({
+ *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+ * })
  * // Fetch zero or more Banners
  * const banners = await prisma.banner.findMany()
  * ```
@@ -91,7 +93,9 @@ export class PrismaClient<
    * Type-safe database client for TypeScript & Node.js
    * @example
    * ```
-   * const prisma = new PrismaClient()
+   * const prisma = new PrismaClient({
+   *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+   * })
    * // Fetch zero or more Banners
    * const banners = await prisma.banner.findMany()
    * ```
@@ -171,7 +175,7 @@ export class PrismaClient<
    * ])
    * ```
    * 
-   * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
+   * Read more in our [docs](https://www.prisma.io/docs/orm/prisma-client/queries/transactions).
    */
   $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
 
@@ -330,8 +334,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 7.3.0
-   * Query Engine version: 9d6ad21cbbceab97458517b147a6a09ff43aa735
+   * Prisma Client JS version: 7.5.0
+   * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
    */
   export type PrismaVersion = {
     client: string
@@ -2642,6 +2646,11 @@ export namespace Prisma {
      * Skip the first `n` Banners.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Banners.
+     */
     distinct?: BannerScalarFieldEnum | BannerScalarFieldEnum[]
   }
 
@@ -3634,6 +3643,11 @@ export namespace Prisma {
      * Skip the first `n` CumRaps.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CumRaps.
+     */
     distinct?: CumRapScalarFieldEnum | CumRapScalarFieldEnum[]
   }
 
@@ -4660,6 +4674,11 @@ export namespace Prisma {
      * Skip the first `n` DatVes.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DatVes.
+     */
     distinct?: DatVeScalarFieldEnum | DatVeScalarFieldEnum[]
   }
 
@@ -5626,6 +5645,11 @@ export namespace Prisma {
      * Skip the first `n` Ghes.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Ghes.
+     */
     distinct?: GheScalarFieldEnum | GheScalarFieldEnum[]
   }
 
@@ -6636,6 +6660,11 @@ export namespace Prisma {
      * Skip the first `n` HeThongRaps.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeThongRaps.
+     */
     distinct?: HeThongRapScalarFieldEnum | HeThongRapScalarFieldEnum[]
   }
 
@@ -7649,6 +7678,11 @@ export namespace Prisma {
      * Skip the first `n` LichChieus.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LichChieus.
+     */
     distinct?: LichChieuScalarFieldEnum | LichChieuScalarFieldEnum[]
   }
 
@@ -8726,6 +8760,11 @@ export namespace Prisma {
      * Skip the first `n` NguoiDungs.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NguoiDungs.
+     */
     distinct?: NguoiDungScalarFieldEnum | NguoiDungScalarFieldEnum[]
   }
 
@@ -9813,6 +9852,11 @@ export namespace Prisma {
      * Skip the first `n` Phims.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Phims.
+     */
     distinct?: PhimScalarFieldEnum | PhimScalarFieldEnum[]
   }
 
@@ -10816,6 +10860,11 @@ export namespace Prisma {
      * Skip the first `n` RapPhims.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RapPhims.
+     */
     distinct?: RapPhimScalarFieldEnum | RapPhimScalarFieldEnum[]
   }
 
@@ -11877,6 +11926,11 @@ export namespace Prisma {
      * Skip the first `n` GiuChos.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiuChos.
+     */
     distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
   }
 
