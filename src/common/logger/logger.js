@@ -17,6 +17,7 @@ export const logger = createLogger({
     new transports.File({
       filename: "./src/common/logger/combined.log",
     }),
+    new transports.Console(),
   ],
 });
 
