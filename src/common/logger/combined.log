@@ -132,3 +132,40 @@
 {"level":"error","message":"[reqId:f157fb6f] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/22 - Tài khoản không tồn tại hoặc đã bị xóa"}
 {"level":"info","message":"[reqId:f157fb6f] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/22 404 36.747ms 127.0.0.1 user:17"}
 {"level":"info","message":"[reqId:9035edf1] DELETE /api/QuanLyNguoiDung/XoaNguoiDung/3 200 82.186ms 127.0.0.1 user:17"}
+{"level":"info","message":"[reqId:72137c92] POST /api/QuanLyNguoiDung/DangNhap - undefinedms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:72137c92] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10011ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"error","message":"[reqId:40e02776] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10006ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:40e02776] POST /api/QuanLyNguoiDung/DangNhap 500 10043.976ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:a96d3acf] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10000ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:a96d3acf] POST /api/QuanLyNguoiDung/DangNhap 500 10014.876ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:cb94007c] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10009ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:cb94007c] POST /api/QuanLyNguoiDung/DangNhap 500 10019.106ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:0e1ca4a5] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10010ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:0e1ca4a5] POST /api/QuanLyNguoiDung/DangNhap 500 10025.845ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:8afd0847] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10001ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:8afd0847] POST /api/QuanLyNguoiDung/DangNhap 500 20173.055ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:43347bb9] POST /api/QuanLyNguoiDung/DangNhap 200 322.516ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:ed35a618] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10009ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:ed35a618] POST /api/QuanLyNguoiDung/DangNhap 500 20165.902ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:def68644] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10011ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:def68644] POST /api/QuanLyNguoiDung/DangNhap 500 10024.674ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:c3b754e5] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10013ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:c3b754e5] POST /api/QuanLyNguoiDung/DangNhap 500 10019.100ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:e250e5e9] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10016ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:e250e5e9] POST /api/QuanLyNguoiDung/DangNhap 500 20239.771ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:8913953f] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10017ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:8913953f] POST /api/QuanLyNguoiDung/DangNhap 500 20238.174ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:6ad93d3f] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10003ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:6ad93d3f] POST /api/QuanLyNguoiDung/DangNhap 500 20226.678ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:7b633cc2] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10013ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:7b633cc2] POST /api/QuanLyNguoiDung/DangNhap 500 20207.700ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:42389c45] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10004ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:42389c45] POST /api/QuanLyNguoiDung/DangNhap 500 10009.833ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:3c1562db] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10001ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:3c1562db] POST /api/QuanLyNguoiDung/DangNhap 500 20232.013ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:d644cec8] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10001ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:d644cec8] POST /api/QuanLyNguoiDung/DangNhap 500 10006.132ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:c2260f71] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10012ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:c2260f71] POST /api/QuanLyNguoiDung/DangNhap 500 20210.629ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:499fc595] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10015ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:499fc595] POST /api/QuanLyNguoiDung/DangNhap 500 20205.220ms 127.0.0.1 user:guest"}

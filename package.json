@@ -9,7 +9,8 @@
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
     "seed": "node src/seed.js",
-    "prisma": "npx prisma db push && npx prisma generate"
+    "prisma": "npx prisma db push && npx prisma generate",
+    "test": "echo %DATABASE_URL%"
   },
   "keywords": [],
   "author": "",
