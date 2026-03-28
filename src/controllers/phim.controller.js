@@ -133,4 +133,14 @@ export const phimController = {
       next(err);
     }
   },
+
+  getBanner: async (req, res, next) => {
+    try {
+      const { ma_phim } = req.validated.params;
+      const result = await phimService.getBanner(ma_phim);
+      return successResponse(res, result, "Lấy banner phim thành công");
+    } catch (err) {
+      next(err);
+    }
+  },
 };

@@ -345,3 +345,10 @@ phimRouter.put(
   validateAll({ body: updateMovieSchema, params: movieIdSchema }),
   phimController.capNhatPhim,
 );
+
+phimRouter.get(
+  "/Banner/:ma_phim",
+  protect,
+  validateAll({ params: movieIdSchema }),
+  phimController.getBanner,
+);

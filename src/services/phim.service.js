@@ -192,4 +192,11 @@ export const phimService = {
       },
     });
   },
+
+  getBanner: async (ma_phim) => {
+    const banner = await prisma.banner.findUnique({
+      where: { ma_phim: Number(ma_phim) },
+    });
+    return banner;
+  },
 };
