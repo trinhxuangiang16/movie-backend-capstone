@@ -291,6 +291,50 @@ export const phimRouter = express.Router();
  *         description: Lấy danh sách phim hot thành công
  */
 
+/**
+ * @swagger
+ * /QuanLyPhim/Banner/{ma_phim}:
+ *   get:
+ *     summary: Lấy banner theo mã phim
+ *     tags: [Phim]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: ma_phim
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Mã phim
+ *         example: 123
+ *     responses:
+ *       200:
+ *         description: Lấy banner thành công
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: success
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     ma_phim:
+ *                       type: integer
+ *                       example: 123
+ *                     banner:
+ *                       type: string
+ *                       example: https://example.com/banner.jpg
+ *       400:
+ *         description: Dữ liệu không hợp lệ
+ *       401:
+ *         description: Không có quyền truy cập
+ *       404:
+ *         description: Không tìm thấy phim
+ */
+
 // Public APIs
 phimRouter.get("/LayDanhSachPhim", protect, phimController.getLayDanhSachPhim);
 
