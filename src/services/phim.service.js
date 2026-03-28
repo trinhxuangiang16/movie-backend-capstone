@@ -194,9 +194,24 @@ export const phimService = {
   },
 
   getBanner: async (ma_phim) => {
-    const banner = await prisma.banner.findUnique({
+    // Kiểm tra phim tồn tại
+    const phim = await prisma.phim.findUnique({
       where: { ma_phim: Number(ma_phim) },
     });
+
+    if (!phim || phim.isDeleted) {
+      throw new NotFoundException("Phim không tồn tại hoặc đã bị xóa");
+    }
+
+    // Lấy banner
+    const banner = await prisma.banner.findFirst({
+      where: { ma_phim: Number(ma_phim) },
+    });
+
+    if (!banner) {
+      throw new NotFoundException("Banner không tồn tại");
+    }
+
     return banner;
   },
 };

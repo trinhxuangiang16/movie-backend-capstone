@@ -296,7 +296,8 @@ export const phimRouter = express.Router();
  * /QuanLyPhim/Banner/{ma_phim}:
  *   get:
  *     summary: Lấy banner theo mã phim
- *     tags: [Phim]
+ *     tags:
+ *       - QuanLyPhim
  *     security:
  *       - bearerAuth: []
  *     parameters:
