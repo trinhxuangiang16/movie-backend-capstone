@@ -152,6 +152,9 @@ export const phimService = {
         ma_phim: true,
         ten_phim: true,
         hinh_anh: true,
+        mo_ta: true,
+        danh_gia: true,
+        trailer: true,
         Banner: {
           select: {
             hinh_anh: true,
@@ -169,6 +172,9 @@ export const phimService = {
         ten_phim: movie.ten_phim,
         hinh_anh: movie.hinh_anh,
         banner_url: movie.Banner[0]?.hinh_anh || null,
+        mo_ta: movie.mo_ta,
+        danh_gia: movie.danh_gia,
+        trailer: movie.trailer,
       };
     });
   },
@@ -183,6 +189,9 @@ export const phimService = {
         ma_phim: true,
         ten_phim: true,
         hinh_anh: true,
+        mo_ta: true,
+        danh_gia: true,
+        trailer: true,
         Banner: {
           select: {
             hinh_anh: true,
@@ -200,6 +209,9 @@ export const phimService = {
         ten_phim: movie.ten_phim,
         hinh_anh: movie.hinh_anh,
         banner_url: movie.Banner[0]?.hinh_anh || null,
+        mo_ta: movie.mo_ta,
+        danh_gia: movie.danh_gia,
+        trailer: movie.trailer,
       };
     });
   },
@@ -210,11 +222,13 @@ export const phimService = {
         hot: true,
         isDeleted: false,
       },
-
       select: {
         ma_phim: true,
         ten_phim: true,
         hinh_anh: true,
+        mo_ta: true,
+        danh_gia: true,
+        trailer: true,
         Banner: {
           select: {
             hinh_anh: true,
@@ -232,6 +246,9 @@ export const phimService = {
         ten_phim: movie.ten_phim,
         hinh_anh: movie.hinh_anh,
         banner_url: movie.Banner[0]?.hinh_anh || null,
+        mo_ta: movie.mo_ta,
+        danh_gia: movie.danh_gia,
+        trailer: movie.trailer,
       };
     });
   },
