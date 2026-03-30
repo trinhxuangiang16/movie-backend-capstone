@@ -177,19 +177,34 @@ export const phimService = {
   },
 
   getPhimHot: async () => {
-    return prisma.phim.findMany({
+    const movies = await prisma.phim.findMany({
       where: {
         hot: true,
         isDeleted: false,
       },
+
       select: {
         ma_phim: true,
         ten_phim: true,
         hinh_anh: true,
+        Banner: {
+          select: {
+            hinh_anh: true,
+          },
+        },
       },
       orderBy: {
         ma_phim: "asc",
       },
+    });
+
+    return movies.map((movie) => {
+      return {
+        ma_phim: movie.ma_phim,
+        ten_phim: movie.ten_phim,
+        hinh_anh: movie.hinh_anh,
+        banner_url: movie.Banner[0]?.hinh_anh || null,
+      };
     });
   },
 
