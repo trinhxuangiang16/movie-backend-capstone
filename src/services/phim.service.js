@@ -143,7 +143,7 @@ export const phimService = {
   },
 
   getPhimDangChieu: async () => {
-    return prisma.phim.findMany({
+    const movies = await prisma.phim.findMany({
       where: {
         dang_chieu: true,
         isDeleted: false,
@@ -152,15 +152,29 @@ export const phimService = {
         ma_phim: true,
         ten_phim: true,
         hinh_anh: true,
+        Banner: {
+          select: {
+            hinh_anh: true,
+          },
+        },
       },
       orderBy: {
         ma_phim: "asc",
       },
     });
+
+    return movies.map((movie) => {
+      return {
+        ma_phim: movie.ma_phim,
+        ten_phim: movie.ten_phim,
+        hinh_anh: movie.hinh_anh,
+        banner_url: movie.Banner[0]?.hinh_anh || null,
+      };
+    });
   },
 
   getPhimSapChieu: async () => {
-    return prisma.phim.findMany({
+    const movies = await prisma.phim.findMany({
       where: {
         sap_chieu: true,
         isDeleted: false,
@@ -169,10 +183,24 @@ export const phimService = {
         ma_phim: true,
         ten_phim: true,
         hinh_anh: true,
+        Banner: {
+          select: {
+            hinh_anh: true,
+          },
+        },
       },
       orderBy: {
         ma_phim: "asc",
       },
+    });
+
+    return movies.map((movie) => {
+      return {
+        ma_phim: movie.ma_phim,
+        ten_phim: movie.ten_phim,
+        hinh_anh: movie.hinh_anh,
+        banner_url: movie.Banner[0]?.hinh_anh || null,
+      };
     });
   },
 
