@@ -40,6 +40,7 @@ export const rapService = {
           select: {
             ma_cum_rap: true,
             ten_cum_rap: true,
+            dia_chi: true,
             RapPhim: {
               select: {
                 ma_rap: true,
