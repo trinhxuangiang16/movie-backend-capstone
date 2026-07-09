@@ -1,6 +1,8 @@
 import "dotenv/config";
+import bcrypt from "bcrypt";
 import { prisma } from "./common/prisma/contect.prisma.js";
 import { generateLichChieu } from "./lichChieu.seed.js";
+import { ADMIN_PASSWORD } from "./common/constant/app.contant.js";
 
 // import {
 //   heThongRap,
@@ -13,56 +15,75 @@ import { generateLichChieu } from "./lichChieu.seed.js";
 // } from "./dataSeed.js";
 
 async function main() {
-  console.log("Clearing DB");
+  const adminEmail = "ad@gmail.com";
+  const adminName = "Admin";
+  const adminPhone = "097533257";
+  const adminPassword = ADMIN_PASSWORD || "123456";
 
-  // await prisma.datVe.deleteMany();
-  // await prisma.banner.deleteMany();
-  // await prisma.ghe.deleteMany();
-  // await prisma.rapPhim.deleteMany();
-  // await prisma.cumRap.deleteMany();
-  // await prisma.heThongRap.deleteMany();
-  // await prisma.phim.deleteMany();
-  // await prisma.nguoiDung.deleteMany();
+  console.log("Clearing seed data");
 
-  console.log("Clearing DB");
+  const adminUsers = await prisma.nguoiDung.findMany({
+    where: {
+      loai_nguoi_dung: "ADMIN",
+    },
+    select: {
+      tai_khoan: true,
+    },
+  });
 
-  console.log("Disable FK...");
-  await prisma.$executeRawUnsafe(`SET FOREIGN_KEY_CHECKS = 0`);
+  const adminIds = adminUsers.map((user) => user.tai_khoan);
 
-  console.log("Truncating LichChieu...");
-  await prisma.$executeRawUnsafe(`TRUNCATE TABLE LichChieu`);
+  await prisma.$transaction(async (tx) => {
+    if (adminIds.length > 0) {
+      await tx.datVe.deleteMany({
+        where: {
+          tai_khoan: {
+            in: adminIds,
+          },
+        },
+      });
 
-  console.log("Enable FK...");
-  await prisma.$executeRawUnsafe(`SET FOREIGN_KEY_CHECKS = 1`);
+      await tx.giuCho.deleteMany({
+        where: {
+          tai_khoan: {
+            in: adminIds,
+          },
+        },
+      });
 
-  console.log("Generating data...");
-  const lichChieuData = generateLichChieu();
+      await tx.nguoiDung.deleteMany({
+        where: {
+          tai_khoan: {
+            in: adminIds,
+          },
+        },
+      });
+    }
 
-  console.log("Inserting...");
-  await prisma.lichChieu.createMany({
-    data: lichChieuData,
+    console.log("Truncating LichChieu...");
+    await tx.$executeRawUnsafe(`TRUNCATE TABLE LichChieu`);
+
+    console.log("Generating data...");
+    const lichChieuData = generateLichChieu();
+
+    console.log("Inserting LichChieu...");
+    await tx.lichChieu.createMany({
+      data: lichChieuData,
+    });
+
+    console.log("Creating new admin...");
+    await tx.nguoiDung.create({
+      data: {
+        ho_ten: adminName,
+        email: adminEmail,
+        so_dt: adminPhone,
+        mat_khau: bcrypt.hashSync(adminPassword, 10),
+        loai_nguoi_dung: "ADMIN",
+      },
+    });
   });
 
   console.log("Done");
-  // await prisma.heThongRap.createMany({ data: heThongRap });
-
-  // console.log("Seeding CumRap");
-  // await prisma.cumRap.createMany({ data: cumRap });
-
-  // console.log("Seeding RapPhim");
-  // await prisma.rapPhim.createMany({ data: raps });
-
-  // console.log("Seeding Ghe");
-  // await prisma.ghe.createMany({ data: ghes });
-
-  // console.log("Seeding Phim");
-  // await prisma.phim.createMany({ data: phims });
-
-  // console.log("Seeding Banner");
-  // await prisma.banner.createMany({ data: banners });
-
-  // console.log("Seeding Admin");
-  // await prisma.nguoiDung.create({ data: adminUser });
 }
 
 main().finally(() => prisma.$disconnect());

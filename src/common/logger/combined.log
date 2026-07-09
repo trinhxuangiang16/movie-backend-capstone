@@ -169,3 +169,162 @@
 {"level":"info","message":"[reqId:c2260f71] POST /api/QuanLyNguoiDung/DangNhap 500 20210.629ms 127.0.0.1 user:guest"}
 {"level":"error","message":"[reqId:499fc595] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10015ms\n    (pool connections: active=0 idle=0 limit=5)"}
 {"level":"info","message":"[reqId:499fc595] POST /api/QuanLyNguoiDung/DangNhap 500 20205.220ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:52f66734] GET /QuanLyPhim/PhimHot - Not Found"}
+{"level":"info","message":"[reqId:52f66734] GET /QuanLyPhim/PhimHot 404 3.599ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:179a5f77] GET /QuanLyPhim/PhimSapChieu - Not Found"}
+{"level":"info","message":"[reqId:179a5f77] GET /QuanLyPhim/PhimSapChieu 404 0.460ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:6f125f1d] GET /QuanLyPhim/PhimDangChieu - Not Found"}
+{"level":"info","message":"[reqId:6f125f1d] GET /QuanLyPhim/PhimDangChieu 404 0.313ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:80232a88] GET /favicon.ico - Not Found"}
+{"level":"info","message":"[reqId:80232a88] GET /favicon.ico 404 1.353ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:e5e0048b] GET /QuanLyPhim/PhimHot - Not Found"}
+{"level":"info","message":"[reqId:e5e0048b] GET /QuanLyPhim/PhimHot 404 1.443ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:001311af] GET /QuanLyPhim/PhimSapChieu - Not Found"}
+{"level":"info","message":"[reqId:001311af] GET /QuanLyPhim/PhimSapChieu 404 0.482ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:6294ef17] GET /QuanLyPhim/PhimDangChieu - Not Found"}
+{"level":"info","message":"[reqId:6294ef17] GET /QuanLyPhim/PhimDangChieu 404 0.284ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:dc76c442] GET /api - Not Found"}
+{"level":"info","message":"[reqId:dc76c442] GET /api 404 1.050ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:c102640c] GET /api - Not Found"}
+{"level":"info","message":"[reqId:c102640c] GET /api 404 1.200ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:ff5779c6] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"info","message":"[reqId:ff5779c6] POST /QuanLyNguoiDung/DangNhap 404 0.550ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:b43c7043] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"info","message":"[reqId:b43c7043] POST /QuanLyNguoiDung/DangNhap 404 0.557ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:8fdc0a58] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"info","message":"[reqId:8fdc0a58] POST /QuanLyNguoiDung/DangNhap 404 1.291ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:dd9ec3ab] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"info","message":"[reqId:dd9ec3ab] POST /QuanLyNguoiDung/DangNhap 404 0.958ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:905bac77] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"info","message":"[reqId:905bac77] POST /QuanLyNguoiDung/DangNhap 404 0.909ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:65c3ff6b] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"info","message":"[reqId:65c3ff6b] POST /QuanLyNguoiDung/DangNhap 404 1.029ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:67293b79] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10002ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:67293b79] POST /api/QuanLyNguoiDung/DangNhap 500 20101.666ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:b6f23060] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"info","message":"[reqId:b6f23060] POST /QuanLyNguoiDung/DangNhap 404 0.642ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:80e00dcf] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10000ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:80e00dcf] POST /api/QuanLyNguoiDung/DangNhap 500 10004.758ms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:5989b6f5] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
+{"level":"info","message":"[reqId:5989b6f5] POST /api/QuanLyNguoiDung/DangNhap 401 81.495ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:6b918bd2] POST /api/QuanLyNguoiDung/DangNhap 200 154.712ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:891082b7] GET /api/QuanLyPhim/PhimSapChieu 200 166.189ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:87e13c5f] GET /api/QuanLyPhim/PhimDangChieu 200 159.559ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:66e97223] GET /api/QuanLyPhim/PhimHot 200 163.810ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:0cc6fb38] GET /api/QuanLyRap/LayThongTinHeThongRap 200 11.398ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:1e2f2668] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 200 31.297ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:d5b73bef] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 200 23.233ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:f29b564c] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=3 200 23.977ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:5cf3c0cc] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=4 200 16.377ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:7d87d018] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=5 200 10.300ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:95ea055e] GET /api/QuanLyRap/LayThongTinHeThongRap 304 4.817ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:0d011ddd] GET /api/QuanLyPhim/PhimHot 304 7.655ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:262bf364] GET /api/QuanLyPhim/PhimDangChieu 304 7.592ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:8c9a4b42] GET /api/QuanLyPhim/PhimSapChieu 304 8.585ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:6a28aebc] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 24.970ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:153a1806] GET /api/QuanLyRap/LayThongTinHeThongRap 304 5.934ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:0defac07] GET /api/QuanLyPhim/PhimHot 304 10.648ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:7282465c] GET /api/QuanLyPhim/PhimSapChieu 304 15.181ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:a91c4c31] GET /api/QuanLyPhim/PhimDangChieu 304 13.917ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:1b6b9243] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 17.329ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:d23ac339] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 304 18.598ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:8b72b2c3] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=3 304 8.680ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:25ba9452] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=4 304 17.624ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:28af42e4] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=5 304 12.952ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:df953f51] GET /api/QuanLyPhim/LayThongTinPhim/10 200 6.698ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:e8989eb5] GET /api/QuanLyPhim/Banner/10 200 9.316ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:8676301e] GET /api/QuanLyPhim/PhimSapChieu 304 31.211ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:0d177dff] GET /api/QuanLyPhim/PhimHot 304 38.710ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:2e9c4d3f] GET /api/QuanLyPhim/PhimDangChieu 304 32.543ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:163a5bb9] GET /api/QuanLyRap/LayThongTinHeThongRap 304 7.316ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:027c7dc7] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 35.927ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:e8de695c] GET /api/QuanLyPhim/LayThongTinPhim/10 304 24.153ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:b9b092cb] GET /api/QuanLyPhim/Banner/10 304 22.475ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:78f68930] GET /api/QuanLyPhim/LayThongTinPhim/10 304 12.391ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:999876bf] GET /api/QuanLyPhim/Banner/10 304 25.379ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:84d330f6] GET /api/QuanLyPhim/LayThongTinPhim/10 304 10.488ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:ed03983a] GET /api/QuanLyPhim/Banner/10 304 9.094ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:fd54c0d6] GET /api/QuanLyRap/LayThongTinHeThongRap 304 4.916ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:a2d5e659] GET /api/QuanLyPhim/PhimHot 304 12.702ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:8fd76a78] GET /api/QuanLyPhim/PhimDangChieu 304 7.610ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:97dd13b8] GET /api/QuanLyPhim/PhimSapChieu 304 9.252ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:abafffc5] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 10.841ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:9a065c32] GET /api/QuanLyPhim/LayThongTinPhim/10 304 6.505ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:e1270eac] GET /api/QuanLyPhim/Banner/10 304 8.469ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:164f674e] GET /api/QuanLyPhim/LayThongTinPhim/10 304 184.231ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:5a54a979] GET /api/QuanLyPhim/Banner/10 304 255.370ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:0b0ec39d] GET /api/QuanLyPhim/PhimDangChieu 304 24.826ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:d4229ec9] GET /api/QuanLyPhim/PhimSapChieu 304 46.590ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:ea81e13c] GET /api/QuanLyRap/LayThongTinHeThongRap 304 25.455ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:7a6e1926] GET /api/QuanLyPhim/PhimHot 304 52.225ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:98756dde] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 117.098ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:aa46c4f7] GET /api/QuanLyRap/LayThongTinHeThongRap 304 31.762ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:9ca48bac] GET /api/QuanLyPhim/PhimSapChieu 304 53.964ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:9944a29c] GET /api/QuanLyPhim/PhimHot 304 115.843ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:21d3d72d] GET /api/QuanLyPhim/PhimDangChieu 304 51.498ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:d72b4dcd] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 12.551ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:81ab6030] GET /api/QuanLyRap/LayThongTinHeThongRap 304 135.192ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:c28a9c12] GET /api/QuanLyPhim/PhimDangChieu 304 173.903ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:888f1e0f] GET /api/QuanLyPhim/PhimSapChieu 304 176.349ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:f92d6fec] GET /api/QuanLyPhim/PhimHot 304 194.022ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:b19b707b] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 20.000ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:2fdb35bf] GET /api/QuanLyRap/LayThongTinHeThongRap 304 32.156ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:dc7c7dd6] GET /api/QuanLyPhim/PhimHot 304 40.520ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:ff03e0e4] GET /api/QuanLyPhim/PhimDangChieu 304 48.363ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:aaa6ad9a] GET /api/QuanLyPhim/PhimSapChieu 304 53.985ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:4dce8183] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 111.031ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:35074f61] GET /api/QuanLyRap/LayThongTinHeThongRap 304 78.273ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:9e56a23c] GET /api/QuanLyPhim/PhimSapChieu 304 82.801ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:e5cf1c9b] GET /api/QuanLyPhim/PhimDangChieu 304 83.327ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:36b2fcb1] GET /api/QuanLyPhim/PhimHot 304 87.576ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:3911b175] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 86.219ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:c84dde62] GET /api/QuanLyRap/LayThongTinHeThongRap 304 51.352ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:ee50cdbc] GET /api/QuanLyPhim/PhimSapChieu 304 85.396ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:8438b37c] GET /api/QuanLyPhim/PhimDangChieu 304 91.207ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:41d46834] GET /api/QuanLyPhim/PhimHot 304 102.157ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:7f0628bc] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 391.116ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:ca178204] GET /api/QuanLyRap/LayThongTinHeThongRap 304 46.071ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:9702b862] GET /api/QuanLyPhim/PhimHot 304 180.772ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:38f1a5c6] GET /api/QuanLyPhim/PhimSapChieu 304 189.947ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:d0267877] GET /api/QuanLyPhim/PhimDangChieu 304 124.294ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:50492b91] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 48.661ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:47d47d88] GET /api/QuanLyRap/LayThongTinHeThongRap 304 59.499ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:cb53bbe6] GET /api/QuanLyPhim/PhimHot 304 115.640ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:f68f881d] GET /api/QuanLyPhim/PhimDangChieu 304 114.393ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:638065d3] GET /api/QuanLyPhim/PhimSapChieu 304 80.629ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:687c8e40] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 74.731ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:faebdab5] GET /api/QuanLyRap/LayThongTinHeThongRap 304 3.043ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:987d21b1] GET /api/QuanLyPhim/PhimDangChieu 304 5.357ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:fb268285] GET /api/QuanLyPhim/PhimSapChieu 304 6.686ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:63f18a78] GET /api/QuanLyPhim/PhimHot 304 9.114ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:a80ede74] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 11.551ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:23b2ea16] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=2 304 17.829ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:6f9202fc] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=5 304 11.529ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:0706cae8] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=4 304 12.522ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:4b467525] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=3 304 15.146ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:286e7d1a] GET /api/QuanLyPhim/LayThongTinPhim/3 200 12.918ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:1054e2ff] GET /api/QuanLyPhim/Banner/3 200 11.023ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:a0a4e445] GET /api/QuanLyPhim/LayThongTinPhim/3 304 14.649ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:5ca15b9c] GET /api/QuanLyPhim/Banner/3 304 14.088ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:f538a0e6] GET /api/QuanLyRap/LayThongTinHeThongRap 304 8.471ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:005c392e] GET /api/QuanLyPhim/PhimHot 304 20.331ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:1b5d9209] GET /api/QuanLyPhim/PhimSapChieu 304 24.082ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:16cb78d5] GET /api/QuanLyPhim/PhimDangChieu 304 20.747ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:ad3d03ee] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 10.313ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:7fa5037a] GET /api/QuanLyRap/LayThongTinHeThongRap 304 19.555ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:5d1fb0b9] GET /api/QuanLyPhim/PhimHot 304 33.025ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:aa53c2b9] GET /api/QuanLyPhim/PhimSapChieu 304 25.288ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:3f9093ae] GET /api/QuanLyPhim/PhimDangChieu 304 26.168ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:48398dea] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 304 26.101ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:aff0ca41] GET /api/QuanLyPhim/LayThongTinPhim/2 200 7.716ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:61aca29d] GET /api/QuanLyPhim/Banner/2 200 7.989ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:82981a1c] GET /api/QuanLyPhim/LayThongTinPhim/2 304 5.472ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:36c36a7a] GET /api/QuanLyPhim/Banner/2 304 6.022ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:09b0dd02] GET /api/QuanLyPhim/LayThongTinPhim/2 304 4.819ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:e6f4511c] GET /api/QuanLyPhim/Banner/2 304 6.816ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:c7bab5d7] GET /api/QuanLyPhim/LayThongTinPhim/2 304 9.040ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:5ebaf437] GET /api/QuanLyPhim/Banner/2 304 7.593ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:65c49bca] GET /api/QuanLyPhim/LayThongTinPhim/2 304 5.937ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:b955dacf] GET /api/QuanLyPhim/Banner/2 304 9.428ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:abf625df] GET /api/QuanLyPhim/LayThongTinPhim/2 304 8.917ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:4c208494] GET /api/QuanLyPhim/Banner/2 304 14.634ms 127.0.0.1 user:1"}
