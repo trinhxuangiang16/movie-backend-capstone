@@ -7,6 +7,13 @@ export const maHeThongRapSchema = z.object({
     .positive({ message: "Mã hệ thống rạp phải là số dương" }),
 });
 
+export const maLichChieuSchema = z.object({
+  ma_lich_chieu: z.coerce
+    .number({ message: "Mã lịch chiếu phải là số" })
+    .int({ message: "Mã lịch chiếu phải là số nguyên" })
+    .positive({ message: "Mã lịch chiếu phải là số dương" }),
+});
+
 export const giuChoTamThoiSchema = z.object({
   ma_lich_chieu: z.coerce
     .number({ message: "Mã lịch chiếu phải là số" })

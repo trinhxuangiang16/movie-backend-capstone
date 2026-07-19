@@ -54,6 +54,21 @@ export const rapController = {
     }
   },
 
+  getLichChieuPhimDuaVaoMaVaThoiGian: async (req, res, next) => {
+    try {
+      const { ma_lich_chieu } = req.validated.query;
+      const result =
+        await rapService.getLichChieuPhimDuaVaoMaVaThoiGian(ma_lich_chieu);
+      return successResponse(
+        res,
+        result,
+        "Lấy lịch chiếu theo mã và thời gian thành công",
+      );
+    } catch (err) {
+      next(err);
+    }
+  },
+
   giuChoTamThoi: async (req, res, next) => {
     try {
       const result = await rapService.giuChoTamThoi(req);

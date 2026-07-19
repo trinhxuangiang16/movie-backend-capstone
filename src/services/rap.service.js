@@ -107,7 +107,45 @@ export const rapService = {
     });
   },
 
-  // 5. Giữ chỗ tạm thời
+  // 5. Lấy lịch chiếu phim dựa vào mã lịch chiếu và thời gian
+  getLichChieuPhimDuaVaoMaVaThoiGian: async (ma_lich_chieu) => {
+    return prisma.lichChieu.findUnique({
+      where: { ma_lich_chieu: Number(ma_lich_chieu) },
+      select: {
+        ma_lich_chieu: true,
+        ngay_gio_chieu: true,
+        gia_ve: true,
+        Phim: {
+          select: {
+            ma_phim: true,
+            ten_phim: true,
+            hinh_anh: true,
+          },
+        },
+        RapPhim: {
+          select: {
+            ma_rap: true,
+            ten_rap: true,
+            CumRap: {
+              select: {
+                ma_cum_rap: true,
+                ten_cum_rap: true,
+                dia_chi: true,
+                HeThongRap: {
+                  select: {
+                    ma_he_thong_rap: true,
+                    ten_he_thong_rap: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  },
+
+  // 6. Giữ chỗ tạm thời
   giuChoTamThoi: async (req) => {
     const { ma_lich_chieu, ma_ghe } = req.validated.body || {};
     const userId = req?.user?.tai_khoan;

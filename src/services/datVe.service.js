@@ -6,6 +6,12 @@ import {
   UnauthorizedException,
 } from "../common/helpers/exception.helper.js";
 import { Prisma } from "../common/prisma/generated/prisma/index.js";
+import { tokenService } from "./token.service.js";
+import { PAYMENT_ORDER_EXPIRE_MINUTES } from "../common/constant/app.contant.js";
+import {
+  buildNoiDungChuyenKhoan,
+  buildVietQrImageUrl,
+} from "../common/helpers/vietqr.helper.js";
 
 export const datVeService = {
   layTrangThaiGheTrongRap: async (ma_lich_chieu) => {
@@ -143,8 +149,12 @@ export const datVeService = {
     return lichChieu;
   },
 
-  datVe: async (req) => {
-    const { ma_lich_chieu, danh_sach_ve } = req.validated.body;
+  // Tạo đơn "chờ thanh toán": giữ ghế bằng GiuCho gắn với hóa đơn, chưa tạo DatVe.
+  // DatVe thật chỉ được tạo khi webhook ngân hàng xác nhận đã nhận tiền
+  // (xem webhookThanhToan.service.js). Điều này thay thế hoàn toàn luồng datVe() cũ
+  // (đặt xong là xong ngay) — route /DatVe cũ đã được trỏ sang hàm này.
+  taoDonChoThanhToan: async (req) => {
+    const { ma_lich_chieu, danh_sach_ve, danh_sach_combo } = req.validated.body;
 
     const tai_khoan = req?.user?.tai_khoan; // Lấy userId từ token đã giải mã
     if (!tai_khoan)
@@ -216,49 +226,108 @@ export const datVeService = {
         throw new ConflictException("Một hoặc nhiều ghế đang được giữ");
       }
 
+      // Validate combo (nếu có) — chỉ chấp nhận combo còn bán
+      const comboDat = danh_sach_combo ?? [];
+      let comboHopLe = [];
+
+      if (comboDat.length > 0) {
+        const danhSachMaCombo = comboDat.map((c) => Number(c.ma_combo));
+
+        comboHopLe = await tx.combo.findMany({
+          where: {
+            ma_combo: { in: danhSachMaCombo },
+            isDeleted: false,
+          },
+        });
+
+        if (comboHopLe.length !== new Set(danhSachMaCombo).size) {
+          throw new NotFoundException("Có combo không tồn tại hoặc ngừng bán");
+        }
+      }
+
       // Lấy giá vé cơ bản từ lịch chiếu
       const giaCoBan = lichChieu.gia_ve;
 
-      // Tính giá vé cho từng ghế và chuẩn bị dữ liệu để insert
-      const danhSachVeInsert = gheHopLe.map((ghe) => {
+      // Tính giá vé cho từng ghế
+      const danhSachVeTinh = gheHopLe.map((ghe) => {
         let heSo = ghe.loai_ghe === "VIP" ? 1.2 : 1;
 
         return {
-          tai_khoan: tai_khoan,
-          ma_lich_chieu: Number(lichChieu.ma_lich_chieu),
           ma_ghe: ghe.ma_ghe,
           gia_ve: giaCoBan * heSo,
         };
       });
 
+      // Tính tiền combo với don_gia snapshot tại thời điểm mua
+      const danhSachComboInsert = comboDat.map((c) => {
+        const combo = comboHopLe.find(
+          (ch) => ch.ma_combo === Number(c.ma_combo),
+        );
+
+        return {
+          ma_combo: combo.ma_combo,
+          so_luong: Number(c.so_luong),
+          don_gia: combo.gia,
+        };
+      });
+
+      const tongTienVe = danhSachVeTinh.reduce((sum, v) => sum + v.gia_ve, 0);
+      const tongTienCombo = danhSachComboInsert.reduce(
+        (sum, c) => sum + c.don_gia * c.so_luong,
+        0,
+      );
+
+      const hetHanLuc = new Date(
+        Date.now() + PAYMENT_ORDER_EXPIRE_MINUTES * 60 * 1000,
+      );
+
+      // Tạo hóa đơn ở trạng thái chờ thanh toán
+      const hoaDon = await tx.hoaDon.create({
+        data: {
+          tai_khoan: tai_khoan,
+          ma_lich_chieu: Number(lichChieu.ma_lich_chieu),
+          tong_tien: tongTienVe + tongTienCombo,
+          trang_thai_thanh_toan: "cho_thanh_toan",
+          het_han_luc: hetHanLuc,
+        },
+      });
+
       try {
-        // Insert vé vào bảng datVe
-        await tx.datVe.createMany({
-          data: danhSachVeInsert,
+        // Giữ ghế gắn với hóa đơn này — DatVe thật chỉ tạo khi webhook xác nhận
+        await tx.giuCho.createMany({
+          data: danhSachVeTinh.map((ve) => ({
+            tai_khoan: tai_khoan,
+            ma_lich_chieu: Number(lichChieu.ma_lich_chieu),
+            ma_ghe: ve.ma_ghe,
+            ma_hoa_don: hoaDon.ma_hoa_don,
+            expire_at: hetHanLuc,
+          })),
         });
 
-        // Sau khi tạo vé thành công, xóa các bản ghi giữ chỗ (nếu có) cho những ghế này để tránh tình trạng giữ chỗ nhưng đã được đặt
-        await tx.giuCho.deleteMany({
-          where: {
-            ma_lich_chieu: Number(ma_lich_chieu),
-            ma_ghe: { in: danhSachMaGhe },
-          },
-        });
+        // Combo tạo ngay (snapshot giá) — không giữ chỗ vật lý, chỉ có ý nghĩa
+        // khi hóa đơn chuyển da_thanh_toan
+        if (danhSachComboInsert.length > 0) {
+          await tx.hoaDonCombo.createMany({
+            data: danhSachComboInsert.map((c) => ({
+              ...c,
+              ma_hoa_don: hoaDon.ma_hoa_don,
+            })),
+          });
+        }
       } catch (error) {
         if (
           error instanceof Prisma.PrismaClientKnownRequestError &&
           error.code === "P2002"
         ) {
           throw new ConflictException(
-            "Ghế vừa được người khác đặt, vui lòng chọn lại",
+            "Ghế vừa được người khác giữ, vui lòng chọn lại",
           );
         }
         throw error;
       }
 
-      //Trả về thông tin ghế (có tên ghế)
-      const gheDaDatThanhCong = gheHopLe.map((ghe) => {
-        const ve = danhSachVeInsert.find((ve) => ve.ma_ghe === ghe.ma_ghe);
+      const gheDangGiu = gheHopLe.map((ghe) => {
+        const ve = danhSachVeTinh.find((v) => v.ma_ghe === ghe.ma_ghe);
 
         return {
           ma_ghe: ghe.ma_ghe,
@@ -268,21 +337,93 @@ export const datVeService = {
         };
       });
 
+      const noiDungChuyenKhoan = buildNoiDungChuyenKhoan(hoaDon.ma_hoa_don);
+
       return {
-        so_luong_ve: danhSachMaGhe.length,
-        tong_tien: gheDaDatThanhCong.reduce((sum, v) => sum + v.gia_ve, 0),
-        danh_sach_ve: gheDaDatThanhCong,
+        ma_hoa_don: hoaDon.ma_hoa_don,
+        tong_tien: hoaDon.tong_tien,
+        noi_dung_chuyen_khoan: noiDungChuyenKhoan,
+        het_han_luc: hoaDon.het_han_luc,
+        qr_url: buildVietQrImageUrl(hoaDon.tong_tien, noiDungChuyenKhoan),
+        danh_sach_ghe: gheDangGiu,
+        danh_sach_combo: danhSachComboInsert.map((c) => ({
+          ma_combo: c.ma_combo,
+          ten_combo: comboHopLe.find((ch) => ch.ma_combo === c.ma_combo)
+            ?.ten_combo,
+          so_luong: c.so_luong,
+          don_gia: c.don_gia,
+        })),
       };
     });
   },
 
+  // Cho FE polling trạng thái đơn trong lúc chờ webhook. Nếu đơn đã quá
+  // het_han_luc mà vẫn ở cho_thanh_toan, tự chuyển het_han và giải phóng ghế
+  // ngay tại đây (độc lập với job dọn dẹp nền chạy mỗi phút).
+  layTrangThaiHoaDon: async (ma_hoa_don, tai_khoan) => {
+    if (!ma_hoa_don) {
+      throw new BadRequestException("Thiếu mã hóa đơn");
+    }
+
+    let hoaDon = await prisma.hoaDon.findUnique({
+      where: { ma_hoa_don: Number(ma_hoa_don) },
+    });
+
+    if (!hoaDon) {
+      throw new NotFoundException("Không tìm thấy hóa đơn");
+    }
+
+    if (hoaDon.tai_khoan !== tai_khoan) {
+      throw new UnauthorizedException("Hóa đơn không thuộc về bạn");
+    }
+
+    if (
+      hoaDon.trang_thai_thanh_toan === "cho_thanh_toan" &&
+      hoaDon.het_han_luc &&
+      hoaDon.het_han_luc < new Date()
+    ) {
+      hoaDon = await prisma.$transaction(async (tx) => {
+        const updated = await tx.hoaDon.update({
+          where: { ma_hoa_don: hoaDon.ma_hoa_don },
+          data: { trang_thai_thanh_toan: "het_han" },
+        });
+
+        await tx.giuCho.deleteMany({
+          where: { ma_hoa_don: hoaDon.ma_hoa_don },
+        });
+
+        return updated;
+      });
+    }
+
+    return {
+      ma_hoa_don: hoaDon.ma_hoa_don,
+      trang_thai_thanh_toan: hoaDon.trang_thai_thanh_toan,
+      tong_tien: hoaDon.tong_tien,
+      het_han_luc: hoaDon.het_han_luc,
+    };
+  },
+
   getLichSuDatVe: async (tai_khoan) => {
-    const tickets = await prisma.datVe.findMany({
+    // Mỗi phần tử = 1 giao dịch (1 HoaDon); cùng suất chiếu đặt 2 lần → 2 phần tử.
+    // Chỉ hiện đơn đã thanh toán thành công — đơn cho_thanh_toan/het_han/huy
+    // không phải "vé" thật (chưa từng có DatVe được tạo cho các trạng thái này).
+    const hoaDons = await prisma.hoaDon.findMany({
       where: {
         tai_khoan: tai_khoan,
+        trang_thai_thanh_toan: "da_thanh_toan",
       },
       include: {
-        Ghe: true,
+        DatVe: {
+          include: {
+            Ghe: true,
+          },
+        },
+        HoaDonCombo: {
+          include: {
+            Combo: true,
+          },
+        },
         LichChieu: {
           include: {
             Phim: true,
@@ -291,37 +432,87 @@ export const datVeService = {
         },
       },
       orderBy: {
-        ma_lich_chieu: "desc",
+        created_at: "desc",
       },
     });
 
-    const grouped = tickets.reduce((acc, ticket) => {
-      const key = ticket.ma_lich_chieu;
+    return hoaDons.map((hd) => ({
+      ma_hoa_don: hd.ma_hoa_don,
+      created_at: hd.created_at,
+      ma_lich_chieu: hd.ma_lich_chieu,
+      ten_phim: hd.LichChieu.Phim?.ten_phim,
+      ten_rap: hd.LichChieu.RapPhim?.ten_rap,
+      ngay_gio_chieu: hd.LichChieu.ngay_gio_chieu,
+      ghe: hd.DatVe.map((ve) => ({
+        ma_ghe: ve.ma_ghe,
+        ten_ghe: ve.Ghe.ten_ghe,
+        loai_ghe: ve.Ghe.loai_ghe,
+        gia_ve: ve.gia_ve, // giá snapshot lúc đặt, ghế VIP đã nhân hệ số
+      })),
+      combo: hd.HoaDonCombo.map((hdc) => ({
+        ma_combo: hdc.ma_combo,
+        ten_combo: hdc.Combo.ten_combo,
+        so_luong: hdc.so_luong,
+        don_gia: hdc.don_gia, // giá snapshot lúc mua
+      })),
+      tong_tien: hd.tong_tien,
+      trang_thai_thanh_toan: hd.trang_thai_thanh_toan,
+      checked_in_at: hd.checked_in_at,
+      // Luôn sinh QR để user xem lại vé bất cứ lúc nào (kể cả đã check-in) —
+      // chỉ null khi suất chiếu đã qua quá lâu. Việc chặn quét trùng nằm ở
+      // checkInVe() (check checked_in_at), không phải ở việc ẩn mã QR.
+      ma_ve_qr: tokenService.createQrTicketToken(
+        hd.ma_hoa_don,
+        hd.tai_khoan,
+        hd.LichChieu.ngay_gio_chieu,
+      ),
+    }));
+  },
 
-      if (!acc[key]) {
-        acc[key] = {
-          ma_lich_chieu: ticket.ma_lich_chieu,
-          ten_phim: ticket.LichChieu.Phim.ten_phim,
-          ten_rap: ticket.LichChieu.RapPhim.ten_rap,
-          ngay_gio_chieu: ticket.LichChieu.ngay_gio_chieu,
-          ghe: [],
-        };
-      }
+  checkInVe: async (qrToken) => {
+    if (!qrToken) {
+      throw new BadRequestException("Thiếu mã QR");
+    }
 
-      acc[key].ghe.push({
-        ten_ghe: ticket.Ghe.ten_ghe,
-        ma_ghe: ticket.Ghe.ma_ghe,
-        loai_ghe: ticket.Ghe.loai_ghe,
-        gia_ve: ticket.gia_ve, //giá này đã được tính toán khi đặt vé, có thể khác với giá cơ bản của lịch chiếu nếu ghế là VIP
-      });
+    let payload;
+    try {
+      payload = tokenService.verifyQrTicketToken(qrToken);
+    } catch {
+      throw new BadRequestException("Mã QR không hợp lệ hoặc đã hết hạn");
+    }
 
-      return acc;
-    }, {});
+    const hoaDon = await prisma.hoaDon.findUnique({
+      where: { ma_hoa_don: payload.ma_hoa_don },
+      include: {
+        LichChieu: { include: { Phim: true, RapPhim: true } },
+        NguoiDung: { select: { ho_ten: true, email: true } },
+        DatVe: { include: { Ghe: true } },
+      },
+    });
 
-    const result = Object.values(grouped).sort(
-      (a, b) => b.ma_lich_chieu - a.ma_lich_chieu,
-    );
+    if (!hoaDon || hoaDon.tai_khoan !== payload.tai_khoan) {
+      throw new NotFoundException("Không tìm thấy vé");
+    }
 
-    return result;
+    if (hoaDon.checked_in_at) {
+      throw new ConflictException(
+        `Vé đã được check-in lúc ${hoaDon.checked_in_at.toISOString()}`,
+      );
+    }
+
+    const updated = await prisma.hoaDon.update({
+      where: { ma_hoa_don: hoaDon.ma_hoa_don },
+      data: { checked_in_at: new Date() },
+    });
+
+    return {
+      ma_hoa_don: hoaDon.ma_hoa_don,
+      checked_in_at: updated.checked_in_at,
+      ten_phim: hoaDon.LichChieu.Phim?.ten_phim,
+      ten_rap: hoaDon.LichChieu.RapPhim?.ten_rap,
+      ngay_gio_chieu: hoaDon.LichChieu.ngay_gio_chieu,
+      khach_hang: hoaDon.NguoiDung.ho_ten,
+      ghe: hoaDon.DatVe.map((ve) => ve.Ghe.ten_ghe),
+    };
   },
 };

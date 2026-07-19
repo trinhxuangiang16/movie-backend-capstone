@@ -7,6 +7,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./src/config/swagger.js";
 import { requestLogger } from "./src/common/middleware/logger.middleware.js";
 import { requestIdMiddleware } from "./src/common/middleware/requestId.middleware.js";
+import { startExpireHoaDonJob } from "./src/jobs/expireHoaDon.job.js";
 
 const app = express();
 
@@ -52,4 +53,5 @@ const PORT = process.env.PORT || 3069;
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log("Server running on port:", PORT);
+  startExpireHoaDonJob();
 });

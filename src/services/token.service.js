@@ -50,4 +50,26 @@ export const tokenService = {
 
     return decode;
   },
+
+  // Tạo mã QR check-in cho 1 hóa đơn: JWT hết hạn cùng lúc suất chiếu
+  // (cộng buffer) để vé không dùng được vô thời hạn nếu bị lộ ảnh chụp màn hình.
+  // Trả về null nếu suất chiếu đã qua buffer — vé cũ không cần QR nữa.
+  createQrTicketToken(ma_hoa_don, tai_khoan, ngay_gio_chieu) {
+    const expBuffer = 3 * 60 * 60; // 3 tiếng sau giờ chiếu
+    const expiresInSec =
+      Math.floor(new Date(ngay_gio_chieu).getTime() / 1000) +
+      expBuffer -
+      Math.floor(Date.now() / 1000);
+
+    if (expiresInSec <= 0) return null;
+
+    return jsonWebToken.sign({ ma_hoa_don, tai_khoan }, ACCESS_TOKEN_SECRET, {
+      expiresIn: expiresInSec,
+    });
+  },
+
+  // Xác minh mã QR check-in
+  verifyQrTicketToken(qrToken) {
+    return jsonWebToken.verify(qrToken, ACCESS_TOKEN_SECRET);
+  },
 };

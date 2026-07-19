@@ -35,11 +35,31 @@ export const datVeController = {
       next(err);
     }
   },
-  datVe: async (req, res, next) => {
+  taoDonChoThanhToan: async (req, res, next) => {
     try {
-      const result = await datVeService.datVe(req);
+      const result = await datVeService.taoDonChoThanhToan(req);
 
-      return successResponse(res, result, "Đặt vé thành công");
+      return successResponse(
+        res,
+        result,
+        "Tạo đơn chờ thanh toán thành công",
+      );
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  layTrangThaiHoaDon: async (req, res, next) => {
+    try {
+      const { ma_hoa_don } = req.validated.query;
+      const tai_khoan = req.user.tai_khoan;
+
+      const result = await datVeService.layTrangThaiHoaDon(
+        ma_hoa_don,
+        tai_khoan,
+      );
+
+      return successResponse(res, result, "Lấy trạng thái hóa đơn thành công");
     } catch (err) {
       next(err);
     }
@@ -52,6 +72,18 @@ export const datVeController = {
       const result = await datVeService.getLichSuDatVe(tai_khoan);
 
       return successResponse(res, result, "Lấy lịch sử đặt vé thành công");
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  checkInVe: async (req, res, next) => {
+    try {
+      const { qr_token } = req.validated.body;
+
+      const result = await datVeService.checkInVe(qr_token);
+
+      return successResponse(res, result, "Check-in vé thành công");
     } catch (err) {
       next(err);
     }

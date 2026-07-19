@@ -16,6 +16,17 @@ export const SERVER_SWAGGER = process.env.SERVER_SWAGGER;
 export const FOLDER_IMAGE = "public/images";
 export const FOLDER_AVATAR = "public/avatars";
 
+// VietQR — nhận thanh toán đặt vé
+export const BANK_BIN = process.env.BANK_BIN;
+export const BANK_ACCOUNT_NO = process.env.BANK_ACCOUNT_NO;
+export const BANK_ACCOUNT_NAME = process.env.BANK_ACCOUNT_NAME;
+
+// Webhook thanh toán (SePay/Casso gọi vào với header Authorization: Apikey <key>)
+export const PAYMENT_WEBHOOK_API_KEY = process.env.PAYMENT_WEBHOOK_API_KEY;
+export const PAYMENT_ORDER_EXPIRE_MINUTES = Number(
+  process.env.PAYMENT_ORDER_EXPIRE_MINUTES || 5,
+);
+
 console.log(
   "\n",
   {

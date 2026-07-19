@@ -34,14 +34,17 @@ model DatVe {
   ma_lich_chieu Int
   ma_ghe        Int
   gia_ve        Int
+  ma_hoa_don    Int?
   created_at    DateTime? @default(now()) @db.DateTime(0)
   NguoiDung     NguoiDung @relation(fields: [tai_khoan], references: [tai_khoan], onDelete: NoAction, onUpdate: NoAction, map: "DatVe_ibfk_1")
   LichChieu     LichChieu @relation(fields: [ma_lich_chieu], references: [ma_lich_chieu], onDelete: NoAction, onUpdate: NoAction, map: "DatVe_ibfk_2")
   Ghe           Ghe       @relation(fields: [ma_ghe], references: [ma_ghe], onDelete: NoAction, onUpdate: NoAction, map: "DatVe_ibfk_3")
+  HoaDon        HoaDon?   @relation(fields: [ma_hoa_don], references: [ma_hoa_don], onDelete: NoAction, onUpdate: NoAction, map: "DatVe_ibfk_4")
 
   @@id([tai_khoan, ma_lich_chieu, ma_ghe])
   @@unique([ma_lich_chieu, ma_ghe])
   @@index([ma_ghe], map: "ma_ghe")
+  @@index([ma_hoa_don], map: "ma_hoa_don")
 }
 
 model Ghe {
@@ -71,6 +74,7 @@ model LichChieu {
   gia_ve         Int?
   DatVe          DatVe[]
   GiuCho         GiuCho[]
+  HoaDon         HoaDon[]
   RapPhim        RapPhim?  @relation(fields: [ma_rap], references: [ma_rap], onDelete: NoAction, onUpdate: NoAction, map: "LichChieu_ibfk_1")
   Phim           Phim?     @relation(fields: [ma_phim], references: [ma_phim], onDelete: NoAction, onUpdate: NoAction, map: "LichChieu_ibfk_2")
 
@@ -88,6 +92,7 @@ model NguoiDung {
   isDeleted       Boolean? @default(false)
   DatVe           DatVe[]
   GiuCho          GiuCho[]
+  HoaDon          HoaDon[]
 }
 
 model Phim {
@@ -122,13 +127,85 @@ model GiuCho {
   tai_khoan     Int
   ma_lich_chieu Int
   ma_ghe        Int
+  ma_hoa_don    Int?
   expire_at     DateTime  @db.DateTime(0)
   created_at    DateTime? @default(now()) @db.DateTime(0)
   Ghe           Ghe       @relation(fields: [ma_ghe], references: [ma_ghe], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_ghe")
   LichChieu     LichChieu @relation(fields: [ma_lich_chieu], references: [ma_lich_chieu], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_lichchieu")
   NguoiDung     NguoiDung @relation(fields: [tai_khoan], references: [tai_khoan], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_user")
+  HoaDon        HoaDon?   @relation(fields: [ma_hoa_don], references: [ma_hoa_don], onDelete: SetNull, onUpdate: NoAction, map: "fk_giucho_hoadon")
 
   @@index([ma_ghe], map: "fk_giucho_ghe")
   @@index([ma_lich_chieu], map: "fk_giucho_lichchieu")
   @@index([tai_khoan], map: "fk_giucho_user")
+  @@index([ma_hoa_don], map: "fk_giucho_hoadon")
+}
+
+enum TrangThaiThanhToan {
+  cho_thanh_toan
+  da_thanh_toan
+  het_han
+  huy
+}
+
+model HoaDon {
+  ma_hoa_don             Int                @id @default(autoincrement())
+  tai_khoan              Int
+  ma_lich_chieu          Int
+  tong_tien              Int
+  created_at             DateTime?          @default(now()) @db.DateTime(0)
+  checked_in_at          DateTime?          @db.DateTime(0)
+  trang_thai_thanh_toan  TrangThaiThanhToan @default(cho_thanh_toan)
+  phuong_thuc_thanh_toan String?            @db.VarChar(50)
+  ma_giao_dich_ngan_hang String?            @unique @db.VarChar(255)
+  so_tien_da_nhan        Int?
+  thanh_toan_luc         DateTime?          @db.DateTime(0)
+  het_han_luc            DateTime?          @db.DateTime(0)
+  NguoiDung              NguoiDung          @relation(fields: [tai_khoan], references: [tai_khoan], onDelete: NoAction, onUpdate: NoAction, map: "HoaDon_ibfk_1")
+  LichChieu              LichChieu          @relation(fields: [ma_lich_chieu], references: [ma_lich_chieu], onDelete: NoAction, onUpdate: NoAction, map: "HoaDon_ibfk_2")
+  DatVe                  DatVe[]
+  HoaDonCombo            HoaDonCombo[]
+  GiuCho                 GiuCho[]
+
+  @@index([tai_khoan], map: "tai_khoan")
+  @@index([ma_lich_chieu], map: "ma_lich_chieu")
+  @@index([trang_thai_thanh_toan])
+}
+
+model Combo {
+  ma_combo    Int           @id @default(autoincrement())
+  ten_combo   String        @db.VarChar(255)
+  mo_ta       String?       @db.VarChar(255)
+  gia         Int
+  hinh_anh    String?       @db.VarChar(255)
+  isDeleted   Boolean?      @default(false)
+  HoaDonCombo HoaDonCombo[]
+}
+
+model HoaDonCombo {
+  ma_hoa_don Int
+  ma_combo   Int
+  so_luong   Int
+  don_gia    Int
+  HoaDon     HoaDon @relation(fields: [ma_hoa_don], references: [ma_hoa_don], onDelete: NoAction, onUpdate: NoAction, map: "HoaDonCombo_ibfk_1")
+  Combo      Combo  @relation(fields: [ma_combo], references: [ma_combo], onDelete: NoAction, onUpdate: NoAction, map: "HoaDonCombo_ibfk_2")
+
+  @@id([ma_hoa_don, ma_combo])
+  @@index([ma_combo], map: "ma_combo")
+}
+
+model GiaoDichWebhook {
+  ma_giao_dich_webhook   Int       @id @default(autoincrement())
+  nguon                  String    @db.VarChar(20)
+  raw_payload            String    @db.Text
+  ma_giao_dich_ngan_hang String?   @db.VarChar(255)
+  so_tien                Int?
+  noi_dung               String?   @db.VarChar(500)
+  ma_hoa_don_parse       Int?
+  ket_qua_xu_ly          String    @db.VarChar(30)
+  ghi_chu                String?   @db.VarChar(500)
+  created_at             DateTime? @default(now()) @db.DateTime(0)
+
+  @@index([ma_hoa_don_parse])
+  @@index([ma_giao_dich_ngan_hang])
 }

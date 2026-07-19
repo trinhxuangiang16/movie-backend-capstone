@@ -63,6 +63,45 @@ export type RapPhim = $Result.DefaultSelection<Prisma.$RapPhimPayload>
  * 
  */
 export type GiuCho = $Result.DefaultSelection<Prisma.$GiuChoPayload>
+/**
+ * Model HoaDon
+ * 
+ */
+export type HoaDon = $Result.DefaultSelection<Prisma.$HoaDonPayload>
+/**
+ * Model Combo
+ * 
+ */
+export type Combo = $Result.DefaultSelection<Prisma.$ComboPayload>
+/**
+ * Model HoaDonCombo
+ * 
+ */
+export type HoaDonCombo = $Result.DefaultSelection<Prisma.$HoaDonComboPayload>
+/**
+ * Model GiaoDichWebhook
+ * 
+ */
+export type GiaoDichWebhook = $Result.DefaultSelection<Prisma.$GiaoDichWebhookPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const TrangThaiThanhToan: {
+  cho_thanh_toan: 'cho_thanh_toan',
+  da_thanh_toan: 'da_thanh_toan',
+  het_han: 'het_han',
+  huy: 'huy'
+};
+
+export type TrangThaiThanhToan = (typeof TrangThaiThanhToan)[keyof typeof TrangThaiThanhToan]
+
+}
+
+export type TrangThaiThanhToan = $Enums.TrangThaiThanhToan
+
+export const TrangThaiThanhToan: typeof $Enums.TrangThaiThanhToan
 
 /**
  * ##  Prisma Client ʲˢ
@@ -284,6 +323,46 @@ export class PrismaClient<
     * ```
     */
   get giuCho(): Prisma.GiuChoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.hoaDon`: Exposes CRUD operations for the **HoaDon** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HoaDons
+    * const hoaDons = await prisma.hoaDon.findMany()
+    * ```
+    */
+  get hoaDon(): Prisma.HoaDonDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.combo`: Exposes CRUD operations for the **Combo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Combos
+    * const combos = await prisma.combo.findMany()
+    * ```
+    */
+  get combo(): Prisma.ComboDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.hoaDonCombo`: Exposes CRUD operations for the **HoaDonCombo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HoaDonCombos
+    * const hoaDonCombos = await prisma.hoaDonCombo.findMany()
+    * ```
+    */
+  get hoaDonCombo(): Prisma.HoaDonComboDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.giaoDichWebhook`: Exposes CRUD operations for the **GiaoDichWebhook** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GiaoDichWebhooks
+    * const giaoDichWebhooks = await prisma.giaoDichWebhook.findMany()
+    * ```
+    */
+  get giaoDichWebhook(): Prisma.GiaoDichWebhookDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -334,8 +413,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 7.5.0
-   * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
+   * Prisma Client JS version: 7.6.0
+   * Query Engine version: 75cbdc1eb7150937890ad5465d861175c6624711
    */
   export type PrismaVersion = {
     client: string
@@ -727,7 +806,11 @@ export namespace Prisma {
     NguoiDung: 'NguoiDung',
     Phim: 'Phim',
     RapPhim: 'RapPhim',
-    GiuCho: 'GiuCho'
+    GiuCho: 'GiuCho',
+    HoaDon: 'HoaDon',
+    Combo: 'Combo',
+    HoaDonCombo: 'HoaDonCombo',
+    GiaoDichWebhook: 'GiaoDichWebhook'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -743,7 +826,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "banner" | "cumRap" | "datVe" | "ghe" | "heThongRap" | "lichChieu" | "nguoiDung" | "phim" | "rapPhim" | "giuCho"
+      modelProps: "banner" | "cumRap" | "datVe" | "ghe" | "heThongRap" | "lichChieu" | "nguoiDung" | "phim" | "rapPhim" | "giuCho" | "hoaDon" | "combo" | "hoaDonCombo" | "giaoDichWebhook"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1407,6 +1490,270 @@ export namespace Prisma {
           }
         }
       }
+      HoaDon: {
+        payload: Prisma.$HoaDonPayload<ExtArgs>
+        fields: Prisma.HoaDonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HoaDonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HoaDonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload>
+          }
+          findFirst: {
+            args: Prisma.HoaDonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HoaDonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload>
+          }
+          findMany: {
+            args: Prisma.HoaDonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload>[]
+          }
+          create: {
+            args: Prisma.HoaDonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload>
+          }
+          createMany: {
+            args: Prisma.HoaDonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.HoaDonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload>
+          }
+          update: {
+            args: Prisma.HoaDonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload>
+          }
+          deleteMany: {
+            args: Prisma.HoaDonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HoaDonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.HoaDonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonPayload>
+          }
+          aggregate: {
+            args: Prisma.HoaDonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHoaDon>
+          }
+          groupBy: {
+            args: Prisma.HoaDonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HoaDonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HoaDonCountArgs<ExtArgs>
+            result: $Utils.Optional<HoaDonCountAggregateOutputType> | number
+          }
+        }
+      }
+      Combo: {
+        payload: Prisma.$ComboPayload<ExtArgs>
+        fields: Prisma.ComboFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ComboFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ComboFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload>
+          }
+          findFirst: {
+            args: Prisma.ComboFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ComboFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload>
+          }
+          findMany: {
+            args: Prisma.ComboFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload>[]
+          }
+          create: {
+            args: Prisma.ComboCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload>
+          }
+          createMany: {
+            args: Prisma.ComboCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ComboDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload>
+          }
+          update: {
+            args: Prisma.ComboUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload>
+          }
+          deleteMany: {
+            args: Prisma.ComboDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ComboUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ComboUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComboPayload>
+          }
+          aggregate: {
+            args: Prisma.ComboAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCombo>
+          }
+          groupBy: {
+            args: Prisma.ComboGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComboGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ComboCountArgs<ExtArgs>
+            result: $Utils.Optional<ComboCountAggregateOutputType> | number
+          }
+        }
+      }
+      HoaDonCombo: {
+        payload: Prisma.$HoaDonComboPayload<ExtArgs>
+        fields: Prisma.HoaDonComboFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HoaDonComboFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HoaDonComboFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload>
+          }
+          findFirst: {
+            args: Prisma.HoaDonComboFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HoaDonComboFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload>
+          }
+          findMany: {
+            args: Prisma.HoaDonComboFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload>[]
+          }
+          create: {
+            args: Prisma.HoaDonComboCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload>
+          }
+          createMany: {
+            args: Prisma.HoaDonComboCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.HoaDonComboDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload>
+          }
+          update: {
+            args: Prisma.HoaDonComboUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload>
+          }
+          deleteMany: {
+            args: Prisma.HoaDonComboDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HoaDonComboUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.HoaDonComboUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoaDonComboPayload>
+          }
+          aggregate: {
+            args: Prisma.HoaDonComboAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHoaDonCombo>
+          }
+          groupBy: {
+            args: Prisma.HoaDonComboGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HoaDonComboGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HoaDonComboCountArgs<ExtArgs>
+            result: $Utils.Optional<HoaDonComboCountAggregateOutputType> | number
+          }
+        }
+      }
+      GiaoDichWebhook: {
+        payload: Prisma.$GiaoDichWebhookPayload<ExtArgs>
+        fields: Prisma.GiaoDichWebhookFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GiaoDichWebhookFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GiaoDichWebhookFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload>
+          }
+          findFirst: {
+            args: Prisma.GiaoDichWebhookFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GiaoDichWebhookFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload>
+          }
+          findMany: {
+            args: Prisma.GiaoDichWebhookFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload>[]
+          }
+          create: {
+            args: Prisma.GiaoDichWebhookCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload>
+          }
+          createMany: {
+            args: Prisma.GiaoDichWebhookCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.GiaoDichWebhookDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload>
+          }
+          update: {
+            args: Prisma.GiaoDichWebhookUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload>
+          }
+          deleteMany: {
+            args: Prisma.GiaoDichWebhookDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GiaoDichWebhookUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.GiaoDichWebhookUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiaoDichWebhookPayload>
+          }
+          aggregate: {
+            args: Prisma.GiaoDichWebhookAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGiaoDichWebhook>
+          }
+          groupBy: {
+            args: Prisma.GiaoDichWebhookGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GiaoDichWebhookGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GiaoDichWebhookCountArgs<ExtArgs>
+            result: $Utils.Optional<GiaoDichWebhookCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1525,6 +1872,10 @@ export namespace Prisma {
     phim?: PhimOmit
     rapPhim?: RapPhimOmit
     giuCho?: GiuChoOmit
+    hoaDon?: HoaDonOmit
+    combo?: ComboOmit
+    hoaDonCombo?: HoaDonComboOmit
+    giaoDichWebhook?: GiaoDichWebhookOmit
   }
 
   /* Types for Logging */
@@ -1709,11 +2060,13 @@ export namespace Prisma {
   export type LichChieuCountOutputType = {
     DatVe: number
     GiuCho: number
+    HoaDon: number
   }
 
   export type LichChieuCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | LichChieuCountOutputTypeCountDatVeArgs
     GiuCho?: boolean | LichChieuCountOutputTypeCountGiuChoArgs
+    HoaDon?: boolean | LichChieuCountOutputTypeCountHoaDonArgs
   }
 
   // Custom InputTypes
@@ -1741,6 +2094,13 @@ export namespace Prisma {
     where?: GiuChoWhereInput
   }
 
+  /**
+   * LichChieuCountOutputType without action
+   */
+  export type LichChieuCountOutputTypeCountHoaDonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HoaDonWhereInput
+  }
+
 
   /**
    * Count Type NguoiDungCountOutputType
@@ -1749,11 +2109,13 @@ export namespace Prisma {
   export type NguoiDungCountOutputType = {
     DatVe: number
     GiuCho: number
+    HoaDon: number
   }
 
   export type NguoiDungCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | NguoiDungCountOutputTypeCountDatVeArgs
     GiuCho?: boolean | NguoiDungCountOutputTypeCountGiuChoArgs
+    HoaDon?: boolean | NguoiDungCountOutputTypeCountHoaDonArgs
   }
 
   // Custom InputTypes
@@ -1779,6 +2141,13 @@ export namespace Prisma {
    */
   export type NguoiDungCountOutputTypeCountGiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GiuChoWhereInput
+  }
+
+  /**
+   * NguoiDungCountOutputType without action
+   */
+  export type NguoiDungCountOutputTypeCountHoaDonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HoaDonWhereInput
   }
 
 
@@ -1859,6 +2228,86 @@ export namespace Prisma {
    */
   export type RapPhimCountOutputTypeCountLichChieuArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: LichChieuWhereInput
+  }
+
+
+  /**
+   * Count Type HoaDonCountOutputType
+   */
+
+  export type HoaDonCountOutputType = {
+    DatVe: number
+    HoaDonCombo: number
+    GiuCho: number
+  }
+
+  export type HoaDonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    DatVe?: boolean | HoaDonCountOutputTypeCountDatVeArgs
+    HoaDonCombo?: boolean | HoaDonCountOutputTypeCountHoaDonComboArgs
+    GiuCho?: boolean | HoaDonCountOutputTypeCountGiuChoArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * HoaDonCountOutputType without action
+   */
+  export type HoaDonCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCountOutputType
+     */
+    select?: HoaDonCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * HoaDonCountOutputType without action
+   */
+  export type HoaDonCountOutputTypeCountDatVeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DatVeWhereInput
+  }
+
+  /**
+   * HoaDonCountOutputType without action
+   */
+  export type HoaDonCountOutputTypeCountHoaDonComboArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HoaDonComboWhereInput
+  }
+
+  /**
+   * HoaDonCountOutputType without action
+   */
+  export type HoaDonCountOutputTypeCountGiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiuChoWhereInput
+  }
+
+
+  /**
+   * Count Type ComboCountOutputType
+   */
+
+  export type ComboCountOutputType = {
+    HoaDonCombo: number
+  }
+
+  export type ComboCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    HoaDonCombo?: boolean | ComboCountOutputTypeCountHoaDonComboArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ComboCountOutputType without action
+   */
+  export type ComboCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComboCountOutputType
+     */
+    select?: ComboCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ComboCountOutputType without action
+   */
+  export type ComboCountOutputTypeCountHoaDonComboArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HoaDonComboWhereInput
   }
 
 
@@ -3873,6 +4322,7 @@ export namespace Prisma {
     ma_lich_chieu: number | null
     ma_ghe: number | null
     gia_ve: number | null
+    ma_hoa_don: number | null
   }
 
   export type DatVeSumAggregateOutputType = {
@@ -3880,6 +4330,7 @@ export namespace Prisma {
     ma_lich_chieu: number | null
     ma_ghe: number | null
     gia_ve: number | null
+    ma_hoa_don: number | null
   }
 
   export type DatVeMinAggregateOutputType = {
@@ -3887,6 +4338,7 @@ export namespace Prisma {
     ma_lich_chieu: number | null
     ma_ghe: number | null
     gia_ve: number | null
+    ma_hoa_don: number | null
     created_at: Date | null
   }
 
@@ -3895,6 +4347,7 @@ export namespace Prisma {
     ma_lich_chieu: number | null
     ma_ghe: number | null
     gia_ve: number | null
+    ma_hoa_don: number | null
     created_at: Date | null
   }
 
@@ -3903,6 +4356,7 @@ export namespace Prisma {
     ma_lich_chieu: number
     ma_ghe: number
     gia_ve: number
+    ma_hoa_don: number
     created_at: number
     _all: number
   }
@@ -3913,6 +4367,7 @@ export namespace Prisma {
     ma_lich_chieu?: true
     ma_ghe?: true
     gia_ve?: true
+    ma_hoa_don?: true
   }
 
   export type DatVeSumAggregateInputType = {
@@ -3920,6 +4375,7 @@ export namespace Prisma {
     ma_lich_chieu?: true
     ma_ghe?: true
     gia_ve?: true
+    ma_hoa_don?: true
   }
 
   export type DatVeMinAggregateInputType = {
@@ -3927,6 +4383,7 @@ export namespace Prisma {
     ma_lich_chieu?: true
     ma_ghe?: true
     gia_ve?: true
+    ma_hoa_don?: true
     created_at?: true
   }
 
@@ -3935,6 +4392,7 @@ export namespace Prisma {
     ma_lich_chieu?: true
     ma_ghe?: true
     gia_ve?: true
+    ma_hoa_don?: true
     created_at?: true
   }
 
@@ -3943,6 +4401,7 @@ export namespace Prisma {
     ma_lich_chieu?: true
     ma_ghe?: true
     gia_ve?: true
+    ma_hoa_don?: true
     created_at?: true
     _all?: true
   }
@@ -4038,6 +4497,7 @@ export namespace Prisma {
     ma_lich_chieu: number
     ma_ghe: number
     gia_ve: number
+    ma_hoa_don: number | null
     created_at: Date | null
     _count: DatVeCountAggregateOutputType | null
     _avg: DatVeAvgAggregateOutputType | null
@@ -4065,10 +4525,12 @@ export namespace Prisma {
     ma_lich_chieu?: boolean
     ma_ghe?: boolean
     gia_ve?: boolean
+    ma_hoa_don?: boolean
     created_at?: boolean
     NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
     LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
     Ghe?: boolean | GheDefaultArgs<ExtArgs>
+    HoaDon?: boolean | DatVe$HoaDonArgs<ExtArgs>
   }, ExtArgs["result"]["datVe"]>
 
 
@@ -4078,14 +4540,16 @@ export namespace Prisma {
     ma_lich_chieu?: boolean
     ma_ghe?: boolean
     gia_ve?: boolean
+    ma_hoa_don?: boolean
     created_at?: boolean
   }
 
-  export type DatVeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tai_khoan" | "ma_lich_chieu" | "ma_ghe" | "gia_ve" | "created_at", ExtArgs["result"]["datVe"]>
+  export type DatVeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tai_khoan" | "ma_lich_chieu" | "ma_ghe" | "gia_ve" | "ma_hoa_don" | "created_at", ExtArgs["result"]["datVe"]>
   export type DatVeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
     LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
     Ghe?: boolean | GheDefaultArgs<ExtArgs>
+    HoaDon?: boolean | DatVe$HoaDonArgs<ExtArgs>
   }
 
   export type $DatVePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4094,12 +4558,14 @@ export namespace Prisma {
       NguoiDung: Prisma.$NguoiDungPayload<ExtArgs>
       LichChieu: Prisma.$LichChieuPayload<ExtArgs>
       Ghe: Prisma.$GhePayload<ExtArgs>
+      HoaDon: Prisma.$HoaDonPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       tai_khoan: number
       ma_lich_chieu: number
       ma_ghe: number
       gia_ve: number
+      ma_hoa_don: number | null
       created_at: Date | null
     }, ExtArgs["result"]["datVe"]>
     composites: {}
@@ -4444,6 +4910,7 @@ export namespace Prisma {
     NguoiDung<T extends NguoiDungDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDungDefaultArgs<ExtArgs>>): Prisma__NguoiDungClient<$Result.GetResult<Prisma.$NguoiDungPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     LichChieu<T extends LichChieuDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LichChieuDefaultArgs<ExtArgs>>): Prisma__LichChieuClient<$Result.GetResult<Prisma.$LichChieuPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Ghe<T extends GheDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GheDefaultArgs<ExtArgs>>): Prisma__GheClient<$Result.GetResult<Prisma.$GhePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    HoaDon<T extends DatVe$HoaDonArgs<ExtArgs> = {}>(args?: Subset<T, DatVe$HoaDonArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4477,6 +4944,7 @@ export namespace Prisma {
     readonly ma_lich_chieu: FieldRef<"DatVe", 'Int'>
     readonly ma_ghe: FieldRef<"DatVe", 'Int'>
     readonly gia_ve: FieldRef<"DatVe", 'Int'>
+    readonly ma_hoa_don: FieldRef<"DatVe", 'Int'>
     readonly created_at: FieldRef<"DatVe", 'DateTime'>
   }
     
@@ -4823,6 +5291,25 @@ export namespace Prisma {
      * Limit how many DatVes to delete.
      */
     limit?: number
+  }
+
+  /**
+   * DatVe.HoaDon
+   */
+  export type DatVe$HoaDonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    where?: HoaDonWhereInput
   }
 
   /**
@@ -7066,6 +7553,7 @@ export namespace Prisma {
     gia_ve?: boolean
     DatVe?: boolean | LichChieu$DatVeArgs<ExtArgs>
     GiuCho?: boolean | LichChieu$GiuChoArgs<ExtArgs>
+    HoaDon?: boolean | LichChieu$HoaDonArgs<ExtArgs>
     RapPhim?: boolean | LichChieu$RapPhimArgs<ExtArgs>
     Phim?: boolean | LichChieu$PhimArgs<ExtArgs>
     _count?: boolean | LichChieuCountOutputTypeDefaultArgs<ExtArgs>
@@ -7085,6 +7573,7 @@ export namespace Prisma {
   export type LichChieuInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | LichChieu$DatVeArgs<ExtArgs>
     GiuCho?: boolean | LichChieu$GiuChoArgs<ExtArgs>
+    HoaDon?: boolean | LichChieu$HoaDonArgs<ExtArgs>
     RapPhim?: boolean | LichChieu$RapPhimArgs<ExtArgs>
     Phim?: boolean | LichChieu$PhimArgs<ExtArgs>
     _count?: boolean | LichChieuCountOutputTypeDefaultArgs<ExtArgs>
@@ -7095,6 +7584,7 @@ export namespace Prisma {
     objects: {
       DatVe: Prisma.$DatVePayload<ExtArgs>[]
       GiuCho: Prisma.$GiuChoPayload<ExtArgs>[]
+      HoaDon: Prisma.$HoaDonPayload<ExtArgs>[]
       RapPhim: Prisma.$RapPhimPayload<ExtArgs> | null
       Phim: Prisma.$PhimPayload<ExtArgs> | null
     }
@@ -7446,6 +7936,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     DatVe<T extends LichChieu$DatVeArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$DatVeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DatVePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     GiuCho<T extends LichChieu$GiuChoArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$GiuChoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    HoaDon<T extends LichChieu$HoaDonArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$HoaDonArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RapPhim<T extends LichChieu$RapPhimArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$RapPhimArgs<ExtArgs>>): Prisma__RapPhimClient<$Result.GetResult<Prisma.$RapPhimPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Phim<T extends LichChieu$PhimArgs<ExtArgs> = {}>(args?: Subset<T, LichChieu$PhimArgs<ExtArgs>>): Prisma__PhimClient<$Result.GetResult<Prisma.$PhimPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
@@ -7878,6 +8369,30 @@ export namespace Prisma {
   }
 
   /**
+   * LichChieu.HoaDon
+   */
+  export type LichChieu$HoaDonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    where?: HoaDonWhereInput
+    orderBy?: HoaDonOrderByWithRelationInput | HoaDonOrderByWithRelationInput[]
+    cursor?: HoaDonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HoaDonScalarFieldEnum | HoaDonScalarFieldEnum[]
+  }
+
+  /**
    * LichChieu.RapPhim
    */
   export type LichChieu$RapPhimArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8150,6 +8665,7 @@ export namespace Prisma {
     isDeleted?: boolean
     DatVe?: boolean | NguoiDung$DatVeArgs<ExtArgs>
     GiuCho?: boolean | NguoiDung$GiuChoArgs<ExtArgs>
+    HoaDon?: boolean | NguoiDung$HoaDonArgs<ExtArgs>
     _count?: boolean | NguoiDungCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["nguoiDung"]>
 
@@ -8169,6 +8685,7 @@ export namespace Prisma {
   export type NguoiDungInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | NguoiDung$DatVeArgs<ExtArgs>
     GiuCho?: boolean | NguoiDung$GiuChoArgs<ExtArgs>
+    HoaDon?: boolean | NguoiDung$HoaDonArgs<ExtArgs>
     _count?: boolean | NguoiDungCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8177,6 +8694,7 @@ export namespace Prisma {
     objects: {
       DatVe: Prisma.$DatVePayload<ExtArgs>[]
       GiuCho: Prisma.$GiuChoPayload<ExtArgs>[]
+      HoaDon: Prisma.$HoaDonPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       tai_khoan: number
@@ -8528,6 +9046,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     DatVe<T extends NguoiDung$DatVeArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$DatVeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DatVePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     GiuCho<T extends NguoiDung$GiuChoArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$GiuChoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    HoaDon<T extends NguoiDung$HoaDonArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$HoaDonArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8957,6 +9476,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
+  }
+
+  /**
+   * NguoiDung.HoaDon
+   */
+  export type NguoiDung$HoaDonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    where?: HoaDonWhereInput
+    orderBy?: HoaDonOrderByWithRelationInput | HoaDonOrderByWithRelationInput[]
+    cursor?: HoaDonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HoaDonScalarFieldEnum | HoaDonScalarFieldEnum[]
   }
 
   /**
@@ -11114,6 +11657,7 @@ export namespace Prisma {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    ma_hoa_don: number | null
   }
 
   export type GiuChoSumAggregateOutputType = {
@@ -11121,6 +11665,7 @@ export namespace Prisma {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    ma_hoa_don: number | null
   }
 
   export type GiuChoMinAggregateOutputType = {
@@ -11128,6 +11673,7 @@ export namespace Prisma {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    ma_hoa_don: number | null
     expire_at: Date | null
     created_at: Date | null
   }
@@ -11137,6 +11683,7 @@ export namespace Prisma {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    ma_hoa_don: number | null
     expire_at: Date | null
     created_at: Date | null
   }
@@ -11146,6 +11693,7 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    ma_hoa_don: number
     expire_at: number
     created_at: number
     _all: number
@@ -11157,6 +11705,7 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    ma_hoa_don?: true
   }
 
   export type GiuChoSumAggregateInputType = {
@@ -11164,6 +11713,7 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    ma_hoa_don?: true
   }
 
   export type GiuChoMinAggregateInputType = {
@@ -11171,6 +11721,7 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    ma_hoa_don?: true
     expire_at?: true
     created_at?: true
   }
@@ -11180,6 +11731,7 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    ma_hoa_don?: true
     expire_at?: true
     created_at?: true
   }
@@ -11189,6 +11741,7 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    ma_hoa_don?: true
     expire_at?: true
     created_at?: true
     _all?: true
@@ -11285,6 +11838,7 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    ma_hoa_don: number | null
     expire_at: Date
     created_at: Date | null
     _count: GiuChoCountAggregateOutputType | null
@@ -11313,11 +11867,13 @@ export namespace Prisma {
     tai_khoan?: boolean
     ma_lich_chieu?: boolean
     ma_ghe?: boolean
+    ma_hoa_don?: boolean
     expire_at?: boolean
     created_at?: boolean
     Ghe?: boolean | GheDefaultArgs<ExtArgs>
     LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
     NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
+    HoaDon?: boolean | GiuCho$HoaDonArgs<ExtArgs>
   }, ExtArgs["result"]["giuCho"]>
 
 
@@ -11327,15 +11883,17 @@ export namespace Prisma {
     tai_khoan?: boolean
     ma_lich_chieu?: boolean
     ma_ghe?: boolean
+    ma_hoa_don?: boolean
     expire_at?: boolean
     created_at?: boolean
   }
 
-  export type GiuChoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_giu_cho" | "tai_khoan" | "ma_lich_chieu" | "ma_ghe" | "expire_at" | "created_at", ExtArgs["result"]["giuCho"]>
+  export type GiuChoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_giu_cho" | "tai_khoan" | "ma_lich_chieu" | "ma_ghe" | "ma_hoa_don" | "expire_at" | "created_at", ExtArgs["result"]["giuCho"]>
   export type GiuChoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Ghe?: boolean | GheDefaultArgs<ExtArgs>
     LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
     NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
+    HoaDon?: boolean | GiuCho$HoaDonArgs<ExtArgs>
   }
 
   export type $GiuChoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11344,12 +11902,14 @@ export namespace Prisma {
       Ghe: Prisma.$GhePayload<ExtArgs>
       LichChieu: Prisma.$LichChieuPayload<ExtArgs>
       NguoiDung: Prisma.$NguoiDungPayload<ExtArgs>
+      HoaDon: Prisma.$HoaDonPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       ma_giu_cho: number
       tai_khoan: number
       ma_lich_chieu: number
       ma_ghe: number
+      ma_hoa_don: number | null
       expire_at: Date
       created_at: Date | null
     }, ExtArgs["result"]["giuCho"]>
@@ -11695,6 +12255,7 @@ export namespace Prisma {
     Ghe<T extends GheDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GheDefaultArgs<ExtArgs>>): Prisma__GheClient<$Result.GetResult<Prisma.$GhePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     LichChieu<T extends LichChieuDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LichChieuDefaultArgs<ExtArgs>>): Prisma__LichChieuClient<$Result.GetResult<Prisma.$LichChieuPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     NguoiDung<T extends NguoiDungDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDungDefaultArgs<ExtArgs>>): Prisma__NguoiDungClient<$Result.GetResult<Prisma.$NguoiDungPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    HoaDon<T extends GiuCho$HoaDonArgs<ExtArgs> = {}>(args?: Subset<T, GiuCho$HoaDonArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11728,6 +12289,7 @@ export namespace Prisma {
     readonly tai_khoan: FieldRef<"GiuCho", 'Int'>
     readonly ma_lich_chieu: FieldRef<"GiuCho", 'Int'>
     readonly ma_ghe: FieldRef<"GiuCho", 'Int'>
+    readonly ma_hoa_don: FieldRef<"GiuCho", 'Int'>
     readonly expire_at: FieldRef<"GiuCho", 'DateTime'>
     readonly created_at: FieldRef<"GiuCho", 'DateTime'>
   }
@@ -12078,6 +12640,25 @@ export namespace Prisma {
   }
 
   /**
+   * GiuCho.HoaDon
+   */
+  export type GiuCho$HoaDonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    where?: HoaDonWhereInput
+  }
+
+  /**
    * GiuCho without action
    */
   export type GiuChoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12093,6 +12674,4123 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: GiuChoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model HoaDon
+   */
+
+  export type AggregateHoaDon = {
+    _count: HoaDonCountAggregateOutputType | null
+    _avg: HoaDonAvgAggregateOutputType | null
+    _sum: HoaDonSumAggregateOutputType | null
+    _min: HoaDonMinAggregateOutputType | null
+    _max: HoaDonMaxAggregateOutputType | null
+  }
+
+  export type HoaDonAvgAggregateOutputType = {
+    ma_hoa_don: number | null
+    tai_khoan: number | null
+    ma_lich_chieu: number | null
+    tong_tien: number | null
+    so_tien_da_nhan: number | null
+  }
+
+  export type HoaDonSumAggregateOutputType = {
+    ma_hoa_don: number | null
+    tai_khoan: number | null
+    ma_lich_chieu: number | null
+    tong_tien: number | null
+    so_tien_da_nhan: number | null
+  }
+
+  export type HoaDonMinAggregateOutputType = {
+    ma_hoa_don: number | null
+    tai_khoan: number | null
+    ma_lich_chieu: number | null
+    tong_tien: number | null
+    created_at: Date | null
+    checked_in_at: Date | null
+    trang_thai_thanh_toan: $Enums.TrangThaiThanhToan | null
+    phuong_thuc_thanh_toan: string | null
+    ma_giao_dich_ngan_hang: string | null
+    so_tien_da_nhan: number | null
+    thanh_toan_luc: Date | null
+    het_han_luc: Date | null
+  }
+
+  export type HoaDonMaxAggregateOutputType = {
+    ma_hoa_don: number | null
+    tai_khoan: number | null
+    ma_lich_chieu: number | null
+    tong_tien: number | null
+    created_at: Date | null
+    checked_in_at: Date | null
+    trang_thai_thanh_toan: $Enums.TrangThaiThanhToan | null
+    phuong_thuc_thanh_toan: string | null
+    ma_giao_dich_ngan_hang: string | null
+    so_tien_da_nhan: number | null
+    thanh_toan_luc: Date | null
+    het_han_luc: Date | null
+  }
+
+  export type HoaDonCountAggregateOutputType = {
+    ma_hoa_don: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at: number
+    checked_in_at: number
+    trang_thai_thanh_toan: number
+    phuong_thuc_thanh_toan: number
+    ma_giao_dich_ngan_hang: number
+    so_tien_da_nhan: number
+    thanh_toan_luc: number
+    het_han_luc: number
+    _all: number
+  }
+
+
+  export type HoaDonAvgAggregateInputType = {
+    ma_hoa_don?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    tong_tien?: true
+    so_tien_da_nhan?: true
+  }
+
+  export type HoaDonSumAggregateInputType = {
+    ma_hoa_don?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    tong_tien?: true
+    so_tien_da_nhan?: true
+  }
+
+  export type HoaDonMinAggregateInputType = {
+    ma_hoa_don?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    tong_tien?: true
+    created_at?: true
+    checked_in_at?: true
+    trang_thai_thanh_toan?: true
+    phuong_thuc_thanh_toan?: true
+    ma_giao_dich_ngan_hang?: true
+    so_tien_da_nhan?: true
+    thanh_toan_luc?: true
+    het_han_luc?: true
+  }
+
+  export type HoaDonMaxAggregateInputType = {
+    ma_hoa_don?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    tong_tien?: true
+    created_at?: true
+    checked_in_at?: true
+    trang_thai_thanh_toan?: true
+    phuong_thuc_thanh_toan?: true
+    ma_giao_dich_ngan_hang?: true
+    so_tien_da_nhan?: true
+    thanh_toan_luc?: true
+    het_han_luc?: true
+  }
+
+  export type HoaDonCountAggregateInputType = {
+    ma_hoa_don?: true
+    tai_khoan?: true
+    ma_lich_chieu?: true
+    tong_tien?: true
+    created_at?: true
+    checked_in_at?: true
+    trang_thai_thanh_toan?: true
+    phuong_thuc_thanh_toan?: true
+    ma_giao_dich_ngan_hang?: true
+    so_tien_da_nhan?: true
+    thanh_toan_luc?: true
+    het_han_luc?: true
+    _all?: true
+  }
+
+  export type HoaDonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HoaDon to aggregate.
+     */
+    where?: HoaDonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HoaDons to fetch.
+     */
+    orderBy?: HoaDonOrderByWithRelationInput | HoaDonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HoaDonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HoaDons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HoaDons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HoaDons
+    **/
+    _count?: true | HoaDonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HoaDonAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HoaDonSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HoaDonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HoaDonMaxAggregateInputType
+  }
+
+  export type GetHoaDonAggregateType<T extends HoaDonAggregateArgs> = {
+        [P in keyof T & keyof AggregateHoaDon]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHoaDon[P]>
+      : GetScalarType<T[P], AggregateHoaDon[P]>
+  }
+
+
+
+
+  export type HoaDonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HoaDonWhereInput
+    orderBy?: HoaDonOrderByWithAggregationInput | HoaDonOrderByWithAggregationInput[]
+    by: HoaDonScalarFieldEnum[] | HoaDonScalarFieldEnum
+    having?: HoaDonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HoaDonCountAggregateInputType | true
+    _avg?: HoaDonAvgAggregateInputType
+    _sum?: HoaDonSumAggregateInputType
+    _min?: HoaDonMinAggregateInputType
+    _max?: HoaDonMaxAggregateInputType
+  }
+
+  export type HoaDonGroupByOutputType = {
+    ma_hoa_don: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at: Date | null
+    checked_in_at: Date | null
+    trang_thai_thanh_toan: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan: string | null
+    ma_giao_dich_ngan_hang: string | null
+    so_tien_da_nhan: number | null
+    thanh_toan_luc: Date | null
+    het_han_luc: Date | null
+    _count: HoaDonCountAggregateOutputType | null
+    _avg: HoaDonAvgAggregateOutputType | null
+    _sum: HoaDonSumAggregateOutputType | null
+    _min: HoaDonMinAggregateOutputType | null
+    _max: HoaDonMaxAggregateOutputType | null
+  }
+
+  type GetHoaDonGroupByPayload<T extends HoaDonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HoaDonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HoaDonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HoaDonGroupByOutputType[P]>
+            : GetScalarType<T[P], HoaDonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HoaDonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ma_hoa_don?: boolean
+    tai_khoan?: boolean
+    ma_lich_chieu?: boolean
+    tong_tien?: boolean
+    created_at?: boolean
+    checked_in_at?: boolean
+    trang_thai_thanh_toan?: boolean
+    phuong_thuc_thanh_toan?: boolean
+    ma_giao_dich_ngan_hang?: boolean
+    so_tien_da_nhan?: boolean
+    thanh_toan_luc?: boolean
+    het_han_luc?: boolean
+    NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
+    LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
+    DatVe?: boolean | HoaDon$DatVeArgs<ExtArgs>
+    HoaDonCombo?: boolean | HoaDon$HoaDonComboArgs<ExtArgs>
+    GiuCho?: boolean | HoaDon$GiuChoArgs<ExtArgs>
+    _count?: boolean | HoaDonCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hoaDon"]>
+
+
+
+  export type HoaDonSelectScalar = {
+    ma_hoa_don?: boolean
+    tai_khoan?: boolean
+    ma_lich_chieu?: boolean
+    tong_tien?: boolean
+    created_at?: boolean
+    checked_in_at?: boolean
+    trang_thai_thanh_toan?: boolean
+    phuong_thuc_thanh_toan?: boolean
+    ma_giao_dich_ngan_hang?: boolean
+    so_tien_da_nhan?: boolean
+    thanh_toan_luc?: boolean
+    het_han_luc?: boolean
+  }
+
+  export type HoaDonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_hoa_don" | "tai_khoan" | "ma_lich_chieu" | "tong_tien" | "created_at" | "checked_in_at" | "trang_thai_thanh_toan" | "phuong_thuc_thanh_toan" | "ma_giao_dich_ngan_hang" | "so_tien_da_nhan" | "thanh_toan_luc" | "het_han_luc", ExtArgs["result"]["hoaDon"]>
+  export type HoaDonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
+    LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
+    DatVe?: boolean | HoaDon$DatVeArgs<ExtArgs>
+    HoaDonCombo?: boolean | HoaDon$HoaDonComboArgs<ExtArgs>
+    GiuCho?: boolean | HoaDon$GiuChoArgs<ExtArgs>
+    _count?: boolean | HoaDonCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $HoaDonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HoaDon"
+    objects: {
+      NguoiDung: Prisma.$NguoiDungPayload<ExtArgs>
+      LichChieu: Prisma.$LichChieuPayload<ExtArgs>
+      DatVe: Prisma.$DatVePayload<ExtArgs>[]
+      HoaDonCombo: Prisma.$HoaDonComboPayload<ExtArgs>[]
+      GiuCho: Prisma.$GiuChoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      ma_hoa_don: number
+      tai_khoan: number
+      ma_lich_chieu: number
+      tong_tien: number
+      created_at: Date | null
+      checked_in_at: Date | null
+      trang_thai_thanh_toan: $Enums.TrangThaiThanhToan
+      phuong_thuc_thanh_toan: string | null
+      ma_giao_dich_ngan_hang: string | null
+      so_tien_da_nhan: number | null
+      thanh_toan_luc: Date | null
+      het_han_luc: Date | null
+    }, ExtArgs["result"]["hoaDon"]>
+    composites: {}
+  }
+
+  type HoaDonGetPayload<S extends boolean | null | undefined | HoaDonDefaultArgs> = $Result.GetResult<Prisma.$HoaDonPayload, S>
+
+  type HoaDonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HoaDonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HoaDonCountAggregateInputType | true
+    }
+
+  export interface HoaDonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HoaDon'], meta: { name: 'HoaDon' } }
+    /**
+     * Find zero or one HoaDon that matches the filter.
+     * @param {HoaDonFindUniqueArgs} args - Arguments to find a HoaDon
+     * @example
+     * // Get one HoaDon
+     * const hoaDon = await prisma.hoaDon.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HoaDonFindUniqueArgs>(args: SelectSubset<T, HoaDonFindUniqueArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HoaDon that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HoaDonFindUniqueOrThrowArgs} args - Arguments to find a HoaDon
+     * @example
+     * // Get one HoaDon
+     * const hoaDon = await prisma.hoaDon.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HoaDonFindUniqueOrThrowArgs>(args: SelectSubset<T, HoaDonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HoaDon that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonFindFirstArgs} args - Arguments to find a HoaDon
+     * @example
+     * // Get one HoaDon
+     * const hoaDon = await prisma.hoaDon.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HoaDonFindFirstArgs>(args?: SelectSubset<T, HoaDonFindFirstArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HoaDon that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonFindFirstOrThrowArgs} args - Arguments to find a HoaDon
+     * @example
+     * // Get one HoaDon
+     * const hoaDon = await prisma.hoaDon.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HoaDonFindFirstOrThrowArgs>(args?: SelectSubset<T, HoaDonFindFirstOrThrowArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HoaDons that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HoaDons
+     * const hoaDons = await prisma.hoaDon.findMany()
+     * 
+     * // Get first 10 HoaDons
+     * const hoaDons = await prisma.hoaDon.findMany({ take: 10 })
+     * 
+     * // Only select the `ma_hoa_don`
+     * const hoaDonWithMa_hoa_donOnly = await prisma.hoaDon.findMany({ select: { ma_hoa_don: true } })
+     * 
+     */
+    findMany<T extends HoaDonFindManyArgs>(args?: SelectSubset<T, HoaDonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HoaDon.
+     * @param {HoaDonCreateArgs} args - Arguments to create a HoaDon.
+     * @example
+     * // Create one HoaDon
+     * const HoaDon = await prisma.hoaDon.create({
+     *   data: {
+     *     // ... data to create a HoaDon
+     *   }
+     * })
+     * 
+     */
+    create<T extends HoaDonCreateArgs>(args: SelectSubset<T, HoaDonCreateArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HoaDons.
+     * @param {HoaDonCreateManyArgs} args - Arguments to create many HoaDons.
+     * @example
+     * // Create many HoaDons
+     * const hoaDon = await prisma.hoaDon.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HoaDonCreateManyArgs>(args?: SelectSubset<T, HoaDonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a HoaDon.
+     * @param {HoaDonDeleteArgs} args - Arguments to delete one HoaDon.
+     * @example
+     * // Delete one HoaDon
+     * const HoaDon = await prisma.hoaDon.delete({
+     *   where: {
+     *     // ... filter to delete one HoaDon
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HoaDonDeleteArgs>(args: SelectSubset<T, HoaDonDeleteArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HoaDon.
+     * @param {HoaDonUpdateArgs} args - Arguments to update one HoaDon.
+     * @example
+     * // Update one HoaDon
+     * const hoaDon = await prisma.hoaDon.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HoaDonUpdateArgs>(args: SelectSubset<T, HoaDonUpdateArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HoaDons.
+     * @param {HoaDonDeleteManyArgs} args - Arguments to filter HoaDons to delete.
+     * @example
+     * // Delete a few HoaDons
+     * const { count } = await prisma.hoaDon.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HoaDonDeleteManyArgs>(args?: SelectSubset<T, HoaDonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HoaDons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HoaDons
+     * const hoaDon = await prisma.hoaDon.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HoaDonUpdateManyArgs>(args: SelectSubset<T, HoaDonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one HoaDon.
+     * @param {HoaDonUpsertArgs} args - Arguments to update or create a HoaDon.
+     * @example
+     * // Update or create a HoaDon
+     * const hoaDon = await prisma.hoaDon.upsert({
+     *   create: {
+     *     // ... data to create a HoaDon
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HoaDon we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HoaDonUpsertArgs>(args: SelectSubset<T, HoaDonUpsertArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HoaDons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonCountArgs} args - Arguments to filter HoaDons to count.
+     * @example
+     * // Count the number of HoaDons
+     * const count = await prisma.hoaDon.count({
+     *   where: {
+     *     // ... the filter for the HoaDons we want to count
+     *   }
+     * })
+    **/
+    count<T extends HoaDonCountArgs>(
+      args?: Subset<T, HoaDonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HoaDonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HoaDon.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HoaDonAggregateArgs>(args: Subset<T, HoaDonAggregateArgs>): Prisma.PrismaPromise<GetHoaDonAggregateType<T>>
+
+    /**
+     * Group by HoaDon.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HoaDonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HoaDonGroupByArgs['orderBy'] }
+        : { orderBy?: HoaDonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HoaDonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHoaDonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HoaDon model
+   */
+  readonly fields: HoaDonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HoaDon.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HoaDonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    NguoiDung<T extends NguoiDungDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDungDefaultArgs<ExtArgs>>): Prisma__NguoiDungClient<$Result.GetResult<Prisma.$NguoiDungPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    LichChieu<T extends LichChieuDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LichChieuDefaultArgs<ExtArgs>>): Prisma__LichChieuClient<$Result.GetResult<Prisma.$LichChieuPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    DatVe<T extends HoaDon$DatVeArgs<ExtArgs> = {}>(args?: Subset<T, HoaDon$DatVeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DatVePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    HoaDonCombo<T extends HoaDon$HoaDonComboArgs<ExtArgs> = {}>(args?: Subset<T, HoaDon$HoaDonComboArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    GiuCho<T extends HoaDon$GiuChoArgs<ExtArgs> = {}>(args?: Subset<T, HoaDon$GiuChoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HoaDon model
+   */
+  interface HoaDonFieldRefs {
+    readonly ma_hoa_don: FieldRef<"HoaDon", 'Int'>
+    readonly tai_khoan: FieldRef<"HoaDon", 'Int'>
+    readonly ma_lich_chieu: FieldRef<"HoaDon", 'Int'>
+    readonly tong_tien: FieldRef<"HoaDon", 'Int'>
+    readonly created_at: FieldRef<"HoaDon", 'DateTime'>
+    readonly checked_in_at: FieldRef<"HoaDon", 'DateTime'>
+    readonly trang_thai_thanh_toan: FieldRef<"HoaDon", 'TrangThaiThanhToan'>
+    readonly phuong_thuc_thanh_toan: FieldRef<"HoaDon", 'String'>
+    readonly ma_giao_dich_ngan_hang: FieldRef<"HoaDon", 'String'>
+    readonly so_tien_da_nhan: FieldRef<"HoaDon", 'Int'>
+    readonly thanh_toan_luc: FieldRef<"HoaDon", 'DateTime'>
+    readonly het_han_luc: FieldRef<"HoaDon", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HoaDon findUnique
+   */
+  export type HoaDonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDon to fetch.
+     */
+    where: HoaDonWhereUniqueInput
+  }
+
+  /**
+   * HoaDon findUniqueOrThrow
+   */
+  export type HoaDonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDon to fetch.
+     */
+    where: HoaDonWhereUniqueInput
+  }
+
+  /**
+   * HoaDon findFirst
+   */
+  export type HoaDonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDon to fetch.
+     */
+    where?: HoaDonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HoaDons to fetch.
+     */
+    orderBy?: HoaDonOrderByWithRelationInput | HoaDonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HoaDons.
+     */
+    cursor?: HoaDonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HoaDons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HoaDons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HoaDons.
+     */
+    distinct?: HoaDonScalarFieldEnum | HoaDonScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDon findFirstOrThrow
+   */
+  export type HoaDonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDon to fetch.
+     */
+    where?: HoaDonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HoaDons to fetch.
+     */
+    orderBy?: HoaDonOrderByWithRelationInput | HoaDonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HoaDons.
+     */
+    cursor?: HoaDonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HoaDons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HoaDons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HoaDons.
+     */
+    distinct?: HoaDonScalarFieldEnum | HoaDonScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDon findMany
+   */
+  export type HoaDonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDons to fetch.
+     */
+    where?: HoaDonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HoaDons to fetch.
+     */
+    orderBy?: HoaDonOrderByWithRelationInput | HoaDonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HoaDons.
+     */
+    cursor?: HoaDonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HoaDons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HoaDons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HoaDons.
+     */
+    distinct?: HoaDonScalarFieldEnum | HoaDonScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDon create
+   */
+  export type HoaDonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HoaDon.
+     */
+    data: XOR<HoaDonCreateInput, HoaDonUncheckedCreateInput>
+  }
+
+  /**
+   * HoaDon createMany
+   */
+  export type HoaDonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HoaDons.
+     */
+    data: HoaDonCreateManyInput | HoaDonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HoaDon update
+   */
+  export type HoaDonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HoaDon.
+     */
+    data: XOR<HoaDonUpdateInput, HoaDonUncheckedUpdateInput>
+    /**
+     * Choose, which HoaDon to update.
+     */
+    where: HoaDonWhereUniqueInput
+  }
+
+  /**
+   * HoaDon updateMany
+   */
+  export type HoaDonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HoaDons.
+     */
+    data: XOR<HoaDonUpdateManyMutationInput, HoaDonUncheckedUpdateManyInput>
+    /**
+     * Filter which HoaDons to update
+     */
+    where?: HoaDonWhereInput
+    /**
+     * Limit how many HoaDons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HoaDon upsert
+   */
+  export type HoaDonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HoaDon to update in case it exists.
+     */
+    where: HoaDonWhereUniqueInput
+    /**
+     * In case the HoaDon found by the `where` argument doesn't exist, create a new HoaDon with this data.
+     */
+    create: XOR<HoaDonCreateInput, HoaDonUncheckedCreateInput>
+    /**
+     * In case the HoaDon was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HoaDonUpdateInput, HoaDonUncheckedUpdateInput>
+  }
+
+  /**
+   * HoaDon delete
+   */
+  export type HoaDonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+    /**
+     * Filter which HoaDon to delete.
+     */
+    where: HoaDonWhereUniqueInput
+  }
+
+  /**
+   * HoaDon deleteMany
+   */
+  export type HoaDonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HoaDons to delete
+     */
+    where?: HoaDonWhereInput
+    /**
+     * Limit how many HoaDons to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HoaDon.DatVe
+   */
+  export type HoaDon$DatVeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DatVe
+     */
+    select?: DatVeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DatVe
+     */
+    omit?: DatVeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DatVeInclude<ExtArgs> | null
+    where?: DatVeWhereInput
+    orderBy?: DatVeOrderByWithRelationInput | DatVeOrderByWithRelationInput[]
+    cursor?: DatVeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DatVeScalarFieldEnum | DatVeScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDon.HoaDonCombo
+   */
+  export type HoaDon$HoaDonComboArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    where?: HoaDonComboWhereInput
+    orderBy?: HoaDonComboOrderByWithRelationInput | HoaDonComboOrderByWithRelationInput[]
+    cursor?: HoaDonComboWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HoaDonComboScalarFieldEnum | HoaDonComboScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDon.GiuCho
+   */
+  export type HoaDon$GiuChoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiuCho
+     */
+    select?: GiuChoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiuCho
+     */
+    omit?: GiuChoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiuChoInclude<ExtArgs> | null
+    where?: GiuChoWhereInput
+    orderBy?: GiuChoOrderByWithRelationInput | GiuChoOrderByWithRelationInput[]
+    cursor?: GiuChoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GiuChoScalarFieldEnum | GiuChoScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDon without action
+   */
+  export type HoaDonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDon
+     */
+    select?: HoaDonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDon
+     */
+    omit?: HoaDonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Combo
+   */
+
+  export type AggregateCombo = {
+    _count: ComboCountAggregateOutputType | null
+    _avg: ComboAvgAggregateOutputType | null
+    _sum: ComboSumAggregateOutputType | null
+    _min: ComboMinAggregateOutputType | null
+    _max: ComboMaxAggregateOutputType | null
+  }
+
+  export type ComboAvgAggregateOutputType = {
+    ma_combo: number | null
+    gia: number | null
+  }
+
+  export type ComboSumAggregateOutputType = {
+    ma_combo: number | null
+    gia: number | null
+  }
+
+  export type ComboMinAggregateOutputType = {
+    ma_combo: number | null
+    ten_combo: string | null
+    mo_ta: string | null
+    gia: number | null
+    hinh_anh: string | null
+    isDeleted: boolean | null
+  }
+
+  export type ComboMaxAggregateOutputType = {
+    ma_combo: number | null
+    ten_combo: string | null
+    mo_ta: string | null
+    gia: number | null
+    hinh_anh: string | null
+    isDeleted: boolean | null
+  }
+
+  export type ComboCountAggregateOutputType = {
+    ma_combo: number
+    ten_combo: number
+    mo_ta: number
+    gia: number
+    hinh_anh: number
+    isDeleted: number
+    _all: number
+  }
+
+
+  export type ComboAvgAggregateInputType = {
+    ma_combo?: true
+    gia?: true
+  }
+
+  export type ComboSumAggregateInputType = {
+    ma_combo?: true
+    gia?: true
+  }
+
+  export type ComboMinAggregateInputType = {
+    ma_combo?: true
+    ten_combo?: true
+    mo_ta?: true
+    gia?: true
+    hinh_anh?: true
+    isDeleted?: true
+  }
+
+  export type ComboMaxAggregateInputType = {
+    ma_combo?: true
+    ten_combo?: true
+    mo_ta?: true
+    gia?: true
+    hinh_anh?: true
+    isDeleted?: true
+  }
+
+  export type ComboCountAggregateInputType = {
+    ma_combo?: true
+    ten_combo?: true
+    mo_ta?: true
+    gia?: true
+    hinh_anh?: true
+    isDeleted?: true
+    _all?: true
+  }
+
+  export type ComboAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Combo to aggregate.
+     */
+    where?: ComboWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Combos to fetch.
+     */
+    orderBy?: ComboOrderByWithRelationInput | ComboOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ComboWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Combos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Combos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Combos
+    **/
+    _count?: true | ComboCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ComboAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ComboSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComboMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComboMaxAggregateInputType
+  }
+
+  export type GetComboAggregateType<T extends ComboAggregateArgs> = {
+        [P in keyof T & keyof AggregateCombo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCombo[P]>
+      : GetScalarType<T[P], AggregateCombo[P]>
+  }
+
+
+
+
+  export type ComboGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComboWhereInput
+    orderBy?: ComboOrderByWithAggregationInput | ComboOrderByWithAggregationInput[]
+    by: ComboScalarFieldEnum[] | ComboScalarFieldEnum
+    having?: ComboScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComboCountAggregateInputType | true
+    _avg?: ComboAvgAggregateInputType
+    _sum?: ComboSumAggregateInputType
+    _min?: ComboMinAggregateInputType
+    _max?: ComboMaxAggregateInputType
+  }
+
+  export type ComboGroupByOutputType = {
+    ma_combo: number
+    ten_combo: string
+    mo_ta: string | null
+    gia: number
+    hinh_anh: string | null
+    isDeleted: boolean | null
+    _count: ComboCountAggregateOutputType | null
+    _avg: ComboAvgAggregateOutputType | null
+    _sum: ComboSumAggregateOutputType | null
+    _min: ComboMinAggregateOutputType | null
+    _max: ComboMaxAggregateOutputType | null
+  }
+
+  type GetComboGroupByPayload<T extends ComboGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComboGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComboGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComboGroupByOutputType[P]>
+            : GetScalarType<T[P], ComboGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ComboSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ma_combo?: boolean
+    ten_combo?: boolean
+    mo_ta?: boolean
+    gia?: boolean
+    hinh_anh?: boolean
+    isDeleted?: boolean
+    HoaDonCombo?: boolean | Combo$HoaDonComboArgs<ExtArgs>
+    _count?: boolean | ComboCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["combo"]>
+
+
+
+  export type ComboSelectScalar = {
+    ma_combo?: boolean
+    ten_combo?: boolean
+    mo_ta?: boolean
+    gia?: boolean
+    hinh_anh?: boolean
+    isDeleted?: boolean
+  }
+
+  export type ComboOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_combo" | "ten_combo" | "mo_ta" | "gia" | "hinh_anh" | "isDeleted", ExtArgs["result"]["combo"]>
+  export type ComboInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    HoaDonCombo?: boolean | Combo$HoaDonComboArgs<ExtArgs>
+    _count?: boolean | ComboCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ComboPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Combo"
+    objects: {
+      HoaDonCombo: Prisma.$HoaDonComboPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      ma_combo: number
+      ten_combo: string
+      mo_ta: string | null
+      gia: number
+      hinh_anh: string | null
+      isDeleted: boolean | null
+    }, ExtArgs["result"]["combo"]>
+    composites: {}
+  }
+
+  type ComboGetPayload<S extends boolean | null | undefined | ComboDefaultArgs> = $Result.GetResult<Prisma.$ComboPayload, S>
+
+  type ComboCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ComboFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComboCountAggregateInputType | true
+    }
+
+  export interface ComboDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Combo'], meta: { name: 'Combo' } }
+    /**
+     * Find zero or one Combo that matches the filter.
+     * @param {ComboFindUniqueArgs} args - Arguments to find a Combo
+     * @example
+     * // Get one Combo
+     * const combo = await prisma.combo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ComboFindUniqueArgs>(args: SelectSubset<T, ComboFindUniqueArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Combo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ComboFindUniqueOrThrowArgs} args - Arguments to find a Combo
+     * @example
+     * // Get one Combo
+     * const combo = await prisma.combo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ComboFindUniqueOrThrowArgs>(args: SelectSubset<T, ComboFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Combo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComboFindFirstArgs} args - Arguments to find a Combo
+     * @example
+     * // Get one Combo
+     * const combo = await prisma.combo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ComboFindFirstArgs>(args?: SelectSubset<T, ComboFindFirstArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Combo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComboFindFirstOrThrowArgs} args - Arguments to find a Combo
+     * @example
+     * // Get one Combo
+     * const combo = await prisma.combo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ComboFindFirstOrThrowArgs>(args?: SelectSubset<T, ComboFindFirstOrThrowArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Combos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComboFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Combos
+     * const combos = await prisma.combo.findMany()
+     * 
+     * // Get first 10 Combos
+     * const combos = await prisma.combo.findMany({ take: 10 })
+     * 
+     * // Only select the `ma_combo`
+     * const comboWithMa_comboOnly = await prisma.combo.findMany({ select: { ma_combo: true } })
+     * 
+     */
+    findMany<T extends ComboFindManyArgs>(args?: SelectSubset<T, ComboFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Combo.
+     * @param {ComboCreateArgs} args - Arguments to create a Combo.
+     * @example
+     * // Create one Combo
+     * const Combo = await prisma.combo.create({
+     *   data: {
+     *     // ... data to create a Combo
+     *   }
+     * })
+     * 
+     */
+    create<T extends ComboCreateArgs>(args: SelectSubset<T, ComboCreateArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Combos.
+     * @param {ComboCreateManyArgs} args - Arguments to create many Combos.
+     * @example
+     * // Create many Combos
+     * const combo = await prisma.combo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ComboCreateManyArgs>(args?: SelectSubset<T, ComboCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Combo.
+     * @param {ComboDeleteArgs} args - Arguments to delete one Combo.
+     * @example
+     * // Delete one Combo
+     * const Combo = await prisma.combo.delete({
+     *   where: {
+     *     // ... filter to delete one Combo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ComboDeleteArgs>(args: SelectSubset<T, ComboDeleteArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Combo.
+     * @param {ComboUpdateArgs} args - Arguments to update one Combo.
+     * @example
+     * // Update one Combo
+     * const combo = await prisma.combo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ComboUpdateArgs>(args: SelectSubset<T, ComboUpdateArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Combos.
+     * @param {ComboDeleteManyArgs} args - Arguments to filter Combos to delete.
+     * @example
+     * // Delete a few Combos
+     * const { count } = await prisma.combo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ComboDeleteManyArgs>(args?: SelectSubset<T, ComboDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Combos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComboUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Combos
+     * const combo = await prisma.combo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ComboUpdateManyArgs>(args: SelectSubset<T, ComboUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Combo.
+     * @param {ComboUpsertArgs} args - Arguments to update or create a Combo.
+     * @example
+     * // Update or create a Combo
+     * const combo = await prisma.combo.upsert({
+     *   create: {
+     *     // ... data to create a Combo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Combo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ComboUpsertArgs>(args: SelectSubset<T, ComboUpsertArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Combos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComboCountArgs} args - Arguments to filter Combos to count.
+     * @example
+     * // Count the number of Combos
+     * const count = await prisma.combo.count({
+     *   where: {
+     *     // ... the filter for the Combos we want to count
+     *   }
+     * })
+    **/
+    count<T extends ComboCountArgs>(
+      args?: Subset<T, ComboCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComboCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Combo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComboAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComboAggregateArgs>(args: Subset<T, ComboAggregateArgs>): Prisma.PrismaPromise<GetComboAggregateType<T>>
+
+    /**
+     * Group by Combo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComboGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ComboGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ComboGroupByArgs['orderBy'] }
+        : { orderBy?: ComboGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ComboGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComboGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Combo model
+   */
+  readonly fields: ComboFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Combo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ComboClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    HoaDonCombo<T extends Combo$HoaDonComboArgs<ExtArgs> = {}>(args?: Subset<T, Combo$HoaDonComboArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Combo model
+   */
+  interface ComboFieldRefs {
+    readonly ma_combo: FieldRef<"Combo", 'Int'>
+    readonly ten_combo: FieldRef<"Combo", 'String'>
+    readonly mo_ta: FieldRef<"Combo", 'String'>
+    readonly gia: FieldRef<"Combo", 'Int'>
+    readonly hinh_anh: FieldRef<"Combo", 'String'>
+    readonly isDeleted: FieldRef<"Combo", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Combo findUnique
+   */
+  export type ComboFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * Filter, which Combo to fetch.
+     */
+    where: ComboWhereUniqueInput
+  }
+
+  /**
+   * Combo findUniqueOrThrow
+   */
+  export type ComboFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * Filter, which Combo to fetch.
+     */
+    where: ComboWhereUniqueInput
+  }
+
+  /**
+   * Combo findFirst
+   */
+  export type ComboFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * Filter, which Combo to fetch.
+     */
+    where?: ComboWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Combos to fetch.
+     */
+    orderBy?: ComboOrderByWithRelationInput | ComboOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Combos.
+     */
+    cursor?: ComboWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Combos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Combos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Combos.
+     */
+    distinct?: ComboScalarFieldEnum | ComboScalarFieldEnum[]
+  }
+
+  /**
+   * Combo findFirstOrThrow
+   */
+  export type ComboFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * Filter, which Combo to fetch.
+     */
+    where?: ComboWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Combos to fetch.
+     */
+    orderBy?: ComboOrderByWithRelationInput | ComboOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Combos.
+     */
+    cursor?: ComboWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Combos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Combos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Combos.
+     */
+    distinct?: ComboScalarFieldEnum | ComboScalarFieldEnum[]
+  }
+
+  /**
+   * Combo findMany
+   */
+  export type ComboFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * Filter, which Combos to fetch.
+     */
+    where?: ComboWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Combos to fetch.
+     */
+    orderBy?: ComboOrderByWithRelationInput | ComboOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Combos.
+     */
+    cursor?: ComboWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Combos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Combos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Combos.
+     */
+    distinct?: ComboScalarFieldEnum | ComboScalarFieldEnum[]
+  }
+
+  /**
+   * Combo create
+   */
+  export type ComboCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Combo.
+     */
+    data: XOR<ComboCreateInput, ComboUncheckedCreateInput>
+  }
+
+  /**
+   * Combo createMany
+   */
+  export type ComboCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Combos.
+     */
+    data: ComboCreateManyInput | ComboCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Combo update
+   */
+  export type ComboUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Combo.
+     */
+    data: XOR<ComboUpdateInput, ComboUncheckedUpdateInput>
+    /**
+     * Choose, which Combo to update.
+     */
+    where: ComboWhereUniqueInput
+  }
+
+  /**
+   * Combo updateMany
+   */
+  export type ComboUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Combos.
+     */
+    data: XOR<ComboUpdateManyMutationInput, ComboUncheckedUpdateManyInput>
+    /**
+     * Filter which Combos to update
+     */
+    where?: ComboWhereInput
+    /**
+     * Limit how many Combos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Combo upsert
+   */
+  export type ComboUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Combo to update in case it exists.
+     */
+    where: ComboWhereUniqueInput
+    /**
+     * In case the Combo found by the `where` argument doesn't exist, create a new Combo with this data.
+     */
+    create: XOR<ComboCreateInput, ComboUncheckedCreateInput>
+    /**
+     * In case the Combo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ComboUpdateInput, ComboUncheckedUpdateInput>
+  }
+
+  /**
+   * Combo delete
+   */
+  export type ComboDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+    /**
+     * Filter which Combo to delete.
+     */
+    where: ComboWhereUniqueInput
+  }
+
+  /**
+   * Combo deleteMany
+   */
+  export type ComboDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Combos to delete
+     */
+    where?: ComboWhereInput
+    /**
+     * Limit how many Combos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Combo.HoaDonCombo
+   */
+  export type Combo$HoaDonComboArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    where?: HoaDonComboWhereInput
+    orderBy?: HoaDonComboOrderByWithRelationInput | HoaDonComboOrderByWithRelationInput[]
+    cursor?: HoaDonComboWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HoaDonComboScalarFieldEnum | HoaDonComboScalarFieldEnum[]
+  }
+
+  /**
+   * Combo without action
+   */
+  export type ComboDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Combo
+     */
+    select?: ComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Combo
+     */
+    omit?: ComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComboInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model HoaDonCombo
+   */
+
+  export type AggregateHoaDonCombo = {
+    _count: HoaDonComboCountAggregateOutputType | null
+    _avg: HoaDonComboAvgAggregateOutputType | null
+    _sum: HoaDonComboSumAggregateOutputType | null
+    _min: HoaDonComboMinAggregateOutputType | null
+    _max: HoaDonComboMaxAggregateOutputType | null
+  }
+
+  export type HoaDonComboAvgAggregateOutputType = {
+    ma_hoa_don: number | null
+    ma_combo: number | null
+    so_luong: number | null
+    don_gia: number | null
+  }
+
+  export type HoaDonComboSumAggregateOutputType = {
+    ma_hoa_don: number | null
+    ma_combo: number | null
+    so_luong: number | null
+    don_gia: number | null
+  }
+
+  export type HoaDonComboMinAggregateOutputType = {
+    ma_hoa_don: number | null
+    ma_combo: number | null
+    so_luong: number | null
+    don_gia: number | null
+  }
+
+  export type HoaDonComboMaxAggregateOutputType = {
+    ma_hoa_don: number | null
+    ma_combo: number | null
+    so_luong: number | null
+    don_gia: number | null
+  }
+
+  export type HoaDonComboCountAggregateOutputType = {
+    ma_hoa_don: number
+    ma_combo: number
+    so_luong: number
+    don_gia: number
+    _all: number
+  }
+
+
+  export type HoaDonComboAvgAggregateInputType = {
+    ma_hoa_don?: true
+    ma_combo?: true
+    so_luong?: true
+    don_gia?: true
+  }
+
+  export type HoaDonComboSumAggregateInputType = {
+    ma_hoa_don?: true
+    ma_combo?: true
+    so_luong?: true
+    don_gia?: true
+  }
+
+  export type HoaDonComboMinAggregateInputType = {
+    ma_hoa_don?: true
+    ma_combo?: true
+    so_luong?: true
+    don_gia?: true
+  }
+
+  export type HoaDonComboMaxAggregateInputType = {
+    ma_hoa_don?: true
+    ma_combo?: true
+    so_luong?: true
+    don_gia?: true
+  }
+
+  export type HoaDonComboCountAggregateInputType = {
+    ma_hoa_don?: true
+    ma_combo?: true
+    so_luong?: true
+    don_gia?: true
+    _all?: true
+  }
+
+  export type HoaDonComboAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HoaDonCombo to aggregate.
+     */
+    where?: HoaDonComboWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HoaDonCombos to fetch.
+     */
+    orderBy?: HoaDonComboOrderByWithRelationInput | HoaDonComboOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HoaDonComboWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HoaDonCombos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HoaDonCombos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HoaDonCombos
+    **/
+    _count?: true | HoaDonComboCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HoaDonComboAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HoaDonComboSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HoaDonComboMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HoaDonComboMaxAggregateInputType
+  }
+
+  export type GetHoaDonComboAggregateType<T extends HoaDonComboAggregateArgs> = {
+        [P in keyof T & keyof AggregateHoaDonCombo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHoaDonCombo[P]>
+      : GetScalarType<T[P], AggregateHoaDonCombo[P]>
+  }
+
+
+
+
+  export type HoaDonComboGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HoaDonComboWhereInput
+    orderBy?: HoaDonComboOrderByWithAggregationInput | HoaDonComboOrderByWithAggregationInput[]
+    by: HoaDonComboScalarFieldEnum[] | HoaDonComboScalarFieldEnum
+    having?: HoaDonComboScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HoaDonComboCountAggregateInputType | true
+    _avg?: HoaDonComboAvgAggregateInputType
+    _sum?: HoaDonComboSumAggregateInputType
+    _min?: HoaDonComboMinAggregateInputType
+    _max?: HoaDonComboMaxAggregateInputType
+  }
+
+  export type HoaDonComboGroupByOutputType = {
+    ma_hoa_don: number
+    ma_combo: number
+    so_luong: number
+    don_gia: number
+    _count: HoaDonComboCountAggregateOutputType | null
+    _avg: HoaDonComboAvgAggregateOutputType | null
+    _sum: HoaDonComboSumAggregateOutputType | null
+    _min: HoaDonComboMinAggregateOutputType | null
+    _max: HoaDonComboMaxAggregateOutputType | null
+  }
+
+  type GetHoaDonComboGroupByPayload<T extends HoaDonComboGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HoaDonComboGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HoaDonComboGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HoaDonComboGroupByOutputType[P]>
+            : GetScalarType<T[P], HoaDonComboGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HoaDonComboSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ma_hoa_don?: boolean
+    ma_combo?: boolean
+    so_luong?: boolean
+    don_gia?: boolean
+    HoaDon?: boolean | HoaDonDefaultArgs<ExtArgs>
+    Combo?: boolean | ComboDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hoaDonCombo"]>
+
+
+
+  export type HoaDonComboSelectScalar = {
+    ma_hoa_don?: boolean
+    ma_combo?: boolean
+    so_luong?: boolean
+    don_gia?: boolean
+  }
+
+  export type HoaDonComboOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_hoa_don" | "ma_combo" | "so_luong" | "don_gia", ExtArgs["result"]["hoaDonCombo"]>
+  export type HoaDonComboInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    HoaDon?: boolean | HoaDonDefaultArgs<ExtArgs>
+    Combo?: boolean | ComboDefaultArgs<ExtArgs>
+  }
+
+  export type $HoaDonComboPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HoaDonCombo"
+    objects: {
+      HoaDon: Prisma.$HoaDonPayload<ExtArgs>
+      Combo: Prisma.$ComboPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      ma_hoa_don: number
+      ma_combo: number
+      so_luong: number
+      don_gia: number
+    }, ExtArgs["result"]["hoaDonCombo"]>
+    composites: {}
+  }
+
+  type HoaDonComboGetPayload<S extends boolean | null | undefined | HoaDonComboDefaultArgs> = $Result.GetResult<Prisma.$HoaDonComboPayload, S>
+
+  type HoaDonComboCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HoaDonComboFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HoaDonComboCountAggregateInputType | true
+    }
+
+  export interface HoaDonComboDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HoaDonCombo'], meta: { name: 'HoaDonCombo' } }
+    /**
+     * Find zero or one HoaDonCombo that matches the filter.
+     * @param {HoaDonComboFindUniqueArgs} args - Arguments to find a HoaDonCombo
+     * @example
+     * // Get one HoaDonCombo
+     * const hoaDonCombo = await prisma.hoaDonCombo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HoaDonComboFindUniqueArgs>(args: SelectSubset<T, HoaDonComboFindUniqueArgs<ExtArgs>>): Prisma__HoaDonComboClient<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HoaDonCombo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HoaDonComboFindUniqueOrThrowArgs} args - Arguments to find a HoaDonCombo
+     * @example
+     * // Get one HoaDonCombo
+     * const hoaDonCombo = await prisma.hoaDonCombo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HoaDonComboFindUniqueOrThrowArgs>(args: SelectSubset<T, HoaDonComboFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HoaDonComboClient<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HoaDonCombo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonComboFindFirstArgs} args - Arguments to find a HoaDonCombo
+     * @example
+     * // Get one HoaDonCombo
+     * const hoaDonCombo = await prisma.hoaDonCombo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HoaDonComboFindFirstArgs>(args?: SelectSubset<T, HoaDonComboFindFirstArgs<ExtArgs>>): Prisma__HoaDonComboClient<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HoaDonCombo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonComboFindFirstOrThrowArgs} args - Arguments to find a HoaDonCombo
+     * @example
+     * // Get one HoaDonCombo
+     * const hoaDonCombo = await prisma.hoaDonCombo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HoaDonComboFindFirstOrThrowArgs>(args?: SelectSubset<T, HoaDonComboFindFirstOrThrowArgs<ExtArgs>>): Prisma__HoaDonComboClient<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HoaDonCombos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonComboFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HoaDonCombos
+     * const hoaDonCombos = await prisma.hoaDonCombo.findMany()
+     * 
+     * // Get first 10 HoaDonCombos
+     * const hoaDonCombos = await prisma.hoaDonCombo.findMany({ take: 10 })
+     * 
+     * // Only select the `ma_hoa_don`
+     * const hoaDonComboWithMa_hoa_donOnly = await prisma.hoaDonCombo.findMany({ select: { ma_hoa_don: true } })
+     * 
+     */
+    findMany<T extends HoaDonComboFindManyArgs>(args?: SelectSubset<T, HoaDonComboFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HoaDonCombo.
+     * @param {HoaDonComboCreateArgs} args - Arguments to create a HoaDonCombo.
+     * @example
+     * // Create one HoaDonCombo
+     * const HoaDonCombo = await prisma.hoaDonCombo.create({
+     *   data: {
+     *     // ... data to create a HoaDonCombo
+     *   }
+     * })
+     * 
+     */
+    create<T extends HoaDonComboCreateArgs>(args: SelectSubset<T, HoaDonComboCreateArgs<ExtArgs>>): Prisma__HoaDonComboClient<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HoaDonCombos.
+     * @param {HoaDonComboCreateManyArgs} args - Arguments to create many HoaDonCombos.
+     * @example
+     * // Create many HoaDonCombos
+     * const hoaDonCombo = await prisma.hoaDonCombo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HoaDonComboCreateManyArgs>(args?: SelectSubset<T, HoaDonComboCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a HoaDonCombo.
+     * @param {HoaDonComboDeleteArgs} args - Arguments to delete one HoaDonCombo.
+     * @example
+     * // Delete one HoaDonCombo
+     * const HoaDonCombo = await prisma.hoaDonCombo.delete({
+     *   where: {
+     *     // ... filter to delete one HoaDonCombo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HoaDonComboDeleteArgs>(args: SelectSubset<T, HoaDonComboDeleteArgs<ExtArgs>>): Prisma__HoaDonComboClient<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HoaDonCombo.
+     * @param {HoaDonComboUpdateArgs} args - Arguments to update one HoaDonCombo.
+     * @example
+     * // Update one HoaDonCombo
+     * const hoaDonCombo = await prisma.hoaDonCombo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HoaDonComboUpdateArgs>(args: SelectSubset<T, HoaDonComboUpdateArgs<ExtArgs>>): Prisma__HoaDonComboClient<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HoaDonCombos.
+     * @param {HoaDonComboDeleteManyArgs} args - Arguments to filter HoaDonCombos to delete.
+     * @example
+     * // Delete a few HoaDonCombos
+     * const { count } = await prisma.hoaDonCombo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HoaDonComboDeleteManyArgs>(args?: SelectSubset<T, HoaDonComboDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HoaDonCombos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonComboUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HoaDonCombos
+     * const hoaDonCombo = await prisma.hoaDonCombo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HoaDonComboUpdateManyArgs>(args: SelectSubset<T, HoaDonComboUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one HoaDonCombo.
+     * @param {HoaDonComboUpsertArgs} args - Arguments to update or create a HoaDonCombo.
+     * @example
+     * // Update or create a HoaDonCombo
+     * const hoaDonCombo = await prisma.hoaDonCombo.upsert({
+     *   create: {
+     *     // ... data to create a HoaDonCombo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HoaDonCombo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HoaDonComboUpsertArgs>(args: SelectSubset<T, HoaDonComboUpsertArgs<ExtArgs>>): Prisma__HoaDonComboClient<$Result.GetResult<Prisma.$HoaDonComboPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HoaDonCombos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonComboCountArgs} args - Arguments to filter HoaDonCombos to count.
+     * @example
+     * // Count the number of HoaDonCombos
+     * const count = await prisma.hoaDonCombo.count({
+     *   where: {
+     *     // ... the filter for the HoaDonCombos we want to count
+     *   }
+     * })
+    **/
+    count<T extends HoaDonComboCountArgs>(
+      args?: Subset<T, HoaDonComboCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HoaDonComboCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HoaDonCombo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonComboAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HoaDonComboAggregateArgs>(args: Subset<T, HoaDonComboAggregateArgs>): Prisma.PrismaPromise<GetHoaDonComboAggregateType<T>>
+
+    /**
+     * Group by HoaDonCombo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoaDonComboGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HoaDonComboGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HoaDonComboGroupByArgs['orderBy'] }
+        : { orderBy?: HoaDonComboGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HoaDonComboGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHoaDonComboGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HoaDonCombo model
+   */
+  readonly fields: HoaDonComboFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HoaDonCombo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HoaDonComboClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    HoaDon<T extends HoaDonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HoaDonDefaultArgs<ExtArgs>>): Prisma__HoaDonClient<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Combo<T extends ComboDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ComboDefaultArgs<ExtArgs>>): Prisma__ComboClient<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HoaDonCombo model
+   */
+  interface HoaDonComboFieldRefs {
+    readonly ma_hoa_don: FieldRef<"HoaDonCombo", 'Int'>
+    readonly ma_combo: FieldRef<"HoaDonCombo", 'Int'>
+    readonly so_luong: FieldRef<"HoaDonCombo", 'Int'>
+    readonly don_gia: FieldRef<"HoaDonCombo", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HoaDonCombo findUnique
+   */
+  export type HoaDonComboFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDonCombo to fetch.
+     */
+    where: HoaDonComboWhereUniqueInput
+  }
+
+  /**
+   * HoaDonCombo findUniqueOrThrow
+   */
+  export type HoaDonComboFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDonCombo to fetch.
+     */
+    where: HoaDonComboWhereUniqueInput
+  }
+
+  /**
+   * HoaDonCombo findFirst
+   */
+  export type HoaDonComboFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDonCombo to fetch.
+     */
+    where?: HoaDonComboWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HoaDonCombos to fetch.
+     */
+    orderBy?: HoaDonComboOrderByWithRelationInput | HoaDonComboOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HoaDonCombos.
+     */
+    cursor?: HoaDonComboWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HoaDonCombos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HoaDonCombos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HoaDonCombos.
+     */
+    distinct?: HoaDonComboScalarFieldEnum | HoaDonComboScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDonCombo findFirstOrThrow
+   */
+  export type HoaDonComboFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDonCombo to fetch.
+     */
+    where?: HoaDonComboWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HoaDonCombos to fetch.
+     */
+    orderBy?: HoaDonComboOrderByWithRelationInput | HoaDonComboOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HoaDonCombos.
+     */
+    cursor?: HoaDonComboWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HoaDonCombos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HoaDonCombos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HoaDonCombos.
+     */
+    distinct?: HoaDonComboScalarFieldEnum | HoaDonComboScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDonCombo findMany
+   */
+  export type HoaDonComboFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * Filter, which HoaDonCombos to fetch.
+     */
+    where?: HoaDonComboWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HoaDonCombos to fetch.
+     */
+    orderBy?: HoaDonComboOrderByWithRelationInput | HoaDonComboOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HoaDonCombos.
+     */
+    cursor?: HoaDonComboWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HoaDonCombos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HoaDonCombos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HoaDonCombos.
+     */
+    distinct?: HoaDonComboScalarFieldEnum | HoaDonComboScalarFieldEnum[]
+  }
+
+  /**
+   * HoaDonCombo create
+   */
+  export type HoaDonComboCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HoaDonCombo.
+     */
+    data: XOR<HoaDonComboCreateInput, HoaDonComboUncheckedCreateInput>
+  }
+
+  /**
+   * HoaDonCombo createMany
+   */
+  export type HoaDonComboCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HoaDonCombos.
+     */
+    data: HoaDonComboCreateManyInput | HoaDonComboCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HoaDonCombo update
+   */
+  export type HoaDonComboUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HoaDonCombo.
+     */
+    data: XOR<HoaDonComboUpdateInput, HoaDonComboUncheckedUpdateInput>
+    /**
+     * Choose, which HoaDonCombo to update.
+     */
+    where: HoaDonComboWhereUniqueInput
+  }
+
+  /**
+   * HoaDonCombo updateMany
+   */
+  export type HoaDonComboUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HoaDonCombos.
+     */
+    data: XOR<HoaDonComboUpdateManyMutationInput, HoaDonComboUncheckedUpdateManyInput>
+    /**
+     * Filter which HoaDonCombos to update
+     */
+    where?: HoaDonComboWhereInput
+    /**
+     * Limit how many HoaDonCombos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HoaDonCombo upsert
+   */
+  export type HoaDonComboUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HoaDonCombo to update in case it exists.
+     */
+    where: HoaDonComboWhereUniqueInput
+    /**
+     * In case the HoaDonCombo found by the `where` argument doesn't exist, create a new HoaDonCombo with this data.
+     */
+    create: XOR<HoaDonComboCreateInput, HoaDonComboUncheckedCreateInput>
+    /**
+     * In case the HoaDonCombo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HoaDonComboUpdateInput, HoaDonComboUncheckedUpdateInput>
+  }
+
+  /**
+   * HoaDonCombo delete
+   */
+  export type HoaDonComboDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+    /**
+     * Filter which HoaDonCombo to delete.
+     */
+    where: HoaDonComboWhereUniqueInput
+  }
+
+  /**
+   * HoaDonCombo deleteMany
+   */
+  export type HoaDonComboDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HoaDonCombos to delete
+     */
+    where?: HoaDonComboWhereInput
+    /**
+     * Limit how many HoaDonCombos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HoaDonCombo without action
+   */
+  export type HoaDonComboDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HoaDonCombo
+     */
+    select?: HoaDonComboSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HoaDonCombo
+     */
+    omit?: HoaDonComboOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HoaDonComboInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GiaoDichWebhook
+   */
+
+  export type AggregateGiaoDichWebhook = {
+    _count: GiaoDichWebhookCountAggregateOutputType | null
+    _avg: GiaoDichWebhookAvgAggregateOutputType | null
+    _sum: GiaoDichWebhookSumAggregateOutputType | null
+    _min: GiaoDichWebhookMinAggregateOutputType | null
+    _max: GiaoDichWebhookMaxAggregateOutputType | null
+  }
+
+  export type GiaoDichWebhookAvgAggregateOutputType = {
+    ma_giao_dich_webhook: number | null
+    so_tien: number | null
+    ma_hoa_don_parse: number | null
+  }
+
+  export type GiaoDichWebhookSumAggregateOutputType = {
+    ma_giao_dich_webhook: number | null
+    so_tien: number | null
+    ma_hoa_don_parse: number | null
+  }
+
+  export type GiaoDichWebhookMinAggregateOutputType = {
+    ma_giao_dich_webhook: number | null
+    nguon: string | null
+    raw_payload: string | null
+    ma_giao_dich_ngan_hang: string | null
+    so_tien: number | null
+    noi_dung: string | null
+    ma_hoa_don_parse: number | null
+    ket_qua_xu_ly: string | null
+    ghi_chu: string | null
+    created_at: Date | null
+  }
+
+  export type GiaoDichWebhookMaxAggregateOutputType = {
+    ma_giao_dich_webhook: number | null
+    nguon: string | null
+    raw_payload: string | null
+    ma_giao_dich_ngan_hang: string | null
+    so_tien: number | null
+    noi_dung: string | null
+    ma_hoa_don_parse: number | null
+    ket_qua_xu_ly: string | null
+    ghi_chu: string | null
+    created_at: Date | null
+  }
+
+  export type GiaoDichWebhookCountAggregateOutputType = {
+    ma_giao_dich_webhook: number
+    nguon: number
+    raw_payload: number
+    ma_giao_dich_ngan_hang: number
+    so_tien: number
+    noi_dung: number
+    ma_hoa_don_parse: number
+    ket_qua_xu_ly: number
+    ghi_chu: number
+    created_at: number
+    _all: number
+  }
+
+
+  export type GiaoDichWebhookAvgAggregateInputType = {
+    ma_giao_dich_webhook?: true
+    so_tien?: true
+    ma_hoa_don_parse?: true
+  }
+
+  export type GiaoDichWebhookSumAggregateInputType = {
+    ma_giao_dich_webhook?: true
+    so_tien?: true
+    ma_hoa_don_parse?: true
+  }
+
+  export type GiaoDichWebhookMinAggregateInputType = {
+    ma_giao_dich_webhook?: true
+    nguon?: true
+    raw_payload?: true
+    ma_giao_dich_ngan_hang?: true
+    so_tien?: true
+    noi_dung?: true
+    ma_hoa_don_parse?: true
+    ket_qua_xu_ly?: true
+    ghi_chu?: true
+    created_at?: true
+  }
+
+  export type GiaoDichWebhookMaxAggregateInputType = {
+    ma_giao_dich_webhook?: true
+    nguon?: true
+    raw_payload?: true
+    ma_giao_dich_ngan_hang?: true
+    so_tien?: true
+    noi_dung?: true
+    ma_hoa_don_parse?: true
+    ket_qua_xu_ly?: true
+    ghi_chu?: true
+    created_at?: true
+  }
+
+  export type GiaoDichWebhookCountAggregateInputType = {
+    ma_giao_dich_webhook?: true
+    nguon?: true
+    raw_payload?: true
+    ma_giao_dich_ngan_hang?: true
+    so_tien?: true
+    noi_dung?: true
+    ma_hoa_don_parse?: true
+    ket_qua_xu_ly?: true
+    ghi_chu?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type GiaoDichWebhookAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiaoDichWebhook to aggregate.
+     */
+    where?: GiaoDichWebhookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiaoDichWebhooks to fetch.
+     */
+    orderBy?: GiaoDichWebhookOrderByWithRelationInput | GiaoDichWebhookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GiaoDichWebhookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiaoDichWebhooks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiaoDichWebhooks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GiaoDichWebhooks
+    **/
+    _count?: true | GiaoDichWebhookCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GiaoDichWebhookAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GiaoDichWebhookSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GiaoDichWebhookMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GiaoDichWebhookMaxAggregateInputType
+  }
+
+  export type GetGiaoDichWebhookAggregateType<T extends GiaoDichWebhookAggregateArgs> = {
+        [P in keyof T & keyof AggregateGiaoDichWebhook]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGiaoDichWebhook[P]>
+      : GetScalarType<T[P], AggregateGiaoDichWebhook[P]>
+  }
+
+
+
+
+  export type GiaoDichWebhookGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiaoDichWebhookWhereInput
+    orderBy?: GiaoDichWebhookOrderByWithAggregationInput | GiaoDichWebhookOrderByWithAggregationInput[]
+    by: GiaoDichWebhookScalarFieldEnum[] | GiaoDichWebhookScalarFieldEnum
+    having?: GiaoDichWebhookScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GiaoDichWebhookCountAggregateInputType | true
+    _avg?: GiaoDichWebhookAvgAggregateInputType
+    _sum?: GiaoDichWebhookSumAggregateInputType
+    _min?: GiaoDichWebhookMinAggregateInputType
+    _max?: GiaoDichWebhookMaxAggregateInputType
+  }
+
+  export type GiaoDichWebhookGroupByOutputType = {
+    ma_giao_dich_webhook: number
+    nguon: string
+    raw_payload: string
+    ma_giao_dich_ngan_hang: string | null
+    so_tien: number | null
+    noi_dung: string | null
+    ma_hoa_don_parse: number | null
+    ket_qua_xu_ly: string
+    ghi_chu: string | null
+    created_at: Date | null
+    _count: GiaoDichWebhookCountAggregateOutputType | null
+    _avg: GiaoDichWebhookAvgAggregateOutputType | null
+    _sum: GiaoDichWebhookSumAggregateOutputType | null
+    _min: GiaoDichWebhookMinAggregateOutputType | null
+    _max: GiaoDichWebhookMaxAggregateOutputType | null
+  }
+
+  type GetGiaoDichWebhookGroupByPayload<T extends GiaoDichWebhookGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GiaoDichWebhookGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GiaoDichWebhookGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GiaoDichWebhookGroupByOutputType[P]>
+            : GetScalarType<T[P], GiaoDichWebhookGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GiaoDichWebhookSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ma_giao_dich_webhook?: boolean
+    nguon?: boolean
+    raw_payload?: boolean
+    ma_giao_dich_ngan_hang?: boolean
+    so_tien?: boolean
+    noi_dung?: boolean
+    ma_hoa_don_parse?: boolean
+    ket_qua_xu_ly?: boolean
+    ghi_chu?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["giaoDichWebhook"]>
+
+
+
+  export type GiaoDichWebhookSelectScalar = {
+    ma_giao_dich_webhook?: boolean
+    nguon?: boolean
+    raw_payload?: boolean
+    ma_giao_dich_ngan_hang?: boolean
+    so_tien?: boolean
+    noi_dung?: boolean
+    ma_hoa_don_parse?: boolean
+    ket_qua_xu_ly?: boolean
+    ghi_chu?: boolean
+    created_at?: boolean
+  }
+
+  export type GiaoDichWebhookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_giao_dich_webhook" | "nguon" | "raw_payload" | "ma_giao_dich_ngan_hang" | "so_tien" | "noi_dung" | "ma_hoa_don_parse" | "ket_qua_xu_ly" | "ghi_chu" | "created_at", ExtArgs["result"]["giaoDichWebhook"]>
+
+  export type $GiaoDichWebhookPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GiaoDichWebhook"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      ma_giao_dich_webhook: number
+      nguon: string
+      raw_payload: string
+      ma_giao_dich_ngan_hang: string | null
+      so_tien: number | null
+      noi_dung: string | null
+      ma_hoa_don_parse: number | null
+      ket_qua_xu_ly: string
+      ghi_chu: string | null
+      created_at: Date | null
+    }, ExtArgs["result"]["giaoDichWebhook"]>
+    composites: {}
+  }
+
+  type GiaoDichWebhookGetPayload<S extends boolean | null | undefined | GiaoDichWebhookDefaultArgs> = $Result.GetResult<Prisma.$GiaoDichWebhookPayload, S>
+
+  type GiaoDichWebhookCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GiaoDichWebhookFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GiaoDichWebhookCountAggregateInputType | true
+    }
+
+  export interface GiaoDichWebhookDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GiaoDichWebhook'], meta: { name: 'GiaoDichWebhook' } }
+    /**
+     * Find zero or one GiaoDichWebhook that matches the filter.
+     * @param {GiaoDichWebhookFindUniqueArgs} args - Arguments to find a GiaoDichWebhook
+     * @example
+     * // Get one GiaoDichWebhook
+     * const giaoDichWebhook = await prisma.giaoDichWebhook.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GiaoDichWebhookFindUniqueArgs>(args: SelectSubset<T, GiaoDichWebhookFindUniqueArgs<ExtArgs>>): Prisma__GiaoDichWebhookClient<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GiaoDichWebhook that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GiaoDichWebhookFindUniqueOrThrowArgs} args - Arguments to find a GiaoDichWebhook
+     * @example
+     * // Get one GiaoDichWebhook
+     * const giaoDichWebhook = await prisma.giaoDichWebhook.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GiaoDichWebhookFindUniqueOrThrowArgs>(args: SelectSubset<T, GiaoDichWebhookFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GiaoDichWebhookClient<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GiaoDichWebhook that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiaoDichWebhookFindFirstArgs} args - Arguments to find a GiaoDichWebhook
+     * @example
+     * // Get one GiaoDichWebhook
+     * const giaoDichWebhook = await prisma.giaoDichWebhook.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GiaoDichWebhookFindFirstArgs>(args?: SelectSubset<T, GiaoDichWebhookFindFirstArgs<ExtArgs>>): Prisma__GiaoDichWebhookClient<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GiaoDichWebhook that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiaoDichWebhookFindFirstOrThrowArgs} args - Arguments to find a GiaoDichWebhook
+     * @example
+     * // Get one GiaoDichWebhook
+     * const giaoDichWebhook = await prisma.giaoDichWebhook.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GiaoDichWebhookFindFirstOrThrowArgs>(args?: SelectSubset<T, GiaoDichWebhookFindFirstOrThrowArgs<ExtArgs>>): Prisma__GiaoDichWebhookClient<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GiaoDichWebhooks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiaoDichWebhookFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GiaoDichWebhooks
+     * const giaoDichWebhooks = await prisma.giaoDichWebhook.findMany()
+     * 
+     * // Get first 10 GiaoDichWebhooks
+     * const giaoDichWebhooks = await prisma.giaoDichWebhook.findMany({ take: 10 })
+     * 
+     * // Only select the `ma_giao_dich_webhook`
+     * const giaoDichWebhookWithMa_giao_dich_webhookOnly = await prisma.giaoDichWebhook.findMany({ select: { ma_giao_dich_webhook: true } })
+     * 
+     */
+    findMany<T extends GiaoDichWebhookFindManyArgs>(args?: SelectSubset<T, GiaoDichWebhookFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GiaoDichWebhook.
+     * @param {GiaoDichWebhookCreateArgs} args - Arguments to create a GiaoDichWebhook.
+     * @example
+     * // Create one GiaoDichWebhook
+     * const GiaoDichWebhook = await prisma.giaoDichWebhook.create({
+     *   data: {
+     *     // ... data to create a GiaoDichWebhook
+     *   }
+     * })
+     * 
+     */
+    create<T extends GiaoDichWebhookCreateArgs>(args: SelectSubset<T, GiaoDichWebhookCreateArgs<ExtArgs>>): Prisma__GiaoDichWebhookClient<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GiaoDichWebhooks.
+     * @param {GiaoDichWebhookCreateManyArgs} args - Arguments to create many GiaoDichWebhooks.
+     * @example
+     * // Create many GiaoDichWebhooks
+     * const giaoDichWebhook = await prisma.giaoDichWebhook.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GiaoDichWebhookCreateManyArgs>(args?: SelectSubset<T, GiaoDichWebhookCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a GiaoDichWebhook.
+     * @param {GiaoDichWebhookDeleteArgs} args - Arguments to delete one GiaoDichWebhook.
+     * @example
+     * // Delete one GiaoDichWebhook
+     * const GiaoDichWebhook = await prisma.giaoDichWebhook.delete({
+     *   where: {
+     *     // ... filter to delete one GiaoDichWebhook
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GiaoDichWebhookDeleteArgs>(args: SelectSubset<T, GiaoDichWebhookDeleteArgs<ExtArgs>>): Prisma__GiaoDichWebhookClient<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GiaoDichWebhook.
+     * @param {GiaoDichWebhookUpdateArgs} args - Arguments to update one GiaoDichWebhook.
+     * @example
+     * // Update one GiaoDichWebhook
+     * const giaoDichWebhook = await prisma.giaoDichWebhook.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GiaoDichWebhookUpdateArgs>(args: SelectSubset<T, GiaoDichWebhookUpdateArgs<ExtArgs>>): Prisma__GiaoDichWebhookClient<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GiaoDichWebhooks.
+     * @param {GiaoDichWebhookDeleteManyArgs} args - Arguments to filter GiaoDichWebhooks to delete.
+     * @example
+     * // Delete a few GiaoDichWebhooks
+     * const { count } = await prisma.giaoDichWebhook.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GiaoDichWebhookDeleteManyArgs>(args?: SelectSubset<T, GiaoDichWebhookDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GiaoDichWebhooks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiaoDichWebhookUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GiaoDichWebhooks
+     * const giaoDichWebhook = await prisma.giaoDichWebhook.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GiaoDichWebhookUpdateManyArgs>(args: SelectSubset<T, GiaoDichWebhookUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one GiaoDichWebhook.
+     * @param {GiaoDichWebhookUpsertArgs} args - Arguments to update or create a GiaoDichWebhook.
+     * @example
+     * // Update or create a GiaoDichWebhook
+     * const giaoDichWebhook = await prisma.giaoDichWebhook.upsert({
+     *   create: {
+     *     // ... data to create a GiaoDichWebhook
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GiaoDichWebhook we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GiaoDichWebhookUpsertArgs>(args: SelectSubset<T, GiaoDichWebhookUpsertArgs<ExtArgs>>): Prisma__GiaoDichWebhookClient<$Result.GetResult<Prisma.$GiaoDichWebhookPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GiaoDichWebhooks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiaoDichWebhookCountArgs} args - Arguments to filter GiaoDichWebhooks to count.
+     * @example
+     * // Count the number of GiaoDichWebhooks
+     * const count = await prisma.giaoDichWebhook.count({
+     *   where: {
+     *     // ... the filter for the GiaoDichWebhooks we want to count
+     *   }
+     * })
+    **/
+    count<T extends GiaoDichWebhookCountArgs>(
+      args?: Subset<T, GiaoDichWebhookCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GiaoDichWebhookCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GiaoDichWebhook.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiaoDichWebhookAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GiaoDichWebhookAggregateArgs>(args: Subset<T, GiaoDichWebhookAggregateArgs>): Prisma.PrismaPromise<GetGiaoDichWebhookAggregateType<T>>
+
+    /**
+     * Group by GiaoDichWebhook.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiaoDichWebhookGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GiaoDichWebhookGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GiaoDichWebhookGroupByArgs['orderBy'] }
+        : { orderBy?: GiaoDichWebhookGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GiaoDichWebhookGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGiaoDichWebhookGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GiaoDichWebhook model
+   */
+  readonly fields: GiaoDichWebhookFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GiaoDichWebhook.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GiaoDichWebhookClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GiaoDichWebhook model
+   */
+  interface GiaoDichWebhookFieldRefs {
+    readonly ma_giao_dich_webhook: FieldRef<"GiaoDichWebhook", 'Int'>
+    readonly nguon: FieldRef<"GiaoDichWebhook", 'String'>
+    readonly raw_payload: FieldRef<"GiaoDichWebhook", 'String'>
+    readonly ma_giao_dich_ngan_hang: FieldRef<"GiaoDichWebhook", 'String'>
+    readonly so_tien: FieldRef<"GiaoDichWebhook", 'Int'>
+    readonly noi_dung: FieldRef<"GiaoDichWebhook", 'String'>
+    readonly ma_hoa_don_parse: FieldRef<"GiaoDichWebhook", 'Int'>
+    readonly ket_qua_xu_ly: FieldRef<"GiaoDichWebhook", 'String'>
+    readonly ghi_chu: FieldRef<"GiaoDichWebhook", 'String'>
+    readonly created_at: FieldRef<"GiaoDichWebhook", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GiaoDichWebhook findUnique
+   */
+  export type GiaoDichWebhookFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * Filter, which GiaoDichWebhook to fetch.
+     */
+    where: GiaoDichWebhookWhereUniqueInput
+  }
+
+  /**
+   * GiaoDichWebhook findUniqueOrThrow
+   */
+  export type GiaoDichWebhookFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * Filter, which GiaoDichWebhook to fetch.
+     */
+    where: GiaoDichWebhookWhereUniqueInput
+  }
+
+  /**
+   * GiaoDichWebhook findFirst
+   */
+  export type GiaoDichWebhookFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * Filter, which GiaoDichWebhook to fetch.
+     */
+    where?: GiaoDichWebhookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiaoDichWebhooks to fetch.
+     */
+    orderBy?: GiaoDichWebhookOrderByWithRelationInput | GiaoDichWebhookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiaoDichWebhooks.
+     */
+    cursor?: GiaoDichWebhookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiaoDichWebhooks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiaoDichWebhooks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiaoDichWebhooks.
+     */
+    distinct?: GiaoDichWebhookScalarFieldEnum | GiaoDichWebhookScalarFieldEnum[]
+  }
+
+  /**
+   * GiaoDichWebhook findFirstOrThrow
+   */
+  export type GiaoDichWebhookFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * Filter, which GiaoDichWebhook to fetch.
+     */
+    where?: GiaoDichWebhookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiaoDichWebhooks to fetch.
+     */
+    orderBy?: GiaoDichWebhookOrderByWithRelationInput | GiaoDichWebhookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiaoDichWebhooks.
+     */
+    cursor?: GiaoDichWebhookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiaoDichWebhooks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiaoDichWebhooks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiaoDichWebhooks.
+     */
+    distinct?: GiaoDichWebhookScalarFieldEnum | GiaoDichWebhookScalarFieldEnum[]
+  }
+
+  /**
+   * GiaoDichWebhook findMany
+   */
+  export type GiaoDichWebhookFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * Filter, which GiaoDichWebhooks to fetch.
+     */
+    where?: GiaoDichWebhookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiaoDichWebhooks to fetch.
+     */
+    orderBy?: GiaoDichWebhookOrderByWithRelationInput | GiaoDichWebhookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GiaoDichWebhooks.
+     */
+    cursor?: GiaoDichWebhookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiaoDichWebhooks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiaoDichWebhooks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiaoDichWebhooks.
+     */
+    distinct?: GiaoDichWebhookScalarFieldEnum | GiaoDichWebhookScalarFieldEnum[]
+  }
+
+  /**
+   * GiaoDichWebhook create
+   */
+  export type GiaoDichWebhookCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * The data needed to create a GiaoDichWebhook.
+     */
+    data: XOR<GiaoDichWebhookCreateInput, GiaoDichWebhookUncheckedCreateInput>
+  }
+
+  /**
+   * GiaoDichWebhook createMany
+   */
+  export type GiaoDichWebhookCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GiaoDichWebhooks.
+     */
+    data: GiaoDichWebhookCreateManyInput | GiaoDichWebhookCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GiaoDichWebhook update
+   */
+  export type GiaoDichWebhookUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * The data needed to update a GiaoDichWebhook.
+     */
+    data: XOR<GiaoDichWebhookUpdateInput, GiaoDichWebhookUncheckedUpdateInput>
+    /**
+     * Choose, which GiaoDichWebhook to update.
+     */
+    where: GiaoDichWebhookWhereUniqueInput
+  }
+
+  /**
+   * GiaoDichWebhook updateMany
+   */
+  export type GiaoDichWebhookUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GiaoDichWebhooks.
+     */
+    data: XOR<GiaoDichWebhookUpdateManyMutationInput, GiaoDichWebhookUncheckedUpdateManyInput>
+    /**
+     * Filter which GiaoDichWebhooks to update
+     */
+    where?: GiaoDichWebhookWhereInput
+    /**
+     * Limit how many GiaoDichWebhooks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GiaoDichWebhook upsert
+   */
+  export type GiaoDichWebhookUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * The filter to search for the GiaoDichWebhook to update in case it exists.
+     */
+    where: GiaoDichWebhookWhereUniqueInput
+    /**
+     * In case the GiaoDichWebhook found by the `where` argument doesn't exist, create a new GiaoDichWebhook with this data.
+     */
+    create: XOR<GiaoDichWebhookCreateInput, GiaoDichWebhookUncheckedCreateInput>
+    /**
+     * In case the GiaoDichWebhook was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GiaoDichWebhookUpdateInput, GiaoDichWebhookUncheckedUpdateInput>
+  }
+
+  /**
+   * GiaoDichWebhook delete
+   */
+  export type GiaoDichWebhookDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
+    /**
+     * Filter which GiaoDichWebhook to delete.
+     */
+    where: GiaoDichWebhookWhereUniqueInput
+  }
+
+  /**
+   * GiaoDichWebhook deleteMany
+   */
+  export type GiaoDichWebhookDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiaoDichWebhooks to delete
+     */
+    where?: GiaoDichWebhookWhereInput
+    /**
+     * Limit how many GiaoDichWebhooks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GiaoDichWebhook without action
+   */
+  export type GiaoDichWebhookDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiaoDichWebhook
+     */
+    select?: GiaoDichWebhookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiaoDichWebhook
+     */
+    omit?: GiaoDichWebhookOmit<ExtArgs> | null
   }
 
 
@@ -12135,6 +16833,7 @@ export namespace Prisma {
     ma_lich_chieu: 'ma_lich_chieu',
     ma_ghe: 'ma_ghe',
     gia_ve: 'gia_ve',
+    ma_hoa_don: 'ma_hoa_don',
     created_at: 'created_at'
   };
 
@@ -12215,11 +16914,68 @@ export namespace Prisma {
     tai_khoan: 'tai_khoan',
     ma_lich_chieu: 'ma_lich_chieu',
     ma_ghe: 'ma_ghe',
+    ma_hoa_don: 'ma_hoa_don',
     expire_at: 'expire_at',
     created_at: 'created_at'
   };
 
   export type GiuChoScalarFieldEnum = (typeof GiuChoScalarFieldEnum)[keyof typeof GiuChoScalarFieldEnum]
+
+
+  export const HoaDonScalarFieldEnum: {
+    ma_hoa_don: 'ma_hoa_don',
+    tai_khoan: 'tai_khoan',
+    ma_lich_chieu: 'ma_lich_chieu',
+    tong_tien: 'tong_tien',
+    created_at: 'created_at',
+    checked_in_at: 'checked_in_at',
+    trang_thai_thanh_toan: 'trang_thai_thanh_toan',
+    phuong_thuc_thanh_toan: 'phuong_thuc_thanh_toan',
+    ma_giao_dich_ngan_hang: 'ma_giao_dich_ngan_hang',
+    so_tien_da_nhan: 'so_tien_da_nhan',
+    thanh_toan_luc: 'thanh_toan_luc',
+    het_han_luc: 'het_han_luc'
+  };
+
+  export type HoaDonScalarFieldEnum = (typeof HoaDonScalarFieldEnum)[keyof typeof HoaDonScalarFieldEnum]
+
+
+  export const ComboScalarFieldEnum: {
+    ma_combo: 'ma_combo',
+    ten_combo: 'ten_combo',
+    mo_ta: 'mo_ta',
+    gia: 'gia',
+    hinh_anh: 'hinh_anh',
+    isDeleted: 'isDeleted'
+  };
+
+  export type ComboScalarFieldEnum = (typeof ComboScalarFieldEnum)[keyof typeof ComboScalarFieldEnum]
+
+
+  export const HoaDonComboScalarFieldEnum: {
+    ma_hoa_don: 'ma_hoa_don',
+    ma_combo: 'ma_combo',
+    so_luong: 'so_luong',
+    don_gia: 'don_gia'
+  };
+
+  export type HoaDonComboScalarFieldEnum = (typeof HoaDonComboScalarFieldEnum)[keyof typeof HoaDonComboScalarFieldEnum]
+
+
+  export const GiaoDichWebhookScalarFieldEnum: {
+    ma_giao_dich_webhook: 'ma_giao_dich_webhook',
+    nguon: 'nguon',
+    raw_payload: 'raw_payload',
+    ma_giao_dich_ngan_hang: 'ma_giao_dich_ngan_hang',
+    so_tien: 'so_tien',
+    noi_dung: 'noi_dung',
+    ma_hoa_don_parse: 'ma_hoa_don_parse',
+    ket_qua_xu_ly: 'ket_qua_xu_ly',
+    ghi_chu: 'ghi_chu',
+    created_at: 'created_at'
+  };
+
+  export type GiaoDichWebhookScalarFieldEnum = (typeof GiaoDichWebhookScalarFieldEnum)[keyof typeof GiaoDichWebhookScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12298,6 +17054,35 @@ export namespace Prisma {
   export type RapPhimOrderByRelevanceFieldEnum = (typeof RapPhimOrderByRelevanceFieldEnum)[keyof typeof RapPhimOrderByRelevanceFieldEnum]
 
 
+  export const HoaDonOrderByRelevanceFieldEnum: {
+    phuong_thuc_thanh_toan: 'phuong_thuc_thanh_toan',
+    ma_giao_dich_ngan_hang: 'ma_giao_dich_ngan_hang'
+  };
+
+  export type HoaDonOrderByRelevanceFieldEnum = (typeof HoaDonOrderByRelevanceFieldEnum)[keyof typeof HoaDonOrderByRelevanceFieldEnum]
+
+
+  export const ComboOrderByRelevanceFieldEnum: {
+    ten_combo: 'ten_combo',
+    mo_ta: 'mo_ta',
+    hinh_anh: 'hinh_anh'
+  };
+
+  export type ComboOrderByRelevanceFieldEnum = (typeof ComboOrderByRelevanceFieldEnum)[keyof typeof ComboOrderByRelevanceFieldEnum]
+
+
+  export const GiaoDichWebhookOrderByRelevanceFieldEnum: {
+    nguon: 'nguon',
+    raw_payload: 'raw_payload',
+    ma_giao_dich_ngan_hang: 'ma_giao_dich_ngan_hang',
+    noi_dung: 'noi_dung',
+    ket_qua_xu_ly: 'ket_qua_xu_ly',
+    ghi_chu: 'ghi_chu'
+  };
+
+  export type GiaoDichWebhookOrderByRelevanceFieldEnum = (typeof GiaoDichWebhookOrderByRelevanceFieldEnum)[keyof typeof GiaoDichWebhookOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -12328,6 +17113,13 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'TrangThaiThanhToan'
+   */
+  export type EnumTrangThaiThanhToanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrangThaiThanhToan'>
     
 
 
@@ -12458,10 +17250,12 @@ export namespace Prisma {
     ma_lich_chieu?: IntFilter<"DatVe"> | number
     ma_ghe?: IntFilter<"DatVe"> | number
     gia_ve?: IntFilter<"DatVe"> | number
+    ma_hoa_don?: IntNullableFilter<"DatVe"> | number | null
     created_at?: DateTimeNullableFilter<"DatVe"> | Date | string | null
     NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
     LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
     Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
+    HoaDon?: XOR<HoaDonNullableScalarRelationFilter, HoaDonWhereInput> | null
   }
 
   export type DatVeOrderByWithRelationInput = {
@@ -12469,10 +17263,12 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     gia_ve?: SortOrder
+    ma_hoa_don?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     NguoiDung?: NguoiDungOrderByWithRelationInput
     LichChieu?: LichChieuOrderByWithRelationInput
     Ghe?: GheOrderByWithRelationInput
+    HoaDon?: HoaDonOrderByWithRelationInput
   }
 
   export type DatVeWhereUniqueInput = Prisma.AtLeast<{
@@ -12485,10 +17281,12 @@ export namespace Prisma {
     ma_lich_chieu?: IntFilter<"DatVe"> | number
     ma_ghe?: IntFilter<"DatVe"> | number
     gia_ve?: IntFilter<"DatVe"> | number
+    ma_hoa_don?: IntNullableFilter<"DatVe"> | number | null
     created_at?: DateTimeNullableFilter<"DatVe"> | Date | string | null
     NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
     LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
     Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
+    HoaDon?: XOR<HoaDonNullableScalarRelationFilter, HoaDonWhereInput> | null
   }, "tai_khoan_ma_lich_chieu_ma_ghe" | "ma_lich_chieu_ma_ghe">
 
   export type DatVeOrderByWithAggregationInput = {
@@ -12496,6 +17294,7 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     gia_ve?: SortOrder
+    ma_hoa_don?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     _count?: DatVeCountOrderByAggregateInput
     _avg?: DatVeAvgOrderByAggregateInput
@@ -12512,6 +17311,7 @@ export namespace Prisma {
     ma_lich_chieu?: IntWithAggregatesFilter<"DatVe"> | number
     ma_ghe?: IntWithAggregatesFilter<"DatVe"> | number
     gia_ve?: IntWithAggregatesFilter<"DatVe"> | number
+    ma_hoa_don?: IntNullableWithAggregatesFilter<"DatVe"> | number | null
     created_at?: DateTimeNullableWithAggregatesFilter<"DatVe"> | Date | string | null
   }
 
@@ -12633,6 +17433,7 @@ export namespace Prisma {
     gia_ve?: IntNullableFilter<"LichChieu"> | number | null
     DatVe?: DatVeListRelationFilter
     GiuCho?: GiuChoListRelationFilter
+    HoaDon?: HoaDonListRelationFilter
     RapPhim?: XOR<RapPhimNullableScalarRelationFilter, RapPhimWhereInput> | null
     Phim?: XOR<PhimNullableScalarRelationFilter, PhimWhereInput> | null
   }
@@ -12645,6 +17446,7 @@ export namespace Prisma {
     gia_ve?: SortOrderInput | SortOrder
     DatVe?: DatVeOrderByRelationAggregateInput
     GiuCho?: GiuChoOrderByRelationAggregateInput
+    HoaDon?: HoaDonOrderByRelationAggregateInput
     RapPhim?: RapPhimOrderByWithRelationInput
     Phim?: PhimOrderByWithRelationInput
   }
@@ -12660,6 +17462,7 @@ export namespace Prisma {
     gia_ve?: IntNullableFilter<"LichChieu"> | number | null
     DatVe?: DatVeListRelationFilter
     GiuCho?: GiuChoListRelationFilter
+    HoaDon?: HoaDonListRelationFilter
     RapPhim?: XOR<RapPhimNullableScalarRelationFilter, RapPhimWhereInput> | null
     Phim?: XOR<PhimNullableScalarRelationFilter, PhimWhereInput> | null
   }, "ma_lich_chieu">
@@ -12701,6 +17504,7 @@ export namespace Prisma {
     isDeleted?: BoolNullableFilter<"NguoiDung"> | boolean | null
     DatVe?: DatVeListRelationFilter
     GiuCho?: GiuChoListRelationFilter
+    HoaDon?: HoaDonListRelationFilter
   }
 
   export type NguoiDungOrderByWithRelationInput = {
@@ -12713,6 +17517,7 @@ export namespace Prisma {
     isDeleted?: SortOrderInput | SortOrder
     DatVe?: DatVeOrderByRelationAggregateInput
     GiuCho?: GiuChoOrderByRelationAggregateInput
+    HoaDon?: HoaDonOrderByRelationAggregateInput
     _relevance?: NguoiDungOrderByRelevanceInput
   }
 
@@ -12729,6 +17534,7 @@ export namespace Prisma {
     isDeleted?: BoolNullableFilter<"NguoiDung"> | boolean | null
     DatVe?: DatVeListRelationFilter
     GiuCho?: GiuChoListRelationFilter
+    HoaDon?: HoaDonListRelationFilter
   }, "tai_khoan" | "email">
 
   export type NguoiDungOrderByWithAggregationInput = {
@@ -12912,11 +17718,13 @@ export namespace Prisma {
     tai_khoan?: IntFilter<"GiuCho"> | number
     ma_lich_chieu?: IntFilter<"GiuCho"> | number
     ma_ghe?: IntFilter<"GiuCho"> | number
+    ma_hoa_don?: IntNullableFilter<"GiuCho"> | number | null
     expire_at?: DateTimeFilter<"GiuCho"> | Date | string
     created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
     Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
     LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
     NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
+    HoaDon?: XOR<HoaDonNullableScalarRelationFilter, HoaDonWhereInput> | null
   }
 
   export type GiuChoOrderByWithRelationInput = {
@@ -12924,11 +17732,13 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    ma_hoa_don?: SortOrderInput | SortOrder
     expire_at?: SortOrder
     created_at?: SortOrderInput | SortOrder
     Ghe?: GheOrderByWithRelationInput
     LichChieu?: LichChieuOrderByWithRelationInput
     NguoiDung?: NguoiDungOrderByWithRelationInput
+    HoaDon?: HoaDonOrderByWithRelationInput
   }
 
   export type GiuChoWhereUniqueInput = Prisma.AtLeast<{
@@ -12939,11 +17749,13 @@ export namespace Prisma {
     tai_khoan?: IntFilter<"GiuCho"> | number
     ma_lich_chieu?: IntFilter<"GiuCho"> | number
     ma_ghe?: IntFilter<"GiuCho"> | number
+    ma_hoa_don?: IntNullableFilter<"GiuCho"> | number | null
     expire_at?: DateTimeFilter<"GiuCho"> | Date | string
     created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
     Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
     LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
     NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
+    HoaDon?: XOR<HoaDonNullableScalarRelationFilter, HoaDonWhereInput> | null
   }, "ma_giu_cho">
 
   export type GiuChoOrderByWithAggregationInput = {
@@ -12951,6 +17763,7 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    ma_hoa_don?: SortOrderInput | SortOrder
     expire_at?: SortOrder
     created_at?: SortOrderInput | SortOrder
     _count?: GiuChoCountOrderByAggregateInput
@@ -12968,8 +17781,313 @@ export namespace Prisma {
     tai_khoan?: IntWithAggregatesFilter<"GiuCho"> | number
     ma_lich_chieu?: IntWithAggregatesFilter<"GiuCho"> | number
     ma_ghe?: IntWithAggregatesFilter<"GiuCho"> | number
+    ma_hoa_don?: IntNullableWithAggregatesFilter<"GiuCho"> | number | null
     expire_at?: DateTimeWithAggregatesFilter<"GiuCho"> | Date | string
     created_at?: DateTimeNullableWithAggregatesFilter<"GiuCho"> | Date | string | null
+  }
+
+  export type HoaDonWhereInput = {
+    AND?: HoaDonWhereInput | HoaDonWhereInput[]
+    OR?: HoaDonWhereInput[]
+    NOT?: HoaDonWhereInput | HoaDonWhereInput[]
+    ma_hoa_don?: IntFilter<"HoaDon"> | number
+    tai_khoan?: IntFilter<"HoaDon"> | number
+    ma_lich_chieu?: IntFilter<"HoaDon"> | number
+    tong_tien?: IntFilter<"HoaDon"> | number
+    created_at?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    checked_in_at?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFilter<"HoaDon"> | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: StringNullableFilter<"HoaDon"> | string | null
+    ma_giao_dich_ngan_hang?: StringNullableFilter<"HoaDon"> | string | null
+    so_tien_da_nhan?: IntNullableFilter<"HoaDon"> | number | null
+    thanh_toan_luc?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    het_han_luc?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
+    LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
+    DatVe?: DatVeListRelationFilter
+    HoaDonCombo?: HoaDonComboListRelationFilter
+    GiuCho?: GiuChoListRelationFilter
+  }
+
+  export type HoaDonOrderByWithRelationInput = {
+    ma_hoa_don?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    tong_tien?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    checked_in_at?: SortOrderInput | SortOrder
+    trang_thai_thanh_toan?: SortOrder
+    phuong_thuc_thanh_toan?: SortOrderInput | SortOrder
+    ma_giao_dich_ngan_hang?: SortOrderInput | SortOrder
+    so_tien_da_nhan?: SortOrderInput | SortOrder
+    thanh_toan_luc?: SortOrderInput | SortOrder
+    het_han_luc?: SortOrderInput | SortOrder
+    NguoiDung?: NguoiDungOrderByWithRelationInput
+    LichChieu?: LichChieuOrderByWithRelationInput
+    DatVe?: DatVeOrderByRelationAggregateInput
+    HoaDonCombo?: HoaDonComboOrderByRelationAggregateInput
+    GiuCho?: GiuChoOrderByRelationAggregateInput
+    _relevance?: HoaDonOrderByRelevanceInput
+  }
+
+  export type HoaDonWhereUniqueInput = Prisma.AtLeast<{
+    ma_hoa_don?: number
+    ma_giao_dich_ngan_hang?: string
+    AND?: HoaDonWhereInput | HoaDonWhereInput[]
+    OR?: HoaDonWhereInput[]
+    NOT?: HoaDonWhereInput | HoaDonWhereInput[]
+    tai_khoan?: IntFilter<"HoaDon"> | number
+    ma_lich_chieu?: IntFilter<"HoaDon"> | number
+    tong_tien?: IntFilter<"HoaDon"> | number
+    created_at?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    checked_in_at?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFilter<"HoaDon"> | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: StringNullableFilter<"HoaDon"> | string | null
+    so_tien_da_nhan?: IntNullableFilter<"HoaDon"> | number | null
+    thanh_toan_luc?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    het_han_luc?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
+    LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
+    DatVe?: DatVeListRelationFilter
+    HoaDonCombo?: HoaDonComboListRelationFilter
+    GiuCho?: GiuChoListRelationFilter
+  }, "ma_hoa_don" | "ma_giao_dich_ngan_hang">
+
+  export type HoaDonOrderByWithAggregationInput = {
+    ma_hoa_don?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    tong_tien?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    checked_in_at?: SortOrderInput | SortOrder
+    trang_thai_thanh_toan?: SortOrder
+    phuong_thuc_thanh_toan?: SortOrderInput | SortOrder
+    ma_giao_dich_ngan_hang?: SortOrderInput | SortOrder
+    so_tien_da_nhan?: SortOrderInput | SortOrder
+    thanh_toan_luc?: SortOrderInput | SortOrder
+    het_han_luc?: SortOrderInput | SortOrder
+    _count?: HoaDonCountOrderByAggregateInput
+    _avg?: HoaDonAvgOrderByAggregateInput
+    _max?: HoaDonMaxOrderByAggregateInput
+    _min?: HoaDonMinOrderByAggregateInput
+    _sum?: HoaDonSumOrderByAggregateInput
+  }
+
+  export type HoaDonScalarWhereWithAggregatesInput = {
+    AND?: HoaDonScalarWhereWithAggregatesInput | HoaDonScalarWhereWithAggregatesInput[]
+    OR?: HoaDonScalarWhereWithAggregatesInput[]
+    NOT?: HoaDonScalarWhereWithAggregatesInput | HoaDonScalarWhereWithAggregatesInput[]
+    ma_hoa_don?: IntWithAggregatesFilter<"HoaDon"> | number
+    tai_khoan?: IntWithAggregatesFilter<"HoaDon"> | number
+    ma_lich_chieu?: IntWithAggregatesFilter<"HoaDon"> | number
+    tong_tien?: IntWithAggregatesFilter<"HoaDon"> | number
+    created_at?: DateTimeNullableWithAggregatesFilter<"HoaDon"> | Date | string | null
+    checked_in_at?: DateTimeNullableWithAggregatesFilter<"HoaDon"> | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanWithAggregatesFilter<"HoaDon"> | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: StringNullableWithAggregatesFilter<"HoaDon"> | string | null
+    ma_giao_dich_ngan_hang?: StringNullableWithAggregatesFilter<"HoaDon"> | string | null
+    so_tien_da_nhan?: IntNullableWithAggregatesFilter<"HoaDon"> | number | null
+    thanh_toan_luc?: DateTimeNullableWithAggregatesFilter<"HoaDon"> | Date | string | null
+    het_han_luc?: DateTimeNullableWithAggregatesFilter<"HoaDon"> | Date | string | null
+  }
+
+  export type ComboWhereInput = {
+    AND?: ComboWhereInput | ComboWhereInput[]
+    OR?: ComboWhereInput[]
+    NOT?: ComboWhereInput | ComboWhereInput[]
+    ma_combo?: IntFilter<"Combo"> | number
+    ten_combo?: StringFilter<"Combo"> | string
+    mo_ta?: StringNullableFilter<"Combo"> | string | null
+    gia?: IntFilter<"Combo"> | number
+    hinh_anh?: StringNullableFilter<"Combo"> | string | null
+    isDeleted?: BoolNullableFilter<"Combo"> | boolean | null
+    HoaDonCombo?: HoaDonComboListRelationFilter
+  }
+
+  export type ComboOrderByWithRelationInput = {
+    ma_combo?: SortOrder
+    ten_combo?: SortOrder
+    mo_ta?: SortOrderInput | SortOrder
+    gia?: SortOrder
+    hinh_anh?: SortOrderInput | SortOrder
+    isDeleted?: SortOrderInput | SortOrder
+    HoaDonCombo?: HoaDonComboOrderByRelationAggregateInput
+    _relevance?: ComboOrderByRelevanceInput
+  }
+
+  export type ComboWhereUniqueInput = Prisma.AtLeast<{
+    ma_combo?: number
+    AND?: ComboWhereInput | ComboWhereInput[]
+    OR?: ComboWhereInput[]
+    NOT?: ComboWhereInput | ComboWhereInput[]
+    ten_combo?: StringFilter<"Combo"> | string
+    mo_ta?: StringNullableFilter<"Combo"> | string | null
+    gia?: IntFilter<"Combo"> | number
+    hinh_anh?: StringNullableFilter<"Combo"> | string | null
+    isDeleted?: BoolNullableFilter<"Combo"> | boolean | null
+    HoaDonCombo?: HoaDonComboListRelationFilter
+  }, "ma_combo">
+
+  export type ComboOrderByWithAggregationInput = {
+    ma_combo?: SortOrder
+    ten_combo?: SortOrder
+    mo_ta?: SortOrderInput | SortOrder
+    gia?: SortOrder
+    hinh_anh?: SortOrderInput | SortOrder
+    isDeleted?: SortOrderInput | SortOrder
+    _count?: ComboCountOrderByAggregateInput
+    _avg?: ComboAvgOrderByAggregateInput
+    _max?: ComboMaxOrderByAggregateInput
+    _min?: ComboMinOrderByAggregateInput
+    _sum?: ComboSumOrderByAggregateInput
+  }
+
+  export type ComboScalarWhereWithAggregatesInput = {
+    AND?: ComboScalarWhereWithAggregatesInput | ComboScalarWhereWithAggregatesInput[]
+    OR?: ComboScalarWhereWithAggregatesInput[]
+    NOT?: ComboScalarWhereWithAggregatesInput | ComboScalarWhereWithAggregatesInput[]
+    ma_combo?: IntWithAggregatesFilter<"Combo"> | number
+    ten_combo?: StringWithAggregatesFilter<"Combo"> | string
+    mo_ta?: StringNullableWithAggregatesFilter<"Combo"> | string | null
+    gia?: IntWithAggregatesFilter<"Combo"> | number
+    hinh_anh?: StringNullableWithAggregatesFilter<"Combo"> | string | null
+    isDeleted?: BoolNullableWithAggregatesFilter<"Combo"> | boolean | null
+  }
+
+  export type HoaDonComboWhereInput = {
+    AND?: HoaDonComboWhereInput | HoaDonComboWhereInput[]
+    OR?: HoaDonComboWhereInput[]
+    NOT?: HoaDonComboWhereInput | HoaDonComboWhereInput[]
+    ma_hoa_don?: IntFilter<"HoaDonCombo"> | number
+    ma_combo?: IntFilter<"HoaDonCombo"> | number
+    so_luong?: IntFilter<"HoaDonCombo"> | number
+    don_gia?: IntFilter<"HoaDonCombo"> | number
+    HoaDon?: XOR<HoaDonScalarRelationFilter, HoaDonWhereInput>
+    Combo?: XOR<ComboScalarRelationFilter, ComboWhereInput>
+  }
+
+  export type HoaDonComboOrderByWithRelationInput = {
+    ma_hoa_don?: SortOrder
+    ma_combo?: SortOrder
+    so_luong?: SortOrder
+    don_gia?: SortOrder
+    HoaDon?: HoaDonOrderByWithRelationInput
+    Combo?: ComboOrderByWithRelationInput
+  }
+
+  export type HoaDonComboWhereUniqueInput = Prisma.AtLeast<{
+    ma_hoa_don_ma_combo?: HoaDonComboMa_hoa_donMa_comboCompoundUniqueInput
+    AND?: HoaDonComboWhereInput | HoaDonComboWhereInput[]
+    OR?: HoaDonComboWhereInput[]
+    NOT?: HoaDonComboWhereInput | HoaDonComboWhereInput[]
+    ma_hoa_don?: IntFilter<"HoaDonCombo"> | number
+    ma_combo?: IntFilter<"HoaDonCombo"> | number
+    so_luong?: IntFilter<"HoaDonCombo"> | number
+    don_gia?: IntFilter<"HoaDonCombo"> | number
+    HoaDon?: XOR<HoaDonScalarRelationFilter, HoaDonWhereInput>
+    Combo?: XOR<ComboScalarRelationFilter, ComboWhereInput>
+  }, "ma_hoa_don_ma_combo">
+
+  export type HoaDonComboOrderByWithAggregationInput = {
+    ma_hoa_don?: SortOrder
+    ma_combo?: SortOrder
+    so_luong?: SortOrder
+    don_gia?: SortOrder
+    _count?: HoaDonComboCountOrderByAggregateInput
+    _avg?: HoaDonComboAvgOrderByAggregateInput
+    _max?: HoaDonComboMaxOrderByAggregateInput
+    _min?: HoaDonComboMinOrderByAggregateInput
+    _sum?: HoaDonComboSumOrderByAggregateInput
+  }
+
+  export type HoaDonComboScalarWhereWithAggregatesInput = {
+    AND?: HoaDonComboScalarWhereWithAggregatesInput | HoaDonComboScalarWhereWithAggregatesInput[]
+    OR?: HoaDonComboScalarWhereWithAggregatesInput[]
+    NOT?: HoaDonComboScalarWhereWithAggregatesInput | HoaDonComboScalarWhereWithAggregatesInput[]
+    ma_hoa_don?: IntWithAggregatesFilter<"HoaDonCombo"> | number
+    ma_combo?: IntWithAggregatesFilter<"HoaDonCombo"> | number
+    so_luong?: IntWithAggregatesFilter<"HoaDonCombo"> | number
+    don_gia?: IntWithAggregatesFilter<"HoaDonCombo"> | number
+  }
+
+  export type GiaoDichWebhookWhereInput = {
+    AND?: GiaoDichWebhookWhereInput | GiaoDichWebhookWhereInput[]
+    OR?: GiaoDichWebhookWhereInput[]
+    NOT?: GiaoDichWebhookWhereInput | GiaoDichWebhookWhereInput[]
+    ma_giao_dich_webhook?: IntFilter<"GiaoDichWebhook"> | number
+    nguon?: StringFilter<"GiaoDichWebhook"> | string
+    raw_payload?: StringFilter<"GiaoDichWebhook"> | string
+    ma_giao_dich_ngan_hang?: StringNullableFilter<"GiaoDichWebhook"> | string | null
+    so_tien?: IntNullableFilter<"GiaoDichWebhook"> | number | null
+    noi_dung?: StringNullableFilter<"GiaoDichWebhook"> | string | null
+    ma_hoa_don_parse?: IntNullableFilter<"GiaoDichWebhook"> | number | null
+    ket_qua_xu_ly?: StringFilter<"GiaoDichWebhook"> | string
+    ghi_chu?: StringNullableFilter<"GiaoDichWebhook"> | string | null
+    created_at?: DateTimeNullableFilter<"GiaoDichWebhook"> | Date | string | null
+  }
+
+  export type GiaoDichWebhookOrderByWithRelationInput = {
+    ma_giao_dich_webhook?: SortOrder
+    nguon?: SortOrder
+    raw_payload?: SortOrder
+    ma_giao_dich_ngan_hang?: SortOrderInput | SortOrder
+    so_tien?: SortOrderInput | SortOrder
+    noi_dung?: SortOrderInput | SortOrder
+    ma_hoa_don_parse?: SortOrderInput | SortOrder
+    ket_qua_xu_ly?: SortOrder
+    ghi_chu?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    _relevance?: GiaoDichWebhookOrderByRelevanceInput
+  }
+
+  export type GiaoDichWebhookWhereUniqueInput = Prisma.AtLeast<{
+    ma_giao_dich_webhook?: number
+    AND?: GiaoDichWebhookWhereInput | GiaoDichWebhookWhereInput[]
+    OR?: GiaoDichWebhookWhereInput[]
+    NOT?: GiaoDichWebhookWhereInput | GiaoDichWebhookWhereInput[]
+    nguon?: StringFilter<"GiaoDichWebhook"> | string
+    raw_payload?: StringFilter<"GiaoDichWebhook"> | string
+    ma_giao_dich_ngan_hang?: StringNullableFilter<"GiaoDichWebhook"> | string | null
+    so_tien?: IntNullableFilter<"GiaoDichWebhook"> | number | null
+    noi_dung?: StringNullableFilter<"GiaoDichWebhook"> | string | null
+    ma_hoa_don_parse?: IntNullableFilter<"GiaoDichWebhook"> | number | null
+    ket_qua_xu_ly?: StringFilter<"GiaoDichWebhook"> | string
+    ghi_chu?: StringNullableFilter<"GiaoDichWebhook"> | string | null
+    created_at?: DateTimeNullableFilter<"GiaoDichWebhook"> | Date | string | null
+  }, "ma_giao_dich_webhook">
+
+  export type GiaoDichWebhookOrderByWithAggregationInput = {
+    ma_giao_dich_webhook?: SortOrder
+    nguon?: SortOrder
+    raw_payload?: SortOrder
+    ma_giao_dich_ngan_hang?: SortOrderInput | SortOrder
+    so_tien?: SortOrderInput | SortOrder
+    noi_dung?: SortOrderInput | SortOrder
+    ma_hoa_don_parse?: SortOrderInput | SortOrder
+    ket_qua_xu_ly?: SortOrder
+    ghi_chu?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    _count?: GiaoDichWebhookCountOrderByAggregateInput
+    _avg?: GiaoDichWebhookAvgOrderByAggregateInput
+    _max?: GiaoDichWebhookMaxOrderByAggregateInput
+    _min?: GiaoDichWebhookMinOrderByAggregateInput
+    _sum?: GiaoDichWebhookSumOrderByAggregateInput
+  }
+
+  export type GiaoDichWebhookScalarWhereWithAggregatesInput = {
+    AND?: GiaoDichWebhookScalarWhereWithAggregatesInput | GiaoDichWebhookScalarWhereWithAggregatesInput[]
+    OR?: GiaoDichWebhookScalarWhereWithAggregatesInput[]
+    NOT?: GiaoDichWebhookScalarWhereWithAggregatesInput | GiaoDichWebhookScalarWhereWithAggregatesInput[]
+    ma_giao_dich_webhook?: IntWithAggregatesFilter<"GiaoDichWebhook"> | number
+    nguon?: StringWithAggregatesFilter<"GiaoDichWebhook"> | string
+    raw_payload?: StringWithAggregatesFilter<"GiaoDichWebhook"> | string
+    ma_giao_dich_ngan_hang?: StringNullableWithAggregatesFilter<"GiaoDichWebhook"> | string | null
+    so_tien?: IntNullableWithAggregatesFilter<"GiaoDichWebhook"> | number | null
+    noi_dung?: StringNullableWithAggregatesFilter<"GiaoDichWebhook"> | string | null
+    ma_hoa_don_parse?: IntNullableWithAggregatesFilter<"GiaoDichWebhook"> | number | null
+    ket_qua_xu_ly?: StringWithAggregatesFilter<"GiaoDichWebhook"> | string
+    ghi_chu?: StringNullableWithAggregatesFilter<"GiaoDichWebhook"> | string | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"GiaoDichWebhook"> | Date | string | null
   }
 
   export type BannerCreateInput = {
@@ -13072,6 +18190,7 @@ export namespace Prisma {
     NguoiDung: NguoiDungCreateNestedOneWithoutDatVeInput
     LichChieu: LichChieuCreateNestedOneWithoutDatVeInput
     Ghe: GheCreateNestedOneWithoutDatVeInput
+    HoaDon?: HoaDonCreateNestedOneWithoutDatVeInput
   }
 
   export type DatVeUncheckedCreateInput = {
@@ -13079,6 +18198,7 @@ export namespace Prisma {
     ma_lich_chieu: number
     ma_ghe: number
     gia_ve: number
+    ma_hoa_don?: number | null
     created_at?: Date | string | null
   }
 
@@ -13088,6 +18208,7 @@ export namespace Prisma {
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutDatVeNestedInput
     LichChieu?: LichChieuUpdateOneRequiredWithoutDatVeNestedInput
     Ghe?: GheUpdateOneRequiredWithoutDatVeNestedInput
+    HoaDon?: HoaDonUpdateOneWithoutDatVeNestedInput
   }
 
   export type DatVeUncheckedUpdateInput = {
@@ -13095,6 +18216,7 @@ export namespace Prisma {
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
     gia_ve?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -13103,6 +18225,7 @@ export namespace Prisma {
     ma_lich_chieu: number
     ma_ghe: number
     gia_ve: number
+    ma_hoa_don?: number | null
     created_at?: Date | string | null
   }
 
@@ -13116,6 +18239,7 @@ export namespace Prisma {
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
     gia_ve?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -13220,6 +18344,7 @@ export namespace Prisma {
     gia_ve?: number | null
     DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
     GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonCreateNestedManyWithoutLichChieuInput
     RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
     Phim?: PhimCreateNestedOneWithoutLichChieuInput
   }
@@ -13232,6 +18357,7 @@ export namespace Prisma {
     gia_ve?: number | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuUpdateInput = {
@@ -13239,6 +18365,7 @@ export namespace Prisma {
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
     GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutLichChieuNestedInput
     RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
     Phim?: PhimUpdateOneWithoutLichChieuNestedInput
   }
@@ -13251,6 +18378,7 @@ export namespace Prisma {
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
     GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type LichChieuCreateManyInput = {
@@ -13283,6 +18411,7 @@ export namespace Prisma {
     isDeleted?: boolean | null
     DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
     GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
+    HoaDon?: HoaDonCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateInput = {
@@ -13295,6 +18424,7 @@ export namespace Prisma {
     isDeleted?: boolean | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUpdateInput = {
@@ -13306,6 +18436,7 @@ export namespace Prisma {
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
     GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateInput = {
@@ -13318,6 +18449,7 @@ export namespace Prisma {
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
     GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungCreateManyInput = {
@@ -13504,6 +18636,7 @@ export namespace Prisma {
     Ghe: GheCreateNestedOneWithoutGiuChoInput
     LichChieu: LichChieuCreateNestedOneWithoutGiuChoInput
     NguoiDung: NguoiDungCreateNestedOneWithoutGiuChoInput
+    HoaDon?: HoaDonCreateNestedOneWithoutGiuChoInput
   }
 
   export type GiuChoUncheckedCreateInput = {
@@ -13511,6 +18644,7 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    ma_hoa_don?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -13521,6 +18655,7 @@ export namespace Prisma {
     Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
     LichChieu?: LichChieuUpdateOneRequiredWithoutGiuChoNestedInput
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutGiuChoNestedInput
+    HoaDon?: HoaDonUpdateOneWithoutGiuChoNestedInput
   }
 
   export type GiuChoUncheckedUpdateInput = {
@@ -13528,6 +18663,7 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -13537,6 +18673,7 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    ma_hoa_don?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -13551,7 +18688,319 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type HoaDonCreateInput = {
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    NguoiDung: NguoiDungCreateNestedOneWithoutHoaDonInput
+    LichChieu: LichChieuCreateNestedOneWithoutHoaDonInput
+    DatVe?: DatVeCreateNestedManyWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonUncheckedCreateInput = {
+    ma_hoa_don?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboUncheckedCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonUpdateInput = {
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutHoaDonNestedInput
+    LichChieu?: LichChieuUpdateOneRequiredWithoutHoaDonNestedInput
+    DatVe?: DatVeUpdateManyWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonUncheckedUpdateInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUncheckedUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonCreateManyInput = {
+    ma_hoa_don?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+  }
+
+  export type HoaDonUpdateManyMutationInput = {
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type HoaDonUncheckedUpdateManyInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ComboCreateInput = {
+    ten_combo: string
+    mo_ta?: string | null
+    gia: number
+    hinh_anh?: string | null
+    isDeleted?: boolean | null
+    HoaDonCombo?: HoaDonComboCreateNestedManyWithoutComboInput
+  }
+
+  export type ComboUncheckedCreateInput = {
+    ma_combo?: number
+    ten_combo: string
+    mo_ta?: string | null
+    gia: number
+    hinh_anh?: string | null
+    isDeleted?: boolean | null
+    HoaDonCombo?: HoaDonComboUncheckedCreateNestedManyWithoutComboInput
+  }
+
+  export type ComboUpdateInput = {
+    ten_combo?: StringFieldUpdateOperationsInput | string
+    mo_ta?: NullableStringFieldUpdateOperationsInput | string | null
+    gia?: IntFieldUpdateOperationsInput | number
+    hinh_anh?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    HoaDonCombo?: HoaDonComboUpdateManyWithoutComboNestedInput
+  }
+
+  export type ComboUncheckedUpdateInput = {
+    ma_combo?: IntFieldUpdateOperationsInput | number
+    ten_combo?: StringFieldUpdateOperationsInput | string
+    mo_ta?: NullableStringFieldUpdateOperationsInput | string | null
+    gia?: IntFieldUpdateOperationsInput | number
+    hinh_anh?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    HoaDonCombo?: HoaDonComboUncheckedUpdateManyWithoutComboNestedInput
+  }
+
+  export type ComboCreateManyInput = {
+    ma_combo?: number
+    ten_combo: string
+    mo_ta?: string | null
+    gia: number
+    hinh_anh?: string | null
+    isDeleted?: boolean | null
+  }
+
+  export type ComboUpdateManyMutationInput = {
+    ten_combo?: StringFieldUpdateOperationsInput | string
+    mo_ta?: NullableStringFieldUpdateOperationsInput | string | null
+    gia?: IntFieldUpdateOperationsInput | number
+    hinh_anh?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type ComboUncheckedUpdateManyInput = {
+    ma_combo?: IntFieldUpdateOperationsInput | number
+    ten_combo?: StringFieldUpdateOperationsInput | string
+    mo_ta?: NullableStringFieldUpdateOperationsInput | string | null
+    gia?: IntFieldUpdateOperationsInput | number
+    hinh_anh?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type HoaDonComboCreateInput = {
+    so_luong: number
+    don_gia: number
+    HoaDon: HoaDonCreateNestedOneWithoutHoaDonComboInput
+    Combo: ComboCreateNestedOneWithoutHoaDonComboInput
+  }
+
+  export type HoaDonComboUncheckedCreateInput = {
+    ma_hoa_don: number
+    ma_combo: number
+    so_luong: number
+    don_gia: number
+  }
+
+  export type HoaDonComboUpdateInput = {
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+    HoaDon?: HoaDonUpdateOneRequiredWithoutHoaDonComboNestedInput
+    Combo?: ComboUpdateOneRequiredWithoutHoaDonComboNestedInput
+  }
+
+  export type HoaDonComboUncheckedUpdateInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    ma_combo?: IntFieldUpdateOperationsInput | number
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type HoaDonComboCreateManyInput = {
+    ma_hoa_don: number
+    ma_combo: number
+    so_luong: number
+    don_gia: number
+  }
+
+  export type HoaDonComboUpdateManyMutationInput = {
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type HoaDonComboUncheckedUpdateManyInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    ma_combo?: IntFieldUpdateOperationsInput | number
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type GiaoDichWebhookCreateInput = {
+    nguon: string
+    raw_payload: string
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien?: number | null
+    noi_dung?: string | null
+    ma_hoa_don_parse?: number | null
+    ket_qua_xu_ly: string
+    ghi_chu?: string | null
+    created_at?: Date | string | null
+  }
+
+  export type GiaoDichWebhookUncheckedCreateInput = {
+    ma_giao_dich_webhook?: number
+    nguon: string
+    raw_payload: string
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien?: number | null
+    noi_dung?: string | null
+    ma_hoa_don_parse?: number | null
+    ket_qua_xu_ly: string
+    ghi_chu?: string | null
+    created_at?: Date | string | null
+  }
+
+  export type GiaoDichWebhookUpdateInput = {
+    nguon?: StringFieldUpdateOperationsInput | string
+    raw_payload?: StringFieldUpdateOperationsInput | string
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien?: NullableIntFieldUpdateOperationsInput | number | null
+    noi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_hoa_don_parse?: NullableIntFieldUpdateOperationsInput | number | null
+    ket_qua_xu_ly?: StringFieldUpdateOperationsInput | string
+    ghi_chu?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiaoDichWebhookUncheckedUpdateInput = {
+    ma_giao_dich_webhook?: IntFieldUpdateOperationsInput | number
+    nguon?: StringFieldUpdateOperationsInput | string
+    raw_payload?: StringFieldUpdateOperationsInput | string
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien?: NullableIntFieldUpdateOperationsInput | number | null
+    noi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_hoa_don_parse?: NullableIntFieldUpdateOperationsInput | number | null
+    ket_qua_xu_ly?: StringFieldUpdateOperationsInput | string
+    ghi_chu?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiaoDichWebhookCreateManyInput = {
+    ma_giao_dich_webhook?: number
+    nguon: string
+    raw_payload: string
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien?: number | null
+    noi_dung?: string | null
+    ma_hoa_don_parse?: number | null
+    ket_qua_xu_ly: string
+    ghi_chu?: string | null
+    created_at?: Date | string | null
+  }
+
+  export type GiaoDichWebhookUpdateManyMutationInput = {
+    nguon?: StringFieldUpdateOperationsInput | string
+    raw_payload?: StringFieldUpdateOperationsInput | string
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien?: NullableIntFieldUpdateOperationsInput | number | null
+    noi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_hoa_don_parse?: NullableIntFieldUpdateOperationsInput | number | null
+    ket_qua_xu_ly?: StringFieldUpdateOperationsInput | string
+    ghi_chu?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiaoDichWebhookUncheckedUpdateManyInput = {
+    ma_giao_dich_webhook?: IntFieldUpdateOperationsInput | number
+    nguon?: StringFieldUpdateOperationsInput | string
+    raw_payload?: StringFieldUpdateOperationsInput | string
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien?: NullableIntFieldUpdateOperationsInput | number | null
+    noi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_hoa_don_parse?: NullableIntFieldUpdateOperationsInput | number | null
+    ket_qua_xu_ly?: StringFieldUpdateOperationsInput | string
+    ghi_chu?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -13767,6 +19216,11 @@ export namespace Prisma {
     isNot?: GheWhereInput
   }
 
+  export type HoaDonNullableScalarRelationFilter = {
+    is?: HoaDonWhereInput | null
+    isNot?: HoaDonWhereInput | null
+  }
+
   export type DatVeMa_lich_chieuMa_gheCompoundUniqueInput = {
     ma_lich_chieu: number
     ma_ghe: number
@@ -13783,6 +19237,7 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     gia_ve?: SortOrder
+    ma_hoa_don?: SortOrder
     created_at?: SortOrder
   }
 
@@ -13791,6 +19246,7 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     gia_ve?: SortOrder
+    ma_hoa_don?: SortOrder
   }
 
   export type DatVeMaxOrderByAggregateInput = {
@@ -13798,6 +19254,7 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     gia_ve?: SortOrder
+    ma_hoa_don?: SortOrder
     created_at?: SortOrder
   }
 
@@ -13806,6 +19263,7 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     gia_ve?: SortOrder
+    ma_hoa_don?: SortOrder
     created_at?: SortOrder
   }
 
@@ -13814,6 +19272,7 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     gia_ve?: SortOrder
+    ma_hoa_don?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13932,6 +19391,16 @@ export namespace Prisma {
 
   export type HeThongRapSumOrderByAggregateInput = {
     ma_he_thong_rap?: SortOrder
+  }
+
+  export type HoaDonListRelationFilter = {
+    every?: HoaDonWhereInput
+    some?: HoaDonWhereInput
+    none?: HoaDonWhereInput
+  }
+
+  export type HoaDonOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type LichChieuCountOrderByAggregateInput = {
@@ -14172,6 +19641,7 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    ma_hoa_don?: SortOrder
     expire_at?: SortOrder
     created_at?: SortOrder
   }
@@ -14181,6 +19651,7 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    ma_hoa_don?: SortOrder
   }
 
   export type GiuChoMaxOrderByAggregateInput = {
@@ -14188,6 +19659,7 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    ma_hoa_don?: SortOrder
     expire_at?: SortOrder
     created_at?: SortOrder
   }
@@ -14197,6 +19669,7 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    ma_hoa_don?: SortOrder
     expire_at?: SortOrder
     created_at?: SortOrder
   }
@@ -14206,6 +19679,7 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    ma_hoa_don?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -14220,6 +19694,283 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumTrangThaiThanhToanFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrangThaiThanhToan | EnumTrangThaiThanhToanFieldRefInput<$PrismaModel>
+    in?: $Enums.TrangThaiThanhToan[]
+    notIn?: $Enums.TrangThaiThanhToan[]
+    not?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel> | $Enums.TrangThaiThanhToan
+  }
+
+  export type HoaDonComboListRelationFilter = {
+    every?: HoaDonComboWhereInput
+    some?: HoaDonComboWhereInput
+    none?: HoaDonComboWhereInput
+  }
+
+  export type HoaDonComboOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type HoaDonOrderByRelevanceInput = {
+    fields: HoaDonOrderByRelevanceFieldEnum | HoaDonOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type HoaDonCountOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    tong_tien?: SortOrder
+    created_at?: SortOrder
+    checked_in_at?: SortOrder
+    trang_thai_thanh_toan?: SortOrder
+    phuong_thuc_thanh_toan?: SortOrder
+    ma_giao_dich_ngan_hang?: SortOrder
+    so_tien_da_nhan?: SortOrder
+    thanh_toan_luc?: SortOrder
+    het_han_luc?: SortOrder
+  }
+
+  export type HoaDonAvgOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    tong_tien?: SortOrder
+    so_tien_da_nhan?: SortOrder
+  }
+
+  export type HoaDonMaxOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    tong_tien?: SortOrder
+    created_at?: SortOrder
+    checked_in_at?: SortOrder
+    trang_thai_thanh_toan?: SortOrder
+    phuong_thuc_thanh_toan?: SortOrder
+    ma_giao_dich_ngan_hang?: SortOrder
+    so_tien_da_nhan?: SortOrder
+    thanh_toan_luc?: SortOrder
+    het_han_luc?: SortOrder
+  }
+
+  export type HoaDonMinOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    tong_tien?: SortOrder
+    created_at?: SortOrder
+    checked_in_at?: SortOrder
+    trang_thai_thanh_toan?: SortOrder
+    phuong_thuc_thanh_toan?: SortOrder
+    ma_giao_dich_ngan_hang?: SortOrder
+    so_tien_da_nhan?: SortOrder
+    thanh_toan_luc?: SortOrder
+    het_han_luc?: SortOrder
+  }
+
+  export type HoaDonSumOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    tai_khoan?: SortOrder
+    ma_lich_chieu?: SortOrder
+    tong_tien?: SortOrder
+    so_tien_da_nhan?: SortOrder
+  }
+
+  export type EnumTrangThaiThanhToanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrangThaiThanhToan | EnumTrangThaiThanhToanFieldRefInput<$PrismaModel>
+    in?: $Enums.TrangThaiThanhToan[]
+    notIn?: $Enums.TrangThaiThanhToan[]
+    not?: NestedEnumTrangThaiThanhToanWithAggregatesFilter<$PrismaModel> | $Enums.TrangThaiThanhToan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
+    _max?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type ComboOrderByRelevanceInput = {
+    fields: ComboOrderByRelevanceFieldEnum | ComboOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ComboCountOrderByAggregateInput = {
+    ma_combo?: SortOrder
+    ten_combo?: SortOrder
+    mo_ta?: SortOrder
+    gia?: SortOrder
+    hinh_anh?: SortOrder
+    isDeleted?: SortOrder
+  }
+
+  export type ComboAvgOrderByAggregateInput = {
+    ma_combo?: SortOrder
+    gia?: SortOrder
+  }
+
+  export type ComboMaxOrderByAggregateInput = {
+    ma_combo?: SortOrder
+    ten_combo?: SortOrder
+    mo_ta?: SortOrder
+    gia?: SortOrder
+    hinh_anh?: SortOrder
+    isDeleted?: SortOrder
+  }
+
+  export type ComboMinOrderByAggregateInput = {
+    ma_combo?: SortOrder
+    ten_combo?: SortOrder
+    mo_ta?: SortOrder
+    gia?: SortOrder
+    hinh_anh?: SortOrder
+    isDeleted?: SortOrder
+  }
+
+  export type ComboSumOrderByAggregateInput = {
+    ma_combo?: SortOrder
+    gia?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type HoaDonScalarRelationFilter = {
+    is?: HoaDonWhereInput
+    isNot?: HoaDonWhereInput
+  }
+
+  export type ComboScalarRelationFilter = {
+    is?: ComboWhereInput
+    isNot?: ComboWhereInput
+  }
+
+  export type HoaDonComboMa_hoa_donMa_comboCompoundUniqueInput = {
+    ma_hoa_don: number
+    ma_combo: number
+  }
+
+  export type HoaDonComboCountOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    ma_combo?: SortOrder
+    so_luong?: SortOrder
+    don_gia?: SortOrder
+  }
+
+  export type HoaDonComboAvgOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    ma_combo?: SortOrder
+    so_luong?: SortOrder
+    don_gia?: SortOrder
+  }
+
+  export type HoaDonComboMaxOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    ma_combo?: SortOrder
+    so_luong?: SortOrder
+    don_gia?: SortOrder
+  }
+
+  export type HoaDonComboMinOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    ma_combo?: SortOrder
+    so_luong?: SortOrder
+    don_gia?: SortOrder
+  }
+
+  export type HoaDonComboSumOrderByAggregateInput = {
+    ma_hoa_don?: SortOrder
+    ma_combo?: SortOrder
+    so_luong?: SortOrder
+    don_gia?: SortOrder
+  }
+
+  export type GiaoDichWebhookOrderByRelevanceInput = {
+    fields: GiaoDichWebhookOrderByRelevanceFieldEnum | GiaoDichWebhookOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type GiaoDichWebhookCountOrderByAggregateInput = {
+    ma_giao_dich_webhook?: SortOrder
+    nguon?: SortOrder
+    raw_payload?: SortOrder
+    ma_giao_dich_ngan_hang?: SortOrder
+    so_tien?: SortOrder
+    noi_dung?: SortOrder
+    ma_hoa_don_parse?: SortOrder
+    ket_qua_xu_ly?: SortOrder
+    ghi_chu?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type GiaoDichWebhookAvgOrderByAggregateInput = {
+    ma_giao_dich_webhook?: SortOrder
+    so_tien?: SortOrder
+    ma_hoa_don_parse?: SortOrder
+  }
+
+  export type GiaoDichWebhookMaxOrderByAggregateInput = {
+    ma_giao_dich_webhook?: SortOrder
+    nguon?: SortOrder
+    raw_payload?: SortOrder
+    ma_giao_dich_ngan_hang?: SortOrder
+    so_tien?: SortOrder
+    noi_dung?: SortOrder
+    ma_hoa_don_parse?: SortOrder
+    ket_qua_xu_ly?: SortOrder
+    ghi_chu?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type GiaoDichWebhookMinOrderByAggregateInput = {
+    ma_giao_dich_webhook?: SortOrder
+    nguon?: SortOrder
+    raw_payload?: SortOrder
+    ma_giao_dich_ngan_hang?: SortOrder
+    so_tien?: SortOrder
+    noi_dung?: SortOrder
+    ma_hoa_don_parse?: SortOrder
+    ket_qua_xu_ly?: SortOrder
+    ghi_chu?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type GiaoDichWebhookSumOrderByAggregateInput = {
+    ma_giao_dich_webhook?: SortOrder
+    so_tien?: SortOrder
+    ma_hoa_don_parse?: SortOrder
   }
 
   export type PhimCreateNestedOneWithoutBannerInput = {
@@ -14334,6 +20085,12 @@ export namespace Prisma {
     connect?: GheWhereUniqueInput
   }
 
+  export type HoaDonCreateNestedOneWithoutDatVeInput = {
+    create?: XOR<HoaDonCreateWithoutDatVeInput, HoaDonUncheckedCreateWithoutDatVeInput>
+    connectOrCreate?: HoaDonCreateOrConnectWithoutDatVeInput
+    connect?: HoaDonWhereUniqueInput
+  }
+
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
   }
@@ -14360,6 +20117,16 @@ export namespace Prisma {
     upsert?: GheUpsertWithoutDatVeInput
     connect?: GheWhereUniqueInput
     update?: XOR<XOR<GheUpdateToOneWithWhereWithoutDatVeInput, GheUpdateWithoutDatVeInput>, GheUncheckedUpdateWithoutDatVeInput>
+  }
+
+  export type HoaDonUpdateOneWithoutDatVeNestedInput = {
+    create?: XOR<HoaDonCreateWithoutDatVeInput, HoaDonUncheckedCreateWithoutDatVeInput>
+    connectOrCreate?: HoaDonCreateOrConnectWithoutDatVeInput
+    upsert?: HoaDonUpsertWithoutDatVeInput
+    disconnect?: HoaDonWhereInput | boolean
+    delete?: HoaDonWhereInput | boolean
+    connect?: HoaDonWhereUniqueInput
+    update?: XOR<XOR<HoaDonUpdateToOneWithWhereWithoutDatVeInput, HoaDonUpdateWithoutDatVeInput>, HoaDonUncheckedUpdateWithoutDatVeInput>
   }
 
   export type DatVeCreateNestedManyWithoutGheInput = {
@@ -14518,6 +20285,13 @@ export namespace Prisma {
     connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
   }
 
+  export type HoaDonCreateNestedManyWithoutLichChieuInput = {
+    create?: XOR<HoaDonCreateWithoutLichChieuInput, HoaDonUncheckedCreateWithoutLichChieuInput> | HoaDonCreateWithoutLichChieuInput[] | HoaDonUncheckedCreateWithoutLichChieuInput[]
+    connectOrCreate?: HoaDonCreateOrConnectWithoutLichChieuInput | HoaDonCreateOrConnectWithoutLichChieuInput[]
+    createMany?: HoaDonCreateManyLichChieuInputEnvelope
+    connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+  }
+
   export type RapPhimCreateNestedOneWithoutLichChieuInput = {
     create?: XOR<RapPhimCreateWithoutLichChieuInput, RapPhimUncheckedCreateWithoutLichChieuInput>
     connectOrCreate?: RapPhimCreateOrConnectWithoutLichChieuInput
@@ -14542,6 +20316,13 @@ export namespace Prisma {
     connectOrCreate?: GiuChoCreateOrConnectWithoutLichChieuInput | GiuChoCreateOrConnectWithoutLichChieuInput[]
     createMany?: GiuChoCreateManyLichChieuInputEnvelope
     connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+  }
+
+  export type HoaDonUncheckedCreateNestedManyWithoutLichChieuInput = {
+    create?: XOR<HoaDonCreateWithoutLichChieuInput, HoaDonUncheckedCreateWithoutLichChieuInput> | HoaDonCreateWithoutLichChieuInput[] | HoaDonUncheckedCreateWithoutLichChieuInput[]
+    connectOrCreate?: HoaDonCreateOrConnectWithoutLichChieuInput | HoaDonCreateOrConnectWithoutLichChieuInput[]
+    createMany?: HoaDonCreateManyLichChieuInputEnvelope
+    connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
   }
 
   export type DatVeUpdateManyWithoutLichChieuNestedInput = {
@@ -14570,6 +20351,20 @@ export namespace Prisma {
     update?: GiuChoUpdateWithWhereUniqueWithoutLichChieuInput | GiuChoUpdateWithWhereUniqueWithoutLichChieuInput[]
     updateMany?: GiuChoUpdateManyWithWhereWithoutLichChieuInput | GiuChoUpdateManyWithWhereWithoutLichChieuInput[]
     deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+  }
+
+  export type HoaDonUpdateManyWithoutLichChieuNestedInput = {
+    create?: XOR<HoaDonCreateWithoutLichChieuInput, HoaDonUncheckedCreateWithoutLichChieuInput> | HoaDonCreateWithoutLichChieuInput[] | HoaDonUncheckedCreateWithoutLichChieuInput[]
+    connectOrCreate?: HoaDonCreateOrConnectWithoutLichChieuInput | HoaDonCreateOrConnectWithoutLichChieuInput[]
+    upsert?: HoaDonUpsertWithWhereUniqueWithoutLichChieuInput | HoaDonUpsertWithWhereUniqueWithoutLichChieuInput[]
+    createMany?: HoaDonCreateManyLichChieuInputEnvelope
+    set?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    disconnect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    delete?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    update?: HoaDonUpdateWithWhereUniqueWithoutLichChieuInput | HoaDonUpdateWithWhereUniqueWithoutLichChieuInput[]
+    updateMany?: HoaDonUpdateManyWithWhereWithoutLichChieuInput | HoaDonUpdateManyWithWhereWithoutLichChieuInput[]
+    deleteMany?: HoaDonScalarWhereInput | HoaDonScalarWhereInput[]
   }
 
   export type RapPhimUpdateOneWithoutLichChieuNestedInput = {
@@ -14620,6 +20415,20 @@ export namespace Prisma {
     deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
   }
 
+  export type HoaDonUncheckedUpdateManyWithoutLichChieuNestedInput = {
+    create?: XOR<HoaDonCreateWithoutLichChieuInput, HoaDonUncheckedCreateWithoutLichChieuInput> | HoaDonCreateWithoutLichChieuInput[] | HoaDonUncheckedCreateWithoutLichChieuInput[]
+    connectOrCreate?: HoaDonCreateOrConnectWithoutLichChieuInput | HoaDonCreateOrConnectWithoutLichChieuInput[]
+    upsert?: HoaDonUpsertWithWhereUniqueWithoutLichChieuInput | HoaDonUpsertWithWhereUniqueWithoutLichChieuInput[]
+    createMany?: HoaDonCreateManyLichChieuInputEnvelope
+    set?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    disconnect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    delete?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    update?: HoaDonUpdateWithWhereUniqueWithoutLichChieuInput | HoaDonUpdateWithWhereUniqueWithoutLichChieuInput[]
+    updateMany?: HoaDonUpdateManyWithWhereWithoutLichChieuInput | HoaDonUpdateManyWithWhereWithoutLichChieuInput[]
+    deleteMany?: HoaDonScalarWhereInput | HoaDonScalarWhereInput[]
+  }
+
   export type DatVeCreateNestedManyWithoutNguoiDungInput = {
     create?: XOR<DatVeCreateWithoutNguoiDungInput, DatVeUncheckedCreateWithoutNguoiDungInput> | DatVeCreateWithoutNguoiDungInput[] | DatVeUncheckedCreateWithoutNguoiDungInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutNguoiDungInput | DatVeCreateOrConnectWithoutNguoiDungInput[]
@@ -14634,6 +20443,13 @@ export namespace Prisma {
     connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
   }
 
+  export type HoaDonCreateNestedManyWithoutNguoiDungInput = {
+    create?: XOR<HoaDonCreateWithoutNguoiDungInput, HoaDonUncheckedCreateWithoutNguoiDungInput> | HoaDonCreateWithoutNguoiDungInput[] | HoaDonUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: HoaDonCreateOrConnectWithoutNguoiDungInput | HoaDonCreateOrConnectWithoutNguoiDungInput[]
+    createMany?: HoaDonCreateManyNguoiDungInputEnvelope
+    connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+  }
+
   export type DatVeUncheckedCreateNestedManyWithoutNguoiDungInput = {
     create?: XOR<DatVeCreateWithoutNguoiDungInput, DatVeUncheckedCreateWithoutNguoiDungInput> | DatVeCreateWithoutNguoiDungInput[] | DatVeUncheckedCreateWithoutNguoiDungInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutNguoiDungInput | DatVeCreateOrConnectWithoutNguoiDungInput[]
@@ -14646,6 +20462,13 @@ export namespace Prisma {
     connectOrCreate?: GiuChoCreateOrConnectWithoutNguoiDungInput | GiuChoCreateOrConnectWithoutNguoiDungInput[]
     createMany?: GiuChoCreateManyNguoiDungInputEnvelope
     connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+  }
+
+  export type HoaDonUncheckedCreateNestedManyWithoutNguoiDungInput = {
+    create?: XOR<HoaDonCreateWithoutNguoiDungInput, HoaDonUncheckedCreateWithoutNguoiDungInput> | HoaDonCreateWithoutNguoiDungInput[] | HoaDonUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: HoaDonCreateOrConnectWithoutNguoiDungInput | HoaDonCreateOrConnectWithoutNguoiDungInput[]
+    createMany?: HoaDonCreateManyNguoiDungInputEnvelope
+    connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
   }
 
   export type NullableBoolFieldUpdateOperationsInput = {
@@ -14680,6 +20503,20 @@ export namespace Prisma {
     deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
   }
 
+  export type HoaDonUpdateManyWithoutNguoiDungNestedInput = {
+    create?: XOR<HoaDonCreateWithoutNguoiDungInput, HoaDonUncheckedCreateWithoutNguoiDungInput> | HoaDonCreateWithoutNguoiDungInput[] | HoaDonUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: HoaDonCreateOrConnectWithoutNguoiDungInput | HoaDonCreateOrConnectWithoutNguoiDungInput[]
+    upsert?: HoaDonUpsertWithWhereUniqueWithoutNguoiDungInput | HoaDonUpsertWithWhereUniqueWithoutNguoiDungInput[]
+    createMany?: HoaDonCreateManyNguoiDungInputEnvelope
+    set?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    disconnect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    delete?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    update?: HoaDonUpdateWithWhereUniqueWithoutNguoiDungInput | HoaDonUpdateWithWhereUniqueWithoutNguoiDungInput[]
+    updateMany?: HoaDonUpdateManyWithWhereWithoutNguoiDungInput | HoaDonUpdateManyWithWhereWithoutNguoiDungInput[]
+    deleteMany?: HoaDonScalarWhereInput | HoaDonScalarWhereInput[]
+  }
+
   export type DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput = {
     create?: XOR<DatVeCreateWithoutNguoiDungInput, DatVeUncheckedCreateWithoutNguoiDungInput> | DatVeCreateWithoutNguoiDungInput[] | DatVeUncheckedCreateWithoutNguoiDungInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutNguoiDungInput | DatVeCreateOrConnectWithoutNguoiDungInput[]
@@ -14706,6 +20543,20 @@ export namespace Prisma {
     update?: GiuChoUpdateWithWhereUniqueWithoutNguoiDungInput | GiuChoUpdateWithWhereUniqueWithoutNguoiDungInput[]
     updateMany?: GiuChoUpdateManyWithWhereWithoutNguoiDungInput | GiuChoUpdateManyWithWhereWithoutNguoiDungInput[]
     deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+  }
+
+  export type HoaDonUncheckedUpdateManyWithoutNguoiDungNestedInput = {
+    create?: XOR<HoaDonCreateWithoutNguoiDungInput, HoaDonUncheckedCreateWithoutNguoiDungInput> | HoaDonCreateWithoutNguoiDungInput[] | HoaDonUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: HoaDonCreateOrConnectWithoutNguoiDungInput | HoaDonCreateOrConnectWithoutNguoiDungInput[]
+    upsert?: HoaDonUpsertWithWhereUniqueWithoutNguoiDungInput | HoaDonUpsertWithWhereUniqueWithoutNguoiDungInput[]
+    createMany?: HoaDonCreateManyNguoiDungInputEnvelope
+    set?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    disconnect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    delete?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+    update?: HoaDonUpdateWithWhereUniqueWithoutNguoiDungInput | HoaDonUpdateWithWhereUniqueWithoutNguoiDungInput[]
+    updateMany?: HoaDonUpdateManyWithWhereWithoutNguoiDungInput | HoaDonUpdateManyWithWhereWithoutNguoiDungInput[]
+    deleteMany?: HoaDonScalarWhereInput | HoaDonScalarWhereInput[]
   }
 
   export type BannerCreateNestedManyWithoutPhimInput = {
@@ -14910,6 +20761,12 @@ export namespace Prisma {
     connect?: NguoiDungWhereUniqueInput
   }
 
+  export type HoaDonCreateNestedOneWithoutGiuChoInput = {
+    create?: XOR<HoaDonCreateWithoutGiuChoInput, HoaDonUncheckedCreateWithoutGiuChoInput>
+    connectOrCreate?: HoaDonCreateOrConnectWithoutGiuChoInput
+    connect?: HoaDonWhereUniqueInput
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -14936,6 +20793,248 @@ export namespace Prisma {
     upsert?: NguoiDungUpsertWithoutGiuChoInput
     connect?: NguoiDungWhereUniqueInput
     update?: XOR<XOR<NguoiDungUpdateToOneWithWhereWithoutGiuChoInput, NguoiDungUpdateWithoutGiuChoInput>, NguoiDungUncheckedUpdateWithoutGiuChoInput>
+  }
+
+  export type HoaDonUpdateOneWithoutGiuChoNestedInput = {
+    create?: XOR<HoaDonCreateWithoutGiuChoInput, HoaDonUncheckedCreateWithoutGiuChoInput>
+    connectOrCreate?: HoaDonCreateOrConnectWithoutGiuChoInput
+    upsert?: HoaDonUpsertWithoutGiuChoInput
+    disconnect?: HoaDonWhereInput | boolean
+    delete?: HoaDonWhereInput | boolean
+    connect?: HoaDonWhereUniqueInput
+    update?: XOR<XOR<HoaDonUpdateToOneWithWhereWithoutGiuChoInput, HoaDonUpdateWithoutGiuChoInput>, HoaDonUncheckedUpdateWithoutGiuChoInput>
+  }
+
+  export type NguoiDungCreateNestedOneWithoutHoaDonInput = {
+    create?: XOR<NguoiDungCreateWithoutHoaDonInput, NguoiDungUncheckedCreateWithoutHoaDonInput>
+    connectOrCreate?: NguoiDungCreateOrConnectWithoutHoaDonInput
+    connect?: NguoiDungWhereUniqueInput
+  }
+
+  export type LichChieuCreateNestedOneWithoutHoaDonInput = {
+    create?: XOR<LichChieuCreateWithoutHoaDonInput, LichChieuUncheckedCreateWithoutHoaDonInput>
+    connectOrCreate?: LichChieuCreateOrConnectWithoutHoaDonInput
+    connect?: LichChieuWhereUniqueInput
+  }
+
+  export type DatVeCreateNestedManyWithoutHoaDonInput = {
+    create?: XOR<DatVeCreateWithoutHoaDonInput, DatVeUncheckedCreateWithoutHoaDonInput> | DatVeCreateWithoutHoaDonInput[] | DatVeUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: DatVeCreateOrConnectWithoutHoaDonInput | DatVeCreateOrConnectWithoutHoaDonInput[]
+    createMany?: DatVeCreateManyHoaDonInputEnvelope
+    connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+  }
+
+  export type HoaDonComboCreateNestedManyWithoutHoaDonInput = {
+    create?: XOR<HoaDonComboCreateWithoutHoaDonInput, HoaDonComboUncheckedCreateWithoutHoaDonInput> | HoaDonComboCreateWithoutHoaDonInput[] | HoaDonComboUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: HoaDonComboCreateOrConnectWithoutHoaDonInput | HoaDonComboCreateOrConnectWithoutHoaDonInput[]
+    createMany?: HoaDonComboCreateManyHoaDonInputEnvelope
+    connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+  }
+
+  export type GiuChoCreateNestedManyWithoutHoaDonInput = {
+    create?: XOR<GiuChoCreateWithoutHoaDonInput, GiuChoUncheckedCreateWithoutHoaDonInput> | GiuChoCreateWithoutHoaDonInput[] | GiuChoUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutHoaDonInput | GiuChoCreateOrConnectWithoutHoaDonInput[]
+    createMany?: GiuChoCreateManyHoaDonInputEnvelope
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+  }
+
+  export type DatVeUncheckedCreateNestedManyWithoutHoaDonInput = {
+    create?: XOR<DatVeCreateWithoutHoaDonInput, DatVeUncheckedCreateWithoutHoaDonInput> | DatVeCreateWithoutHoaDonInput[] | DatVeUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: DatVeCreateOrConnectWithoutHoaDonInput | DatVeCreateOrConnectWithoutHoaDonInput[]
+    createMany?: DatVeCreateManyHoaDonInputEnvelope
+    connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+  }
+
+  export type HoaDonComboUncheckedCreateNestedManyWithoutHoaDonInput = {
+    create?: XOR<HoaDonComboCreateWithoutHoaDonInput, HoaDonComboUncheckedCreateWithoutHoaDonInput> | HoaDonComboCreateWithoutHoaDonInput[] | HoaDonComboUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: HoaDonComboCreateOrConnectWithoutHoaDonInput | HoaDonComboCreateOrConnectWithoutHoaDonInput[]
+    createMany?: HoaDonComboCreateManyHoaDonInputEnvelope
+    connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+  }
+
+  export type GiuChoUncheckedCreateNestedManyWithoutHoaDonInput = {
+    create?: XOR<GiuChoCreateWithoutHoaDonInput, GiuChoUncheckedCreateWithoutHoaDonInput> | GiuChoCreateWithoutHoaDonInput[] | GiuChoUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutHoaDonInput | GiuChoCreateOrConnectWithoutHoaDonInput[]
+    createMany?: GiuChoCreateManyHoaDonInputEnvelope
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+  }
+
+  export type EnumTrangThaiThanhToanFieldUpdateOperationsInput = {
+    set?: $Enums.TrangThaiThanhToan
+  }
+
+  export type NguoiDungUpdateOneRequiredWithoutHoaDonNestedInput = {
+    create?: XOR<NguoiDungCreateWithoutHoaDonInput, NguoiDungUncheckedCreateWithoutHoaDonInput>
+    connectOrCreate?: NguoiDungCreateOrConnectWithoutHoaDonInput
+    upsert?: NguoiDungUpsertWithoutHoaDonInput
+    connect?: NguoiDungWhereUniqueInput
+    update?: XOR<XOR<NguoiDungUpdateToOneWithWhereWithoutHoaDonInput, NguoiDungUpdateWithoutHoaDonInput>, NguoiDungUncheckedUpdateWithoutHoaDonInput>
+  }
+
+  export type LichChieuUpdateOneRequiredWithoutHoaDonNestedInput = {
+    create?: XOR<LichChieuCreateWithoutHoaDonInput, LichChieuUncheckedCreateWithoutHoaDonInput>
+    connectOrCreate?: LichChieuCreateOrConnectWithoutHoaDonInput
+    upsert?: LichChieuUpsertWithoutHoaDonInput
+    connect?: LichChieuWhereUniqueInput
+    update?: XOR<XOR<LichChieuUpdateToOneWithWhereWithoutHoaDonInput, LichChieuUpdateWithoutHoaDonInput>, LichChieuUncheckedUpdateWithoutHoaDonInput>
+  }
+
+  export type DatVeUpdateManyWithoutHoaDonNestedInput = {
+    create?: XOR<DatVeCreateWithoutHoaDonInput, DatVeUncheckedCreateWithoutHoaDonInput> | DatVeCreateWithoutHoaDonInput[] | DatVeUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: DatVeCreateOrConnectWithoutHoaDonInput | DatVeCreateOrConnectWithoutHoaDonInput[]
+    upsert?: DatVeUpsertWithWhereUniqueWithoutHoaDonInput | DatVeUpsertWithWhereUniqueWithoutHoaDonInput[]
+    createMany?: DatVeCreateManyHoaDonInputEnvelope
+    set?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+    disconnect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+    delete?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+    connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+    update?: DatVeUpdateWithWhereUniqueWithoutHoaDonInput | DatVeUpdateWithWhereUniqueWithoutHoaDonInput[]
+    updateMany?: DatVeUpdateManyWithWhereWithoutHoaDonInput | DatVeUpdateManyWithWhereWithoutHoaDonInput[]
+    deleteMany?: DatVeScalarWhereInput | DatVeScalarWhereInput[]
+  }
+
+  export type HoaDonComboUpdateManyWithoutHoaDonNestedInput = {
+    create?: XOR<HoaDonComboCreateWithoutHoaDonInput, HoaDonComboUncheckedCreateWithoutHoaDonInput> | HoaDonComboCreateWithoutHoaDonInput[] | HoaDonComboUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: HoaDonComboCreateOrConnectWithoutHoaDonInput | HoaDonComboCreateOrConnectWithoutHoaDonInput[]
+    upsert?: HoaDonComboUpsertWithWhereUniqueWithoutHoaDonInput | HoaDonComboUpsertWithWhereUniqueWithoutHoaDonInput[]
+    createMany?: HoaDonComboCreateManyHoaDonInputEnvelope
+    set?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    disconnect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    delete?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    update?: HoaDonComboUpdateWithWhereUniqueWithoutHoaDonInput | HoaDonComboUpdateWithWhereUniqueWithoutHoaDonInput[]
+    updateMany?: HoaDonComboUpdateManyWithWhereWithoutHoaDonInput | HoaDonComboUpdateManyWithWhereWithoutHoaDonInput[]
+    deleteMany?: HoaDonComboScalarWhereInput | HoaDonComboScalarWhereInput[]
+  }
+
+  export type GiuChoUpdateManyWithoutHoaDonNestedInput = {
+    create?: XOR<GiuChoCreateWithoutHoaDonInput, GiuChoUncheckedCreateWithoutHoaDonInput> | GiuChoCreateWithoutHoaDonInput[] | GiuChoUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutHoaDonInput | GiuChoCreateOrConnectWithoutHoaDonInput[]
+    upsert?: GiuChoUpsertWithWhereUniqueWithoutHoaDonInput | GiuChoUpsertWithWhereUniqueWithoutHoaDonInput[]
+    createMany?: GiuChoCreateManyHoaDonInputEnvelope
+    set?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    disconnect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    delete?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    update?: GiuChoUpdateWithWhereUniqueWithoutHoaDonInput | GiuChoUpdateWithWhereUniqueWithoutHoaDonInput[]
+    updateMany?: GiuChoUpdateManyWithWhereWithoutHoaDonInput | GiuChoUpdateManyWithWhereWithoutHoaDonInput[]
+    deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+  }
+
+  export type DatVeUncheckedUpdateManyWithoutHoaDonNestedInput = {
+    create?: XOR<DatVeCreateWithoutHoaDonInput, DatVeUncheckedCreateWithoutHoaDonInput> | DatVeCreateWithoutHoaDonInput[] | DatVeUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: DatVeCreateOrConnectWithoutHoaDonInput | DatVeCreateOrConnectWithoutHoaDonInput[]
+    upsert?: DatVeUpsertWithWhereUniqueWithoutHoaDonInput | DatVeUpsertWithWhereUniqueWithoutHoaDonInput[]
+    createMany?: DatVeCreateManyHoaDonInputEnvelope
+    set?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+    disconnect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+    delete?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+    connect?: DatVeWhereUniqueInput | DatVeWhereUniqueInput[]
+    update?: DatVeUpdateWithWhereUniqueWithoutHoaDonInput | DatVeUpdateWithWhereUniqueWithoutHoaDonInput[]
+    updateMany?: DatVeUpdateManyWithWhereWithoutHoaDonInput | DatVeUpdateManyWithWhereWithoutHoaDonInput[]
+    deleteMany?: DatVeScalarWhereInput | DatVeScalarWhereInput[]
+  }
+
+  export type HoaDonComboUncheckedUpdateManyWithoutHoaDonNestedInput = {
+    create?: XOR<HoaDonComboCreateWithoutHoaDonInput, HoaDonComboUncheckedCreateWithoutHoaDonInput> | HoaDonComboCreateWithoutHoaDonInput[] | HoaDonComboUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: HoaDonComboCreateOrConnectWithoutHoaDonInput | HoaDonComboCreateOrConnectWithoutHoaDonInput[]
+    upsert?: HoaDonComboUpsertWithWhereUniqueWithoutHoaDonInput | HoaDonComboUpsertWithWhereUniqueWithoutHoaDonInput[]
+    createMany?: HoaDonComboCreateManyHoaDonInputEnvelope
+    set?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    disconnect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    delete?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    update?: HoaDonComboUpdateWithWhereUniqueWithoutHoaDonInput | HoaDonComboUpdateWithWhereUniqueWithoutHoaDonInput[]
+    updateMany?: HoaDonComboUpdateManyWithWhereWithoutHoaDonInput | HoaDonComboUpdateManyWithWhereWithoutHoaDonInput[]
+    deleteMany?: HoaDonComboScalarWhereInput | HoaDonComboScalarWhereInput[]
+  }
+
+  export type GiuChoUncheckedUpdateManyWithoutHoaDonNestedInput = {
+    create?: XOR<GiuChoCreateWithoutHoaDonInput, GiuChoUncheckedCreateWithoutHoaDonInput> | GiuChoCreateWithoutHoaDonInput[] | GiuChoUncheckedCreateWithoutHoaDonInput[]
+    connectOrCreate?: GiuChoCreateOrConnectWithoutHoaDonInput | GiuChoCreateOrConnectWithoutHoaDonInput[]
+    upsert?: GiuChoUpsertWithWhereUniqueWithoutHoaDonInput | GiuChoUpsertWithWhereUniqueWithoutHoaDonInput[]
+    createMany?: GiuChoCreateManyHoaDonInputEnvelope
+    set?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    disconnect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    delete?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    connect?: GiuChoWhereUniqueInput | GiuChoWhereUniqueInput[]
+    update?: GiuChoUpdateWithWhereUniqueWithoutHoaDonInput | GiuChoUpdateWithWhereUniqueWithoutHoaDonInput[]
+    updateMany?: GiuChoUpdateManyWithWhereWithoutHoaDonInput | GiuChoUpdateManyWithWhereWithoutHoaDonInput[]
+    deleteMany?: GiuChoScalarWhereInput | GiuChoScalarWhereInput[]
+  }
+
+  export type HoaDonComboCreateNestedManyWithoutComboInput = {
+    create?: XOR<HoaDonComboCreateWithoutComboInput, HoaDonComboUncheckedCreateWithoutComboInput> | HoaDonComboCreateWithoutComboInput[] | HoaDonComboUncheckedCreateWithoutComboInput[]
+    connectOrCreate?: HoaDonComboCreateOrConnectWithoutComboInput | HoaDonComboCreateOrConnectWithoutComboInput[]
+    createMany?: HoaDonComboCreateManyComboInputEnvelope
+    connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+  }
+
+  export type HoaDonComboUncheckedCreateNestedManyWithoutComboInput = {
+    create?: XOR<HoaDonComboCreateWithoutComboInput, HoaDonComboUncheckedCreateWithoutComboInput> | HoaDonComboCreateWithoutComboInput[] | HoaDonComboUncheckedCreateWithoutComboInput[]
+    connectOrCreate?: HoaDonComboCreateOrConnectWithoutComboInput | HoaDonComboCreateOrConnectWithoutComboInput[]
+    createMany?: HoaDonComboCreateManyComboInputEnvelope
+    connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type HoaDonComboUpdateManyWithoutComboNestedInput = {
+    create?: XOR<HoaDonComboCreateWithoutComboInput, HoaDonComboUncheckedCreateWithoutComboInput> | HoaDonComboCreateWithoutComboInput[] | HoaDonComboUncheckedCreateWithoutComboInput[]
+    connectOrCreate?: HoaDonComboCreateOrConnectWithoutComboInput | HoaDonComboCreateOrConnectWithoutComboInput[]
+    upsert?: HoaDonComboUpsertWithWhereUniqueWithoutComboInput | HoaDonComboUpsertWithWhereUniqueWithoutComboInput[]
+    createMany?: HoaDonComboCreateManyComboInputEnvelope
+    set?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    disconnect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    delete?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    update?: HoaDonComboUpdateWithWhereUniqueWithoutComboInput | HoaDonComboUpdateWithWhereUniqueWithoutComboInput[]
+    updateMany?: HoaDonComboUpdateManyWithWhereWithoutComboInput | HoaDonComboUpdateManyWithWhereWithoutComboInput[]
+    deleteMany?: HoaDonComboScalarWhereInput | HoaDonComboScalarWhereInput[]
+  }
+
+  export type HoaDonComboUncheckedUpdateManyWithoutComboNestedInput = {
+    create?: XOR<HoaDonComboCreateWithoutComboInput, HoaDonComboUncheckedCreateWithoutComboInput> | HoaDonComboCreateWithoutComboInput[] | HoaDonComboUncheckedCreateWithoutComboInput[]
+    connectOrCreate?: HoaDonComboCreateOrConnectWithoutComboInput | HoaDonComboCreateOrConnectWithoutComboInput[]
+    upsert?: HoaDonComboUpsertWithWhereUniqueWithoutComboInput | HoaDonComboUpsertWithWhereUniqueWithoutComboInput[]
+    createMany?: HoaDonComboCreateManyComboInputEnvelope
+    set?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    disconnect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    delete?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
+    update?: HoaDonComboUpdateWithWhereUniqueWithoutComboInput | HoaDonComboUpdateWithWhereUniqueWithoutComboInput[]
+    updateMany?: HoaDonComboUpdateManyWithWhereWithoutComboInput | HoaDonComboUpdateManyWithWhereWithoutComboInput[]
+    deleteMany?: HoaDonComboScalarWhereInput | HoaDonComboScalarWhereInput[]
+  }
+
+  export type HoaDonCreateNestedOneWithoutHoaDonComboInput = {
+    create?: XOR<HoaDonCreateWithoutHoaDonComboInput, HoaDonUncheckedCreateWithoutHoaDonComboInput>
+    connectOrCreate?: HoaDonCreateOrConnectWithoutHoaDonComboInput
+    connect?: HoaDonWhereUniqueInput
+  }
+
+  export type ComboCreateNestedOneWithoutHoaDonComboInput = {
+    create?: XOR<ComboCreateWithoutHoaDonComboInput, ComboUncheckedCreateWithoutHoaDonComboInput>
+    connectOrCreate?: ComboCreateOrConnectWithoutHoaDonComboInput
+    connect?: ComboWhereUniqueInput
+  }
+
+  export type HoaDonUpdateOneRequiredWithoutHoaDonComboNestedInput = {
+    create?: XOR<HoaDonCreateWithoutHoaDonComboInput, HoaDonUncheckedCreateWithoutHoaDonComboInput>
+    connectOrCreate?: HoaDonCreateOrConnectWithoutHoaDonComboInput
+    upsert?: HoaDonUpsertWithoutHoaDonComboInput
+    connect?: HoaDonWhereUniqueInput
+    update?: XOR<XOR<HoaDonUpdateToOneWithWhereWithoutHoaDonComboInput, HoaDonUpdateWithoutHoaDonComboInput>, HoaDonUncheckedUpdateWithoutHoaDonComboInput>
+  }
+
+  export type ComboUpdateOneRequiredWithoutHoaDonComboNestedInput = {
+    create?: XOR<ComboCreateWithoutHoaDonComboInput, ComboUncheckedCreateWithoutHoaDonComboInput>
+    connectOrCreate?: ComboCreateOrConnectWithoutHoaDonComboInput
+    upsert?: ComboUpsertWithoutHoaDonComboInput
+    connect?: ComboWhereUniqueInput
+    update?: XOR<XOR<ComboUpdateToOneWithWhereWithoutHoaDonComboInput, ComboUpdateWithoutHoaDonComboInput>, ComboUncheckedUpdateWithoutHoaDonComboInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -15110,6 +21209,56 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumTrangThaiThanhToanFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrangThaiThanhToan | EnumTrangThaiThanhToanFieldRefInput<$PrismaModel>
+    in?: $Enums.TrangThaiThanhToan[]
+    notIn?: $Enums.TrangThaiThanhToan[]
+    not?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel> | $Enums.TrangThaiThanhToan
+  }
+
+  export type NestedEnumTrangThaiThanhToanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrangThaiThanhToan | EnumTrangThaiThanhToanFieldRefInput<$PrismaModel>
+    in?: $Enums.TrangThaiThanhToan[]
+    notIn?: $Enums.TrangThaiThanhToan[]
+    not?: NestedEnumTrangThaiThanhToanWithAggregatesFilter<$PrismaModel> | $Enums.TrangThaiThanhToan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
+    _max?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
   export type PhimCreateWithoutBannerInput = {
     ten_phim?: string | null
     trailer?: string | null
@@ -15278,6 +21427,7 @@ export namespace Prisma {
     loai_nguoi_dung?: string | null
     isDeleted?: boolean | null
     GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
+    HoaDon?: HoaDonCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateWithoutDatVeInput = {
@@ -15289,6 +21439,7 @@ export namespace Prisma {
     loai_nguoi_dung?: string | null
     isDeleted?: boolean | null
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungCreateOrConnectWithoutDatVeInput = {
@@ -15300,6 +21451,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonCreateNestedManyWithoutLichChieuInput
     RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
     Phim?: PhimCreateNestedOneWithoutLichChieuInput
   }
@@ -15311,6 +21463,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuCreateOrConnectWithoutDatVeInput = {
@@ -15338,6 +21491,44 @@ export namespace Prisma {
     create: XOR<GheCreateWithoutDatVeInput, GheUncheckedCreateWithoutDatVeInput>
   }
 
+  export type HoaDonCreateWithoutDatVeInput = {
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    NguoiDung: NguoiDungCreateNestedOneWithoutHoaDonInput
+    LichChieu: LichChieuCreateNestedOneWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonUncheckedCreateWithoutDatVeInput = {
+    ma_hoa_don?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    HoaDonCombo?: HoaDonComboUncheckedCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonCreateOrConnectWithoutDatVeInput = {
+    where: HoaDonWhereUniqueInput
+    create: XOR<HoaDonCreateWithoutDatVeInput, HoaDonUncheckedCreateWithoutDatVeInput>
+  }
+
   export type NguoiDungUpsertWithoutDatVeInput = {
     update: XOR<NguoiDungUpdateWithoutDatVeInput, NguoiDungUncheckedUpdateWithoutDatVeInput>
     create: XOR<NguoiDungCreateWithoutDatVeInput, NguoiDungUncheckedCreateWithoutDatVeInput>
@@ -15357,6 +21548,7 @@ export namespace Prisma {
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateWithoutDatVeInput = {
@@ -15368,6 +21560,7 @@ export namespace Prisma {
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type LichChieuUpsertWithoutDatVeInput = {
@@ -15385,6 +21578,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutLichChieuNestedInput
     RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
     Phim?: PhimUpdateOneWithoutLichChieuNestedInput
   }
@@ -15396,6 +21590,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type GheUpsertWithoutDatVeInput = {
@@ -15424,17 +21619,63 @@ export namespace Prisma {
     GiuCho?: GiuChoUncheckedUpdateManyWithoutGheNestedInput
   }
 
+  export type HoaDonUpsertWithoutDatVeInput = {
+    update: XOR<HoaDonUpdateWithoutDatVeInput, HoaDonUncheckedUpdateWithoutDatVeInput>
+    create: XOR<HoaDonCreateWithoutDatVeInput, HoaDonUncheckedCreateWithoutDatVeInput>
+    where?: HoaDonWhereInput
+  }
+
+  export type HoaDonUpdateToOneWithWhereWithoutDatVeInput = {
+    where?: HoaDonWhereInput
+    data: XOR<HoaDonUpdateWithoutDatVeInput, HoaDonUncheckedUpdateWithoutDatVeInput>
+  }
+
+  export type HoaDonUpdateWithoutDatVeInput = {
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutHoaDonNestedInput
+    LichChieu?: LichChieuUpdateOneRequiredWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonUncheckedUpdateWithoutDatVeInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    HoaDonCombo?: HoaDonComboUncheckedUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutHoaDonNestedInput
+  }
+
   export type DatVeCreateWithoutGheInput = {
     gia_ve: number
     created_at?: Date | string | null
     NguoiDung: NguoiDungCreateNestedOneWithoutDatVeInput
     LichChieu: LichChieuCreateNestedOneWithoutDatVeInput
+    HoaDon?: HoaDonCreateNestedOneWithoutDatVeInput
   }
 
   export type DatVeUncheckedCreateWithoutGheInput = {
     tai_khoan: number
     ma_lich_chieu: number
     gia_ve: number
+    ma_hoa_don?: number | null
     created_at?: Date | string | null
   }
 
@@ -15471,12 +21712,14 @@ export namespace Prisma {
     created_at?: Date | string | null
     LichChieu: LichChieuCreateNestedOneWithoutGiuChoInput
     NguoiDung: NguoiDungCreateNestedOneWithoutGiuChoInput
+    HoaDon?: HoaDonCreateNestedOneWithoutGiuChoInput
   }
 
   export type GiuChoUncheckedCreateWithoutGheInput = {
     ma_giu_cho?: number
     tai_khoan: number
     ma_lich_chieu: number
+    ma_hoa_don?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -15515,6 +21758,7 @@ export namespace Prisma {
     ma_lich_chieu?: IntFilter<"DatVe"> | number
     ma_ghe?: IntFilter<"DatVe"> | number
     gia_ve?: IntFilter<"DatVe"> | number
+    ma_hoa_don?: IntNullableFilter<"DatVe"> | number | null
     created_at?: DateTimeNullableFilter<"DatVe"> | Date | string | null
   }
 
@@ -15566,6 +21810,7 @@ export namespace Prisma {
     tai_khoan?: IntFilter<"GiuCho"> | number
     ma_lich_chieu?: IntFilter<"GiuCho"> | number
     ma_ghe?: IntFilter<"GiuCho"> | number
+    ma_hoa_don?: IntNullableFilter<"GiuCho"> | number | null
     expire_at?: DateTimeFilter<"GiuCho"> | Date | string
     created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
   }
@@ -15627,12 +21872,14 @@ export namespace Prisma {
     created_at?: Date | string | null
     NguoiDung: NguoiDungCreateNestedOneWithoutDatVeInput
     Ghe: GheCreateNestedOneWithoutDatVeInput
+    HoaDon?: HoaDonCreateNestedOneWithoutDatVeInput
   }
 
   export type DatVeUncheckedCreateWithoutLichChieuInput = {
     tai_khoan: number
     ma_ghe: number
     gia_ve: number
+    ma_hoa_don?: number | null
     created_at?: Date | string | null
   }
 
@@ -15651,12 +21898,14 @@ export namespace Prisma {
     created_at?: Date | string | null
     Ghe: GheCreateNestedOneWithoutGiuChoInput
     NguoiDung: NguoiDungCreateNestedOneWithoutGiuChoInput
+    HoaDon?: HoaDonCreateNestedOneWithoutGiuChoInput
   }
 
   export type GiuChoUncheckedCreateWithoutLichChieuInput = {
     ma_giu_cho?: number
     tai_khoan: number
     ma_ghe: number
+    ma_hoa_don?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -15668,6 +21917,49 @@ export namespace Prisma {
 
   export type GiuChoCreateManyLichChieuInputEnvelope = {
     data: GiuChoCreateManyLichChieuInput | GiuChoCreateManyLichChieuInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HoaDonCreateWithoutLichChieuInput = {
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    NguoiDung: NguoiDungCreateNestedOneWithoutHoaDonInput
+    DatVe?: DatVeCreateNestedManyWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonUncheckedCreateWithoutLichChieuInput = {
+    ma_hoa_don?: number
+    tai_khoan: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboUncheckedCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonCreateOrConnectWithoutLichChieuInput = {
+    where: HoaDonWhereUniqueInput
+    create: XOR<HoaDonCreateWithoutLichChieuInput, HoaDonUncheckedCreateWithoutLichChieuInput>
+  }
+
+  export type HoaDonCreateManyLichChieuInputEnvelope = {
+    data: HoaDonCreateManyLichChieuInput | HoaDonCreateManyLichChieuInput[]
     skipDuplicates?: boolean
   }
 
@@ -15755,6 +22047,40 @@ export namespace Prisma {
     data: XOR<GiuChoUpdateManyMutationInput, GiuChoUncheckedUpdateManyWithoutLichChieuInput>
   }
 
+  export type HoaDonUpsertWithWhereUniqueWithoutLichChieuInput = {
+    where: HoaDonWhereUniqueInput
+    update: XOR<HoaDonUpdateWithoutLichChieuInput, HoaDonUncheckedUpdateWithoutLichChieuInput>
+    create: XOR<HoaDonCreateWithoutLichChieuInput, HoaDonUncheckedCreateWithoutLichChieuInput>
+  }
+
+  export type HoaDonUpdateWithWhereUniqueWithoutLichChieuInput = {
+    where: HoaDonWhereUniqueInput
+    data: XOR<HoaDonUpdateWithoutLichChieuInput, HoaDonUncheckedUpdateWithoutLichChieuInput>
+  }
+
+  export type HoaDonUpdateManyWithWhereWithoutLichChieuInput = {
+    where: HoaDonScalarWhereInput
+    data: XOR<HoaDonUpdateManyMutationInput, HoaDonUncheckedUpdateManyWithoutLichChieuInput>
+  }
+
+  export type HoaDonScalarWhereInput = {
+    AND?: HoaDonScalarWhereInput | HoaDonScalarWhereInput[]
+    OR?: HoaDonScalarWhereInput[]
+    NOT?: HoaDonScalarWhereInput | HoaDonScalarWhereInput[]
+    ma_hoa_don?: IntFilter<"HoaDon"> | number
+    tai_khoan?: IntFilter<"HoaDon"> | number
+    ma_lich_chieu?: IntFilter<"HoaDon"> | number
+    tong_tien?: IntFilter<"HoaDon"> | number
+    created_at?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    checked_in_at?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFilter<"HoaDon"> | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: StringNullableFilter<"HoaDon"> | string | null
+    ma_giao_dich_ngan_hang?: StringNullableFilter<"HoaDon"> | string | null
+    so_tien_da_nhan?: IntNullableFilter<"HoaDon"> | number | null
+    thanh_toan_luc?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+    het_han_luc?: DateTimeNullableFilter<"HoaDon"> | Date | string | null
+  }
+
   export type RapPhimUpsertWithoutLichChieuInput = {
     update: XOR<RapPhimUpdateWithoutLichChieuInput, RapPhimUncheckedUpdateWithoutLichChieuInput>
     create: XOR<RapPhimCreateWithoutLichChieuInput, RapPhimUncheckedCreateWithoutLichChieuInput>
@@ -15824,12 +22150,14 @@ export namespace Prisma {
     created_at?: Date | string | null
     LichChieu: LichChieuCreateNestedOneWithoutDatVeInput
     Ghe: GheCreateNestedOneWithoutDatVeInput
+    HoaDon?: HoaDonCreateNestedOneWithoutDatVeInput
   }
 
   export type DatVeUncheckedCreateWithoutNguoiDungInput = {
     ma_lich_chieu: number
     ma_ghe: number
     gia_ve: number
+    ma_hoa_don?: number | null
     created_at?: Date | string | null
   }
 
@@ -15848,12 +22176,14 @@ export namespace Prisma {
     created_at?: Date | string | null
     Ghe: GheCreateNestedOneWithoutGiuChoInput
     LichChieu: LichChieuCreateNestedOneWithoutGiuChoInput
+    HoaDon?: HoaDonCreateNestedOneWithoutGiuChoInput
   }
 
   export type GiuChoUncheckedCreateWithoutNguoiDungInput = {
     ma_giu_cho?: number
     ma_lich_chieu: number
     ma_ghe: number
+    ma_hoa_don?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -15865,6 +22195,49 @@ export namespace Prisma {
 
   export type GiuChoCreateManyNguoiDungInputEnvelope = {
     data: GiuChoCreateManyNguoiDungInput | GiuChoCreateManyNguoiDungInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HoaDonCreateWithoutNguoiDungInput = {
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    LichChieu: LichChieuCreateNestedOneWithoutHoaDonInput
+    DatVe?: DatVeCreateNestedManyWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonUncheckedCreateWithoutNguoiDungInput = {
+    ma_hoa_don?: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboUncheckedCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonCreateOrConnectWithoutNguoiDungInput = {
+    where: HoaDonWhereUniqueInput
+    create: XOR<HoaDonCreateWithoutNguoiDungInput, HoaDonUncheckedCreateWithoutNguoiDungInput>
+  }
+
+  export type HoaDonCreateManyNguoiDungInputEnvelope = {
+    data: HoaDonCreateManyNguoiDungInput | HoaDonCreateManyNguoiDungInput[]
     skipDuplicates?: boolean
   }
 
@@ -15900,6 +22273,22 @@ export namespace Prisma {
     data: XOR<GiuChoUpdateManyMutationInput, GiuChoUncheckedUpdateManyWithoutNguoiDungInput>
   }
 
+  export type HoaDonUpsertWithWhereUniqueWithoutNguoiDungInput = {
+    where: HoaDonWhereUniqueInput
+    update: XOR<HoaDonUpdateWithoutNguoiDungInput, HoaDonUncheckedUpdateWithoutNguoiDungInput>
+    create: XOR<HoaDonCreateWithoutNguoiDungInput, HoaDonUncheckedCreateWithoutNguoiDungInput>
+  }
+
+  export type HoaDonUpdateWithWhereUniqueWithoutNguoiDungInput = {
+    where: HoaDonWhereUniqueInput
+    data: XOR<HoaDonUpdateWithoutNguoiDungInput, HoaDonUncheckedUpdateWithoutNguoiDungInput>
+  }
+
+  export type HoaDonUpdateManyWithWhereWithoutNguoiDungInput = {
+    where: HoaDonScalarWhereInput
+    data: XOR<HoaDonUpdateManyMutationInput, HoaDonUncheckedUpdateManyWithoutNguoiDungInput>
+  }
+
   export type BannerCreateWithoutPhimInput = {
     hinh_anh?: string | null
   }
@@ -15924,6 +22313,7 @@ export namespace Prisma {
     gia_ve?: number | null
     DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
     GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonCreateNestedManyWithoutLichChieuInput
     RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
   }
 
@@ -15934,6 +22324,7 @@ export namespace Prisma {
     gia_ve?: number | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuCreateOrConnectWithoutPhimInput = {
@@ -16028,6 +22419,7 @@ export namespace Prisma {
     gia_ve?: number | null
     DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
     GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonCreateNestedManyWithoutLichChieuInput
     Phim?: PhimCreateNestedOneWithoutLichChieuInput
   }
 
@@ -16038,6 +22430,7 @@ export namespace Prisma {
     gia_ve?: number | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuCreateOrConnectWithoutRapPhimInput = {
@@ -16162,6 +22555,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonCreateNestedManyWithoutLichChieuInput
     RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
     Phim?: PhimCreateNestedOneWithoutLichChieuInput
   }
@@ -16173,6 +22567,7 @@ export namespace Prisma {
     ngay_gio_chieu?: Date | string | null
     gia_ve?: number | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutLichChieuInput
   }
 
   export type LichChieuCreateOrConnectWithoutGiuChoInput = {
@@ -16188,6 +22583,7 @@ export namespace Prisma {
     loai_nguoi_dung?: string | null
     isDeleted?: boolean | null
     DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
+    HoaDon?: HoaDonCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateWithoutGiuChoInput = {
@@ -16199,11 +22595,50 @@ export namespace Prisma {
     loai_nguoi_dung?: string | null
     isDeleted?: boolean | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungCreateOrConnectWithoutGiuChoInput = {
     where: NguoiDungWhereUniqueInput
     create: XOR<NguoiDungCreateWithoutGiuChoInput, NguoiDungUncheckedCreateWithoutGiuChoInput>
+  }
+
+  export type HoaDonCreateWithoutGiuChoInput = {
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    NguoiDung: NguoiDungCreateNestedOneWithoutHoaDonInput
+    LichChieu: LichChieuCreateNestedOneWithoutHoaDonInput
+    DatVe?: DatVeCreateNestedManyWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonUncheckedCreateWithoutGiuChoInput = {
+    ma_hoa_don?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutHoaDonInput
+    HoaDonCombo?: HoaDonComboUncheckedCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonCreateOrConnectWithoutGiuChoInput = {
+    where: HoaDonWhereUniqueInput
+    create: XOR<HoaDonCreateWithoutGiuChoInput, HoaDonUncheckedCreateWithoutGiuChoInput>
   }
 
   export type GheUpsertWithoutGiuChoInput = {
@@ -16247,6 +22682,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutLichChieuNestedInput
     RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
     Phim?: PhimUpdateOneWithoutLichChieuNestedInput
   }
@@ -16258,6 +22694,7 @@ export namespace Prisma {
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type NguoiDungUpsertWithoutGiuChoInput = {
@@ -16279,6 +22716,7 @@ export namespace Prisma {
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateWithoutGiuChoInput = {
@@ -16290,6 +22728,470 @@ export namespace Prisma {
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutNguoiDungNestedInput
+  }
+
+  export type HoaDonUpsertWithoutGiuChoInput = {
+    update: XOR<HoaDonUpdateWithoutGiuChoInput, HoaDonUncheckedUpdateWithoutGiuChoInput>
+    create: XOR<HoaDonCreateWithoutGiuChoInput, HoaDonUncheckedCreateWithoutGiuChoInput>
+    where?: HoaDonWhereInput
+  }
+
+  export type HoaDonUpdateToOneWithWhereWithoutGiuChoInput = {
+    where?: HoaDonWhereInput
+    data: XOR<HoaDonUpdateWithoutGiuChoInput, HoaDonUncheckedUpdateWithoutGiuChoInput>
+  }
+
+  export type HoaDonUpdateWithoutGiuChoInput = {
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutHoaDonNestedInput
+    LichChieu?: LichChieuUpdateOneRequiredWithoutHoaDonNestedInput
+    DatVe?: DatVeUpdateManyWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonUncheckedUpdateWithoutGiuChoInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUncheckedUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type NguoiDungCreateWithoutHoaDonInput = {
+    ho_ten?: string | null
+    email?: string | null
+    so_dt?: string | null
+    mat_khau?: string | null
+    loai_nguoi_dung?: string | null
+    isDeleted?: boolean | null
+    DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
+    GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
+  }
+
+  export type NguoiDungUncheckedCreateWithoutHoaDonInput = {
+    tai_khoan?: number
+    ho_ten?: string | null
+    email?: string | null
+    so_dt?: string | null
+    mat_khau?: string | null
+    loai_nguoi_dung?: string | null
+    isDeleted?: boolean | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
+  }
+
+  export type NguoiDungCreateOrConnectWithoutHoaDonInput = {
+    where: NguoiDungWhereUniqueInput
+    create: XOR<NguoiDungCreateWithoutHoaDonInput, NguoiDungUncheckedCreateWithoutHoaDonInput>
+  }
+
+  export type LichChieuCreateWithoutHoaDonInput = {
+    ngay_gio_chieu?: Date | string | null
+    gia_ve?: number | null
+    DatVe?: DatVeCreateNestedManyWithoutLichChieuInput
+    GiuCho?: GiuChoCreateNestedManyWithoutLichChieuInput
+    RapPhim?: RapPhimCreateNestedOneWithoutLichChieuInput
+    Phim?: PhimCreateNestedOneWithoutLichChieuInput
+  }
+
+  export type LichChieuUncheckedCreateWithoutHoaDonInput = {
+    ma_lich_chieu?: number
+    ma_rap?: number | null
+    ma_phim?: number | null
+    ngay_gio_chieu?: Date | string | null
+    gia_ve?: number | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutLichChieuInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutLichChieuInput
+  }
+
+  export type LichChieuCreateOrConnectWithoutHoaDonInput = {
+    where: LichChieuWhereUniqueInput
+    create: XOR<LichChieuCreateWithoutHoaDonInput, LichChieuUncheckedCreateWithoutHoaDonInput>
+  }
+
+  export type DatVeCreateWithoutHoaDonInput = {
+    gia_ve: number
+    created_at?: Date | string | null
+    NguoiDung: NguoiDungCreateNestedOneWithoutDatVeInput
+    LichChieu: LichChieuCreateNestedOneWithoutDatVeInput
+    Ghe: GheCreateNestedOneWithoutDatVeInput
+  }
+
+  export type DatVeUncheckedCreateWithoutHoaDonInput = {
+    tai_khoan: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    gia_ve: number
+    created_at?: Date | string | null
+  }
+
+  export type DatVeCreateOrConnectWithoutHoaDonInput = {
+    where: DatVeWhereUniqueInput
+    create: XOR<DatVeCreateWithoutHoaDonInput, DatVeUncheckedCreateWithoutHoaDonInput>
+  }
+
+  export type DatVeCreateManyHoaDonInputEnvelope = {
+    data: DatVeCreateManyHoaDonInput | DatVeCreateManyHoaDonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HoaDonComboCreateWithoutHoaDonInput = {
+    so_luong: number
+    don_gia: number
+    Combo: ComboCreateNestedOneWithoutHoaDonComboInput
+  }
+
+  export type HoaDonComboUncheckedCreateWithoutHoaDonInput = {
+    ma_combo: number
+    so_luong: number
+    don_gia: number
+  }
+
+  export type HoaDonComboCreateOrConnectWithoutHoaDonInput = {
+    where: HoaDonComboWhereUniqueInput
+    create: XOR<HoaDonComboCreateWithoutHoaDonInput, HoaDonComboUncheckedCreateWithoutHoaDonInput>
+  }
+
+  export type HoaDonComboCreateManyHoaDonInputEnvelope = {
+    data: HoaDonComboCreateManyHoaDonInput | HoaDonComboCreateManyHoaDonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GiuChoCreateWithoutHoaDonInput = {
+    expire_at: Date | string
+    created_at?: Date | string | null
+    Ghe: GheCreateNestedOneWithoutGiuChoInput
+    LichChieu: LichChieuCreateNestedOneWithoutGiuChoInput
+    NguoiDung: NguoiDungCreateNestedOneWithoutGiuChoInput
+  }
+
+  export type GiuChoUncheckedCreateWithoutHoaDonInput = {
+    ma_giu_cho?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    expire_at: Date | string
+    created_at?: Date | string | null
+  }
+
+  export type GiuChoCreateOrConnectWithoutHoaDonInput = {
+    where: GiuChoWhereUniqueInput
+    create: XOR<GiuChoCreateWithoutHoaDonInput, GiuChoUncheckedCreateWithoutHoaDonInput>
+  }
+
+  export type GiuChoCreateManyHoaDonInputEnvelope = {
+    data: GiuChoCreateManyHoaDonInput | GiuChoCreateManyHoaDonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NguoiDungUpsertWithoutHoaDonInput = {
+    update: XOR<NguoiDungUpdateWithoutHoaDonInput, NguoiDungUncheckedUpdateWithoutHoaDonInput>
+    create: XOR<NguoiDungCreateWithoutHoaDonInput, NguoiDungUncheckedCreateWithoutHoaDonInput>
+    where?: NguoiDungWhereInput
+  }
+
+  export type NguoiDungUpdateToOneWithWhereWithoutHoaDonInput = {
+    where?: NguoiDungWhereInput
+    data: XOR<NguoiDungUpdateWithoutHoaDonInput, NguoiDungUncheckedUpdateWithoutHoaDonInput>
+  }
+
+  export type NguoiDungUpdateWithoutHoaDonInput = {
+    ho_ten?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    so_dt?: NullableStringFieldUpdateOperationsInput | string | null
+    mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
+    loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
+  }
+
+  export type NguoiDungUncheckedUpdateWithoutHoaDonInput = {
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ho_ten?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    so_dt?: NullableStringFieldUpdateOperationsInput | string | null
+    mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
+    loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
+  }
+
+  export type LichChieuUpsertWithoutHoaDonInput = {
+    update: XOR<LichChieuUpdateWithoutHoaDonInput, LichChieuUncheckedUpdateWithoutHoaDonInput>
+    create: XOR<LichChieuCreateWithoutHoaDonInput, LichChieuUncheckedCreateWithoutHoaDonInput>
+    where?: LichChieuWhereInput
+  }
+
+  export type LichChieuUpdateToOneWithWhereWithoutHoaDonInput = {
+    where?: LichChieuWhereInput
+    data: XOR<LichChieuUpdateWithoutHoaDonInput, LichChieuUncheckedUpdateWithoutHoaDonInput>
+  }
+
+  export type LichChieuUpdateWithoutHoaDonInput = {
+    ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
+    DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
+    RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
+    Phim?: PhimUpdateOneWithoutLichChieuNestedInput
+  }
+
+  export type LichChieuUncheckedUpdateWithoutHoaDonInput = {
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_rap?: NullableIntFieldUpdateOperationsInput | number | null
+    ma_phim?: NullableIntFieldUpdateOperationsInput | number | null
+    ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
+  }
+
+  export type DatVeUpsertWithWhereUniqueWithoutHoaDonInput = {
+    where: DatVeWhereUniqueInput
+    update: XOR<DatVeUpdateWithoutHoaDonInput, DatVeUncheckedUpdateWithoutHoaDonInput>
+    create: XOR<DatVeCreateWithoutHoaDonInput, DatVeUncheckedCreateWithoutHoaDonInput>
+  }
+
+  export type DatVeUpdateWithWhereUniqueWithoutHoaDonInput = {
+    where: DatVeWhereUniqueInput
+    data: XOR<DatVeUpdateWithoutHoaDonInput, DatVeUncheckedUpdateWithoutHoaDonInput>
+  }
+
+  export type DatVeUpdateManyWithWhereWithoutHoaDonInput = {
+    where: DatVeScalarWhereInput
+    data: XOR<DatVeUpdateManyMutationInput, DatVeUncheckedUpdateManyWithoutHoaDonInput>
+  }
+
+  export type HoaDonComboUpsertWithWhereUniqueWithoutHoaDonInput = {
+    where: HoaDonComboWhereUniqueInput
+    update: XOR<HoaDonComboUpdateWithoutHoaDonInput, HoaDonComboUncheckedUpdateWithoutHoaDonInput>
+    create: XOR<HoaDonComboCreateWithoutHoaDonInput, HoaDonComboUncheckedCreateWithoutHoaDonInput>
+  }
+
+  export type HoaDonComboUpdateWithWhereUniqueWithoutHoaDonInput = {
+    where: HoaDonComboWhereUniqueInput
+    data: XOR<HoaDonComboUpdateWithoutHoaDonInput, HoaDonComboUncheckedUpdateWithoutHoaDonInput>
+  }
+
+  export type HoaDonComboUpdateManyWithWhereWithoutHoaDonInput = {
+    where: HoaDonComboScalarWhereInput
+    data: XOR<HoaDonComboUpdateManyMutationInput, HoaDonComboUncheckedUpdateManyWithoutHoaDonInput>
+  }
+
+  export type HoaDonComboScalarWhereInput = {
+    AND?: HoaDonComboScalarWhereInput | HoaDonComboScalarWhereInput[]
+    OR?: HoaDonComboScalarWhereInput[]
+    NOT?: HoaDonComboScalarWhereInput | HoaDonComboScalarWhereInput[]
+    ma_hoa_don?: IntFilter<"HoaDonCombo"> | number
+    ma_combo?: IntFilter<"HoaDonCombo"> | number
+    so_luong?: IntFilter<"HoaDonCombo"> | number
+    don_gia?: IntFilter<"HoaDonCombo"> | number
+  }
+
+  export type GiuChoUpsertWithWhereUniqueWithoutHoaDonInput = {
+    where: GiuChoWhereUniqueInput
+    update: XOR<GiuChoUpdateWithoutHoaDonInput, GiuChoUncheckedUpdateWithoutHoaDonInput>
+    create: XOR<GiuChoCreateWithoutHoaDonInput, GiuChoUncheckedCreateWithoutHoaDonInput>
+  }
+
+  export type GiuChoUpdateWithWhereUniqueWithoutHoaDonInput = {
+    where: GiuChoWhereUniqueInput
+    data: XOR<GiuChoUpdateWithoutHoaDonInput, GiuChoUncheckedUpdateWithoutHoaDonInput>
+  }
+
+  export type GiuChoUpdateManyWithWhereWithoutHoaDonInput = {
+    where: GiuChoScalarWhereInput
+    data: XOR<GiuChoUpdateManyMutationInput, GiuChoUncheckedUpdateManyWithoutHoaDonInput>
+  }
+
+  export type HoaDonComboCreateWithoutComboInput = {
+    so_luong: number
+    don_gia: number
+    HoaDon: HoaDonCreateNestedOneWithoutHoaDonComboInput
+  }
+
+  export type HoaDonComboUncheckedCreateWithoutComboInput = {
+    ma_hoa_don: number
+    so_luong: number
+    don_gia: number
+  }
+
+  export type HoaDonComboCreateOrConnectWithoutComboInput = {
+    where: HoaDonComboWhereUniqueInput
+    create: XOR<HoaDonComboCreateWithoutComboInput, HoaDonComboUncheckedCreateWithoutComboInput>
+  }
+
+  export type HoaDonComboCreateManyComboInputEnvelope = {
+    data: HoaDonComboCreateManyComboInput | HoaDonComboCreateManyComboInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HoaDonComboUpsertWithWhereUniqueWithoutComboInput = {
+    where: HoaDonComboWhereUniqueInput
+    update: XOR<HoaDonComboUpdateWithoutComboInput, HoaDonComboUncheckedUpdateWithoutComboInput>
+    create: XOR<HoaDonComboCreateWithoutComboInput, HoaDonComboUncheckedCreateWithoutComboInput>
+  }
+
+  export type HoaDonComboUpdateWithWhereUniqueWithoutComboInput = {
+    where: HoaDonComboWhereUniqueInput
+    data: XOR<HoaDonComboUpdateWithoutComboInput, HoaDonComboUncheckedUpdateWithoutComboInput>
+  }
+
+  export type HoaDonComboUpdateManyWithWhereWithoutComboInput = {
+    where: HoaDonComboScalarWhereInput
+    data: XOR<HoaDonComboUpdateManyMutationInput, HoaDonComboUncheckedUpdateManyWithoutComboInput>
+  }
+
+  export type HoaDonCreateWithoutHoaDonComboInput = {
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    NguoiDung: NguoiDungCreateNestedOneWithoutHoaDonInput
+    LichChieu: LichChieuCreateNestedOneWithoutHoaDonInput
+    DatVe?: DatVeCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonUncheckedCreateWithoutHoaDonComboInput = {
+    ma_hoa_don?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutHoaDonInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutHoaDonInput
+  }
+
+  export type HoaDonCreateOrConnectWithoutHoaDonComboInput = {
+    where: HoaDonWhereUniqueInput
+    create: XOR<HoaDonCreateWithoutHoaDonComboInput, HoaDonUncheckedCreateWithoutHoaDonComboInput>
+  }
+
+  export type ComboCreateWithoutHoaDonComboInput = {
+    ten_combo: string
+    mo_ta?: string | null
+    gia: number
+    hinh_anh?: string | null
+    isDeleted?: boolean | null
+  }
+
+  export type ComboUncheckedCreateWithoutHoaDonComboInput = {
+    ma_combo?: number
+    ten_combo: string
+    mo_ta?: string | null
+    gia: number
+    hinh_anh?: string | null
+    isDeleted?: boolean | null
+  }
+
+  export type ComboCreateOrConnectWithoutHoaDonComboInput = {
+    where: ComboWhereUniqueInput
+    create: XOR<ComboCreateWithoutHoaDonComboInput, ComboUncheckedCreateWithoutHoaDonComboInput>
+  }
+
+  export type HoaDonUpsertWithoutHoaDonComboInput = {
+    update: XOR<HoaDonUpdateWithoutHoaDonComboInput, HoaDonUncheckedUpdateWithoutHoaDonComboInput>
+    create: XOR<HoaDonCreateWithoutHoaDonComboInput, HoaDonUncheckedCreateWithoutHoaDonComboInput>
+    where?: HoaDonWhereInput
+  }
+
+  export type HoaDonUpdateToOneWithWhereWithoutHoaDonComboInput = {
+    where?: HoaDonWhereInput
+    data: XOR<HoaDonUpdateWithoutHoaDonComboInput, HoaDonUncheckedUpdateWithoutHoaDonComboInput>
+  }
+
+  export type HoaDonUpdateWithoutHoaDonComboInput = {
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutHoaDonNestedInput
+    LichChieu?: LichChieuUpdateOneRequiredWithoutHoaDonNestedInput
+    DatVe?: DatVeUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonUncheckedUpdateWithoutHoaDonComboInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type ComboUpsertWithoutHoaDonComboInput = {
+    update: XOR<ComboUpdateWithoutHoaDonComboInput, ComboUncheckedUpdateWithoutHoaDonComboInput>
+    create: XOR<ComboCreateWithoutHoaDonComboInput, ComboUncheckedCreateWithoutHoaDonComboInput>
+    where?: ComboWhereInput
+  }
+
+  export type ComboUpdateToOneWithWhereWithoutHoaDonComboInput = {
+    where?: ComboWhereInput
+    data: XOR<ComboUpdateWithoutHoaDonComboInput, ComboUncheckedUpdateWithoutHoaDonComboInput>
+  }
+
+  export type ComboUpdateWithoutHoaDonComboInput = {
+    ten_combo?: StringFieldUpdateOperationsInput | string
+    mo_ta?: NullableStringFieldUpdateOperationsInput | string | null
+    gia?: IntFieldUpdateOperationsInput | number
+    hinh_anh?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type ComboUncheckedUpdateWithoutHoaDonComboInput = {
+    ma_combo?: IntFieldUpdateOperationsInput | number
+    ten_combo?: StringFieldUpdateOperationsInput | string
+    mo_ta?: NullableStringFieldUpdateOperationsInput | string | null
+    gia?: IntFieldUpdateOperationsInput | number
+    hinh_anh?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type RapPhimCreateManyCumRapInput = {
@@ -16319,6 +23221,7 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     gia_ve: number
+    ma_hoa_don?: number | null
     created_at?: Date | string | null
   }
 
@@ -16326,6 +23229,7 @@ export namespace Prisma {
     ma_giu_cho?: number
     tai_khoan: number
     ma_lich_chieu: number
+    ma_hoa_don?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -16335,12 +23239,14 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutDatVeNestedInput
     LichChieu?: LichChieuUpdateOneRequiredWithoutDatVeNestedInput
+    HoaDon?: HoaDonUpdateOneWithoutDatVeNestedInput
   }
 
   export type DatVeUncheckedUpdateWithoutGheInput = {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     gia_ve?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16348,6 +23254,7 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     gia_ve?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16356,12 +23263,14 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     LichChieu?: LichChieuUpdateOneRequiredWithoutGiuChoNestedInput
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutGiuChoNestedInput
+    HoaDon?: HoaDonUpdateOneWithoutGiuChoNestedInput
   }
 
   export type GiuChoUncheckedUpdateWithoutGheInput = {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -16370,6 +23279,7 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -16407,6 +23317,7 @@ export namespace Prisma {
     tai_khoan: number
     ma_ghe: number
     gia_ve: number
+    ma_hoa_don?: number | null
     created_at?: Date | string | null
   }
 
@@ -16414,8 +23325,23 @@ export namespace Prisma {
     ma_giu_cho?: number
     tai_khoan: number
     ma_ghe: number
+    ma_hoa_don?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
+  }
+
+  export type HoaDonCreateManyLichChieuInput = {
+    ma_hoa_don?: number
+    tai_khoan: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
   }
 
   export type DatVeUpdateWithoutLichChieuInput = {
@@ -16423,12 +23349,14 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutDatVeNestedInput
     Ghe?: GheUpdateOneRequiredWithoutDatVeNestedInput
+    HoaDon?: HoaDonUpdateOneWithoutDatVeNestedInput
   }
 
   export type DatVeUncheckedUpdateWithoutLichChieuInput = {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
     gia_ve?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16436,6 +23364,7 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
     gia_ve?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16444,12 +23373,14 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
     NguoiDung?: NguoiDungUpdateOneRequiredWithoutGiuChoNestedInput
+    HoaDon?: HoaDonUpdateOneWithoutGiuChoNestedInput
   }
 
   export type GiuChoUncheckedUpdateWithoutLichChieuInput = {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -16458,14 +23389,63 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type HoaDonUpdateWithoutLichChieuInput = {
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutHoaDonNestedInput
+    DatVe?: DatVeUpdateManyWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonUncheckedUpdateWithoutLichChieuInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUncheckedUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonUncheckedUpdateManyWithoutLichChieuInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DatVeCreateManyNguoiDungInput = {
     ma_lich_chieu: number
     ma_ghe: number
     gia_ve: number
+    ma_hoa_don?: number | null
     created_at?: Date | string | null
   }
 
@@ -16473,8 +23453,23 @@ export namespace Prisma {
     ma_giu_cho?: number
     ma_lich_chieu: number
     ma_ghe: number
+    ma_hoa_don?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
+  }
+
+  export type HoaDonCreateManyNguoiDungInput = {
+    ma_hoa_don?: number
+    ma_lich_chieu: number
+    tong_tien: number
+    created_at?: Date | string | null
+    checked_in_at?: Date | string | null
+    trang_thai_thanh_toan?: $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: string | null
+    ma_giao_dich_ngan_hang?: string | null
+    so_tien_da_nhan?: number | null
+    thanh_toan_luc?: Date | string | null
+    het_han_luc?: Date | string | null
   }
 
   export type DatVeUpdateWithoutNguoiDungInput = {
@@ -16482,12 +23477,14 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     LichChieu?: LichChieuUpdateOneRequiredWithoutDatVeNestedInput
     Ghe?: GheUpdateOneRequiredWithoutDatVeNestedInput
+    HoaDon?: HoaDonUpdateOneWithoutDatVeNestedInput
   }
 
   export type DatVeUncheckedUpdateWithoutNguoiDungInput = {
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
     gia_ve?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16495,6 +23492,7 @@ export namespace Prisma {
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
     gia_ve?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16503,12 +23501,14 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
     LichChieu?: LichChieuUpdateOneRequiredWithoutGiuChoNestedInput
+    HoaDon?: HoaDonUpdateOneWithoutGiuChoNestedInput
   }
 
   export type GiuChoUncheckedUpdateWithoutNguoiDungInput = {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -16517,8 +23517,56 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type HoaDonUpdateWithoutNguoiDungInput = {
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    LichChieu?: LichChieuUpdateOneRequiredWithoutHoaDonNestedInput
+    DatVe?: DatVeUpdateManyWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonUncheckedUpdateWithoutNguoiDungInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutHoaDonNestedInput
+    HoaDonCombo?: HoaDonComboUncheckedUpdateManyWithoutHoaDonNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutHoaDonNestedInput
+  }
+
+  export type HoaDonUncheckedUpdateManyWithoutNguoiDungInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    tong_tien?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checked_in_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trang_thai_thanh_toan?: EnumTrangThaiThanhToanFieldUpdateOperationsInput | $Enums.TrangThaiThanhToan
+    phuong_thuc_thanh_toan?: NullableStringFieldUpdateOperationsInput | string | null
+    ma_giao_dich_ngan_hang?: NullableStringFieldUpdateOperationsInput | string | null
+    so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
+    thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type BannerCreateManyPhimInput = {
@@ -16552,6 +23600,7 @@ export namespace Prisma {
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
     GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutLichChieuNestedInput
     RapPhim?: RapPhimUpdateOneWithoutLichChieuNestedInput
   }
 
@@ -16562,6 +23611,7 @@ export namespace Prisma {
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
     GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type LichChieuUncheckedUpdateManyWithoutPhimInput = {
@@ -16610,6 +23660,7 @@ export namespace Prisma {
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUpdateManyWithoutLichChieuNestedInput
     GiuCho?: GiuChoUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutLichChieuNestedInput
     Phim?: PhimUpdateOneWithoutLichChieuNestedInput
   }
 
@@ -16620,6 +23671,7 @@ export namespace Prisma {
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     DatVe?: DatVeUncheckedUpdateManyWithoutLichChieuNestedInput
     GiuCho?: GiuChoUncheckedUpdateManyWithoutLichChieuNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutLichChieuNestedInput
   }
 
   export type LichChieuUncheckedUpdateManyWithoutRapPhimInput = {
@@ -16627,6 +23679,121 @@ export namespace Prisma {
     ma_phim?: NullableIntFieldUpdateOperationsInput | number | null
     ngay_gio_chieu?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type DatVeCreateManyHoaDonInput = {
+    tai_khoan: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    gia_ve: number
+    created_at?: Date | string | null
+  }
+
+  export type HoaDonComboCreateManyHoaDonInput = {
+    ma_combo: number
+    so_luong: number
+    don_gia: number
+  }
+
+  export type GiuChoCreateManyHoaDonInput = {
+    ma_giu_cho?: number
+    tai_khoan: number
+    ma_lich_chieu: number
+    ma_ghe: number
+    expire_at: Date | string
+    created_at?: Date | string | null
+  }
+
+  export type DatVeUpdateWithoutHoaDonInput = {
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutDatVeNestedInput
+    LichChieu?: LichChieuUpdateOneRequiredWithoutDatVeNestedInput
+    Ghe?: GheUpdateOneRequiredWithoutDatVeNestedInput
+  }
+
+  export type DatVeUncheckedUpdateWithoutHoaDonInput = {
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DatVeUncheckedUpdateManyWithoutHoaDonInput = {
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    gia_ve?: IntFieldUpdateOperationsInput | number
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type HoaDonComboUpdateWithoutHoaDonInput = {
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+    Combo?: ComboUpdateOneRequiredWithoutHoaDonComboNestedInput
+  }
+
+  export type HoaDonComboUncheckedUpdateWithoutHoaDonInput = {
+    ma_combo?: IntFieldUpdateOperationsInput | number
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type HoaDonComboUncheckedUpdateManyWithoutHoaDonInput = {
+    ma_combo?: IntFieldUpdateOperationsInput | number
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type GiuChoUpdateWithoutHoaDonInput = {
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
+    LichChieu?: LichChieuUpdateOneRequiredWithoutGiuChoNestedInput
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutGiuChoNestedInput
+  }
+
+  export type GiuChoUncheckedUpdateWithoutHoaDonInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GiuChoUncheckedUpdateManyWithoutHoaDonInput = {
+    ma_giu_cho?: IntFieldUpdateOperationsInput | number
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    ma_ghe?: IntFieldUpdateOperationsInput | number
+    expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type HoaDonComboCreateManyComboInput = {
+    ma_hoa_don: number
+    so_luong: number
+    don_gia: number
+  }
+
+  export type HoaDonComboUpdateWithoutComboInput = {
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+    HoaDon?: HoaDonUpdateOneRequiredWithoutHoaDonComboNestedInput
+  }
+
+  export type HoaDonComboUncheckedUpdateWithoutComboInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type HoaDonComboUncheckedUpdateManyWithoutComboInput = {
+    ma_hoa_don?: IntFieldUpdateOperationsInput | number
+    so_luong?: IntFieldUpdateOperationsInput | number
+    don_gia?: IntFieldUpdateOperationsInput | number
   }
 
 

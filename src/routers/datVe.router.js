@@ -6,9 +6,11 @@ import {
 import { datVeController } from "../controllers/datVe.controller.js";
 
 import {
+  checkInVeSchema,
   datVeSchema,
   layDanhSachPhongVeSchema,
   layTrangThaiGheSchema,
+  layTrangThaiHoaDonSchema,
   lichChieuSchema,
 } from "../validations/datVe.schema.js";
 import { validateAll } from "../common/middleware/validate.middleware.js";
@@ -92,7 +94,7 @@ export const datVeRouter = express.Router();
  * @swagger
  * /QuanLyDatVe/DatVe:
  *   post:
- *     summary: Đặt vé
+ *     summary: Tạo đơn chờ thanh toán (giữ ghế, trả QR VietQR) — vé thật chỉ được tạo sau khi webhook ngân hàng xác nhận đã thanh toán
  *     tags:
  *       - QuanLyDatVe
  *     security:
@@ -113,11 +115,41 @@ export const datVeRouter = express.Router();
  *                   properties:
  *                     ma_ghe:
  *                       type: integer
+ *               danh_sach_combo:
+ *                 type: array
+ *                 description: Combo bắp nước mua kèm (optional)
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     ma_combo:
+ *                       type: integer
+ *                     so_luong:
+ *                       type: integer
  *     responses:
  *       200:
- *         description: Đặt vé thành công
+ *         description: Tạo đơn chờ thanh toán thành công
  *       400:
  *         description: Ghế đã được đặt
+ */
+
+/**
+ * @swagger
+ * /QuanLyDatVe/TrangThaiHoaDon:
+ *   get:
+ *     summary: Lấy trạng thái thanh toán của hóa đơn (FE polling khi chờ QR)
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: ma_hoa_don
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Lấy trạng thái hóa đơn thành công
  */
 
 /**
@@ -157,12 +189,61 @@ datVeRouter.get(
   datVeController.layDanhSachPhongVe,
 );
 
+// Route giữ nguyên tên /DatVe (không đổi để không vỡ FE hiện có) nhưng nay
+// tạo đơn "chờ thanh toán" thay vì chốt vé ngay — luồng đặt vé cũ đã bị thay
+// thế hoàn toàn, không còn nơi nào khác gọi datVeService.datVe (đã grep FE).
 datVeRouter.post(
   "/DatVe",
   protect,
 
   validateAll({ body: datVeSchema }),
-  datVeController.datVe,
+  datVeController.taoDonChoThanhToan,
+);
+
+datVeRouter.get(
+  "/TrangThaiHoaDon",
+  protect,
+  validateAll({ query: layTrangThaiHoaDonSchema }),
+  datVeController.layTrangThaiHoaDon,
 );
 
 datVeRouter.get("/LichSuDatVe", protect, datVeController.getLichSuDatVe);
+
+/**
+ * @swagger
+ * /QuanLyDatVe/CheckIn:
+ *   post:
+ *     summary: Check-in vé bằng mã QR (ADMIN)
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - qr_token
+ *             properties:
+ *               qr_token:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Check-in thành công
+ *       400:
+ *         description: Mã QR không hợp lệ hoặc đã hết hạn
+ *       404:
+ *         description: Không tìm thấy vé
+ *       409:
+ *         description: Vé đã được check-in trước đó
+ */
+
+datVeRouter.post(
+  "/CheckIn",
+  protect,
+  validateAll({ body: checkInVeSchema }),
+  mustBeAdmin("ADMIN"),
+  datVeController.checkInVe,
+);

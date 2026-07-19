@@ -24,12 +24,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.5.0
- * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
+ * Prisma Client JS version: 7.6.0
+ * Query Engine version: 75cbdc1eb7150937890ad5465d861175c6624711
  */
 Prisma.prismaVersion = {
-  client: "7.5.0",
-  engine: "280c870be64f457428992c43c1f6d557fab6e29e"
+  client: "7.6.0",
+  engine: "75cbdc1eb7150937890ad5465d861175c6624711"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -139,6 +139,7 @@ exports.Prisma.DatVeScalarFieldEnum = {
   ma_lich_chieu: 'ma_lich_chieu',
   ma_ghe: 'ma_ghe',
   gia_ve: 'gia_ve',
+  ma_hoa_don: 'ma_hoa_don',
   created_at: 'created_at'
 };
 
@@ -198,7 +199,52 @@ exports.Prisma.GiuChoScalarFieldEnum = {
   tai_khoan: 'tai_khoan',
   ma_lich_chieu: 'ma_lich_chieu',
   ma_ghe: 'ma_ghe',
+  ma_hoa_don: 'ma_hoa_don',
   expire_at: 'expire_at',
+  created_at: 'created_at'
+};
+
+exports.Prisma.HoaDonScalarFieldEnum = {
+  ma_hoa_don: 'ma_hoa_don',
+  tai_khoan: 'tai_khoan',
+  ma_lich_chieu: 'ma_lich_chieu',
+  tong_tien: 'tong_tien',
+  created_at: 'created_at',
+  checked_in_at: 'checked_in_at',
+  trang_thai_thanh_toan: 'trang_thai_thanh_toan',
+  phuong_thuc_thanh_toan: 'phuong_thuc_thanh_toan',
+  ma_giao_dich_ngan_hang: 'ma_giao_dich_ngan_hang',
+  so_tien_da_nhan: 'so_tien_da_nhan',
+  thanh_toan_luc: 'thanh_toan_luc',
+  het_han_luc: 'het_han_luc'
+};
+
+exports.Prisma.ComboScalarFieldEnum = {
+  ma_combo: 'ma_combo',
+  ten_combo: 'ten_combo',
+  mo_ta: 'mo_ta',
+  gia: 'gia',
+  hinh_anh: 'hinh_anh',
+  isDeleted: 'isDeleted'
+};
+
+exports.Prisma.HoaDonComboScalarFieldEnum = {
+  ma_hoa_don: 'ma_hoa_don',
+  ma_combo: 'ma_combo',
+  so_luong: 'so_luong',
+  don_gia: 'don_gia'
+};
+
+exports.Prisma.GiaoDichWebhookScalarFieldEnum = {
+  ma_giao_dich_webhook: 'ma_giao_dich_webhook',
+  nguon: 'nguon',
+  raw_payload: 'raw_payload',
+  ma_giao_dich_ngan_hang: 'ma_giao_dich_ngan_hang',
+  so_tien: 'so_tien',
+  noi_dung: 'noi_dung',
+  ma_hoa_don_parse: 'ma_hoa_don_parse',
+  ket_qua_xu_ly: 'ket_qua_xu_ly',
+  ghi_chu: 'ghi_chu',
   created_at: 'created_at'
 };
 
@@ -251,6 +297,31 @@ exports.Prisma.RapPhimOrderByRelevanceFieldEnum = {
   ten_rap: 'ten_rap'
 };
 
+exports.Prisma.HoaDonOrderByRelevanceFieldEnum = {
+  phuong_thuc_thanh_toan: 'phuong_thuc_thanh_toan',
+  ma_giao_dich_ngan_hang: 'ma_giao_dich_ngan_hang'
+};
+
+exports.Prisma.ComboOrderByRelevanceFieldEnum = {
+  ten_combo: 'ten_combo',
+  mo_ta: 'mo_ta',
+  hinh_anh: 'hinh_anh'
+};
+
+exports.Prisma.GiaoDichWebhookOrderByRelevanceFieldEnum = {
+  nguon: 'nguon',
+  raw_payload: 'raw_payload',
+  ma_giao_dich_ngan_hang: 'ma_giao_dich_ngan_hang',
+  noi_dung: 'noi_dung',
+  ket_qua_xu_ly: 'ket_qua_xu_ly',
+  ghi_chu: 'ghi_chu'
+};
+exports.TrangThaiThanhToan = exports.$Enums.TrangThaiThanhToan = {
+  cho_thanh_toan: 'cho_thanh_toan',
+  da_thanh_toan: 'da_thanh_toan',
+  het_han: 'het_han',
+  huy: 'huy'
+};
 
 exports.Prisma.ModelName = {
   Banner: 'Banner',
@@ -262,7 +333,11 @@ exports.Prisma.ModelName = {
   NguoiDung: 'NguoiDung',
   Phim: 'Phim',
   RapPhim: 'RapPhim',
-  GiuCho: 'GiuCho'
+  GiuCho: 'GiuCho',
+  HoaDon: 'HoaDon',
+  Combo: 'Combo',
+  HoaDonCombo: 'HoaDonCombo',
+  GiaoDichWebhook: 'GiaoDichWebhook'
 };
 
 /**

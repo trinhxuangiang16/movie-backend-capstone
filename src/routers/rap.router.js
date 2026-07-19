@@ -5,6 +5,7 @@ import { validateAll } from "../common/middleware/validate.middleware.js";
 import {
   giuChoTamThoiSchema,
   maHeThongRapSchema,
+  maLichChieuSchema,
 } from "../validations/rap.schema.js";
 import { movieIdSchema } from "../validations/phim.schema.js";
 
@@ -97,6 +98,30 @@ export const rapRouter = express.Router();
 
 /**
  * @swagger
+ * /QuanLyRap/LayLichChieuPhimDuaVaMaVaThoiGian:
+ *   get:
+ *     summary: Lấy lịch chiếu phim theo mã lịch chiếu
+ *     description: Trả về chi tiết 1 lịch chiếu (phim, rạp, cụm rạp, hệ thống rạp, thời gian chiếu) theo mã lịch chiếu
+ *     tags:
+ *       - QuanLyRap
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: ma_lich_chieu
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Mã lịch chiếu
+ *     responses:
+ *       200:
+ *         description: Lấy lịch chiếu thành công
+ *       404:
+ *         description: Không tìm thấy lịch chiếu
+ */
+
+/**
+ * @swagger
  * /QuanLyRap/GiuChoTamThoi:
  *   post:
  *     summary: Giữ chỗ tạm thời cho ghế
@@ -160,6 +185,13 @@ rapRouter.get(
   protect,
   validateAll({ query: movieIdSchema }),
   rapController.getLichChieuPhim,
+);
+
+rapRouter.get(
+  "/LayLichChieuPhimDuaVaoMaVaThoiGian",
+  protect,
+  validateAll({ query: maLichChieuSchema }),
+  rapController.getLichChieuPhimDuaVaoMaVaThoiGian,
 );
 
 rapRouter.post(

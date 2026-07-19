@@ -43,6 +43,20 @@ export const datVeSchema = z.object({
       }),
     )
     .min(1, "Danh sách vé không được rỗng"),
+  danh_sach_combo: z
+    .array(
+      z.object({
+        ma_combo: z.coerce
+          .number({ message: "Mã combo phải là số" })
+          .int({ message: "Mã combo phải là số nguyên" })
+          .positive({ message: "Mã combo phải là số dương" }),
+        so_luong: z.coerce
+          .number({ message: "Số lượng phải là số" })
+          .int({ message: "Số lượng phải là số nguyên" })
+          .positive({ message: "Số lượng phải là số dương" }),
+      }),
+    )
+    .optional(),
 });
 
 export const layDanhSachPhongVeSchema = z.object({
@@ -52,9 +66,37 @@ export const layDanhSachPhongVeSchema = z.object({
     .positive({ message: "Mã lịch chiếu phải là số dương" }),
 });
 
+export const checkInVeSchema = z.object({
+  qr_token: z.string({ message: "Thiếu mã QR" }).min(1, "Thiếu mã QR"),
+});
+
 export const layTrangThaiGheSchema = z.object({
   ma_lich_chieu: z.coerce
     .number({ message: "Mã lịch chiếu phải là số" })
     .int({ message: "Mã lịch chiếu phải là số nguyên" })
     .positive({ message: "Mã lịch chiếu phải là số dương" }),
+});
+
+// Đơn chờ thanh toán dùng chung payload với đặt vé cũ (ghế + combo)
+export const taoDonChoThanhToanSchema = datVeSchema;
+
+export const layTrangThaiHoaDonSchema = z.object({
+  ma_hoa_don: z.coerce
+    .number({ message: "Mã hóa đơn phải là số" })
+    .int({ message: "Mã hóa đơn phải là số nguyên" })
+    .positive({ message: "Mã hóa đơn phải là số dương" }),
+});
+
+// Payload webhook kiểu SePay/Casso — permissive, phần lớn field optional vì
+// đây là log linh hoạt, ngân hàng/cổng trung gian có thể thay đổi field.
+export const webhookThanhToanSchema = z.object({
+  id: z.union([z.number(), z.string()]).optional(),
+  gateway: z.string().optional(),
+  transactionDate: z.string().optional(),
+  accountNumber: z.string().optional(),
+  content: z.string().optional(),
+  transferType: z.string().optional(),
+  transferAmount: z.coerce.number().optional(),
+  referenceCode: z.coerce.string().optional(),
+  description: z.string().optional(),
 });
