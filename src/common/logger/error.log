@@ -42,35 +42,22 @@
 {"level":"error","message":"[reqId:d644cec8] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10001ms\n    (pool connections: active=0 idle=0 limit=5)"}
 {"level":"error","message":"[reqId:c2260f71] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10012ms\n    (pool connections: active=0 idle=0 limit=5)"}
 {"level":"error","message":"[reqId:499fc595] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10015ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:10172f20] POST /api/auth/login - Not Found"}
-{"level":"error","message":"[reqId:1111c16a] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10009ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:60f05737] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10012ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:89bd3571] POST /QuanLyNguoiDung/DangNhap - Not Found"}
-{"level":"error","message":"[reqId:4fe421f4] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10002ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:f2efb1a5] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10002ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:62470543] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10014ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:d4de6d8d] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10001ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:99f89b77] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10005ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:26c63c56] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10004ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:8a93571f] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10015ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:8dcdc7e6] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10007ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:9962e002] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10002ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:1249d28e] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10007ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:a14dc1c4] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10006ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:a07083c1] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10014ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:e9d48be1] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10013ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:b181f276] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10013ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:221d821a] GET /api - Not Found"}
-{"level":"error","message":"[reqId:a2d0e013] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10001ms\n    (pool connections: active=0 idle=0 limit=5)"}
-{"level":"error","message":"[reqId:50d17fba] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
-{"level":"error","message":"[reqId:d6137ec1] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
-{"level":"error","message":"[reqId:f0c3044e] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
-{"level":"error","message":"[reqId:aa505f48] GET /Combo/DanhSachCombo - Not Found"}
-{"level":"error","message":"[reqId:cbc283d9] GET /Combo/DanhSachCombo - Not Found"}
-{"level":"error","message":"[reqId:4502771f] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
-{"level":"error","message":"[reqId:76eb934c] POST /api/QuanLyDatVe/DatVe - Có combo không tồn tại hoặc ngừng bán"}
-{"level":"error","message":"[reqId:1d1a3bd9] POST /api/QuanLyDatVe/DatVe - Cannot read properties of null (reading 'ma_hoa_don')"}
-{"level":"error","message":"[reqId:1dad90d6] POST /api/QuanLyDatVe/CheckIn - Vé đã được check-in lúc 2026-07-17T18:12:55.000Z"}
-{"level":"error","message":"[reqId:b8a4b5ba] POST /api/QuanLyDatVe/CheckIn - Mã QR không hợp lệ hoặc đã hết hạn"}
-{"level":"error","message":"[reqId:a3748279] GET /api/QuanLyPhim/DanhSachPhim - Not Found"}
-{"level":"error","message":"[reqId:7b78afc5] POST /api/QuanLyDatVe/DatVe - Một hoặc nhiều ghế đã được đặt"}
+{"level":"error","message":"[reqId:52f66734] GET /QuanLyPhim/PhimHot - Not Found"}
+{"level":"error","message":"[reqId:179a5f77] GET /QuanLyPhim/PhimSapChieu - Not Found"}
+{"level":"error","message":"[reqId:6f125f1d] GET /QuanLyPhim/PhimDangChieu - Not Found"}
+{"level":"error","message":"[reqId:80232a88] GET /favicon.ico - Not Found"}
+{"level":"error","message":"[reqId:e5e0048b] GET /QuanLyPhim/PhimHot - Not Found"}
+{"level":"error","message":"[reqId:001311af] GET /QuanLyPhim/PhimSapChieu - Not Found"}
+{"level":"error","message":"[reqId:6294ef17] GET /QuanLyPhim/PhimDangChieu - Not Found"}
+{"level":"error","message":"[reqId:dc76c442] GET /api - Not Found"}
+{"level":"error","message":"[reqId:c102640c] GET /api - Not Found"}
+{"level":"error","message":"[reqId:ff5779c6] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"error","message":"[reqId:b43c7043] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"error","message":"[reqId:8fdc0a58] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"error","message":"[reqId:dd9ec3ab] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"error","message":"[reqId:905bac77] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"error","message":"[reqId:65c3ff6b] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"error","message":"[reqId:67293b79] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10002ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"error","message":"[reqId:b6f23060] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"error","message":"[reqId:80e00dcf] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10000ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"error","message":"[reqId:5989b6f5] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
