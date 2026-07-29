@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: SERVER_SWAGGER || "https://api.trinhxuangiang.me/api",
+        url: SERVER_SWAGGER || "https://api-movie.trinhxuangiang.me/api",
         description: "Production HTTPS Server",
       },
       {

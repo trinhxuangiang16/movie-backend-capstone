@@ -36,6 +36,7 @@ app.use(
 );
 
 const defaultOrigins = [
+  "https://movie.trinhxuangiang.me",
   "https://trinhxuangiang.me",
   "https://www.trinhxuangiang.me",
   "http://localhost:3000",
