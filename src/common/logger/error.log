@@ -140,3 +140,7 @@
 {"level":"error","message":"[reqId:ea3f4e64] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
 {"level":"error","message":"[reqId:5e8f7abd] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
 {"level":"error","message":"[reqId:45b1f20b] POST /api/QuanLyNguoiDung/refresh-token - Refresh token không hợp lệ hoặc đã bị thu hồi"}
+{"level":"error","message":"[reqId:f2a3068a] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10001ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"error","message":"[reqId:9f0ae71b] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10015ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"error","message":"[reqId:32564026] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10010ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"error","message":"[reqId:08116467] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10011ms\n    (pool connections: active=0 idle=0 limit=5)"}

@@ -1681,3 +1681,11 @@
 {"level":"info","message":"[reqId:53e48e47] GET /api/QuanLyPhim/PhimSapChieu 200 106.596ms 127.0.0.1 user:1"}
 {"level":"info","message":"[reqId:7c139ff4] GET /api/QuanLyPhim/PhimDangChieu 200 109.646ms 127.0.0.1 user:1"}
 {"level":"info","message":"[reqId:2e4fd129] GET /api/QuanLyRap/LayThongTinLichChieuHeThongRap?ma_he_thong_rap=1 200 185.575ms 127.0.0.1 user:1"}
+{"level":"info","message":"[reqId:f2a3068a] POST /api/QuanLyNguoiDung/DangNhap - undefinedms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:f2a3068a] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10001ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"error","message":"[reqId:9f0ae71b] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10015ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:9f0ae71b] POST /api/QuanLyNguoiDung/DangNhap 500 10018.086ms 127.0.0.1 user:guest"}
+{"level":"info","message":"[reqId:32564026] POST /api/QuanLyNguoiDung/DangNhap - undefinedms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:32564026] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10010ms\n    (pool connections: active=0 idle=0 limit=5)"}
+{"level":"info","message":"[reqId:08116467] POST /api/QuanLyNguoiDung/DangNhap - undefinedms 127.0.0.1 user:guest"}
+{"level":"error","message":"[reqId:08116467] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10011ms\n    (pool connections: active=0 idle=0 limit=5)"}

@@ -19,6 +19,7 @@ const adapter = new PrismaMariaDb({
   database: dbUrl.pathname.substring(1),
   port: Number(dbUrl.port),
   connectionLimit: 5,
+  connectTimeout: 10000,
   allowPublicKeyRetrieval: true,
   ssl: (isAzureDb || process.env.NODE_ENV === "production") ? { rejectUnauthorized: false } : false,
 });
