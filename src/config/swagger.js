@@ -11,8 +11,12 @@ const options = {
     },
     servers: [
       {
-        url: SERVER_SWAGGER || "/api",
-        description: "Current Server",
+        url: SERVER_SWAGGER || "https://api.trinhxuangiang.me/api",
+        description: "Production HTTPS Server",
+      },
+      {
+        url: "http://localhost:3069/api",
+        description: "Local Server",
       },
     ],
     components: {
