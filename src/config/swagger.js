@@ -11,7 +11,8 @@ const options = {
     },
     servers: [
       {
-        url: SERVER_SWAGGER,
+        url: SERVER_SWAGGER || "/api",
+        description: "Current Server",
       },
     ],
     components: {
