@@ -336,7 +336,6 @@ export const phimRouter = express.Router();
  *         description: Không tìm thấy phim
  */
 
-// Public APIs
 phimRouter.get("/LayDanhSachPhim", protect, phimController.getLayDanhSachPhim);
 
 phimRouter.get("/PhimDangChieu", protect, phimController.getPhimDangChieu);
@@ -366,7 +365,7 @@ phimRouter.get(
   phimController.getLayDanhSachPhimTheoNgay,
 );
 
-// ADMIN APIs
+
 phimRouter.post(
   "/",
   protect,

@@ -87,6 +87,53 @@ export const layTrangThaiHoaDonSchema = z.object({
     .positive({ message: "Mã hóa đơn phải là số dương" }),
 });
 
+// Admin cấp vé trực tiếp (không qua thanh toán) — dùng lại payload đặt vé,
+// thêm email_khach (cấp vé cho tài khoản khách; bỏ trống = cấp cho chính admin)
+// và ly_do để audit.
+export const capVeTrucTiepSchema = z.object({
+  ma_lich_chieu: z.coerce
+    .number({ message: "Mã lịch chiếu phải là số" })
+    .int({ message: "Mã lịch chiếu phải là số nguyên" })
+    .positive({ message: "Mã lịch chiếu phải là số dương" }),
+  danh_sach_ve: z
+    .array(
+      z.object({
+        ma_ghe: z.coerce
+          .number({ message: "Mã ghế phải là số" })
+          .int({ message: "Mã ghế phải là số nguyên" })
+          .positive({ message: "Mã ghế phải là số dương lớn hơn 0" }),
+      }),
+    )
+    .min(1, "Danh sách vé không được rỗng"),
+  danh_sach_combo: z
+    .array(
+      z.object({
+        ma_combo: z.coerce
+          .number({ message: "Mã combo phải là số" })
+          .int({ message: "Mã combo phải là số nguyên" })
+          .positive({ message: "Mã combo phải là số dương" }),
+        so_luong: z.coerce
+          .number({ message: "Số lượng phải là số" })
+          .int({ message: "Số lượng phải là số nguyên" })
+          .positive({ message: "Số lượng phải là số dương" }),
+      }),
+    )
+    .optional(),
+  email_khach: z
+    .string()
+    .trim()
+    .email({ message: "Email khách không hợp lệ" })
+    .optional(),
+  ly_do: z.string().trim().max(255).optional(),
+});
+
+export const huyGiaoDichSchema = z.object({
+  ma_hoa_don: z.coerce
+    .number({ message: "Mã hóa đơn phải là số" })
+    .int({ message: "Mã hóa đơn phải là số nguyên" })
+    .positive({ message: "Mã hóa đơn phải là số dương" }),
+});
+
 // Payload webhook kiểu SePay/Casso — permissive, phần lớn field optional vì
 // đây là log linh hoạt, ngân hàng/cổng trung gian có thể thay đổi field.
 export const webhookThanhToanSchema = z.object({

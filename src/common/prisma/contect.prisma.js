@@ -17,6 +17,7 @@ const adapter = new PrismaMariaDb({
   database: dbUrl.pathname.substring(1),
   port: Number(dbUrl.port),
   connectionLimit: 5,
+  allowPublicKeyRetrieval: true,
 });
 
 const prisma = new PrismaClient({ adapter });

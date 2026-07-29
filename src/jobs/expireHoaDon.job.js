@@ -1,11 +1,8 @@
 import { prisma } from "../common/prisma/contect.prisma.js";
 
-const INTERVAL_MS = 60 * 1000; // 1 phút
+const INTERVAL_MS = 60 * 1000;
+const INTERVAL_GIU_GHE_MS = 15 * 1000;
 
-// Dọn dẹp nền: tự động hết hạn các hóa đơn cho_thanh_toan quá het_han_luc và
-// giải phóng GiuCho liên quan. Độc lập với check hết hạn lúc FE polling
-// (datVeService.layTrangThaiHoaDon) — job này đảm bảo ghế được giải phóng
-// ngay cả khi không ai polling đơn đó nữa (vd user đóng tab).
 const donDepHoaDonHetHan = async () => {
   try {
     const hoaDonHetHan = await prisma.hoaDon.findMany({
@@ -39,7 +36,29 @@ const donDepHoaDonHetHan = async () => {
   }
 };
 
+const donDepGiuGheTam = async () => {
+  try {
+    const daXoa = await prisma.giuCho.deleteMany({
+      where: {
+        loai: "tam",
+        expire_at: { lt: new Date() },
+      },
+    });
+
+    if (daXoa.count > 0) {
+      console.log(
+        `[expireHoaDon.job] Đã nhả ${daXoa.count} ghế giữ tạm hết hạn`,
+      );
+    }
+  } catch (error) {
+    console.error("[expireHoaDon.job] Lỗi khi dọn ghế giữ tạm:", error);
+  }
+};
+
 export const startExpireHoaDonJob = () => {
   setInterval(donDepHoaDonHetHan, INTERVAL_MS);
+
+  setInterval(donDepGiuGheTam, INTERVAL_GIU_GHE_MS);
+
   console.log("[expireHoaDon.job] Job dọn dẹp hóa đơn hết hạn đã khởi động");
 };

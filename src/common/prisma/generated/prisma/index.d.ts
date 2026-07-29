@@ -49,6 +49,11 @@ export type LichChieu = $Result.DefaultSelection<Prisma.$LichChieuPayload>
  */
 export type NguoiDung = $Result.DefaultSelection<Prisma.$NguoiDungPayload>
 /**
+ * Model RefreshToken
+ * 
+ */
+export type RefreshToken = $Result.DefaultSelection<Prisma.$RefreshTokenPayload>
+/**
  * Model Phim
  * 
  */
@@ -88,7 +93,15 @@ export type GiaoDichWebhook = $Result.DefaultSelection<Prisma.$GiaoDichWebhookPa
  * Enums
  */
 export namespace $Enums {
-  export const TrangThaiThanhToan: {
+  export const LoaiGiuCho: {
+  tam: 'tam',
+  da_tao_don: 'da_tao_don'
+};
+
+export type LoaiGiuCho = (typeof LoaiGiuCho)[keyof typeof LoaiGiuCho]
+
+
+export const TrangThaiThanhToan: {
   cho_thanh_toan: 'cho_thanh_toan',
   da_thanh_toan: 'da_thanh_toan',
   het_han: 'het_han',
@@ -98,6 +111,10 @@ export namespace $Enums {
 export type TrangThaiThanhToan = (typeof TrangThaiThanhToan)[keyof typeof TrangThaiThanhToan]
 
 }
+
+export type LoaiGiuCho = $Enums.LoaiGiuCho
+
+export const LoaiGiuCho: typeof $Enums.LoaiGiuCho
 
 export type TrangThaiThanhToan = $Enums.TrangThaiThanhToan
 
@@ -293,6 +310,16 @@ export class PrismaClient<
     * ```
     */
   get nguoiDung(): Prisma.NguoiDungDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.refreshToken`: Exposes CRUD operations for the **RefreshToken** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RefreshTokens
+    * const refreshTokens = await prisma.refreshToken.findMany()
+    * ```
+    */
+  get refreshToken(): Prisma.RefreshTokenDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.phim`: Exposes CRUD operations for the **Phim** model.
@@ -804,6 +831,7 @@ export namespace Prisma {
     HeThongRap: 'HeThongRap',
     LichChieu: 'LichChieu',
     NguoiDung: 'NguoiDung',
+    RefreshToken: 'RefreshToken',
     Phim: 'Phim',
     RapPhim: 'RapPhim',
     GiuCho: 'GiuCho',
@@ -826,7 +854,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "banner" | "cumRap" | "datVe" | "ghe" | "heThongRap" | "lichChieu" | "nguoiDung" | "phim" | "rapPhim" | "giuCho" | "hoaDon" | "combo" | "hoaDonCombo" | "giaoDichWebhook"
+      modelProps: "banner" | "cumRap" | "datVe" | "ghe" | "heThongRap" | "lichChieu" | "nguoiDung" | "refreshToken" | "phim" | "rapPhim" | "giuCho" | "hoaDon" | "combo" | "hoaDonCombo" | "giaoDichWebhook"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1289,6 +1317,72 @@ export namespace Prisma {
           count: {
             args: Prisma.NguoiDungCountArgs<ExtArgs>
             result: $Utils.Optional<NguoiDungCountAggregateOutputType> | number
+          }
+        }
+      }
+      RefreshToken: {
+        payload: Prisma.$RefreshTokenPayload<ExtArgs>
+        fields: Prisma.RefreshTokenFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RefreshTokenFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RefreshTokenFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+          }
+          findFirst: {
+            args: Prisma.RefreshTokenFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RefreshTokenFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+          }
+          findMany: {
+            args: Prisma.RefreshTokenFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>[]
+          }
+          create: {
+            args: Prisma.RefreshTokenCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+          }
+          createMany: {
+            args: Prisma.RefreshTokenCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.RefreshTokenDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+          }
+          update: {
+            args: Prisma.RefreshTokenUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+          }
+          deleteMany: {
+            args: Prisma.RefreshTokenDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RefreshTokenUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RefreshTokenUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+          }
+          aggregate: {
+            args: Prisma.RefreshTokenAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRefreshToken>
+          }
+          groupBy: {
+            args: Prisma.RefreshTokenGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RefreshTokenGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RefreshTokenCountArgs<ExtArgs>
+            result: $Utils.Optional<RefreshTokenCountAggregateOutputType> | number
           }
         }
       }
@@ -1869,6 +1963,7 @@ export namespace Prisma {
     heThongRap?: HeThongRapOmit
     lichChieu?: LichChieuOmit
     nguoiDung?: NguoiDungOmit
+    refreshToken?: RefreshTokenOmit
     phim?: PhimOmit
     rapPhim?: RapPhimOmit
     giuCho?: GiuChoOmit
@@ -2110,12 +2205,14 @@ export namespace Prisma {
     DatVe: number
     GiuCho: number
     HoaDon: number
+    RefreshToken: number
   }
 
   export type NguoiDungCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DatVe?: boolean | NguoiDungCountOutputTypeCountDatVeArgs
     GiuCho?: boolean | NguoiDungCountOutputTypeCountGiuChoArgs
     HoaDon?: boolean | NguoiDungCountOutputTypeCountHoaDonArgs
+    RefreshToken?: boolean | NguoiDungCountOutputTypeCountRefreshTokenArgs
   }
 
   // Custom InputTypes
@@ -2148,6 +2245,13 @@ export namespace Prisma {
    */
   export type NguoiDungCountOutputTypeCountHoaDonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: HoaDonWhereInput
+  }
+
+  /**
+   * NguoiDungCountOutputType without action
+   */
+  export type NguoiDungCountOutputTypeCountRefreshTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RefreshTokenWhereInput
   }
 
 
@@ -8666,6 +8770,7 @@ export namespace Prisma {
     DatVe?: boolean | NguoiDung$DatVeArgs<ExtArgs>
     GiuCho?: boolean | NguoiDung$GiuChoArgs<ExtArgs>
     HoaDon?: boolean | NguoiDung$HoaDonArgs<ExtArgs>
+    RefreshToken?: boolean | NguoiDung$RefreshTokenArgs<ExtArgs>
     _count?: boolean | NguoiDungCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["nguoiDung"]>
 
@@ -8686,6 +8791,7 @@ export namespace Prisma {
     DatVe?: boolean | NguoiDung$DatVeArgs<ExtArgs>
     GiuCho?: boolean | NguoiDung$GiuChoArgs<ExtArgs>
     HoaDon?: boolean | NguoiDung$HoaDonArgs<ExtArgs>
+    RefreshToken?: boolean | NguoiDung$RefreshTokenArgs<ExtArgs>
     _count?: boolean | NguoiDungCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8695,6 +8801,7 @@ export namespace Prisma {
       DatVe: Prisma.$DatVePayload<ExtArgs>[]
       GiuCho: Prisma.$GiuChoPayload<ExtArgs>[]
       HoaDon: Prisma.$HoaDonPayload<ExtArgs>[]
+      RefreshToken: Prisma.$RefreshTokenPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       tai_khoan: number
@@ -9047,6 +9154,7 @@ export namespace Prisma {
     DatVe<T extends NguoiDung$DatVeArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$DatVeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DatVePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     GiuCho<T extends NguoiDung$GiuChoArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$GiuChoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiuChoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     HoaDon<T extends NguoiDung$HoaDonArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$HoaDonArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoaDonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    RefreshToken<T extends NguoiDung$RefreshTokenArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDung$RefreshTokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9503,6 +9611,30 @@ export namespace Prisma {
   }
 
   /**
+   * NguoiDung.RefreshToken
+   */
+  export type NguoiDung$RefreshTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    where?: RefreshTokenWhereInput
+    orderBy?: RefreshTokenOrderByWithRelationInput | RefreshTokenOrderByWithRelationInput[]
+    cursor?: RefreshTokenWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RefreshTokenScalarFieldEnum | RefreshTokenScalarFieldEnum[]
+  }
+
+  /**
    * NguoiDung without action
    */
   export type NguoiDungDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9518,6 +9650,978 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: NguoiDungInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RefreshToken
+   */
+
+  export type AggregateRefreshToken = {
+    _count: RefreshTokenCountAggregateOutputType | null
+    _avg: RefreshTokenAvgAggregateOutputType | null
+    _sum: RefreshTokenSumAggregateOutputType | null
+    _min: RefreshTokenMinAggregateOutputType | null
+    _max: RefreshTokenMaxAggregateOutputType | null
+  }
+
+  export type RefreshTokenAvgAggregateOutputType = {
+    id: number | null
+    tai_khoan: number | null
+  }
+
+  export type RefreshTokenSumAggregateOutputType = {
+    id: number | null
+    tai_khoan: number | null
+  }
+
+  export type RefreshTokenMinAggregateOutputType = {
+    id: number | null
+    token: string | null
+    tai_khoan: number | null
+    expiresAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type RefreshTokenMaxAggregateOutputType = {
+    id: number | null
+    token: string | null
+    tai_khoan: number | null
+    expiresAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type RefreshTokenCountAggregateOutputType = {
+    id: number
+    token: number
+    tai_khoan: number
+    expiresAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type RefreshTokenAvgAggregateInputType = {
+    id?: true
+    tai_khoan?: true
+  }
+
+  export type RefreshTokenSumAggregateInputType = {
+    id?: true
+    tai_khoan?: true
+  }
+
+  export type RefreshTokenMinAggregateInputType = {
+    id?: true
+    token?: true
+    tai_khoan?: true
+    expiresAt?: true
+    createdAt?: true
+  }
+
+  export type RefreshTokenMaxAggregateInputType = {
+    id?: true
+    token?: true
+    tai_khoan?: true
+    expiresAt?: true
+    createdAt?: true
+  }
+
+  export type RefreshTokenCountAggregateInputType = {
+    id?: true
+    token?: true
+    tai_khoan?: true
+    expiresAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type RefreshTokenAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RefreshToken to aggregate.
+     */
+    where?: RefreshTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RefreshTokens to fetch.
+     */
+    orderBy?: RefreshTokenOrderByWithRelationInput | RefreshTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RefreshTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RefreshTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RefreshTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RefreshTokens
+    **/
+    _count?: true | RefreshTokenCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RefreshTokenAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RefreshTokenSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RefreshTokenMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RefreshTokenMaxAggregateInputType
+  }
+
+  export type GetRefreshTokenAggregateType<T extends RefreshTokenAggregateArgs> = {
+        [P in keyof T & keyof AggregateRefreshToken]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRefreshToken[P]>
+      : GetScalarType<T[P], AggregateRefreshToken[P]>
+  }
+
+
+
+
+  export type RefreshTokenGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RefreshTokenWhereInput
+    orderBy?: RefreshTokenOrderByWithAggregationInput | RefreshTokenOrderByWithAggregationInput[]
+    by: RefreshTokenScalarFieldEnum[] | RefreshTokenScalarFieldEnum
+    having?: RefreshTokenScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RefreshTokenCountAggregateInputType | true
+    _avg?: RefreshTokenAvgAggregateInputType
+    _sum?: RefreshTokenSumAggregateInputType
+    _min?: RefreshTokenMinAggregateInputType
+    _max?: RefreshTokenMaxAggregateInputType
+  }
+
+  export type RefreshTokenGroupByOutputType = {
+    id: number
+    token: string
+    tai_khoan: number
+    expiresAt: Date
+    createdAt: Date
+    _count: RefreshTokenCountAggregateOutputType | null
+    _avg: RefreshTokenAvgAggregateOutputType | null
+    _sum: RefreshTokenSumAggregateOutputType | null
+    _min: RefreshTokenMinAggregateOutputType | null
+    _max: RefreshTokenMaxAggregateOutputType | null
+  }
+
+  type GetRefreshTokenGroupByPayload<T extends RefreshTokenGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RefreshTokenGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RefreshTokenGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RefreshTokenGroupByOutputType[P]>
+            : GetScalarType<T[P], RefreshTokenGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RefreshTokenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    tai_khoan?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["refreshToken"]>
+
+
+
+  export type RefreshTokenSelectScalar = {
+    id?: boolean
+    token?: boolean
+    tai_khoan?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type RefreshTokenOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "tai_khoan" | "expiresAt" | "createdAt", ExtArgs["result"]["refreshToken"]>
+  export type RefreshTokenInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    NguoiDung?: boolean | NguoiDungDefaultArgs<ExtArgs>
+  }
+
+  export type $RefreshTokenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RefreshToken"
+    objects: {
+      NguoiDung: Prisma.$NguoiDungPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      token: string
+      tai_khoan: number
+      expiresAt: Date
+      createdAt: Date
+    }, ExtArgs["result"]["refreshToken"]>
+    composites: {}
+  }
+
+  type RefreshTokenGetPayload<S extends boolean | null | undefined | RefreshTokenDefaultArgs> = $Result.GetResult<Prisma.$RefreshTokenPayload, S>
+
+  type RefreshTokenCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RefreshTokenFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RefreshTokenCountAggregateInputType | true
+    }
+
+  export interface RefreshTokenDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RefreshToken'], meta: { name: 'RefreshToken' } }
+    /**
+     * Find zero or one RefreshToken that matches the filter.
+     * @param {RefreshTokenFindUniqueArgs} args - Arguments to find a RefreshToken
+     * @example
+     * // Get one RefreshToken
+     * const refreshToken = await prisma.refreshToken.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RefreshTokenFindUniqueArgs>(args: SelectSubset<T, RefreshTokenFindUniqueArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RefreshToken that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RefreshTokenFindUniqueOrThrowArgs} args - Arguments to find a RefreshToken
+     * @example
+     * // Get one RefreshToken
+     * const refreshToken = await prisma.refreshToken.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RefreshTokenFindUniqueOrThrowArgs>(args: SelectSubset<T, RefreshTokenFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RefreshToken that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RefreshTokenFindFirstArgs} args - Arguments to find a RefreshToken
+     * @example
+     * // Get one RefreshToken
+     * const refreshToken = await prisma.refreshToken.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RefreshTokenFindFirstArgs>(args?: SelectSubset<T, RefreshTokenFindFirstArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RefreshToken that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RefreshTokenFindFirstOrThrowArgs} args - Arguments to find a RefreshToken
+     * @example
+     * // Get one RefreshToken
+     * const refreshToken = await prisma.refreshToken.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RefreshTokenFindFirstOrThrowArgs>(args?: SelectSubset<T, RefreshTokenFindFirstOrThrowArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RefreshTokens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RefreshTokenFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RefreshTokens
+     * const refreshTokens = await prisma.refreshToken.findMany()
+     * 
+     * // Get first 10 RefreshTokens
+     * const refreshTokens = await prisma.refreshToken.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const refreshTokenWithIdOnly = await prisma.refreshToken.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RefreshTokenFindManyArgs>(args?: SelectSubset<T, RefreshTokenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RefreshToken.
+     * @param {RefreshTokenCreateArgs} args - Arguments to create a RefreshToken.
+     * @example
+     * // Create one RefreshToken
+     * const RefreshToken = await prisma.refreshToken.create({
+     *   data: {
+     *     // ... data to create a RefreshToken
+     *   }
+     * })
+     * 
+     */
+    create<T extends RefreshTokenCreateArgs>(args: SelectSubset<T, RefreshTokenCreateArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RefreshTokens.
+     * @param {RefreshTokenCreateManyArgs} args - Arguments to create many RefreshTokens.
+     * @example
+     * // Create many RefreshTokens
+     * const refreshToken = await prisma.refreshToken.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RefreshTokenCreateManyArgs>(args?: SelectSubset<T, RefreshTokenCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a RefreshToken.
+     * @param {RefreshTokenDeleteArgs} args - Arguments to delete one RefreshToken.
+     * @example
+     * // Delete one RefreshToken
+     * const RefreshToken = await prisma.refreshToken.delete({
+     *   where: {
+     *     // ... filter to delete one RefreshToken
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RefreshTokenDeleteArgs>(args: SelectSubset<T, RefreshTokenDeleteArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RefreshToken.
+     * @param {RefreshTokenUpdateArgs} args - Arguments to update one RefreshToken.
+     * @example
+     * // Update one RefreshToken
+     * const refreshToken = await prisma.refreshToken.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RefreshTokenUpdateArgs>(args: SelectSubset<T, RefreshTokenUpdateArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RefreshTokens.
+     * @param {RefreshTokenDeleteManyArgs} args - Arguments to filter RefreshTokens to delete.
+     * @example
+     * // Delete a few RefreshTokens
+     * const { count } = await prisma.refreshToken.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RefreshTokenDeleteManyArgs>(args?: SelectSubset<T, RefreshTokenDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RefreshTokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RefreshTokenUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RefreshTokens
+     * const refreshToken = await prisma.refreshToken.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RefreshTokenUpdateManyArgs>(args: SelectSubset<T, RefreshTokenUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RefreshToken.
+     * @param {RefreshTokenUpsertArgs} args - Arguments to update or create a RefreshToken.
+     * @example
+     * // Update or create a RefreshToken
+     * const refreshToken = await prisma.refreshToken.upsert({
+     *   create: {
+     *     // ... data to create a RefreshToken
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RefreshToken we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RefreshTokenUpsertArgs>(args: SelectSubset<T, RefreshTokenUpsertArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RefreshTokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RefreshTokenCountArgs} args - Arguments to filter RefreshTokens to count.
+     * @example
+     * // Count the number of RefreshTokens
+     * const count = await prisma.refreshToken.count({
+     *   where: {
+     *     // ... the filter for the RefreshTokens we want to count
+     *   }
+     * })
+    **/
+    count<T extends RefreshTokenCountArgs>(
+      args?: Subset<T, RefreshTokenCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RefreshTokenCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RefreshToken.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RefreshTokenAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RefreshTokenAggregateArgs>(args: Subset<T, RefreshTokenAggregateArgs>): Prisma.PrismaPromise<GetRefreshTokenAggregateType<T>>
+
+    /**
+     * Group by RefreshToken.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RefreshTokenGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RefreshTokenGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RefreshTokenGroupByArgs['orderBy'] }
+        : { orderBy?: RefreshTokenGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RefreshTokenGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRefreshTokenGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RefreshToken model
+   */
+  readonly fields: RefreshTokenFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RefreshToken.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RefreshTokenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    NguoiDung<T extends NguoiDungDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NguoiDungDefaultArgs<ExtArgs>>): Prisma__NguoiDungClient<$Result.GetResult<Prisma.$NguoiDungPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RefreshToken model
+   */
+  interface RefreshTokenFieldRefs {
+    readonly id: FieldRef<"RefreshToken", 'Int'>
+    readonly token: FieldRef<"RefreshToken", 'String'>
+    readonly tai_khoan: FieldRef<"RefreshToken", 'Int'>
+    readonly expiresAt: FieldRef<"RefreshToken", 'DateTime'>
+    readonly createdAt: FieldRef<"RefreshToken", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RefreshToken findUnique
+   */
+  export type RefreshTokenFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which RefreshToken to fetch.
+     */
+    where: RefreshTokenWhereUniqueInput
+  }
+
+  /**
+   * RefreshToken findUniqueOrThrow
+   */
+  export type RefreshTokenFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which RefreshToken to fetch.
+     */
+    where: RefreshTokenWhereUniqueInput
+  }
+
+  /**
+   * RefreshToken findFirst
+   */
+  export type RefreshTokenFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which RefreshToken to fetch.
+     */
+    where?: RefreshTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RefreshTokens to fetch.
+     */
+    orderBy?: RefreshTokenOrderByWithRelationInput | RefreshTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RefreshTokens.
+     */
+    cursor?: RefreshTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RefreshTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RefreshTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RefreshTokens.
+     */
+    distinct?: RefreshTokenScalarFieldEnum | RefreshTokenScalarFieldEnum[]
+  }
+
+  /**
+   * RefreshToken findFirstOrThrow
+   */
+  export type RefreshTokenFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which RefreshToken to fetch.
+     */
+    where?: RefreshTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RefreshTokens to fetch.
+     */
+    orderBy?: RefreshTokenOrderByWithRelationInput | RefreshTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RefreshTokens.
+     */
+    cursor?: RefreshTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RefreshTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RefreshTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RefreshTokens.
+     */
+    distinct?: RefreshTokenScalarFieldEnum | RefreshTokenScalarFieldEnum[]
+  }
+
+  /**
+   * RefreshToken findMany
+   */
+  export type RefreshTokenFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which RefreshTokens to fetch.
+     */
+    where?: RefreshTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RefreshTokens to fetch.
+     */
+    orderBy?: RefreshTokenOrderByWithRelationInput | RefreshTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RefreshTokens.
+     */
+    cursor?: RefreshTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RefreshTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RefreshTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RefreshTokens.
+     */
+    distinct?: RefreshTokenScalarFieldEnum | RefreshTokenScalarFieldEnum[]
+  }
+
+  /**
+   * RefreshToken create
+   */
+  export type RefreshTokenCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RefreshToken.
+     */
+    data: XOR<RefreshTokenCreateInput, RefreshTokenUncheckedCreateInput>
+  }
+
+  /**
+   * RefreshToken createMany
+   */
+  export type RefreshTokenCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RefreshTokens.
+     */
+    data: RefreshTokenCreateManyInput | RefreshTokenCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RefreshToken update
+   */
+  export type RefreshTokenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RefreshToken.
+     */
+    data: XOR<RefreshTokenUpdateInput, RefreshTokenUncheckedUpdateInput>
+    /**
+     * Choose, which RefreshToken to update.
+     */
+    where: RefreshTokenWhereUniqueInput
+  }
+
+  /**
+   * RefreshToken updateMany
+   */
+  export type RefreshTokenUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RefreshTokens.
+     */
+    data: XOR<RefreshTokenUpdateManyMutationInput, RefreshTokenUncheckedUpdateManyInput>
+    /**
+     * Filter which RefreshTokens to update
+     */
+    where?: RefreshTokenWhereInput
+    /**
+     * Limit how many RefreshTokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RefreshToken upsert
+   */
+  export type RefreshTokenUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RefreshToken to update in case it exists.
+     */
+    where: RefreshTokenWhereUniqueInput
+    /**
+     * In case the RefreshToken found by the `where` argument doesn't exist, create a new RefreshToken with this data.
+     */
+    create: XOR<RefreshTokenCreateInput, RefreshTokenUncheckedCreateInput>
+    /**
+     * In case the RefreshToken was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RefreshTokenUpdateInput, RefreshTokenUncheckedUpdateInput>
+  }
+
+  /**
+   * RefreshToken delete
+   */
+  export type RefreshTokenDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
+    /**
+     * Filter which RefreshToken to delete.
+     */
+    where: RefreshTokenWhereUniqueInput
+  }
+
+  /**
+   * RefreshToken deleteMany
+   */
+  export type RefreshTokenDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RefreshTokens to delete
+     */
+    where?: RefreshTokenWhereInput
+    /**
+     * Limit how many RefreshTokens to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RefreshToken without action
+   */
+  export type RefreshTokenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: RefreshTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: RefreshTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RefreshTokenInclude<ExtArgs> | null
   }
 
 
@@ -11658,6 +12762,7 @@ export namespace Prisma {
     ma_lich_chieu: number | null
     ma_ghe: number | null
     ma_hoa_don: number | null
+    gia_ve: number | null
   }
 
   export type GiuChoSumAggregateOutputType = {
@@ -11666,6 +12771,7 @@ export namespace Prisma {
     ma_lich_chieu: number | null
     ma_ghe: number | null
     ma_hoa_don: number | null
+    gia_ve: number | null
   }
 
   export type GiuChoMinAggregateOutputType = {
@@ -11673,7 +12779,9 @@ export namespace Prisma {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    loai: $Enums.LoaiGiuCho | null
     ma_hoa_don: number | null
+    gia_ve: number | null
     expire_at: Date | null
     created_at: Date | null
   }
@@ -11683,7 +12791,9 @@ export namespace Prisma {
     tai_khoan: number | null
     ma_lich_chieu: number | null
     ma_ghe: number | null
+    loai: $Enums.LoaiGiuCho | null
     ma_hoa_don: number | null
+    gia_ve: number | null
     expire_at: Date | null
     created_at: Date | null
   }
@@ -11693,7 +12803,9 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    loai: number
     ma_hoa_don: number
+    gia_ve: number
     expire_at: number
     created_at: number
     _all: number
@@ -11706,6 +12818,7 @@ export namespace Prisma {
     ma_lich_chieu?: true
     ma_ghe?: true
     ma_hoa_don?: true
+    gia_ve?: true
   }
 
   export type GiuChoSumAggregateInputType = {
@@ -11714,6 +12827,7 @@ export namespace Prisma {
     ma_lich_chieu?: true
     ma_ghe?: true
     ma_hoa_don?: true
+    gia_ve?: true
   }
 
   export type GiuChoMinAggregateInputType = {
@@ -11721,7 +12835,9 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    loai?: true
     ma_hoa_don?: true
+    gia_ve?: true
     expire_at?: true
     created_at?: true
   }
@@ -11731,7 +12847,9 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    loai?: true
     ma_hoa_don?: true
+    gia_ve?: true
     expire_at?: true
     created_at?: true
   }
@@ -11741,7 +12859,9 @@ export namespace Prisma {
     tai_khoan?: true
     ma_lich_chieu?: true
     ma_ghe?: true
+    loai?: true
     ma_hoa_don?: true
+    gia_ve?: true
     expire_at?: true
     created_at?: true
     _all?: true
@@ -11838,7 +12958,9 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    loai: $Enums.LoaiGiuCho
     ma_hoa_don: number | null
+    gia_ve: number | null
     expire_at: Date
     created_at: Date | null
     _count: GiuChoCountAggregateOutputType | null
@@ -11867,7 +12989,9 @@ export namespace Prisma {
     tai_khoan?: boolean
     ma_lich_chieu?: boolean
     ma_ghe?: boolean
+    loai?: boolean
     ma_hoa_don?: boolean
+    gia_ve?: boolean
     expire_at?: boolean
     created_at?: boolean
     Ghe?: boolean | GheDefaultArgs<ExtArgs>
@@ -11883,12 +13007,14 @@ export namespace Prisma {
     tai_khoan?: boolean
     ma_lich_chieu?: boolean
     ma_ghe?: boolean
+    loai?: boolean
     ma_hoa_don?: boolean
+    gia_ve?: boolean
     expire_at?: boolean
     created_at?: boolean
   }
 
-  export type GiuChoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_giu_cho" | "tai_khoan" | "ma_lich_chieu" | "ma_ghe" | "ma_hoa_don" | "expire_at" | "created_at", ExtArgs["result"]["giuCho"]>
+  export type GiuChoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ma_giu_cho" | "tai_khoan" | "ma_lich_chieu" | "ma_ghe" | "loai" | "ma_hoa_don" | "gia_ve" | "expire_at" | "created_at", ExtArgs["result"]["giuCho"]>
   export type GiuChoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Ghe?: boolean | GheDefaultArgs<ExtArgs>
     LichChieu?: boolean | LichChieuDefaultArgs<ExtArgs>
@@ -11909,7 +13035,9 @@ export namespace Prisma {
       tai_khoan: number
       ma_lich_chieu: number
       ma_ghe: number
+      loai: $Enums.LoaiGiuCho
       ma_hoa_don: number | null
+      gia_ve: number | null
       expire_at: Date
       created_at: Date | null
     }, ExtArgs["result"]["giuCho"]>
@@ -12289,7 +13417,9 @@ export namespace Prisma {
     readonly tai_khoan: FieldRef<"GiuCho", 'Int'>
     readonly ma_lich_chieu: FieldRef<"GiuCho", 'Int'>
     readonly ma_ghe: FieldRef<"GiuCho", 'Int'>
+    readonly loai: FieldRef<"GiuCho", 'LoaiGiuCho'>
     readonly ma_hoa_don: FieldRef<"GiuCho", 'Int'>
+    readonly gia_ve: FieldRef<"GiuCho", 'Int'>
     readonly expire_at: FieldRef<"GiuCho", 'DateTime'>
     readonly created_at: FieldRef<"GiuCho", 'DateTime'>
   }
@@ -16883,6 +18013,17 @@ export namespace Prisma {
   export type NguoiDungScalarFieldEnum = (typeof NguoiDungScalarFieldEnum)[keyof typeof NguoiDungScalarFieldEnum]
 
 
+  export const RefreshTokenScalarFieldEnum: {
+    id: 'id',
+    token: 'token',
+    tai_khoan: 'tai_khoan',
+    expiresAt: 'expiresAt',
+    createdAt: 'createdAt'
+  };
+
+  export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
+
+
   export const PhimScalarFieldEnum: {
     ma_phim: 'ma_phim',
     ten_phim: 'ten_phim',
@@ -16914,7 +18055,9 @@ export namespace Prisma {
     tai_khoan: 'tai_khoan',
     ma_lich_chieu: 'ma_lich_chieu',
     ma_ghe: 'ma_ghe',
+    loai: 'loai',
     ma_hoa_don: 'ma_hoa_don',
+    gia_ve: 'gia_ve',
     expire_at: 'expire_at',
     created_at: 'created_at'
   };
@@ -17037,6 +18180,13 @@ export namespace Prisma {
   export type NguoiDungOrderByRelevanceFieldEnum = (typeof NguoiDungOrderByRelevanceFieldEnum)[keyof typeof NguoiDungOrderByRelevanceFieldEnum]
 
 
+  export const RefreshTokenOrderByRelevanceFieldEnum: {
+    token: 'token'
+  };
+
+  export type RefreshTokenOrderByRelevanceFieldEnum = (typeof RefreshTokenOrderByRelevanceFieldEnum)[keyof typeof RefreshTokenOrderByRelevanceFieldEnum]
+
+
   export const PhimOrderByRelevanceFieldEnum: {
     ten_phim: 'ten_phim',
     trailer: 'trailer',
@@ -17113,6 +18263,13 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'LoaiGiuCho'
+   */
+  export type EnumLoaiGiuChoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LoaiGiuCho'>
     
 
 
@@ -17505,6 +18662,7 @@ export namespace Prisma {
     DatVe?: DatVeListRelationFilter
     GiuCho?: GiuChoListRelationFilter
     HoaDon?: HoaDonListRelationFilter
+    RefreshToken?: RefreshTokenListRelationFilter
   }
 
   export type NguoiDungOrderByWithRelationInput = {
@@ -17518,6 +18676,7 @@ export namespace Prisma {
     DatVe?: DatVeOrderByRelationAggregateInput
     GiuCho?: GiuChoOrderByRelationAggregateInput
     HoaDon?: HoaDonOrderByRelationAggregateInput
+    RefreshToken?: RefreshTokenOrderByRelationAggregateInput
     _relevance?: NguoiDungOrderByRelevanceInput
   }
 
@@ -17535,6 +18694,7 @@ export namespace Prisma {
     DatVe?: DatVeListRelationFilter
     GiuCho?: GiuChoListRelationFilter
     HoaDon?: HoaDonListRelationFilter
+    RefreshToken?: RefreshTokenListRelationFilter
   }, "tai_khoan" | "email">
 
   export type NguoiDungOrderByWithAggregationInput = {
@@ -17563,6 +18723,64 @@ export namespace Prisma {
     mat_khau?: StringNullableWithAggregatesFilter<"NguoiDung"> | string | null
     loai_nguoi_dung?: StringNullableWithAggregatesFilter<"NguoiDung"> | string | null
     isDeleted?: BoolNullableWithAggregatesFilter<"NguoiDung"> | boolean | null
+  }
+
+  export type RefreshTokenWhereInput = {
+    AND?: RefreshTokenWhereInput | RefreshTokenWhereInput[]
+    OR?: RefreshTokenWhereInput[]
+    NOT?: RefreshTokenWhereInput | RefreshTokenWhereInput[]
+    id?: IntFilter<"RefreshToken"> | number
+    token?: StringFilter<"RefreshToken"> | string
+    tai_khoan?: IntFilter<"RefreshToken"> | number
+    expiresAt?: DateTimeFilter<"RefreshToken"> | Date | string
+    createdAt?: DateTimeFilter<"RefreshToken"> | Date | string
+    NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
+  }
+
+  export type RefreshTokenOrderByWithRelationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    tai_khoan?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    NguoiDung?: NguoiDungOrderByWithRelationInput
+    _relevance?: RefreshTokenOrderByRelevanceInput
+  }
+
+  export type RefreshTokenWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    token?: string
+    AND?: RefreshTokenWhereInput | RefreshTokenWhereInput[]
+    OR?: RefreshTokenWhereInput[]
+    NOT?: RefreshTokenWhereInput | RefreshTokenWhereInput[]
+    tai_khoan?: IntFilter<"RefreshToken"> | number
+    expiresAt?: DateTimeFilter<"RefreshToken"> | Date | string
+    createdAt?: DateTimeFilter<"RefreshToken"> | Date | string
+    NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
+  }, "id" | "token">
+
+  export type RefreshTokenOrderByWithAggregationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    tai_khoan?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    _count?: RefreshTokenCountOrderByAggregateInput
+    _avg?: RefreshTokenAvgOrderByAggregateInput
+    _max?: RefreshTokenMaxOrderByAggregateInput
+    _min?: RefreshTokenMinOrderByAggregateInput
+    _sum?: RefreshTokenSumOrderByAggregateInput
+  }
+
+  export type RefreshTokenScalarWhereWithAggregatesInput = {
+    AND?: RefreshTokenScalarWhereWithAggregatesInput | RefreshTokenScalarWhereWithAggregatesInput[]
+    OR?: RefreshTokenScalarWhereWithAggregatesInput[]
+    NOT?: RefreshTokenScalarWhereWithAggregatesInput | RefreshTokenScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"RefreshToken"> | number
+    token?: StringWithAggregatesFilter<"RefreshToken"> | string
+    tai_khoan?: IntWithAggregatesFilter<"RefreshToken"> | number
+    expiresAt?: DateTimeWithAggregatesFilter<"RefreshToken"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"RefreshToken"> | Date | string
   }
 
   export type PhimWhereInput = {
@@ -17718,7 +18936,9 @@ export namespace Prisma {
     tai_khoan?: IntFilter<"GiuCho"> | number
     ma_lich_chieu?: IntFilter<"GiuCho"> | number
     ma_ghe?: IntFilter<"GiuCho"> | number
+    loai?: EnumLoaiGiuChoFilter<"GiuCho"> | $Enums.LoaiGiuCho
     ma_hoa_don?: IntNullableFilter<"GiuCho"> | number | null
+    gia_ve?: IntNullableFilter<"GiuCho"> | number | null
     expire_at?: DateTimeFilter<"GiuCho"> | Date | string
     created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
     Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
@@ -17732,7 +18952,9 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    loai?: SortOrder
     ma_hoa_don?: SortOrderInput | SortOrder
+    gia_ve?: SortOrderInput | SortOrder
     expire_at?: SortOrder
     created_at?: SortOrderInput | SortOrder
     Ghe?: GheOrderByWithRelationInput
@@ -17743,27 +18965,32 @@ export namespace Prisma {
 
   export type GiuChoWhereUniqueInput = Prisma.AtLeast<{
     ma_giu_cho?: number
+    ma_lich_chieu_ma_ghe?: GiuChoMa_lich_chieuMa_gheCompoundUniqueInput
     AND?: GiuChoWhereInput | GiuChoWhereInput[]
     OR?: GiuChoWhereInput[]
     NOT?: GiuChoWhereInput | GiuChoWhereInput[]
     tai_khoan?: IntFilter<"GiuCho"> | number
     ma_lich_chieu?: IntFilter<"GiuCho"> | number
     ma_ghe?: IntFilter<"GiuCho"> | number
+    loai?: EnumLoaiGiuChoFilter<"GiuCho"> | $Enums.LoaiGiuCho
     ma_hoa_don?: IntNullableFilter<"GiuCho"> | number | null
+    gia_ve?: IntNullableFilter<"GiuCho"> | number | null
     expire_at?: DateTimeFilter<"GiuCho"> | Date | string
     created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
     Ghe?: XOR<GheScalarRelationFilter, GheWhereInput>
     LichChieu?: XOR<LichChieuScalarRelationFilter, LichChieuWhereInput>
     NguoiDung?: XOR<NguoiDungScalarRelationFilter, NguoiDungWhereInput>
     HoaDon?: XOR<HoaDonNullableScalarRelationFilter, HoaDonWhereInput> | null
-  }, "ma_giu_cho">
+  }, "ma_giu_cho" | "ma_lich_chieu_ma_ghe">
 
   export type GiuChoOrderByWithAggregationInput = {
     ma_giu_cho?: SortOrder
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    loai?: SortOrder
     ma_hoa_don?: SortOrderInput | SortOrder
+    gia_ve?: SortOrderInput | SortOrder
     expire_at?: SortOrder
     created_at?: SortOrderInput | SortOrder
     _count?: GiuChoCountOrderByAggregateInput
@@ -17781,7 +19008,9 @@ export namespace Prisma {
     tai_khoan?: IntWithAggregatesFilter<"GiuCho"> | number
     ma_lich_chieu?: IntWithAggregatesFilter<"GiuCho"> | number
     ma_ghe?: IntWithAggregatesFilter<"GiuCho"> | number
+    loai?: EnumLoaiGiuChoWithAggregatesFilter<"GiuCho"> | $Enums.LoaiGiuCho
     ma_hoa_don?: IntNullableWithAggregatesFilter<"GiuCho"> | number | null
+    gia_ve?: IntNullableWithAggregatesFilter<"GiuCho"> | number | null
     expire_at?: DateTimeWithAggregatesFilter<"GiuCho"> | Date | string
     created_at?: DateTimeNullableWithAggregatesFilter<"GiuCho"> | Date | string | null
   }
@@ -18412,6 +19641,7 @@ export namespace Prisma {
     DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
     GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
     HoaDon?: HoaDonCreateNestedManyWithoutNguoiDungInput
+    RefreshToken?: RefreshTokenCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateInput = {
@@ -18425,6 +19655,7 @@ export namespace Prisma {
     DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
     HoaDon?: HoaDonUncheckedCreateNestedManyWithoutNguoiDungInput
+    RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUpdateInput = {
@@ -18437,6 +19668,7 @@ export namespace Prisma {
     DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
     GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
     HoaDon?: HoaDonUpdateManyWithoutNguoiDungNestedInput
+    RefreshToken?: RefreshTokenUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateInput = {
@@ -18450,6 +19682,7 @@ export namespace Prisma {
     DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
     GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
     HoaDon?: HoaDonUncheckedUpdateManyWithoutNguoiDungNestedInput
+    RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungCreateManyInput = {
@@ -18479,6 +19712,58 @@ export namespace Prisma {
     mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
     loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type RefreshTokenCreateInput = {
+    token: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+    NguoiDung: NguoiDungCreateNestedOneWithoutRefreshTokenInput
+  }
+
+  export type RefreshTokenUncheckedCreateInput = {
+    id?: number
+    token: string
+    tai_khoan: number
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type RefreshTokenUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    NguoiDung?: NguoiDungUpdateOneRequiredWithoutRefreshTokenNestedInput
+  }
+
+  export type RefreshTokenUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RefreshTokenCreateManyInput = {
+    id?: number
+    token: string
+    tai_khoan: number
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type RefreshTokenUpdateManyMutationInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RefreshTokenUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PhimCreateInput = {
@@ -18631,6 +19916,8 @@ export namespace Prisma {
   }
 
   export type GiuChoCreateInput = {
+    loai?: $Enums.LoaiGiuCho
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
     Ghe: GheCreateNestedOneWithoutGiuChoInput
@@ -18644,12 +19931,16 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    loai?: $Enums.LoaiGiuCho
     ma_hoa_don?: number | null
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
 
   export type GiuChoUpdateInput = {
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
@@ -18663,7 +19954,9 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
     ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -18673,12 +19966,16 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    loai?: $Enums.LoaiGiuCho
     ma_hoa_don?: number | null
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
 
   export type GiuChoUpdateManyMutationInput = {
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -18688,7 +19985,9 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
     ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -19446,6 +20745,16 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
+  export type RefreshTokenListRelationFilter = {
+    every?: RefreshTokenWhereInput
+    some?: RefreshTokenWhereInput
+    none?: RefreshTokenWhereInput
+  }
+
+  export type RefreshTokenOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type NguoiDungOrderByRelevanceInput = {
     fields: NguoiDungOrderByRelevanceFieldEnum | NguoiDungOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -19496,6 +20805,104 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type RefreshTokenOrderByRelevanceInput = {
+    fields: RefreshTokenOrderByRelevanceFieldEnum | RefreshTokenOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type RefreshTokenCountOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    tai_khoan?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RefreshTokenAvgOrderByAggregateInput = {
+    id?: SortOrder
+    tai_khoan?: SortOrder
+  }
+
+  export type RefreshTokenMaxOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    tai_khoan?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RefreshTokenMinOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    tai_khoan?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RefreshTokenSumOrderByAggregateInput = {
+    id?: SortOrder
+    tai_khoan?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type BannerListRelationFilter = {
@@ -19625,15 +21032,16 @@ export namespace Prisma {
     ma_cum_rap?: SortOrder
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type EnumLoaiGiuChoFilter<$PrismaModel = never> = {
+    equals?: $Enums.LoaiGiuCho | EnumLoaiGiuChoFieldRefInput<$PrismaModel>
+    in?: $Enums.LoaiGiuCho[]
+    notIn?: $Enums.LoaiGiuCho[]
+    not?: NestedEnumLoaiGiuChoFilter<$PrismaModel> | $Enums.LoaiGiuCho
+  }
+
+  export type GiuChoMa_lich_chieuMa_gheCompoundUniqueInput = {
+    ma_lich_chieu: number
+    ma_ghe: number
   }
 
   export type GiuChoCountOrderByAggregateInput = {
@@ -19641,7 +21049,9 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    loai?: SortOrder
     ma_hoa_don?: SortOrder
+    gia_ve?: SortOrder
     expire_at?: SortOrder
     created_at?: SortOrder
   }
@@ -19652,6 +21062,7 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     ma_hoa_don?: SortOrder
+    gia_ve?: SortOrder
   }
 
   export type GiuChoMaxOrderByAggregateInput = {
@@ -19659,7 +21070,9 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    loai?: SortOrder
     ma_hoa_don?: SortOrder
+    gia_ve?: SortOrder
     expire_at?: SortOrder
     created_at?: SortOrder
   }
@@ -19669,7 +21082,9 @@ export namespace Prisma {
     tai_khoan?: SortOrder
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
+    loai?: SortOrder
     ma_hoa_don?: SortOrder
+    gia_ve?: SortOrder
     expire_at?: SortOrder
     created_at?: SortOrder
   }
@@ -19680,20 +21095,17 @@ export namespace Prisma {
     ma_lich_chieu?: SortOrder
     ma_ghe?: SortOrder
     ma_hoa_don?: SortOrder
+    gia_ve?: SortOrder
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+  export type EnumLoaiGiuChoWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LoaiGiuCho | EnumLoaiGiuChoFieldRefInput<$PrismaModel>
+    in?: $Enums.LoaiGiuCho[]
+    notIn?: $Enums.LoaiGiuCho[]
+    not?: NestedEnumLoaiGiuChoWithAggregatesFilter<$PrismaModel> | $Enums.LoaiGiuCho
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+    _min?: NestedEnumLoaiGiuChoFilter<$PrismaModel>
+    _max?: NestedEnumLoaiGiuChoFilter<$PrismaModel>
   }
 
   export type EnumTrangThaiThanhToanFilter<$PrismaModel = never> = {
@@ -19790,21 +21202,6 @@ export namespace Prisma {
     _max?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type ComboOrderByRelevanceInput = {
     fields: ComboOrderByRelevanceFieldEnum | ComboOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -19846,24 +21243,6 @@ export namespace Prisma {
   export type ComboSumOrderByAggregateInput = {
     ma_combo?: SortOrder
     gia?: SortOrder
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type HoaDonScalarRelationFilter = {
@@ -20450,6 +21829,13 @@ export namespace Prisma {
     connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
   }
 
+  export type RefreshTokenCreateNestedManyWithoutNguoiDungInput = {
+    create?: XOR<RefreshTokenCreateWithoutNguoiDungInput, RefreshTokenUncheckedCreateWithoutNguoiDungInput> | RefreshTokenCreateWithoutNguoiDungInput[] | RefreshTokenUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: RefreshTokenCreateOrConnectWithoutNguoiDungInput | RefreshTokenCreateOrConnectWithoutNguoiDungInput[]
+    createMany?: RefreshTokenCreateManyNguoiDungInputEnvelope
+    connect?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+  }
+
   export type DatVeUncheckedCreateNestedManyWithoutNguoiDungInput = {
     create?: XOR<DatVeCreateWithoutNguoiDungInput, DatVeUncheckedCreateWithoutNguoiDungInput> | DatVeCreateWithoutNguoiDungInput[] | DatVeUncheckedCreateWithoutNguoiDungInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutNguoiDungInput | DatVeCreateOrConnectWithoutNguoiDungInput[]
@@ -20469,6 +21855,13 @@ export namespace Prisma {
     connectOrCreate?: HoaDonCreateOrConnectWithoutNguoiDungInput | HoaDonCreateOrConnectWithoutNguoiDungInput[]
     createMany?: HoaDonCreateManyNguoiDungInputEnvelope
     connect?: HoaDonWhereUniqueInput | HoaDonWhereUniqueInput[]
+  }
+
+  export type RefreshTokenUncheckedCreateNestedManyWithoutNguoiDungInput = {
+    create?: XOR<RefreshTokenCreateWithoutNguoiDungInput, RefreshTokenUncheckedCreateWithoutNguoiDungInput> | RefreshTokenCreateWithoutNguoiDungInput[] | RefreshTokenUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: RefreshTokenCreateOrConnectWithoutNguoiDungInput | RefreshTokenCreateOrConnectWithoutNguoiDungInput[]
+    createMany?: RefreshTokenCreateManyNguoiDungInputEnvelope
+    connect?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
   }
 
   export type NullableBoolFieldUpdateOperationsInput = {
@@ -20517,6 +21910,20 @@ export namespace Prisma {
     deleteMany?: HoaDonScalarWhereInput | HoaDonScalarWhereInput[]
   }
 
+  export type RefreshTokenUpdateManyWithoutNguoiDungNestedInput = {
+    create?: XOR<RefreshTokenCreateWithoutNguoiDungInput, RefreshTokenUncheckedCreateWithoutNguoiDungInput> | RefreshTokenCreateWithoutNguoiDungInput[] | RefreshTokenUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: RefreshTokenCreateOrConnectWithoutNguoiDungInput | RefreshTokenCreateOrConnectWithoutNguoiDungInput[]
+    upsert?: RefreshTokenUpsertWithWhereUniqueWithoutNguoiDungInput | RefreshTokenUpsertWithWhereUniqueWithoutNguoiDungInput[]
+    createMany?: RefreshTokenCreateManyNguoiDungInputEnvelope
+    set?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+    disconnect?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+    delete?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+    connect?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+    update?: RefreshTokenUpdateWithWhereUniqueWithoutNguoiDungInput | RefreshTokenUpdateWithWhereUniqueWithoutNguoiDungInput[]
+    updateMany?: RefreshTokenUpdateManyWithWhereWithoutNguoiDungInput | RefreshTokenUpdateManyWithWhereWithoutNguoiDungInput[]
+    deleteMany?: RefreshTokenScalarWhereInput | RefreshTokenScalarWhereInput[]
+  }
+
   export type DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput = {
     create?: XOR<DatVeCreateWithoutNguoiDungInput, DatVeUncheckedCreateWithoutNguoiDungInput> | DatVeCreateWithoutNguoiDungInput[] | DatVeUncheckedCreateWithoutNguoiDungInput[]
     connectOrCreate?: DatVeCreateOrConnectWithoutNguoiDungInput | DatVeCreateOrConnectWithoutNguoiDungInput[]
@@ -20557,6 +21964,42 @@ export namespace Prisma {
     update?: HoaDonUpdateWithWhereUniqueWithoutNguoiDungInput | HoaDonUpdateWithWhereUniqueWithoutNguoiDungInput[]
     updateMany?: HoaDonUpdateManyWithWhereWithoutNguoiDungInput | HoaDonUpdateManyWithWhereWithoutNguoiDungInput[]
     deleteMany?: HoaDonScalarWhereInput | HoaDonScalarWhereInput[]
+  }
+
+  export type RefreshTokenUncheckedUpdateManyWithoutNguoiDungNestedInput = {
+    create?: XOR<RefreshTokenCreateWithoutNguoiDungInput, RefreshTokenUncheckedCreateWithoutNguoiDungInput> | RefreshTokenCreateWithoutNguoiDungInput[] | RefreshTokenUncheckedCreateWithoutNguoiDungInput[]
+    connectOrCreate?: RefreshTokenCreateOrConnectWithoutNguoiDungInput | RefreshTokenCreateOrConnectWithoutNguoiDungInput[]
+    upsert?: RefreshTokenUpsertWithWhereUniqueWithoutNguoiDungInput | RefreshTokenUpsertWithWhereUniqueWithoutNguoiDungInput[]
+    createMany?: RefreshTokenCreateManyNguoiDungInputEnvelope
+    set?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+    disconnect?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+    delete?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+    connect?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+    update?: RefreshTokenUpdateWithWhereUniqueWithoutNguoiDungInput | RefreshTokenUpdateWithWhereUniqueWithoutNguoiDungInput[]
+    updateMany?: RefreshTokenUpdateManyWithWhereWithoutNguoiDungInput | RefreshTokenUpdateManyWithWhereWithoutNguoiDungInput[]
+    deleteMany?: RefreshTokenScalarWhereInput | RefreshTokenScalarWhereInput[]
+  }
+
+  export type NguoiDungCreateNestedOneWithoutRefreshTokenInput = {
+    create?: XOR<NguoiDungCreateWithoutRefreshTokenInput, NguoiDungUncheckedCreateWithoutRefreshTokenInput>
+    connectOrCreate?: NguoiDungCreateOrConnectWithoutRefreshTokenInput
+    connect?: NguoiDungWhereUniqueInput
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type NguoiDungUpdateOneRequiredWithoutRefreshTokenNestedInput = {
+    create?: XOR<NguoiDungCreateWithoutRefreshTokenInput, NguoiDungUncheckedCreateWithoutRefreshTokenInput>
+    connectOrCreate?: NguoiDungCreateOrConnectWithoutRefreshTokenInput
+    upsert?: NguoiDungUpsertWithoutRefreshTokenInput
+    connect?: NguoiDungWhereUniqueInput
+    update?: XOR<XOR<NguoiDungUpdateToOneWithWhereWithoutRefreshTokenInput, NguoiDungUpdateWithoutRefreshTokenInput>, NguoiDungUncheckedUpdateWithoutRefreshTokenInput>
   }
 
   export type BannerCreateNestedManyWithoutPhimInput = {
@@ -20767,8 +22210,8 @@ export namespace Prisma {
     connect?: HoaDonWhereUniqueInput
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type EnumLoaiGiuChoFieldUpdateOperationsInput = {
+    set?: $Enums.LoaiGiuCho
   }
 
   export type GheUpdateOneRequiredWithoutGiuChoNestedInput = {
@@ -20977,10 +22420,6 @@ export namespace Prisma {
     connect?: HoaDonComboWhereUniqueInput | HoaDonComboWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
   export type HoaDonComboUpdateManyWithoutComboNestedInput = {
     create?: XOR<HoaDonComboCreateWithoutComboInput, HoaDonComboUncheckedCreateWithoutComboInput> | HoaDonComboCreateWithoutComboInput[] | HoaDonComboUncheckedCreateWithoutComboInput[]
     connectOrCreate?: HoaDonComboCreateOrConnectWithoutComboInput | HoaDonComboCreateOrConnectWithoutComboInput[]
@@ -21184,48 +22623,6 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedEnumTrangThaiThanhToanFilter<$PrismaModel = never> = {
-    equals?: $Enums.TrangThaiThanhToan | EnumTrangThaiThanhToanFieldRefInput<$PrismaModel>
-    in?: $Enums.TrangThaiThanhToan[]
-    notIn?: $Enums.TrangThaiThanhToan[]
-    not?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel> | $Enums.TrangThaiThanhToan
-  }
-
-  export type NestedEnumTrangThaiThanhToanWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TrangThaiThanhToan | EnumTrangThaiThanhToanFieldRefInput<$PrismaModel>
-    in?: $Enums.TrangThaiThanhToan[]
-    notIn?: $Enums.TrangThaiThanhToan[]
-    not?: NestedEnumTrangThaiThanhToanWithAggregatesFilter<$PrismaModel> | $Enums.TrangThaiThanhToan
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
-    _max?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -21239,6 +22636,17 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -21257,6 +22665,54 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumLoaiGiuChoFilter<$PrismaModel = never> = {
+    equals?: $Enums.LoaiGiuCho | EnumLoaiGiuChoFieldRefInput<$PrismaModel>
+    in?: $Enums.LoaiGiuCho[]
+    notIn?: $Enums.LoaiGiuCho[]
+    not?: NestedEnumLoaiGiuChoFilter<$PrismaModel> | $Enums.LoaiGiuCho
+  }
+
+  export type NestedEnumLoaiGiuChoWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LoaiGiuCho | EnumLoaiGiuChoFieldRefInput<$PrismaModel>
+    in?: $Enums.LoaiGiuCho[]
+    notIn?: $Enums.LoaiGiuCho[]
+    not?: NestedEnumLoaiGiuChoWithAggregatesFilter<$PrismaModel> | $Enums.LoaiGiuCho
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLoaiGiuChoFilter<$PrismaModel>
+    _max?: NestedEnumLoaiGiuChoFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTrangThaiThanhToanFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrangThaiThanhToan | EnumTrangThaiThanhToanFieldRefInput<$PrismaModel>
+    in?: $Enums.TrangThaiThanhToan[]
+    notIn?: $Enums.TrangThaiThanhToan[]
+    not?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel> | $Enums.TrangThaiThanhToan
+  }
+
+  export type NestedEnumTrangThaiThanhToanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrangThaiThanhToan | EnumTrangThaiThanhToanFieldRefInput<$PrismaModel>
+    in?: $Enums.TrangThaiThanhToan[]
+    notIn?: $Enums.TrangThaiThanhToan[]
+    not?: NestedEnumTrangThaiThanhToanWithAggregatesFilter<$PrismaModel> | $Enums.TrangThaiThanhToan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
+    _max?: NestedEnumTrangThaiThanhToanFilter<$PrismaModel>
   }
 
   export type PhimCreateWithoutBannerInput = {
@@ -21428,6 +22884,7 @@ export namespace Prisma {
     isDeleted?: boolean | null
     GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
     HoaDon?: HoaDonCreateNestedManyWithoutNguoiDungInput
+    RefreshToken?: RefreshTokenCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateWithoutDatVeInput = {
@@ -21440,6 +22897,7 @@ export namespace Prisma {
     isDeleted?: boolean | null
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
     HoaDon?: HoaDonUncheckedCreateNestedManyWithoutNguoiDungInput
+    RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungCreateOrConnectWithoutDatVeInput = {
@@ -21549,6 +23007,7 @@ export namespace Prisma {
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
     HoaDon?: HoaDonUpdateManyWithoutNguoiDungNestedInput
+    RefreshToken?: RefreshTokenUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateWithoutDatVeInput = {
@@ -21561,6 +23020,7 @@ export namespace Prisma {
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
     HoaDon?: HoaDonUncheckedUpdateManyWithoutNguoiDungNestedInput
+    RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type LichChieuUpsertWithoutDatVeInput = {
@@ -21708,6 +23168,8 @@ export namespace Prisma {
   }
 
   export type GiuChoCreateWithoutGheInput = {
+    loai?: $Enums.LoaiGiuCho
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
     LichChieu: LichChieuCreateNestedOneWithoutGiuChoInput
@@ -21719,7 +23181,9 @@ export namespace Prisma {
     ma_giu_cho?: number
     tai_khoan: number
     ma_lich_chieu: number
+    loai?: $Enums.LoaiGiuCho
     ma_hoa_don?: number | null
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -21810,7 +23274,9 @@ export namespace Prisma {
     tai_khoan?: IntFilter<"GiuCho"> | number
     ma_lich_chieu?: IntFilter<"GiuCho"> | number
     ma_ghe?: IntFilter<"GiuCho"> | number
+    loai?: EnumLoaiGiuChoFilter<"GiuCho"> | $Enums.LoaiGiuCho
     ma_hoa_don?: IntNullableFilter<"GiuCho"> | number | null
+    gia_ve?: IntNullableFilter<"GiuCho"> | number | null
     expire_at?: DateTimeFilter<"GiuCho"> | Date | string
     created_at?: DateTimeNullableFilter<"GiuCho"> | Date | string | null
   }
@@ -21894,6 +23360,8 @@ export namespace Prisma {
   }
 
   export type GiuChoCreateWithoutLichChieuInput = {
+    loai?: $Enums.LoaiGiuCho
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
     Ghe: GheCreateNestedOneWithoutGiuChoInput
@@ -21905,7 +23373,9 @@ export namespace Prisma {
     ma_giu_cho?: number
     tai_khoan: number
     ma_ghe: number
+    loai?: $Enums.LoaiGiuCho
     ma_hoa_don?: number | null
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -22172,6 +23642,8 @@ export namespace Prisma {
   }
 
   export type GiuChoCreateWithoutNguoiDungInput = {
+    loai?: $Enums.LoaiGiuCho
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
     Ghe: GheCreateNestedOneWithoutGiuChoInput
@@ -22183,7 +23655,9 @@ export namespace Prisma {
     ma_giu_cho?: number
     ma_lich_chieu: number
     ma_ghe: number
+    loai?: $Enums.LoaiGiuCho
     ma_hoa_don?: number | null
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -22241,6 +23715,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type RefreshTokenCreateWithoutNguoiDungInput = {
+    token: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type RefreshTokenUncheckedCreateWithoutNguoiDungInput = {
+    id?: number
+    token: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type RefreshTokenCreateOrConnectWithoutNguoiDungInput = {
+    where: RefreshTokenWhereUniqueInput
+    create: XOR<RefreshTokenCreateWithoutNguoiDungInput, RefreshTokenUncheckedCreateWithoutNguoiDungInput>
+  }
+
+  export type RefreshTokenCreateManyNguoiDungInputEnvelope = {
+    data: RefreshTokenCreateManyNguoiDungInput | RefreshTokenCreateManyNguoiDungInput[]
+    skipDuplicates?: boolean
+  }
+
   export type DatVeUpsertWithWhereUniqueWithoutNguoiDungInput = {
     where: DatVeWhereUniqueInput
     update: XOR<DatVeUpdateWithoutNguoiDungInput, DatVeUncheckedUpdateWithoutNguoiDungInput>
@@ -22287,6 +23784,99 @@ export namespace Prisma {
   export type HoaDonUpdateManyWithWhereWithoutNguoiDungInput = {
     where: HoaDonScalarWhereInput
     data: XOR<HoaDonUpdateManyMutationInput, HoaDonUncheckedUpdateManyWithoutNguoiDungInput>
+  }
+
+  export type RefreshTokenUpsertWithWhereUniqueWithoutNguoiDungInput = {
+    where: RefreshTokenWhereUniqueInput
+    update: XOR<RefreshTokenUpdateWithoutNguoiDungInput, RefreshTokenUncheckedUpdateWithoutNguoiDungInput>
+    create: XOR<RefreshTokenCreateWithoutNguoiDungInput, RefreshTokenUncheckedCreateWithoutNguoiDungInput>
+  }
+
+  export type RefreshTokenUpdateWithWhereUniqueWithoutNguoiDungInput = {
+    where: RefreshTokenWhereUniqueInput
+    data: XOR<RefreshTokenUpdateWithoutNguoiDungInput, RefreshTokenUncheckedUpdateWithoutNguoiDungInput>
+  }
+
+  export type RefreshTokenUpdateManyWithWhereWithoutNguoiDungInput = {
+    where: RefreshTokenScalarWhereInput
+    data: XOR<RefreshTokenUpdateManyMutationInput, RefreshTokenUncheckedUpdateManyWithoutNguoiDungInput>
+  }
+
+  export type RefreshTokenScalarWhereInput = {
+    AND?: RefreshTokenScalarWhereInput | RefreshTokenScalarWhereInput[]
+    OR?: RefreshTokenScalarWhereInput[]
+    NOT?: RefreshTokenScalarWhereInput | RefreshTokenScalarWhereInput[]
+    id?: IntFilter<"RefreshToken"> | number
+    token?: StringFilter<"RefreshToken"> | string
+    tai_khoan?: IntFilter<"RefreshToken"> | number
+    expiresAt?: DateTimeFilter<"RefreshToken"> | Date | string
+    createdAt?: DateTimeFilter<"RefreshToken"> | Date | string
+  }
+
+  export type NguoiDungCreateWithoutRefreshTokenInput = {
+    ho_ten?: string | null
+    email?: string | null
+    so_dt?: string | null
+    mat_khau?: string | null
+    loai_nguoi_dung?: string | null
+    isDeleted?: boolean | null
+    DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
+    GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
+    HoaDon?: HoaDonCreateNestedManyWithoutNguoiDungInput
+  }
+
+  export type NguoiDungUncheckedCreateWithoutRefreshTokenInput = {
+    tai_khoan?: number
+    ho_ten?: string | null
+    email?: string | null
+    so_dt?: string | null
+    mat_khau?: string | null
+    loai_nguoi_dung?: string | null
+    isDeleted?: boolean | null
+    DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
+    GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
+    HoaDon?: HoaDonUncheckedCreateNestedManyWithoutNguoiDungInput
+  }
+
+  export type NguoiDungCreateOrConnectWithoutRefreshTokenInput = {
+    where: NguoiDungWhereUniqueInput
+    create: XOR<NguoiDungCreateWithoutRefreshTokenInput, NguoiDungUncheckedCreateWithoutRefreshTokenInput>
+  }
+
+  export type NguoiDungUpsertWithoutRefreshTokenInput = {
+    update: XOR<NguoiDungUpdateWithoutRefreshTokenInput, NguoiDungUncheckedUpdateWithoutRefreshTokenInput>
+    create: XOR<NguoiDungCreateWithoutRefreshTokenInput, NguoiDungUncheckedCreateWithoutRefreshTokenInput>
+    where?: NguoiDungWhereInput
+  }
+
+  export type NguoiDungUpdateToOneWithWhereWithoutRefreshTokenInput = {
+    where?: NguoiDungWhereInput
+    data: XOR<NguoiDungUpdateWithoutRefreshTokenInput, NguoiDungUncheckedUpdateWithoutRefreshTokenInput>
+  }
+
+  export type NguoiDungUpdateWithoutRefreshTokenInput = {
+    ho_ten?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    so_dt?: NullableStringFieldUpdateOperationsInput | string | null
+    mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
+    loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
+    GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
+    HoaDon?: HoaDonUpdateManyWithoutNguoiDungNestedInput
+  }
+
+  export type NguoiDungUncheckedUpdateWithoutRefreshTokenInput = {
+    tai_khoan?: IntFieldUpdateOperationsInput | number
+    ho_ten?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    so_dt?: NullableStringFieldUpdateOperationsInput | string | null
+    mat_khau?: NullableStringFieldUpdateOperationsInput | string | null
+    loai_nguoi_dung?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
+    GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
+    HoaDon?: HoaDonUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type BannerCreateWithoutPhimInput = {
@@ -22584,6 +24174,7 @@ export namespace Prisma {
     isDeleted?: boolean | null
     DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
     HoaDon?: HoaDonCreateNestedManyWithoutNguoiDungInput
+    RefreshToken?: RefreshTokenCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateWithoutGiuChoInput = {
@@ -22596,6 +24187,7 @@ export namespace Prisma {
     isDeleted?: boolean | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
     HoaDon?: HoaDonUncheckedCreateNestedManyWithoutNguoiDungInput
+    RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungCreateOrConnectWithoutGiuChoInput = {
@@ -22717,6 +24309,7 @@ export namespace Prisma {
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
     HoaDon?: HoaDonUpdateManyWithoutNguoiDungNestedInput
+    RefreshToken?: RefreshTokenUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateWithoutGiuChoInput = {
@@ -22729,6 +24322,7 @@ export namespace Prisma {
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
     HoaDon?: HoaDonUncheckedUpdateManyWithoutNguoiDungNestedInput
+    RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type HoaDonUpsertWithoutGiuChoInput = {
@@ -22784,6 +24378,7 @@ export namespace Prisma {
     isDeleted?: boolean | null
     DatVe?: DatVeCreateNestedManyWithoutNguoiDungInput
     GiuCho?: GiuChoCreateNestedManyWithoutNguoiDungInput
+    RefreshToken?: RefreshTokenCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungUncheckedCreateWithoutHoaDonInput = {
@@ -22796,6 +24391,7 @@ export namespace Prisma {
     isDeleted?: boolean | null
     DatVe?: DatVeUncheckedCreateNestedManyWithoutNguoiDungInput
     GiuCho?: GiuChoUncheckedCreateNestedManyWithoutNguoiDungInput
+    RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutNguoiDungInput
   }
 
   export type NguoiDungCreateOrConnectWithoutHoaDonInput = {
@@ -22876,6 +24472,8 @@ export namespace Prisma {
   }
 
   export type GiuChoCreateWithoutHoaDonInput = {
+    loai?: $Enums.LoaiGiuCho
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
     Ghe: GheCreateNestedOneWithoutGiuChoInput
@@ -22888,6 +24486,8 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    loai?: $Enums.LoaiGiuCho
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -22922,6 +24522,7 @@ export namespace Prisma {
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     DatVe?: DatVeUpdateManyWithoutNguoiDungNestedInput
     GiuCho?: GiuChoUpdateManyWithoutNguoiDungNestedInput
+    RefreshToken?: RefreshTokenUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type NguoiDungUncheckedUpdateWithoutHoaDonInput = {
@@ -22934,6 +24535,7 @@ export namespace Prisma {
     isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     DatVe?: DatVeUncheckedUpdateManyWithoutNguoiDungNestedInput
     GiuCho?: GiuChoUncheckedUpdateManyWithoutNguoiDungNestedInput
+    RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutNguoiDungNestedInput
   }
 
   export type LichChieuUpsertWithoutHoaDonInput = {
@@ -23229,7 +24831,9 @@ export namespace Prisma {
     ma_giu_cho?: number
     tai_khoan: number
     ma_lich_chieu: number
+    loai?: $Enums.LoaiGiuCho
     ma_hoa_don?: number | null
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -23259,6 +24863,8 @@ export namespace Prisma {
   }
 
   export type GiuChoUpdateWithoutGheInput = {
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     LichChieu?: LichChieuUpdateOneRequiredWithoutGiuChoNestedInput
@@ -23270,7 +24876,9 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
     ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23279,7 +24887,9 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
     ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23325,7 +24935,9 @@ export namespace Prisma {
     ma_giu_cho?: number
     tai_khoan: number
     ma_ghe: number
+    loai?: $Enums.LoaiGiuCho
     ma_hoa_don?: number | null
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -23369,6 +24981,8 @@ export namespace Prisma {
   }
 
   export type GiuChoUpdateWithoutLichChieuInput = {
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
@@ -23380,7 +24994,9 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
     ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23389,7 +25005,9 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
     ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23453,7 +25071,9 @@ export namespace Prisma {
     ma_giu_cho?: number
     ma_lich_chieu: number
     ma_ghe: number
+    loai?: $Enums.LoaiGiuCho
     ma_hoa_don?: number | null
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -23470,6 +25090,13 @@ export namespace Prisma {
     so_tien_da_nhan?: number | null
     thanh_toan_luc?: Date | string | null
     het_han_luc?: Date | string | null
+  }
+
+  export type RefreshTokenCreateManyNguoiDungInput = {
+    id?: number
+    token: string
+    expiresAt: Date | string
+    createdAt?: Date | string
   }
 
   export type DatVeUpdateWithoutNguoiDungInput = {
@@ -23497,6 +25124,8 @@ export namespace Prisma {
   }
 
   export type GiuChoUpdateWithoutNguoiDungInput = {
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
@@ -23508,7 +25137,9 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
     ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23517,7 +25148,9 @@ export namespace Prisma {
     ma_giu_cho?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
     ma_hoa_don?: NullableIntFieldUpdateOperationsInput | number | null
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23567,6 +25200,26 @@ export namespace Prisma {
     so_tien_da_nhan?: NullableIntFieldUpdateOperationsInput | number | null
     thanh_toan_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     het_han_luc?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type RefreshTokenUpdateWithoutNguoiDungInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RefreshTokenUncheckedUpdateWithoutNguoiDungInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RefreshTokenUncheckedUpdateManyWithoutNguoiDungInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BannerCreateManyPhimInput = {
@@ -23700,6 +25353,8 @@ export namespace Prisma {
     tai_khoan: number
     ma_lich_chieu: number
     ma_ghe: number
+    loai?: $Enums.LoaiGiuCho
+    gia_ve?: number | null
     expire_at: Date | string
     created_at?: Date | string | null
   }
@@ -23747,6 +25402,8 @@ export namespace Prisma {
   }
 
   export type GiuChoUpdateWithoutHoaDonInput = {
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Ghe?: GheUpdateOneRequiredWithoutGiuChoNestedInput
@@ -23759,6 +25416,8 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23768,6 +25427,8 @@ export namespace Prisma {
     tai_khoan?: IntFieldUpdateOperationsInput | number
     ma_lich_chieu?: IntFieldUpdateOperationsInput | number
     ma_ghe?: IntFieldUpdateOperationsInput | number
+    loai?: EnumLoaiGiuChoFieldUpdateOperationsInput | $Enums.LoaiGiuCho
+    gia_ve?: NullableIntFieldUpdateOperationsInput | number | null
     expire_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }

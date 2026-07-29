@@ -23,3 +23,7 @@ export const refreshTokenSchema = z.object({
 
   refreshToken: z.string().trim().min(1, "Refresh token không được để trống"),
 });
+
+export const logoutSchema = z.object({
+  refreshToken: z.string().trim().min(1, "Refresh token không được để trống"),
+});

@@ -64,9 +64,56 @@ export const protect = async (req, res, next) => {
   }
 };
 
+
+export const protectAllowBodyToken = async (req, res, next) => {
+  const authorization = req.headers.authorization;
+
+  if (authorization) {
+    return protect(req, res, next);
+  }
+
+  try {
+    const token = req.body?.access_token;
+
+    if (!token) {
+      return errorResponse(
+        res,
+        "Không có authorization",
+        statusCodes.UNAUTHORIZED,
+        "UNAUTHORIZED",
+      );
+    }
+
+    const { userId } = tokenService.verifyAccessToken(token);
+
+    const userExist = await prisma.nguoiDung.findUnique({
+      where: { tai_khoan: userId },
+    });
+
+    if (!userExist) {
+      return errorResponse(
+        res,
+        "Không tìm thấy user",
+        statusCodes.UNAUTHORIZED,
+        "UNAUTHORIZED",
+      );
+    }
+
+    req.user = userExist;
+
+    next();
+  } catch {
+    return errorResponse(
+      res,
+      "Token không hợp lệ hoặc hết hạn",
+      statusCodes.UNAUTHORIZED,
+      "UNAUTHORIZED",
+    );
+  }
+};
+
 export const mustBeAdmin = (...roles) => {
   return (req, res, next) => {
-    //kiểm tra được loai_nguoi_dung của user có nằm trong roles hay không là do req.user đã được gán ở middleware protect rồi. Nếu chưa có req.user thì sẽ bị lỗi ở middleware protect trước khi đến đây
     if (!roles.includes(req.user.loai_nguoi_dung)) {
       return errorResponse(
         res,

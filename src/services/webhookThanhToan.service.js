@@ -1,10 +1,18 @@
 import { prisma } from "../common/prisma/contect.prisma.js";
+import { logger, serializeError } from "../common/logger/logger.js";
 
 const NGUON = "sepay";
 
-// Regex khớp "DH<số>" dù nằm giữa chuỗi dài kiểu ngân hàng hay thêm ký tự
-// thừa quanh nội dung CK (vd: "NGUYEN VAN A chuyen tien DH1023 CT tu...").
 const MA_HOA_DON_REGEX = /DH(\d+)/i;
+
+const KET_QUA_DA_CHOT_DON = ["OK", "OK_THUA_TIEN"];
+
+class KhongConGheDeCapError extends Error {
+  constructor() {
+    super("Hóa đơn không còn ghế giữ chỗ để cấp vé");
+    this.name = "KhongConGheDeCapError";
+  }
+}
 
 const parseMaHoaDon = (content) => {
   if (!content || typeof content !== "string") return null;
@@ -14,7 +22,6 @@ const parseMaHoaDon = (content) => {
   return Number.isInteger(so) && so > 0 ? so : null;
 };
 
-// Ghi 1 dòng vào GiaoDichWebhook — dùng cho mọi nhánh xử lý (idempotency log).
 const ghiLogGiaoDich = async ({
   rawPayload,
   maGiaoDichNganHang,
@@ -38,7 +45,6 @@ const ghiLogGiaoDich = async ({
   });
 };
 
-// Gọi từ webhookAuth.middleware khi sai secret — vẫn phải log lại request.
 export const ghiLogWebhookSaiSecret = async (rawPayload) => {
   try {
     const content = rawPayload?.content;
@@ -55,26 +61,17 @@ export const ghiLogWebhookSaiSecret = async (rawPayload) => {
       ghiChu: "Header Authorization không hợp lệ hoặc sai apikey",
     });
   } catch {
-    // Không để lỗi ghi log làm vỡ luồng trả 401 cho ngân hàng
+
   }
 };
 
-// Xử lý webhook thanh toán kiểu SePay/Casso. Luôn ghi log GiaoDichWebhook cho
-// mọi nhánh (parse fail, không khớp đơn, sai số tiền, đã xử lý trước, OK...).
-// Luôn trả { success: true } (200) trừ khi lỗi hệ thống thật sự — để ngân hàng
-// không retry vô ích với các lỗi nghiệp vụ (đơn hết hạn/không tồn tại/...).
+
 export const xuLyWebhookThanhToan = async (req) => {
   const payload = req.body ?? {};
-  const {
-    content,
-    transferType,
-    transferAmount,
-    referenceCode,
-  } = payload;
+  const { content, transferType, transferAmount, referenceCode } = payload;
 
   const maHoaDonParse = parseMaHoaDon(content);
 
-  // Chỉ xử lý giao dịch tiền vào; các loại khác (out, hoặc thiếu field) chỉ log lại
   if (transferType !== "in") {
     await ghiLogGiaoDich({
       rawPayload: payload,
@@ -88,13 +85,12 @@ export const xuLyWebhookThanhToan = async (req) => {
     return { success: true };
   }
 
-  // Idempotency: nếu referenceCode này đã từng xử lý OK trước đó thì trả về
-  // luôn, không xử lý lại (ngân hàng có thể gửi lại webhook nhiều lần)
+
   if (referenceCode) {
     const daXuLyOk = await prisma.giaoDichWebhook.findFirst({
       where: {
         ma_giao_dich_ngan_hang: referenceCode,
-        ket_qua_xu_ly: "OK",
+        ket_qua_xu_ly: { in: KET_QUA_DA_CHOT_DON },
       },
     });
 
@@ -169,12 +165,13 @@ export const xuLyWebhookThanhToan = async (req) => {
     return { success: true };
   }
 
-  // Đủ điều kiện chốt đơn: chuyển da_thanh_toan, tạo DatVe thật cho các ghế
-  // đang giữ, xóa GiuCho — toàn bộ trong 1 transaction.
+
+  const tienThua = soTien - hoaDon.tong_tien;
+
+
   try {
     await prisma.$transaction(async (tx) => {
-      // Lock lại trạng thái bằng cách update có điều kiện (tránh race nếu 2
-      // webhook trùng thời điểm cùng xử lý 1 hóa đơn)
+
       const updateResult = await tx.hoaDon.updateMany({
         where: {
           ma_hoa_don: hoaDon.ma_hoa_don,
@@ -190,54 +187,84 @@ export const xuLyWebhookThanhToan = async (req) => {
       });
 
       if (updateResult.count === 0) {
-        // Đơn đã bị nhánh khác xử lý trước (race) — không làm gì thêm
         return;
       }
 
       const dsGiuCho = await tx.giuCho.findMany({
         where: { ma_hoa_don: hoaDon.ma_hoa_don },
-        include: { Ghe: true },
       });
 
-      if (dsGiuCho.length > 0) {
-        const lichChieu = await tx.lichChieu.findUnique({
-          where: { ma_lich_chieu: hoaDon.ma_lich_chieu },
-        });
-        const giaCoBan = lichChieu?.gia_ve ?? 0;
-
-        // Tính lại giá vé từng ghế y hệt công thức lúc tạo đơn (VIP x1.2) —
-        // GiuCho không lưu giá snapshot nên phải tái tính tại đây.
-        await tx.datVe.createMany({
-          data: dsGiuCho.map((gc) => {
-            const heSo = gc.Ghe?.loai_ghe === "VIP" ? 1.2 : 1;
-            return {
-              tai_khoan: gc.tai_khoan,
-              ma_lich_chieu: gc.ma_lich_chieu,
-              ma_ghe: gc.ma_ghe,
-              ma_hoa_don: hoaDon.ma_hoa_don,
-              gia_ve: giaCoBan * heSo,
-            };
-          }),
-        });
-
-        await tx.giuCho.deleteMany({
-          where: { ma_hoa_don: hoaDon.ma_hoa_don },
-        });
+      if (dsGiuCho.length === 0) {
+        throw new KhongConGheDeCapError();
       }
+
+      await tx.datVe.createMany({
+        data: dsGiuCho.map((gc) => ({
+          tai_khoan: gc.tai_khoan,
+          ma_lich_chieu: gc.ma_lich_chieu,
+          ma_ghe: gc.ma_ghe,
+          ma_hoa_don: hoaDon.ma_hoa_don,
+          gia_ve: gc.gia_ve,
+        })),
+      });
+
+      await tx.giuCho.deleteMany({
+        where: { ma_hoa_don: hoaDon.ma_hoa_don },
+      });
     });
   } catch (error) {
-    // Lỗi hệ thống thật sự (DB down, v.v.) — log lại nhưng vẫn không throw để
-    // không lộ stack trace ra response webhook; vẫn trả success:true theo yêu
-    // cầu tránh ngân hàng retry vô ích, nhưng ghi rõ ghi_chu để debug.
+
+    const laLoiNghiepVu = error instanceof KhongConGheDeCapError;
+
     await ghiLogGiaoDich({
       rawPayload: payload,
       maGiaoDichNganHang: referenceCode,
       soTien: transferAmount,
       noiDung: content,
       maHoaDonParse,
-      ketQua: "LOI_HE_THONG",
-      ghiChu: String(error?.message ?? error),
+      ketQua: laLoiNghiepVu ? "DA_NHAN_TIEN_NHUNG_HET_GHE" : "LOI_HE_THONG",
+      ghiChu: `CẦN XỬ LÝ TAY — đã nhận ${soTien} cho hóa đơn #${maHoaDonParse} nhưng không cấp được vé: ${String(
+        error?.message ?? error,
+      )}`,
     });
+
+    logger.error("[webhookThanhToan] Cần xử lý tay sau khi đã nhận tiền", {
+      maHoaDon: maHoaDonParse,
+      soTien,
+      referenceCode: referenceCode ?? null,
+      ketQua: laLoiNghiepVu ? "DA_NHAN_TIEN_NHUNG_HET_GHE" : "LOI_HE_THONG",
+      error: serializeError(error),
+    });
+
+
+    if (!laLoiNghiepVu) {
+      throw error;
+    }
+
+    return { success: true };
+  }
+
+
+  if (tienThua > 0) {
+    await ghiLogGiaoDich({
+      rawPayload: payload,
+      maGiaoDichNganHang: referenceCode,
+      soTien: transferAmount,
+      noiDung: content,
+      maHoaDonParse,
+      ketQua: "OK_THUA_TIEN",
+      ghiChu:
+        `Đã chốt hóa đơn #${maHoaDonParse} | CẦN HOÀN ${tienThua} cho khách ` +
+        `(nhận ${soTien}, đơn ${hoaDon.tong_tien})`,
+    });
+
+    logger.warn("[webhookThanhToan] Hóa đơn nhận thừa tiền", {
+      maHoaDon: maHoaDonParse,
+      tienThua,
+      soTien,
+      tongTienHoaDon: hoaDon.tong_tien,
+    });
+
     return { success: true };
   }
 

@@ -1,5 +1,25 @@
 import { createLogger, format, transports as transports } from "winston";
 
+export const maskEmail = (email) => {
+  if (!email || typeof email !== "string") return null;
+
+  const [name, domain] = email.split("@");
+  if (!name || !domain) return "[invalid-email]";
+
+  const visible = name.slice(0, 2);
+  return `${visible}${"*".repeat(Math.max(name.length - 2, 3))}@${domain}`;
+};
+
+export const serializeError = (error) => {
+  if (!error) return null;
+
+  return {
+    name: error.name,
+    message: error.message,
+    code: error.code,
+  };
+};
+
 //tạo logger với cấu hình cơ bản, sẽ ghi log vào file error.log nếu level là error, và ghi tất cả log vào combined.log
 export const logger = createLogger({
   level: "info",

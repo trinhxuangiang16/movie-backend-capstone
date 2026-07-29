@@ -83,16 +83,28 @@ model LichChieu {
 }
 
 model NguoiDung {
-  tai_khoan       Int      @id @default(autoincrement())
-  ho_ten          String?  @db.VarChar(255)
-  email           String?  @unique(map: "email") @db.VarChar(255)
-  so_dt           String?  @db.VarChar(50)
-  mat_khau        String?  @db.VarChar(255)
-  loai_nguoi_dung String?  @db.VarChar(50)
-  isDeleted       Boolean? @default(false)
+  tai_khoan       Int            @id @default(autoincrement())
+  ho_ten          String?        @db.VarChar(255)
+  email           String?        @unique(map: "email") @db.VarChar(255)
+  so_dt           String?        @db.VarChar(50)
+  mat_khau        String?        @db.VarChar(255)
+  loai_nguoi_dung String?        @db.VarChar(50)
+  isDeleted       Boolean?       @default(false)
   DatVe           DatVe[]
   GiuCho          GiuCho[]
   HoaDon          HoaDon[]
+  RefreshToken    RefreshToken[]
+}
+
+model RefreshToken {
+  id        Int       @id @default(autoincrement())
+  token     String    @unique @db.VarChar(512)
+  tai_khoan Int
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+  NguoiDung NguoiDung @relation(fields: [tai_khoan], references: [tai_khoan], onDelete: Cascade)
+
+  @@index([tai_khoan])
 }
 
 model Phim {
@@ -122,23 +134,38 @@ model RapPhim {
   @@index([ma_cum_rap], map: "ma_cum_rap")
 }
 
+enum LoaiGiuCho {
+  tam // User đang chọn ghế, chưa bấm thanh toán. TTL ngắn, chưa có hóa đơn.
+  da_tao_don // Đã tạo hóa đơn, đang chờ chuyển khoản. expire_at = HoaDon.het_han_luc.
+}
+
 model GiuCho {
-  ma_giu_cho    Int       @id @default(autoincrement())
+  ma_giu_cho    Int        @id @default(autoincrement())
   tai_khoan     Int
   ma_lich_chieu Int
   ma_ghe        Int
-  ma_hoa_don    Int?
-  expire_at     DateTime  @db.DateTime(0)
-  created_at    DateTime? @default(now()) @db.DateTime(0)
-  Ghe           Ghe       @relation(fields: [ma_ghe], references: [ma_ghe], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_ghe")
-  LichChieu     LichChieu @relation(fields: [ma_lich_chieu], references: [ma_lich_chieu], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_lichchieu")
-  NguoiDung     NguoiDung @relation(fields: [tai_khoan], references: [tai_khoan], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_user")
-  HoaDon        HoaDon?   @relation(fields: [ma_hoa_don], references: [ma_hoa_don], onDelete: SetNull, onUpdate: NoAction, map: "fk_giucho_hoadon")
+  // Một bảng phục vụ CẢ HAI giai đoạn giữ ghế (đang chọn / đã tạo đơn) để
+  // @@unique([ma_lich_chieu, ma_ghe]) bảo vệ liên tục. Nếu tách 2 bảng thì lúc
+  // chuyển giai đoạn phải xóa bảng này + chèn bảng kia, và DB không thể chặn
+  // người thứ ba chen vào giữa — đúng lỗ hổng TOCTOU.
+  // Chuyển giai đoạn = 1 câu UPDATE, ghế không rời tay user một khoảnh khắc nào.
+  loai          LoaiGiuCho @default(tam)
+  ma_hoa_don    Int? // null khi loai = tam
+  gia_ve        Int? // null khi loai = tam — giá chỉ chốt lúc tạo hóa đơn
+  expire_at     DateTime   @db.DateTime(0)
+  created_at    DateTime?  @default(now()) @db.DateTime(0)
+  Ghe           Ghe        @relation(fields: [ma_ghe], references: [ma_ghe], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_ghe")
+  LichChieu     LichChieu  @relation(fields: [ma_lich_chieu], references: [ma_lich_chieu], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_lichchieu")
+  NguoiDung     NguoiDung  @relation(fields: [tai_khoan], references: [tai_khoan], onDelete: NoAction, onUpdate: NoAction, map: "fk_giucho_user")
+  HoaDon        HoaDon?    @relation(fields: [ma_hoa_don], references: [ma_hoa_don], onDelete: SetNull, onUpdate: NoAction, map: "fk_giucho_hoadon")
 
+  @@unique([ma_lich_chieu, ma_ghe], map: "uq_giucho_lichchieu_ghe")
   @@index([ma_ghe], map: "fk_giucho_ghe")
   @@index([ma_lich_chieu], map: "fk_giucho_lichchieu")
   @@index([tai_khoan], map: "fk_giucho_user")
   @@index([ma_hoa_don], map: "fk_giucho_hoadon")
+  // Phục vụ job dọn bản ghi hết hạn (quét theo loai + expire_at mỗi phút)
+  @@index([loai, expire_at], map: "idx_giucho_loai_expire")
 }
 
 enum TrangThaiThanhToan {

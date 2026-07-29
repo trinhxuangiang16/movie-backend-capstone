@@ -50,3 +50,11 @@ export class ConflictException extends Error {
     this.code = "CONFLICT";
   }
 }
+
+export class ServiceUnavailableException extends Error {
+  constructor(message = "Service Unavailable") {
+    super(message);
+    this.statusCode = statusCodes.SERVICE_UNAVAILABLE;
+    this.code = "SERVICE_UNAVAILABLE";
+  }
+}

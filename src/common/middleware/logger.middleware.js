@@ -11,7 +11,6 @@ morgan.token("response-time-ms", (req, res) => {
 
 morgan.token("reqId", (req) => req.requestId);
 
-//stream này sẽ được morgan sử dụng để ghi log, mỗi khi có một request đến, morgan sẽ gọi stream.write với message log đã được format theo định dạng đã chỉ định ở dưới, sau đó logger.info sẽ ghi log đó vào hệ thống log của ứng dụng (có thể là console hoặc file tùy cấu hình của logger).
 const stream = {
   write: (message) => {
     logger.info(message.trim());

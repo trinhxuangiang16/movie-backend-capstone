@@ -1,0 +1,38 @@
+services:
+  be:
+    build:
+      context: ../movie-backend-capstone
+      dockerfile: Dockerfile
+    container_name: movie_be
+    restart: always
+    ports:
+      - "3069:3069"
+    environment:
+      PORT: 3069
+      DATABASE_URL: ${DATABASE_URL}
+      FE_ORIGIN: ${FE_ORIGIN}
+      TRUST_PROXY: "true"
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
+      TOKEN_QR_SECRET: ${TOKEN_QR_SECRET}
+      CLOUDINARY_NAME: ${CLOUDINARY_NAME}
+      CLOUDINARY_KEY: ${CLOUDINARY_KEY}
+      CLOUDINARY_SECRET: ${CLOUDINARY_SECRET}
+      BANK_BIN: ${BANK_BIN}
+      BANK_ACCOUNT_NO: ${BANK_ACCOUNT_NO}
+      BANK_ACCOUNT_NAME: ${BANK_ACCOUNT_NAME}
+      PAYMENT_WEBHOOK_API_KEY: ${PAYMENT_WEBHOOK_API_KEY}
+
+  fe:
+    build:
+      context: ../movie-booking-frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+    container_name: movie_fe
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000

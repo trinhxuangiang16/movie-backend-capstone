@@ -6,7 +6,11 @@ export const datVeController = {
     try {
       const { ma_lich_chieu } = req.validated.query;
 
-      const result = await datVeService.layTrangThaiGheTrongRap(ma_lich_chieu);
+
+      const result = await datVeService.layTrangThaiGheTrongRap(
+        ma_lich_chieu,
+        req.user?.tai_khoan,
+      );
 
       return successResponse(res, result, "Lấy trạng thái ghế thành công");
     } catch (err) {
@@ -60,6 +64,29 @@ export const datVeController = {
       );
 
       return successResponse(res, result, "Lấy trạng thái hóa đơn thành công");
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  capVeTrucTiep: async (req, res, next) => {
+    try {
+      const result = await datVeService.capVeTrucTiep(req);
+
+      return successResponse(res, result, "Cấp vé trực tiếp thành công");
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  huyGiaoDich: async (req, res, next) => {
+    try {
+      const { ma_hoa_don } = req.validated.body;
+      const tai_khoan = req.user.tai_khoan;
+
+      const result = await datVeService.huyGiaoDich(ma_hoa_don, tai_khoan);
+
+      return successResponse(res, result, "Hủy giao dịch thành công");
     } catch (err) {
       next(err);
     }

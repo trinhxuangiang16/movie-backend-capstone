@@ -64,10 +64,17 @@ export const authService = {
       throw new UnauthorizedException("Email hoặc mật khẩu không đúng");
     }
 
-    // Loại bỏ trường mật khẩu trước khi trả về thông tin người dùng
     const { mat_khau: _, ...userWithoutPassword } = userExist;
 
     const tokens = tokenService.createTokens(userExist.tai_khoan);
+
+    await prisma.refreshToken.create({
+      data: {
+        token: tokens.refreshToken,
+        tai_khoan: userExist.tai_khoan,
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      },
+    });
 
     return { user: userWithoutPassword, token: tokens };
   },
@@ -97,6 +104,16 @@ export const authService = {
       throw new UnauthorizedException("Làm mới token không thành công");
     }
 
+    const tokenRecord = await prisma.refreshToken.findUnique({
+      where: { token: refreshToken },
+    });
+
+    if (!tokenRecord) {
+      throw new UnauthorizedException(
+        "Refresh token không hợp lệ hoặc đã bị thu hồi",
+      );
+    }
+
     const userExist = await prisma.nguoiDung.findUnique({
       where: { tai_khoan: decodeRefreshToken.userId },
     });
@@ -105,8 +122,23 @@ export const authService = {
       throw new UnauthorizedException("Không tìm thấy người dùng");
     }
 
+    await prisma.refreshToken.delete({ where: { id: tokenRecord.id } });
+
     const tokens = tokenService.createTokens(userExist.tai_khoan);
 
+    await prisma.refreshToken.create({
+      data: {
+        token: tokens.refreshToken,
+        tai_khoan: userExist.tai_khoan,
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      },
+    });
+
     return tokens;
+  },
+
+  async logout(req) {
+    const { refreshToken } = req.validated.body;
+    await prisma.refreshToken.deleteMany({ where: { token: refreshToken } });
   },
 };

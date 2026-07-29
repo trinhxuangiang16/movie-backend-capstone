@@ -1,5 +1,7 @@
+import "dotenv/config";
 import cors from "cors";
 import express from "express";
+import helmet from "helmet";
 import { NotFoundException } from "./src/common/helpers/exception.helper.js";
 import { appError } from "./src/common/helpers/handle-error-helper.js";
 import rootRouter from "./src/routers/root.router.js";
@@ -8,21 +10,41 @@ import swaggerSpec from "./src/config/swagger.js";
 import { requestLogger } from "./src/common/middleware/logger.middleware.js";
 import { requestIdMiddleware } from "./src/common/middleware/requestId.middleware.js";
 import { startExpireHoaDonJob } from "./src/jobs/expireHoaDon.job.js";
+import { prisma } from "./src/common/prisma/contect.prisma.js";
 
 const app = express();
 
-//MIDDLEWARE
-app.use(express.static("./public")); //này để phục vụ file tĩnh (như ảnh, css, js) từ thư mục public
-app.use(express.json()); //này để parse JSON body của request
+const trustProxy = process.env.TRUST_PROXY;
+
+if (trustProxy && trustProxy !== "false") {
+  const hops = trustProxy === "true" ? 1 : Number.parseInt(trustProxy, 10);
+
+  if (Number.isInteger(hops) && hops >= 1) {
+    app.set("trust proxy", hops);
+    console.log(`[server] trust proxy = ${hops} hop`);
+  } else {
+    console.warn(
+      `[server] TRUST_PROXY="${trustProxy}" không hợp lệ (cần số nguyên >= 1) — bỏ qua.`,
+    );
+  }
+}
+
+app.use(helmet());
+
+app.use(
+  cors({
+    origin: process.env.FE_ORIGIN?.split(",").map((o) => o.trim()),
+    credentials: true,
+  }),
+);
+
+app.use(express.static("./public"));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Mở CORS cho tất cả (cho dễ deploy)
-app.use(cors());
-
-// Swagger UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-//TEST ROUTE
+//  Docker
 app.get("/", (req, res) => {
   res.json({
     status: "OK",
@@ -30,28 +52,69 @@ app.get("/", (req, res) => {
   });
 });
 
-// Request ID middleware
-app.use(requestIdMiddleware);
+//  Docker
+app.get("/health", async (req, res) => {
+  try {
 
-// Logger middleware
+    await prisma.$queryRaw`SELECT 1`;
+    return res.status(200).json({
+      status: "UP",
+      database: "CONNECTED",
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    return res.status(503).json({
+      status: "DOWN",
+      database: "DISCONNECTED",
+      error: error.message,
+    });
+  }
+});
+
+app.use(requestIdMiddleware);
 app.use(requestLogger);
 
-//API
 app.use("/api", rootRouter);
 
-//LOG + NOT FOUND
 app.use((req, res, next) => {
-  console.log(req.method, req.originalUrl, req.ip);
   throw new NotFoundException();
-}); //nếu không có route nào khớp, sẽ ném lỗi NotFoundException để được xử lý bởi appError
+});
 
-//ERROR HANDLER
-app.use(appError); //này để xử lý tất cả lỗi được ném ra trong các route hoặc middleware trước đó, sẽ trả về response lỗi phù hợp cho client
+app.use(appError);
 
-//PORT FOR DEPLOY
 const PORT = process.env.PORT || 3069;
 
-app.listen(PORT, "0.0.0.0", () => {
+const server = app.listen(PORT, "0.0.0.0", () => {
   console.log("Server running on port:", PORT);
   startExpireHoaDonJob();
 });
+
+
+//  Docker
+
+const gracefulShutdown = (signal) => {
+  console.log(`\n[server] Nhận tín hiệu ${signal}. Đang đóng HTTP Server...`);
+
+  server.close(async () => {
+    console.log("[server] Đã đóng HTTP Server (ngừng nhận request mới).");
+    try {
+      console.log("[server] Đang ngắt kết nối Prisma Database Pool...");
+      await prisma.$disconnect();
+      console.log("[server] Đã ngắt kết nối Database hoàn tất. Exit 0.");
+      process.exit(0);
+    } catch (err) {
+      console.error("[server] Lỗi khi ngắt kết nối Database:", err);
+      process.exit(1);
+    }
+  });
+
+  //Docker
+  setTimeout(() => {
+    console.error("[server] Quá thời gian chờ (10s), cưỡng chế tắt tiến trình!");
+    process.exit(1);
+  }, 10000);
+};
+
+// Docker
+process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
+process.on("SIGINT", () => gracefulShutdown("SIGINT"));

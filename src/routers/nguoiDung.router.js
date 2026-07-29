@@ -187,7 +187,7 @@ nguoiDungRouter.get(
   nguoiDungController.timKiemNguoiDung,
 );
 
-//Tự Xóa
+
 nguoiDungRouter.delete(
   "/XoaNguoiDung/:tai_khoan",
   protect,

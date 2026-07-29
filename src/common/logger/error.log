@@ -61,3 +61,82 @@
 {"level":"error","message":"[reqId:b6f23060] POST /QuanLyNguoiDung/DangNhap - Not Found"}
 {"level":"error","message":"[reqId:80e00dcf] POST /api/QuanLyNguoiDung/DangNhap - pool timeout: failed to retrieve a connection from pool after 10000ms\n    (pool connections: active=0 idle=0 limit=5)"}
 {"level":"error","message":"[reqId:5989b6f5] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
+{"level":"error","message":"[reqId:b64ead38] POST /QuanLyNguoiDung/DangNhap - Not Found"}
+{"level":"error","message":"[reqId:7b7f7f61] POST /api/QuanLyDatVe/DatVe - \nInvalid `prisma.giuCho.createMany()` invocation:\n\n{\n  data: [\n    {\n      tai_khoan: 1,\n      ma_lich_chieu: 15122,\n      ma_ghe: 56,\n      ma_hoa_don: 23,\n      gia_ve: 75000,\n      expire_at: new Date(\"2026-07-26T17:35:41.515Z\")\n    },\n    {\n      tai_khoan: 1,\n      ma_lich_chieu: 15122,\n      ma_ghe: 57,\n      ma_hoa_don: 23,\n      gia_ve: 75000,\n      expire_at: new Date(\"2026-07-26T17:35:41.515Z\")\n    }\n  ]\n}\n\nUnknown argument `gia_ve`. Available options are marked with ?."}
+{"level":"error","message":"[reqId:47c7573a] POST /api/QuanLyDatVe/DatVe - \nInvalid `prisma.giuCho.createMany()` invocation:\n\n{\n  data: [\n    {\n      tai_khoan: 1,\n      ma_lich_chieu: 15122,\n      ma_ghe: 56,\n      ma_hoa_don: 24,\n      gia_ve: 75000,\n      expire_at: new Date(\"2026-07-26T17:35:53.944Z\")\n    },\n    {\n      tai_khoan: 1,\n      ma_lich_chieu: 15122,\n      ma_ghe: 57,\n      ma_hoa_don: 24,\n      gia_ve: 75000,\n      expire_at: new Date(\"2026-07-26T17:35:53.944Z\")\n    }\n  ]\n}\n\nUnknown argument `gia_ve`. Available options are marked with ?."}
+{"level":"error","message":"[reqId:9d1a7c84] POST /api/QuanLyDatVe/GiuGhe - Có ghế không thuộc rạp của lịch chiếu"}
+{"level":"error","message":"[reqId:8a2ee951] POST /api/QuanLyDatVe/GiuGhe - Có ghế không thuộc rạp của lịch chiếu"}
+{"level":"error","message":"[reqId:51529795] POST /api/QuanLyDatVe/GiuGhe - Lịch chiếu không tồn tại"}
+{"level":"error","message":"[reqId:88485ae8] POST /api/QuanLyDatVe/GiuGhe - Mỗi lượt đặt chỉ được giữ tối đa 8 ghế (bạn đang giữ 0 ghế)."}
+{"level":"error","message":"[reqId:77cb6842] POST /api/QuanLyDatVe/DatVe - Một hoặc nhiều ghế đang được giữ"}
+{"level":"error","message":"[reqId:74914cdf] POST /api/QuanLyDatVe/GiaHanGiuGhe - Không còn ghế nào đang được bạn giữ, vui lòng chọn lại"}
+{"level":"error","message":"[reqId:42d04add] GET /api/QuanLyDatVe/TrangThaiHoaDon?ma_hoa_don=60 - Hóa đơn không thuộc về bạn"}
+{"level":"error","message":"[reqId:f7dc5846] POST /api/QuanLyDatVe/HuyGiaoDich - Không tìm thấy hóa đơn"}
+{"level":"error","message":"[reqId:64ffafd5] POST /api/QuanLyDatVe/GiuGhe - \nInvalid `prisma.giuCho.createMany()` invocation:\n\n\nTransaction failed due to a write conflict or a deadlock. Please retry your transaction"}
+{"level":"error","message":"[reqId:6c084753] POST /api/QuanLyDatVe/DatVe - Có combo không tồn tại hoặc ngừng bán"}
+{"level":"error","message":"[reqId:d374a8a1] POST /api/QuanLyDatVe/DatVe - Ghế vừa được người khác giữ, vui lòng chọn lại"}
+{"level":"error","message":"[reqId:e14f1ce5] POST /api/QuanLyDatVe/GiuGhe - Có ghế không thuộc rạp của lịch chiếu"}
+{"level":"error","message":"[reqId:3c983f1b] POST /api/QuanLyDatVe/GiuGhe - Có ghế không thuộc rạp của lịch chiếu"}
+{"level":"error","message":"[reqId:56d2afaf] POST /api/QuanLyDatVe/GiuGhe - Lịch chiếu không tồn tại"}
+{"level":"error","message":"[reqId:ab1afcd4] POST /api/QuanLyDatVe/GiuGhe - Mỗi lượt đặt chỉ được giữ tối đa 8 ghế (bạn đang giữ 0 ghế)."}
+{"level":"error","message":"[reqId:43c9fe1f] POST /api/QuanLyDatVe/DatVe - Một hoặc nhiều ghế đang được giữ"}
+{"level":"error","message":"[reqId:5751695f] POST /api/QuanLyDatVe/GiaHanGiuGhe - Không còn ghế nào đang được bạn giữ, vui lòng chọn lại"}
+{"level":"error","message":"[reqId:d62ddd90] GET /api/QuanLyDatVe/TrangThaiHoaDon?ma_hoa_don=69 - Hóa đơn không thuộc về bạn"}
+{"level":"error","message":"[reqId:399fc71f] POST /api/QuanLyDatVe/HuyGiaoDich - Không tìm thấy hóa đơn"}
+{"level":"error","message":"[reqId:27d536bd] POST /api/QuanLyDatVe/GiuGhe - \nInvalid `prisma.giuCho.createMany()` invocation:\n\n\nTransaction failed due to a write conflict or a deadlock. Please retry your transaction"}
+{"level":"error","message":"[reqId:ad13dcaa] POST /api/QuanLyDatVe/DatVe - Ghế vừa được người khác giữ, vui lòng chọn lại"}
+{"level":"error","message":"[reqId:857fea11] POST /api/QuanLyDatVe/DatVe - Có combo không tồn tại hoặc ngừng bán"}
+{"level":"error","message":"[reqId:768f361a] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
+{"level":"error","message":"[reqId:2befe9e3] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
+{"level":"error","message":"[reqId:2440619b] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
+{"level":"error","message":"[reqId:40c9497f] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
+{"level":"error","message":"[reqId:9a715d63] POST /api/QuanLyNguoiDung/DangNhap - Email hoặc mật khẩu không đúng"}
+{"level":"error","message":"[reqId:738012dc] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:08636645] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:249e97d6] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:74d5e951] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:76566d95] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:f1a88f9e] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:04ef6240] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:454e3a6c] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:fc9e14a2] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:1b72c1b2] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:55aed9e7] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:88705362] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:60d8afd3] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:94c2ead8] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:4995d4bd] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:1dfdba8e] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:598a3064] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:b40d404f] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:4ed498a7] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:6c27533a] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:609a53d7] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:415c9b3b] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:bd4e5b84] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:51a001ba] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:904101e4] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:774a2e0b] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:7689f499] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:d7a14e1f] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:548872d9] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:48484412] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:4ce420d8] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:c23d49d1] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:ec9c2317] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:6e6b21a6] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:e6d724b5] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:1d0b2c83] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:cda8fe15] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:4dcf265f] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:6cd7158f] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:7e68a197] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:2ddc4e38] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:3f39b652] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:a9965914] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:39f2d9dc] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:c84a5649] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:5e3aff3c] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:ea3f4e64] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:5e8f7abd] POST /api/QuanLyDatVe/GiuGhe - Transaction API error: Unable to start a transaction in the given time."}
+{"level":"error","message":"[reqId:45b1f20b] POST /api/QuanLyNguoiDung/refresh-token - Refresh token không hợp lệ hoặc đã bị thu hồi"}

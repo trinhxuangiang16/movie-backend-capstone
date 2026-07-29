@@ -6,7 +6,6 @@ import { prisma } from "../common/prisma/contect.prisma.js";
 import { buildQueryPrisma } from "../utils/buildQueryPrisma.js";
 
 export const phimService = {
-  // GET LayDanhSachPhim
   getLayDanhSachPhim: async () => {
     return prisma.phim.findMany({
       where: {
@@ -18,7 +17,6 @@ export const phimService = {
     });
   },
 
-  // GET LayDanhSachPhimPhanTrang (DÙNG buildQueryPrisma)
   getLayDanhSachPhimPhanTrang: async (query) => {
     const { page, pageSize, skip, where } = buildQueryPrisma(query);
 
@@ -46,7 +44,6 @@ export const phimService = {
     };
   },
 
-  // GET LayThongTinPhim/:ma_phim
   getLayThongTinPhim: async (ma_phim) => {
     const phim = await prisma.phim.findUnique({
       where: { ma_phim: Number(ma_phim) },
@@ -59,11 +56,10 @@ export const phimService = {
     return phim;
   },
 
-  // GET LayDanhSachPhimTheoNgay
   getLayDanhSachPhimTheoNgay: async (ngay) => {
     const [day, month, year] = ngay.split("/").map(Number);
 
-    const start = new Date(year, month - 1, day); // Tạo đối tượng Date cho ngày bắt đầu (00:00:00)
+    const start = new Date(year, month - 1, day);
     const end = new Date(year, month - 1, day + 1);
 
     return prisma.phim.findMany({
@@ -79,7 +75,7 @@ export const phimService = {
     });
   },
 
-  // POST QuanLyPhim
+
   themPhim: async (data) => {
     return prisma.phim.create({
       data: {
@@ -96,7 +92,6 @@ export const phimService = {
     });
   },
 
-  // DELETE XoaPhim
   delete: async (ma_phim) => {
     const phim = await prisma.phim.findUnique({
       where: { ma_phim: Number(ma_phim), isDeleted: false },
@@ -112,7 +107,6 @@ export const phimService = {
     });
   },
 
-  // PUT CapNhatPhim
   capNhatPhim: async (ma_phim, data) => {
     const phim = await prisma.phim.findUnique({
       where: { ma_phim: Number(ma_phim) },
@@ -254,7 +248,6 @@ export const phimService = {
   },
 
   getBanner: async (ma_phim) => {
-    // Kiểm tra phim tồn tại
     const phim = await prisma.phim.findUnique({
       where: { ma_phim: Number(ma_phim) },
     });
@@ -263,7 +256,6 @@ export const phimService = {
       throw new NotFoundException("Phim không tồn tại hoặc đã bị xóa");
     }
 
-    // Lấy banner
     const banner = await prisma.banner.findFirst({
       where: { ma_phim: Number(ma_phim) },
     });

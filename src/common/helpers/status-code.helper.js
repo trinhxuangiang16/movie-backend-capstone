@@ -44,6 +44,7 @@ export const statusCodes = {
   LOCKED: 423, //lỗi khóa
   FAILED_DEPENDENCY: 424, //phụ thuộc thất bại
   PRECONDITION_REQUIRED: 428, //yêu cầu tiền điều kiện
+  TOO_MANY_REQUESTS: 429, //gửi quá nhiều request (rate limit)
   REQUEST_HEADER_FIELDS_TOO_LARGE: 431, //trường tiêu đề yêu cầu quá lớn
   UNAVAILABLE_FOR_LEGAL_REASONS: 451, //không khả dụng vì lý do pháp lý
   INTERNAL_SERVER_ERROR: 500, //lỗi máy chủ nội bộ

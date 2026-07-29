@@ -2,7 +2,6 @@ import { successResponse } from "../common/helpers/function.helper.js";
 import { phimService } from "../services/phim.service.js";
 
 export const phimController = {
-  // GET LayDanhSachPhim
   getLayDanhSachPhim: async (req, res, next) => {
     try {
       const result = await phimService.getLayDanhSachPhim();
@@ -12,7 +11,6 @@ export const phimController = {
     }
   },
 
-  // GET LayDanhSachPhimPhanTrang
   getLayDanhSachPhimPhanTrang: async (req, res, next) => {
     try {
       const result = await phimService.getLayDanhSachPhimPhanTrang(
@@ -28,7 +26,6 @@ export const phimController = {
     }
   },
 
-  // GET LayThongTinPhim/:ma_phim
   getLayThongTinPhim: async (req, res, next) => {
     try {
       const { ma_phim } = req.validated.params;
@@ -40,7 +37,6 @@ export const phimController = {
     }
   },
 
-  // GET LayDanhSachPhimTheoNgay
   getLayDanhSachPhimTheoNgay: async (req, res, next) => {
     try {
       const { ngay } = req.validated.query;
@@ -57,7 +53,6 @@ export const phimController = {
     }
   },
 
-  // POST QuanLyPhim (ADMIN)
   themPhim: async (req, res, next) => {
     try {
       const result = await phimService.themPhim(req.validated.body);
@@ -67,7 +62,6 @@ export const phimController = {
     }
   },
 
-  // DELETE XoaPhim/:ma_phim (ADMIN)
   delete: async (req, res, next) => {
     try {
       const { ma_phim } = req.validated.params;
@@ -79,11 +73,9 @@ export const phimController = {
     }
   },
 
-  // PUT CapNhatPhim/:ma_phim (ADMIN)
   capNhatPhim: async (req, res, next) => {
     try {
       const { ma_phim } = req.validated.params;
-      console.log("🚀 ~ KIỂM TRA ~ ma_phim:", ma_phim);
 
       const result = await phimService.capNhatPhim(ma_phim, req.validated.body);
 
@@ -93,7 +85,6 @@ export const phimController = {
     }
   },
 
-  // GET PhimDangChieu
   getPhimDangChieu: async (req, res, next) => {
     try {
       const result = await phimService.getPhimDangChieu();
@@ -108,7 +99,6 @@ export const phimController = {
     }
   },
 
-  // GET PhimSapChieu
   getPhimSapChieu: async (req, res, next) => {
     try {
       const result = await phimService.getPhimSapChieu();
@@ -123,7 +113,6 @@ export const phimController = {
     }
   },
 
-  // GET PhimHot
   getPhimHot: async (req, res, next) => {
     try {
       const result = await phimService.getPhimHot();

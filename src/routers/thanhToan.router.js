@@ -1,6 +1,7 @@
 import express from "express";
 import { webhookThanhToanController } from "../controllers/webhookThanhToan.controller.js";
 import { webhookAuth } from "../common/middleware/webhookAuth.middleware.js";
+import { webhookLimiter } from "../common/middleware/rateLimit.middleware.js";
 
 export const thanhToanRouter = express.Router();
 
@@ -35,13 +36,10 @@ export const thanhToanRouter = express.Router();
  *         description: Sai apikey
  */
 
-// PUBLIC endpoint — không dùng protect (JWT user), xác thực bằng apikey riêng
-// của webhookAuth vì bên gọi là ngân hàng/cổng trung gian, không có cookie/JWT.
-// Không dùng validateAll ở đây: payload phải được ghi log vào GiaoDichWebhook
-// dù thiếu/sai field (idempotency yêu cầu log MỌI request), nên validate được
-// làm permissive ngay trong xuLyWebhookThanhToan thay vì chặn ở middleware.
+
 thanhToanRouter.post(
   "/Webhook",
+  webhookLimiter,
   webhookAuth,
   webhookThanhToanController.xuLyWebhook,
 );

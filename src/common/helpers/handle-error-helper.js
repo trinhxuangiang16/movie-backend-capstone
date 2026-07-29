@@ -49,9 +49,6 @@ export const appError = (err, req, res, next) => {
     ); //403 => FE sẽ họi api/auth/refresh-token
   }
 
-  //Kiểm tra xem code có undefine không. Nếu ko có thì giá trị statusCode sẽ về mặc định là 500
-  console.log("code", err.code);
-
   const statusCode = err.statusCode || statusCodes.INTERNAL_SERVER_ERROR;
 
   return errorResponse(

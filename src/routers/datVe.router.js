@@ -2,18 +2,24 @@ import express from "express";
 import {
   mustBeAdmin,
   protect,
+  protectAllowBodyToken,
 } from "../common/middleware/protect.middleware.js";
 import { datVeController } from "../controllers/datVe.controller.js";
+import { giuGheController } from "../controllers/giuGhe.controller.js";
+import { giuGheSchema, nhaGheSchema } from "../validations/giuGhe.schema.js";
 
 import {
   checkInVeSchema,
+  capVeTrucTiepSchema,
   datVeSchema,
+  huyGiaoDichSchema,
   layDanhSachPhongVeSchema,
   layTrangThaiGheSchema,
   layTrangThaiHoaDonSchema,
   lichChieuSchema,
 } from "../validations/datVe.schema.js";
 import { validateAll } from "../common/middleware/validate.middleware.js";
+import { giuGheLimiter } from "../common/middleware/rateLimit.middleware.js";
 
 export const datVeRouter = express.Router();
 
@@ -166,48 +172,87 @@ export const datVeRouter = express.Router();
  *         description: Lấy lịch sử đặt vé thành công
  */
 
-datVeRouter.get(
-  "/LayTrangThaiGheTrongRap",
-  protect,
-  validateAll({ query: layTrangThaiGheSchema }),
-  datVeController.layTrangThaiGheTrongRap,
-);
+/**
+ * @swagger
+ * /QuanLyDatVe/HuyGiaoDich:
+ *   post:
+ *     summary: User chủ động hủy đơn đang chờ thanh toán — nhả ghế ngay lập tức
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - ma_hoa_don
+ *             properties:
+ *               ma_hoa_don:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: Hủy giao dịch thành công (idempotent - gọi lại vẫn trả 200)
+ *       404:
+ *         description: Không tìm thấy hóa đơn hoặc hóa đơn không thuộc về bạn
+ *       409:
+ *         description: Đơn đã thanh toán hoặc đã hết hạn, không thể hủy
+ */
 
-datVeRouter.post(
-  "/TaoLichChieu",
-  protect,
-  validateAll({ body: lichChieuSchema }),
-  mustBeAdmin("ADMIN"),
-  datVeController.taoLichChieu,
-);
-
-datVeRouter.get(
-  "/LayDanhSachPhongVe",
-  protect,
-
-  validateAll({ query: layDanhSachPhongVeSchema }),
-  datVeController.layDanhSachPhongVe,
-);
-
-// Route giữ nguyên tên /DatVe (không đổi để không vỡ FE hiện có) nhưng nay
-// tạo đơn "chờ thanh toán" thay vì chốt vé ngay — luồng đặt vé cũ đã bị thay
-// thế hoàn toàn, không còn nơi nào khác gọi datVeService.datVe (đã grep FE).
-datVeRouter.post(
-  "/DatVe",
-  protect,
-
-  validateAll({ body: datVeSchema }),
-  datVeController.taoDonChoThanhToan,
-);
-
-datVeRouter.get(
-  "/TrangThaiHoaDon",
-  protect,
-  validateAll({ query: layTrangThaiHoaDonSchema }),
-  datVeController.layTrangThaiHoaDon,
-);
-
-datVeRouter.get("/LichSuDatVe", protect, datVeController.getLichSuDatVe);
+/**
+ * @swagger
+ * /QuanLyDatVe/CapVeTrucTiep:
+ *   post:
+ *     summary: (ADMIN) Cấp vé trực tiếp không qua thanh toán — cho khách CK muộn hoặc vé marketing
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - ma_lich_chieu
+ *               - danh_sach_ve
+ *             properties:
+ *               ma_lich_chieu:
+ *                 type: integer
+ *               danh_sach_ve:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     ma_ghe:
+ *                       type: integer
+ *               danh_sach_combo:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     ma_combo:
+ *                       type: integer
+ *                     so_luong:
+ *                       type: integer
+ *               email_khach:
+ *                 type: string
+ *                 description: Email tài khoản khách nhận vé; bỏ trống = cấp cho chính admin
+ *               ly_do:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Cấp vé thành công
+ *       403:
+ *         description: Không có quyền (chỉ ADMIN)
+ *       404:
+ *         description: Không tìm thấy lịch chiếu / ghế / tài khoản khách
+ *       409:
+ *         description: Ghế đã được bán hoặc đang giữ chỗ
+ */
 
 /**
  * @swagger
@@ -240,10 +285,207 @@ datVeRouter.get("/LichSuDatVe", protect, datVeController.getLichSuDatVe);
  *         description: Vé đã được check-in trước đó
  */
 
+/**
+ * @swagger
+ * /QuanLyDatVe/GiuGhe:
+ *   post:
+ *     summary: Giữ ghế tạm khi user click chọn ghế (chưa tạo hóa đơn)
+ *     description: >
+ *       Idempotent — click lại ghế mình đang giữ vẫn trả 200 kèm
+ *       da_giu_truoc_do=true và thời hạn còn lại, KHÔNG gia hạn.
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - ma_lich_chieu
+ *               - danh_sach_ghe
+ *             properties:
+ *               ma_lich_chieu:
+ *                 type: integer
+ *               danh_sach_ghe:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *     responses:
+ *       200:
+ *         description: Giữ ghế thành công (hoặc ghế đã được bạn giữ trước đó)
+ *       409:
+ *         description: Ghế đã được người khác chọn hoặc đã bán
+ */
+
+/**
+ * @swagger
+ * /QuanLyDatVe/GiaHanGiuGhe:
+ *   post:
+ *     summary: Gia hạn giữ ghế tạm (heartbeat khi user còn ở màn chọn ghế)
+ *     description: >
+ *       Chỉ gia hạn bản ghi loai=tam còn hạn. Ghế đã gắn hóa đơn có expire_at
+ *       khóa theo HoaDon.het_han_luc nên không gia hạn riêng được.
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - ma_lich_chieu
+ *               - danh_sach_ghe
+ *             properties:
+ *               ma_lich_chieu:
+ *                 type: integer
+ *               danh_sach_ghe:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *     responses:
+ *       200:
+ *         description: Gia hạn thành công
+ *       404:
+ *         description: Không còn ghế nào đang được bạn giữ
+ */
+
+/**
+ * @swagger
+ * /QuanLyDatVe/NhaGhe:
+ *   post:
+ *     summary: Nhả ghế tạm khi user bỏ chọn hoặc rời trang
+ *     description: >
+ *       Chỉ là tối ưu trả ghế sớm — KHÔNG phải cơ chế giải phóng chính.
+ *       Nguồn sự thật là expire_at + job dọn nền. Idempotent.
+ *       Chấp nhận access_token trong body (dành cho navigator.sendBeacon lúc
+ *       đóng tab, vì beacon không set được header Authorization).
+ *     tags:
+ *       - QuanLyDatVe
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - ma_lich_chieu
+ *               - danh_sach_ghe
+ *             properties:
+ *               ma_lich_chieu:
+ *                 type: integer
+ *               danh_sach_ghe:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *               access_token:
+ *                 type: string
+ *                 description: Chỉ dùng khi gọi bằng sendBeacon (không có header Authorization)
+ *     responses:
+ *       200:
+ *         description: Nhả ghế thành công
+ *       401:
+ *         description: Thiếu token ở cả header lẫn body, hoặc token không hợp lệ
+ */
+
+
+datVeRouter.get(
+  "/LayTrangThaiGheTrongRap",
+  protect,
+  validateAll({ query: layTrangThaiGheSchema }),
+  datVeController.layTrangThaiGheTrongRap,
+);
+
+datVeRouter.post(
+  "/TaoLichChieu",
+  protect,
+  validateAll({ body: lichChieuSchema }),
+  mustBeAdmin("ADMIN"),
+  datVeController.taoLichChieu,
+);
+
+datVeRouter.get(
+  "/LayDanhSachPhongVe",
+  protect,
+
+  validateAll({ query: layDanhSachPhongVeSchema }),
+  datVeController.layDanhSachPhongVe,
+);
+
+
+datVeRouter.post(
+  "/DatVe",
+  protect,
+
+  validateAll({ body: datVeSchema }),
+  datVeController.taoDonChoThanhToan,
+);
+
+datVeRouter.get(
+  "/TrangThaiHoaDon",
+  protect,
+  validateAll({ query: layTrangThaiHoaDonSchema }),
+  datVeController.layTrangThaiHoaDon,
+);
+
+
+datVeRouter.post(
+  "/HuyGiaoDich",
+  protect,
+  validateAll({ body: huyGiaoDichSchema }),
+  datVeController.huyGiaoDich,
+);
+
+
+
+datVeRouter.post(
+  "/CapVeTrucTiep",
+  protect,
+  validateAll({ body: capVeTrucTiepSchema }),
+  mustBeAdmin("ADMIN"),
+  datVeController.capVeTrucTiep,
+);
+
+datVeRouter.get("/LichSuDatVe", protect, datVeController.getLichSuDatVe);
+
+
 datVeRouter.post(
   "/CheckIn",
   protect,
   validateAll({ body: checkInVeSchema }),
   mustBeAdmin("ADMIN"),
   datVeController.checkInVe,
+);
+
+
+datVeRouter.post(
+  "/GiuGhe",
+  giuGheLimiter,
+  protect,
+  validateAll({ body: giuGheSchema }),
+  giuGheController.giuGhe,
+);
+
+
+datVeRouter.post(
+  "/GiaHanGiuGhe",
+  giuGheLimiter,
+  protect,
+  validateAll({ body: giuGheSchema }),
+  giuGheController.giaHanGiuGhe,
+);
+
+datVeRouter.post(
+  "/NhaGhe",
+  giuGheLimiter,
+  protectAllowBodyToken,
+  validateAll({ body: nhaGheSchema }),
+  giuGheController.nhaGhe,
 );

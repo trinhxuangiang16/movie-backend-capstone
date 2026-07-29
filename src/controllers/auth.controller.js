@@ -21,7 +21,6 @@ export const authController = {
 
   async getInfo(req, res, next) {
     try {
-      console.log("getinfo", req.user);
       const result = await authService.getInfo(req);
       return successResponse(
         res,
@@ -32,7 +31,7 @@ export const authController = {
       next(err);
     }
   },
-  // đây là callback sau khi google auth xong. Trên FE chia 2 phân. 1 phân lây token, 1 phân lây thống tin user. Trên FE chia 2 phân. 1 phân lây token, 1 phân lây thống tin user
+
   async googleCallback(req, res, next) {
     try {
       const result = await authService.googleCallback(req);
@@ -83,14 +82,10 @@ export const authController = {
     }
   },
 
-  async findOne(req, res, next) {
+  async logout(req, res, next) {
     try {
-      const result = await authService.findOne(req);
-      const response = responseSuccess(
-        result,
-        `Lấy thông tin người dùng thành công`,
-      );
-      res.status(response.statusCode).json(response);
+      await authService.logout(req);
+      return successResponse(res, null, "Đăng xuất thành công");
     } catch (err) {
       next(err);
     }

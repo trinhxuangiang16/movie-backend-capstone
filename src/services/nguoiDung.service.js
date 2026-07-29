@@ -2,7 +2,7 @@ import { prisma } from "../common/prisma/contect.prisma.js";
 import bcrypt from "bcrypt";
 import { buildQueryPrisma } from "../utils/buildQueryPrisma.js";
 import {
-  BadRequestException,
+  ConflictException,
   NotFoundException,
 } from "../common/helpers/exception.helper.js";
 
@@ -21,11 +21,6 @@ export const nguoiDungService = {
 
   getLayDanhSachNguoiDungPhanTrang: async (query) => {
     const { page, pageSize, skip, where } = buildQueryPrisma(query);
-
-    // const finalWhere = {
-    //   ...where,
-    //   isDeleted: false,
-    // };
 
     const data = await prisma.nguoiDung.findMany({
       skip,
@@ -56,7 +51,6 @@ export const nguoiDungService = {
   timKiemNguoiDung: async (keyword) => {
     const user = await prisma.nguoiDung.findMany({
       where: {
-        //đây là điều kiện tìm kiếm "OR" với hai trường email và ho_ten, sử dụng "contains" để tìm kiếm chuỗi con và "mode: insensitive" để không phân biệt chữ hoa thường. or tức là 1
         OR: [
           { email: { contains: keyword } },
           { ho_ten: { contains: keyword } },
@@ -79,8 +73,6 @@ export const nguoiDungService = {
   },
 
   capNhatNguoiDung: async (tai_khoan, data) => {
-    console.log("🚀 ~ KIỂM TRA ~ tai_khoan:", tai_khoan);
-
     const user = await prisma.nguoiDung.findUnique({
       where: { tai_khoan: Number(tai_khoan) },
     });
@@ -89,7 +81,6 @@ export const nguoiDungService = {
       throw new NotFoundException("Tài khoản không tồn tại");
     }
 
-    // nếu update email, check trùng
     if (data.email) {
       const emailExist = await prisma.nguoiDung.findFirst({
         where: {
@@ -103,7 +94,6 @@ export const nguoiDungService = {
       }
     }
 
-    // Không cho phép update những field này
 
     const { tai_khoan: _, loai_nguoi_dung: __, ...payload } = data;
 

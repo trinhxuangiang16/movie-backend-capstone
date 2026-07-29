@@ -174,6 +174,14 @@ exports.Prisma.NguoiDungScalarFieldEnum = {
   isDeleted: 'isDeleted'
 };
 
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  tai_khoan: 'tai_khoan',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.PhimScalarFieldEnum = {
   ma_phim: 'ma_phim',
   ten_phim: 'ten_phim',
@@ -199,7 +207,9 @@ exports.Prisma.GiuChoScalarFieldEnum = {
   tai_khoan: 'tai_khoan',
   ma_lich_chieu: 'ma_lich_chieu',
   ma_ghe: 'ma_ghe',
+  loai: 'loai',
   ma_hoa_don: 'ma_hoa_don',
+  gia_ve: 'gia_ve',
   expire_at: 'expire_at',
   created_at: 'created_at'
 };
@@ -286,6 +296,10 @@ exports.Prisma.NguoiDungOrderByRelevanceFieldEnum = {
   loai_nguoi_dung: 'loai_nguoi_dung'
 };
 
+exports.Prisma.RefreshTokenOrderByRelevanceFieldEnum = {
+  token: 'token'
+};
+
 exports.Prisma.PhimOrderByRelevanceFieldEnum = {
   ten_phim: 'ten_phim',
   trailer: 'trailer',
@@ -316,6 +330,11 @@ exports.Prisma.GiaoDichWebhookOrderByRelevanceFieldEnum = {
   ket_qua_xu_ly: 'ket_qua_xu_ly',
   ghi_chu: 'ghi_chu'
 };
+exports.LoaiGiuCho = exports.$Enums.LoaiGiuCho = {
+  tam: 'tam',
+  da_tao_don: 'da_tao_don'
+};
+
 exports.TrangThaiThanhToan = exports.$Enums.TrangThaiThanhToan = {
   cho_thanh_toan: 'cho_thanh_toan',
   da_thanh_toan: 'da_thanh_toan',
@@ -331,6 +350,7 @@ exports.Prisma.ModelName = {
   HeThongRap: 'HeThongRap',
   LichChieu: 'LichChieu',
   NguoiDung: 'NguoiDung',
+  RefreshToken: 'RefreshToken',
   Phim: 'Phim',
   RapPhim: 'RapPhim',
   GiuCho: 'GiuCho',
