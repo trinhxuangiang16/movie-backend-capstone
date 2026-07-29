@@ -10,15 +10,17 @@ if (!DATABASE_URL) {
 
 const dbUrl = new URL(DATABASE_URL);
 
+const isAzureDb = dbUrl.hostname.includes("azure.com");
+
 const adapter = new PrismaMariaDb({
   host: dbUrl.hostname,
   user: dbUrl.username,
-  password: dbUrl.password,
+  password: decodeURIComponent(dbUrl.password),
   database: dbUrl.pathname.substring(1),
   port: Number(dbUrl.port),
   connectionLimit: 5,
   allowPublicKeyRetrieval: true,
-  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+  ssl: (isAzureDb || process.env.NODE_ENV === "production") ? { rejectUnauthorized: false } : false,
 });
 
 const prisma = new PrismaClient({ adapter });
