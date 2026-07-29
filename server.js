@@ -35,9 +35,30 @@ app.use(
   }),
 );
 
+const defaultOrigins = [
+  "https://trinhxuangiang.me",
+  "https://www.trinhxuangiang.me",
+  "http://localhost:3000",
+  "http://104.46.219.122:3000",
+];
+
+const envOrigins = process.env.FE_ORIGIN?.split(",").map((o) => o.trim()) || [];
+const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
+
 app.use(
   cors({
-    origin: process.env.FE_ORIGIN?.split(",").map((o) => o.trim()),
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (
+        allowedOrigins.includes(origin) ||
+        allowedOrigins.includes("*") ||
+        origin.endsWith("trinhxuangiang.me") ||
+        origin.includes("localhost")
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true);
+    },
     credentials: true,
   }),
 );
