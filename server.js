@@ -29,7 +29,11 @@ if (trustProxy && trustProxy !== "false") {
   }
 }
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  }),
+);
 
 app.use(
   cors({
@@ -42,7 +46,7 @@ app.use(express.static("./public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(["/api-docs", "/api/api-docs"], swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //  Docker
 app.get("/", (req, res) => {
