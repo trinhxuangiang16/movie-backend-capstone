@@ -1,5 +1,6 @@
 FROM node:22-alpine AS deps
 WORKDIR /app
+RUN apk add --no-cache make gcc g++ python3
 COPY package*.json ./
 RUN npm ci || npm install --no-audit --no-fund
 
