@@ -37,6 +37,14 @@ Swagger UI: https://api-movie.trinhxuangiang.me/api-docs
 - Order checkout and payment integration.
 - Background worker job (expireHoaDon) for automatically releasing unpaid expired seat holds and orders.
 
+## Engineering & Architecture Highlights
+
+- Transactional Seat Hold System: Utilizes Prisma database transactions ($transaction) with strict P2002 conflict handling to guarantee atomic operations and prevent double-booking.
+- Real-time Expiration Worker: Runs background interval jobs (expireHoaDon.job) to release expired temporary seat holds every 15 seconds and automatically set unpaid orders to expired every 60 seconds.
+- Multi-Showtime Conflict Prevention: Restricts a single user account from holding seats across multiple different showtimes simultaneously.
+- Configurable Seat Limits: Enforces strict business rules including maximum seat hold limit (MAX_SEATS_PER_HOLD = 8) and configurable seat hold timeouts (SEAT_HOLD_EXPIRE_SECONDS = 300s).
+- Secure Token Lifecycle: Implemented dual JWT mechanism with short-lived Access Tokens and long-lived Refresh Tokens.
+
 ## Tech Stack
 
 - Runtime: Node.js
@@ -87,3 +95,9 @@ Swagger documentation will be available at http://localhost:3069/api-docs.
 - npm run prisma: Push schema changes and generate Prisma Client
 - npm run seed: Seed database with initial data
 - npm run seed:accounts: Seed test account data
+
+## Author
+
+- Name: Trinh Xuan Giang
+- Email: trinhgiang.dev16@gmail.com
+- GitHub: https://github.com/trinhxuangiang16
